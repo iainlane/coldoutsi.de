@@ -1,0 +1,12 @@
+**/node_modules
+yarn-error.log
+.esbuild/
+coverage/
+.serverless/
+.dynamodb/
+
+# Personal settings
+.vscode/settings.json
+
+# Secrets in here
+.env*
