@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>coldoutsi.de - {{ location.name }}</title>
+    <link rel="Stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <p>Weather report: {{ location.label }}</p>
+    <h2>Now</h2>
+    <p>{{ current.weather[0].art.emoji }} {{ current.temp }}, Wind {{ current.wind.HTMLString }}</p>
+
+    <h2>Hourly Forecast</h2>
+    <ul>
+      {% for hour in hourly %}
+      <li>
+        <strong>{{ hour.time | date: "%H:%M" }}</strong>:
+        {{ hour.weather[0].art.emoji }}
+        {{ hour.temp }}
+        Wind {{ hour.wind.HTMLString }}
+      </li>
+      {% endfor %}
+    </ul>
+
+    <h2>Daily Forecast</h2>
+    <ul>
+      {% for day in daily %}
+      <li>
+        <strong>{{ day.time | date: "%Y-%m-%d" }}</strong>:
+        Day {{ day.temp.day }}
+        Min {{ day.temp.min }}
+        Max {{ day.temp.max }}
+        {{ day.weather[0].art.emoji }}
+        Wind {{ day.wind.HTMLString }}
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+{
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "app",
+      "gen/*"
+    ],
+    "nohoist": [
+      "**/@smithy/types"
+    ]
+  },
+  "type": "module",
+  "scripts": {
+    "debug": "NODE_OPTIONS=--experimental-vm-modules POWERTOOLS_DEV=true node --inspect node_modules/serverless/bin/serverless offline -s dev",
+    "lint": "eslint",
+    "test": "NODE_OPTIONS=--experimental-vm-modules POWERTOOLS_DEV=true $(yarn bin jest) --silent",
+    "gen": "concurrently 'yarn workspace @internal/nominatim gen-if-needed' 'yarn workspace @internal/geojs gen-if-needed' 'yarn workspace @internal/met.no gen-if-needed'",
+    "local": "yarn serverless offline start --stage dev"
+  },
+  "jest": {
+    "preset": "ts-jest/presets/default-esm",
+    "collectCoverage": true,
+    "moduleNameMapper": {
+      "^@/testdata/(.*)$": "<rootDir>/app/testdata/$1",
+      "^@/lib/(.*)$": "<rootDir>/app/src/lib/$1"
+    },
+    "modulePathIgnorePatterns": [
+      "<rootDir>/.esbuild"
+    ]
+  },
+  "devDependencies": {
+    "@serverless/utils": "^6.0.2",
+    "@types/node": "^20.10.7",
+    "@typescript-eslint/eslint-plugin": "^6.18.0",
+    "@typescript-eslint/parser": "^6.18.0",
+    "aws-sdk": "^2.1534.0",
+    "esbuild": "^0.19.11",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jest": "^27.6.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^3.1.1",
+    "serverless": "^3.38.0",
+    "serverless-better-credentials": "^2.0.0",
+    "serverless-certificate-creator": "^1.6.0",
+    "serverless-domain-manager": "^7.3.3",
+    "serverless-dynamodb": "^0.2.47",
+    "serverless-esbuild": "^1.50.1",
+    "serverless-offline": "^13.3.2",
+    "serverless-plugin-typescript": "^2.1.5",
+    "typescript": "^5.3.3"
+  }
+}

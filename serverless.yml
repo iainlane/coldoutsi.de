@@ -1,0 +1,238 @@
+service: coldoutside
+
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  profile: weather
+  region: eu-west-2
+  environment:
+    NODE_OPTIONS: --enable-source-maps
+    GEOCODE_TABLE_NAME: GeocodeCacheTable-${sls:stage}
+    GEOLOCATION_TABLE_NAME: GeolocationCacheTable-${sls:stage}
+    WEATHER_TABLE_NAME: WeatherCacheTable-${sls:stage}
+    OPENWEATHERMAP_API_KEY: ${env:OPENWEATHERMAP_API_KEY}
+    STAGE: ${self:provider.stage}
+  stage: ${opt:stage, 'local'}
+
+  logRetentionInDays: 7
+
+  logs:
+    httpApi: true
+
+  httpApi:
+    disableDefaultEndpoint: true
+    cors: true
+    metrics: true
+
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+      Resource:
+        Fn::GetAtt:
+          - GeocodeCacheTable
+          - Arn
+    - Effect: "Allow"
+      Action:
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+      Resource:
+        Fn::GetAtt:
+          - GeolocationCacheTable
+          - Arn
+    - Effect: "Allow"
+      Action:
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+      Resource:
+        Fn::GetAtt:
+          - WeatherCacheTable
+          - Arn
+
+package:
+  patterns:
+    - ./app/static/*
+    - ./app/src/**/*.(js|ts|liquid)
+
+plugins:
+  - serverless-better-credentials
+  - serverless-esbuild
+  - serverless-dynamodb
+  - serverless-certificate-creator
+  - serverless-domain-manager
+  - serverless-offline
+
+custom:
+  domains:
+    production: api.coldoutsi.de
+    staging: api.staging.coldoutsi.de
+    dev: api.dev.coldoutsi.de
+
+  disableIfLocal:
+    local: false
+
+  customCertificate:
+    enabled: ${self:custom.disableIfLocal.${sls:stage}, true}
+
+    certificateName: ${self:custom.domains.${sls:stage}, null}
+    hostedZoneNames: "coldoutsi.de."
+    region: ${self:provider.region}
+    tags:
+      Name: "api.coldoutsi.de"
+      Environment: ${sls:stage}
+
+  customDomain:
+    enabled: ${self:custom.disableIfLocal.${sls:stage}, true}
+
+    domainName: ${self:custom.domains.${sls:stage}, null}
+    certificateName: ${self:custom.customCertificate.certificateName, null}
+    createRoute53Record: true
+    createRoute53IPv6Record: true
+    endpointType: REGIONAL
+    securityPolicy: tls_1_2
+    apiType: http
+    autoDomain: true
+    stage: "$default"
+
+  serverless-dynamodb:
+    stages:
+      - local
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
+
+  esbuild:
+    outputFileExtension: .mjs
+    format: esm
+    sourcemap: true
+    banner:
+      js: |
+        import { createRequire as topLevelCreateRequire } from 'module';
+        const require = topLevelCreateRequire(import.meta.url);
+
+functions:
+  # Always make sure the matched paths are distinct. Put more specific paths
+  # first.
+  static:
+    handler: ./app/src/handlers/static/index.staticHandler
+    events:
+      - httpApi:
+          path: /static/{path+}
+          method: GET
+
+      - httpApi:
+          path: /favicon.ico
+          method: GET
+
+      - httpApi:
+          path: /style.css
+          method: GET
+
+      - httpApi:
+          path: /test.txt
+          method: GET
+
+  index:
+    handler: ./app/src/handlers/index/index.indexHandler
+    events:
+      - httpApi:
+          path: /
+          method: GET
+
+  test:
+    handler: ./app/src/handlers/test/index.testHandler
+    events:
+      - httpApi:
+          path: /test
+          method: GET
+
+  unknown:
+    handler: ./app/src/handlers/unknown/unknown.unknownHandler
+    events:
+      - httpApi:
+          path: "/:unknown"
+          method: GET
+
+  reverseWeather:
+    handler: ./app/src/handlers/weather/weather.reverseWeatherHandler
+    events:
+      - httpApi:
+          path: /{lat}/{lon}
+          method: GET
+
+  weather:
+    handler: ./app/src/handlers/weather/weather.weatherHandler
+    events:
+      - httpApi:
+          path: /{location}
+          method: GET
+
+resources:
+  Resources:
+    GeolocationCacheTable:
+      Type: "AWS::DynamoDB::Table"
+      Properties:
+        TableName: ${self:provider.environment.GEOLOCATION_TABLE_NAME}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: ip
+            AttributeType: S
+        KeySchema:
+          - AttributeName: ip
+            KeyType: HASH
+        TimeToLiveSpecification:
+          AttributeName: ttl
+          Enabled: true
+
+    GeocodeCacheTable:
+      Type: "AWS::DynamoDB::Table"
+      Properties:
+        TableName: ${self:provider.environment.GEOCODE_TABLE_NAME}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: geoHash
+            AttributeType: S
+          - AttributeName: acceptLanguage
+            AttributeType: S
+        KeySchema:
+          - AttributeName: geoHash
+            KeyType: HASH
+          - AttributeName: acceptLanguage
+            KeyType: RANGE
+        TimeToLiveSpecification:
+          AttributeName: ttl
+          Enabled: true
+
+    WeatherCacheTable:
+      Type: "AWS::DynamoDB::Table"
+      Properties:
+        TableName: WeatherCacheTable-${sls:stage}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: weatherHash
+            AttributeType: S
+        KeySchema:
+          - AttributeName: weatherHash
+            KeyType: HASH
+        TimeToLiveSpecification:
+          AttributeName: ttl
+          Enabled: true
+
+    StaticWebsiteBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: coldoutsi.de-static-content-${sls:stage}
+        # Only accessible by CloudFront
+        AccessControl: Private
+        WebsiteConfiguration:
+          IndexDocument: index.html
+          ErrorDocument: error.html
+        Tags:
+          - Key: Name
+            Value: "coldoutsi.de"
+          - Key: Environment
+            Value: ${sls:stage}

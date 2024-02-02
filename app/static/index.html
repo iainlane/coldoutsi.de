@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>coldoutsi.de</title>
+  </head>
+  <body>
+    <noscript>
+      <!-- If JavaScript is disabled, redirect immediately -->
+      <meta http-equiv="refresh" content="0;url=/:unknown" />
+    </noscript>
+    <script>
+      function redirectBasedOnLocation() {
+        if (!navigator.geolocation) {
+          // If Geolocation API is not supported, redirect
+          window.location.href = "/:unknown";
+          return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            // On successful geolocation, redirect to /lat/lon
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            window.location.href = `/${latitude}/${longitude}`;
+          },
+          function (error) {
+            // On error or if geolocation permission is denied, redirect
+            console.error("Geolocation error:", error);
+            window.location.href = "/:unknown";
+          },
+        );
+      }
+
+      redirectBasedOnLocation();
+    </script>
+  </body>
+</html>
