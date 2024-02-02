@@ -1,0 +1,9 @@
+{% for cond in conditions %}
+{% assign code = cond[0] -%}
+{% assign condition = cond[1] -%}
+{{ code }}
+===
+
+{{ condition.main }} - {{ condition.description }} - {{ condition.art.emoji }}
+{{ condition.art.ansi }}
+{% endfor %}

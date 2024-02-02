@@ -1,0 +1,22 @@
+{
+  "$schema": "./node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+  "spaces": 2,
+  "generator-cli": {
+    "version": "7.2.0",
+    "generators": {
+      "yr.no": {
+        "generatorName": "typescript-axios",
+        "inputSpec": "schema.json",
+        "output": ".",
+        "globalProperty": "debugOpenAPI,debugModels",
+        "additionalProperties": {
+          "npmName": "@internal/yr.no",
+          "npmVersion": "0.0.1",
+          "supportsES6": true,
+          "withInterfaces": true,
+          "private": true
+        }
+      }
+    }
+  }
+}

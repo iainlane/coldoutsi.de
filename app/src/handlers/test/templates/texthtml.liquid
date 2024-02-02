@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>coldoutsi.de - TEST</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+{% for cond in conditions %}
+{% assign code = cond[0] -%}
+{% assign condition = cond[1] -%}
+<h1>{{ code }}</h1>
+
+<p>{{ condition.main }} - {{ condition.description }} - {{ condition.art.emoji }}</p>
+<p style="font-family: monospace; white-space: pre;">
+{{ condition.art.html }}
+</p>
+{% endfor %}
+</body>
+</html>

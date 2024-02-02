@@ -1,0 +1,108 @@
+# From https://www.geojs.io/docs/v1/endpoints/geo/; manually generated.
+openapi: 3.0.0
+info:
+  title: GeoJS Geo API
+  version: 1.0.0
+  description: Provides geographical information about an IP address
+
+servers:
+  - url: https://get.geojs.io/v1/ip
+    description: GeoJS API server
+
+paths:
+  /geo.json:
+    get:
+      operationId: geolocate
+      summary: Get geo information for the requester's IP or the specified IP(s)
+      description: Retrieves geolocation data for the provided comma-separated list of IP addresses or the requester's IP if no IP is provided.
+      parameters:
+        - name: ip
+          in: query
+          style: form
+          explode: false
+          description: A separated list of IP addresses to get geolocation data for. If omitted, the requester's IP is used.
+          required: false
+          schema:
+            type: string
+            format: ipv4
+            example: "192.168.1.1,192.168.1.2"
+        - name: callback
+          in: query
+          description: The name of the JSONP callback function.
+          required: false
+          schema:
+            type: string
+            default: geoip
+      responses:
+        "200":
+          description: A JSON or JSONP response with a list of geolocation information objects for the provided IP addresses.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  required:
+                    - ip
+                    - country
+                    - country_code
+                    - country_code3
+                    - continent_code
+                    - city
+                    - region
+                    - latitude
+                    - longitude
+                    - accuracy
+                    - timezone
+                    - organization_name
+                    - asn
+                    - organization
+                  properties:
+                    ip:
+                      type: string
+                      description: The IP address the geolocation data is for.
+                    country:
+                      type: string
+                      description: The full name of the country.
+                    country_code:
+                      type: string
+                      description: The two-letter ISO country code.
+                      pattern: "^[A-Za-z]{2}$"
+                    country_code3:
+                      type: string
+                      description: The three-letter country code.
+                      pattern: "^[A-Za-z]{3}$"
+                    continent_code:
+                      type: string
+                      description: The two-letter continent code.
+                      pattern: "^[A-Za-z]{2}$"
+                    city:
+                      type: string
+                      description: The city of the IP.
+                    region:
+                      type: string
+                      description: The region/state of the IP.
+                    latitude:
+                      type: string
+                      description: The latitude of the IP.
+                    longitude:
+                      type: string
+                      description: The longitude of the IP.
+                    accuracy:
+                      type: integer
+                      description: The accuracy radius of the IP location in kilometers.
+                    timezone:
+                      type: string
+                      description: The timezone of the IP.
+                    organization_name:
+                      type: string
+                      description: The name of the ISP or organization associated with the IP.
+                    asn:
+                      type: integer
+                      description: The Autonomous System Number associated with the IP.
+                    organization:
+                      type: string
+                      description: The organization associated with the IP.
+      tags:
+        - GeoJS
+components: {}

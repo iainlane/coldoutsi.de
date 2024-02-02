@@ -1,0 +1,45 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "name": "vscode-jest-tests.v2",
+      "request": "launch",
+      "args": [
+        "--runInBand",
+        "--watchAll=false",
+        "--testNamePattern",
+        "${jest.testNamePattern}",
+        "--runTestsByPath",
+        "${jest.testFile}"
+      ],
+      "env": {
+        "NODE_OPTIONS": "--experimental-vm-modules"
+      },
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "disableOptimisticBPs": true,
+      "program": "${workspaceFolder}/node_modules/.bin/jest"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Serverless Offline",
+      "console": "integratedTerminal",
+      "program": "${workspaceRoot}/node_modules/serverless/bin/serverless",
+      "args": ["offline", "start", "--noTimeout", "--stage=local"],
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/.esbuild/.build/**/*.js"],
+      "protocol": "inspector",
+      "runtimeExecutable": "node",
+      "env": {
+        // Here we set some environment vars that should be set locally.
+        // They can and will overwrite the ones coming from your serverless.yml
+      }
+    }
+  ]
+}
