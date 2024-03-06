@@ -10,7 +10,7 @@ import {
 export async function getRawWeather(
   logger: Logger,
   location: GeoCodeData,
-): METJSONForecast {
+): Promise<METJSONForecast> {
   const metno = DataApiFactory(
     new Configuration({
       basePath: "http://api.met.no/weatherapi/locationforecast/2.0",
