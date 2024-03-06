@@ -2176,10 +2176,10 @@
   dependencies:
     "@middy/util" "3.6.2"
 
-"@middy/http-header-normalizer@~3":
-  version "3.6.2"
-  resolved "https://registry.yarnpkg.com/@middy/http-header-normalizer/-/http-header-normalizer-3.6.2.tgz#fec29d2c97a7b42e2d3ae191c191a1fd435b41ed"
-  integrity sha512-ADsAkKKOdR6qiROmhQGH+9E4UhM+xaKIPUndqJK6k2OeZP/azI5+t/rAbgHCTp9S6LEqbhXTE9pbks56FmWHbw==
+"@middy/http-header-normalizer@~5":
+  version "5.2.6"
+  resolved "https://registry.yarnpkg.com/@middy/http-header-normalizer/-/http-header-normalizer-5.2.6.tgz#7b718c4117f265287bff1a53cae6607eff816a8b"
+  integrity sha512-TgHpK/gd5+NylbXGUiE0GWauALjjooYuSV/d79y7wjxG9ShDWaIZi+pWc/0TBupt5ITgyhfPCgpH0QUqei0+xw==
 
 "@middy/http-json-body-parser@~3":
   version "3.6.2"
