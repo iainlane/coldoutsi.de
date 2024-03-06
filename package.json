@@ -47,7 +47,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "prettier": "^3.1.1",
+    "prettier": "^3.2.5",
     "serverless": "^3.38.0",
     "serverless-better-credentials": "^2.0.0",
     "serverless-certificate-creator": "^1.6.0",
