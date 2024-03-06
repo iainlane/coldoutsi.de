@@ -11,10 +11,10 @@ const greenwich: GeoCodeData = {
 };
 
 describe("met.no client", () => {
-  it("should return weather", () => {
+  it("should return weather", async () => {
     const logger = new Logger();
 
-    const weather = getRawWeather(logger, greenwich);
+    const weather = await getRawWeather(logger, greenwich);
 
     expect(weather).toBeDefined();
   });
