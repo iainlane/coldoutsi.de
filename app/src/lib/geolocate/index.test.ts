@@ -20,7 +20,6 @@ import { mock } from "jest-mock-extended";
 import { GeoLocateError, geoLocator } from ".";
 import type { Logger } from "@/lib/logger";
 
-
 const ddbMock = mockClient(DynamoDBDocumentClient);
 
 const mockAxios = new AxiosMockAdapter(axios);

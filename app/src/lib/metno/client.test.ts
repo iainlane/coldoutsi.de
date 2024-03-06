@@ -11,10 +11,10 @@ const sherwood: GeoCodeData = {
 };
 
 describe("met.no client", () => {
-  it("should return weather", () => {
+  it("should return weather", async () => {
     const logger = new Logger();
 
-    const weather = getRawWeather(logger, sherwood);
+    const weather = await getRawWeather(logger, sherwood);
 
     expect(weather).toBeDefined();
   });

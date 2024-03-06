@@ -1,0 +1,34 @@
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
+        with:
+          node-version: "20"
+          cache: "yarn"
+          cache-dependency-path: "./yarn.lock"
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build generated libraries
+        run: yarn gen
+
+      - name: Run tests
+        run: yarn test
+
+      - name: Run linter
+        run: yarn lint .
+
+      - name: Run prettier
+        run: yarn prettier --check .
