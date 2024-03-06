@@ -2154,12 +2154,12 @@
   resolved "https://registry.yarnpkg.com/@middy/error-logger/-/error-logger-3.6.2.tgz#dcb37d9d5beb1a5e988af288f24c28e495ab4bd8"
   integrity sha512-7pGHuYWbBHsowtb+s4IDkfackp/kNe/iDTdqMzV8RoFfa+w3Oljre54fVquLVMe9+O98mA/woXYPJtv4MGVnUw==
 
-"@middy/http-content-encoding@~3":
-  version "3.6.2"
-  resolved "https://registry.yarnpkg.com/@middy/http-content-encoding/-/http-content-encoding-3.6.2.tgz#d2cd74a501bb8f5fe96c64895784e7aad9d1c0b7"
-  integrity sha512-TlQyiUZNQmd4RgZgmCy40W8OfzFd+Xjz/6mDpyfxbMpUVfKihMVdJX+0tebHRmqX5yOoT/P/o2frLgJiEIS+GQ==
+"@middy/http-content-encoding@~5":
+  version "5.2.6"
+  resolved "https://registry.yarnpkg.com/@middy/http-content-encoding/-/http-content-encoding-5.2.6.tgz#3d196b0f88d9f9063d499344e472108c1c8401c3"
+  integrity sha512-bwZa5A0GDqgEcjrc318Z7PT/Lhj1kxZla0YEjTi9BxAR+SXyhvBQxkWtqiFlUweAO7NiL71eAU5MG0bGn/vgeA==
   dependencies:
-    "@middy/util" "3.6.2"
+    "@middy/util" "5.2.6"
 
 "@middy/http-content-negotiation@~3":
   version "3.6.2"
@@ -2200,6 +2200,11 @@
   version "3.6.2"
   resolved "https://registry.yarnpkg.com/@middy/util/-/util-3.6.2.tgz#2d49a4f9b6ab7fe3635b1123cfcfe35892743e5c"
   integrity sha512-zjyjF5BdSNnDlZbTvfQwwuUIs3H5PpN/R3wOAipXhaGD/SjpIUBcJJPLUQHySeHoZym1FC3MJYczJDbYQWKWdg==
+
+"@middy/util@5.2.6":
+  version "5.2.6"
+  resolved "https://registry.yarnpkg.com/@middy/util/-/util-5.2.6.tgz#4ff87c7b5a5d07e07156c18f94e10f29ee9fdaa0"
+  integrity sha512-oXIclz9JESQQgS3xDe1Wjg9JfvNNEYeINkQp0d+lWBXLZuLDvtBGrRHCoUDSX5OoSE4LFVcag13XV2tdPHBGCw==
 
 "@nestjs/axios@3.0.1":
   version "3.0.1"
