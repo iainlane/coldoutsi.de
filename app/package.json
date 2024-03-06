@@ -19,7 +19,7 @@
     "@internal/nominatim": "0.0.1",
     "@jest/globals": "^29.7.0",
     "@middy/core": "~3",
-    "@middy/error-logger": "~3",
+    "@middy/error-logger": "~5",
     "@middy/http-content-encoding": "~3",
     "@middy/http-content-negotiation": "~3",
     "@middy/http-error-handler": "~3",
