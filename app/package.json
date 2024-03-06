@@ -23,7 +23,7 @@
     "@middy/http-content-encoding": "~3",
     "@middy/http-content-negotiation": "~3",
     "@middy/http-error-handler": "~3",
-    "@middy/http-header-normalizer": "~3",
+    "@middy/http-header-normalizer": "~5",
     "@middy/http-json-body-parser": "~3",
     "@middy/http-response-serializer": "~3",
     "axios": "^1.6.2",
