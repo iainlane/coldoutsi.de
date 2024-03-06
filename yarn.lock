@@ -2161,12 +2161,12 @@
   dependencies:
     "@middy/util" "3.6.2"
 
-"@middy/http-content-negotiation@~3":
-  version "3.6.2"
-  resolved "https://registry.yarnpkg.com/@middy/http-content-negotiation/-/http-content-negotiation-3.6.2.tgz#d5e5063ca58fd97678ab805f7ac66b79609b2717"
-  integrity sha512-uY2PsBbjk1LsGUZjr2/U3BNVZ+gJoBFFECwx365beIi4A1pECxLsR0nHgD7aK0duT0Kq/qpxvFxw1FysOnDwoA==
+"@middy/http-content-negotiation@~5":
+  version "5.2.6"
+  resolved "https://registry.yarnpkg.com/@middy/http-content-negotiation/-/http-content-negotiation-5.2.6.tgz#117723557c3307be07f504b0853de3f66b416699"
+  integrity sha512-YxzYUg9W1dt0LdNv6I1/Hep+a7UAnRY+zqcbRCp/oQP2ZWESu9NZij+ktUu8ecLAhL6NXWg+v5vR2H9AyCNgmA==
   dependencies:
-    "@middy/util" "3.6.2"
+    "@middy/util" "5.2.6"
     negotiator "0.6.3"
 
 "@middy/http-error-handler@~3":
@@ -2200,6 +2200,11 @@
   version "3.6.2"
   resolved "https://registry.yarnpkg.com/@middy/util/-/util-3.6.2.tgz#2d49a4f9b6ab7fe3635b1123cfcfe35892743e5c"
   integrity sha512-zjyjF5BdSNnDlZbTvfQwwuUIs3H5PpN/R3wOAipXhaGD/SjpIUBcJJPLUQHySeHoZym1FC3MJYczJDbYQWKWdg==
+
+"@middy/util@5.2.6":
+  version "5.2.6"
+  resolved "https://registry.yarnpkg.com/@middy/util/-/util-5.2.6.tgz#4ff87c7b5a5d07e07156c18f94e10f29ee9fdaa0"
+  integrity sha512-oXIclz9JESQQgS3xDe1Wjg9JfvNNEYeINkQp0d+lWBXLZuLDvtBGrRHCoUDSX5OoSE4LFVcag13XV2tdPHBGCw==
 
 "@nestjs/axios@3.0.1":
   version "3.0.1"
