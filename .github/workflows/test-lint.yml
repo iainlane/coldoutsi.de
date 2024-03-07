@@ -19,7 +19,7 @@ jobs:
           cache-dependency-path: "./yarn.lock"
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --frozen-lockfile
 
       - name: Build generated libraries
         run: yarn gen
