@@ -1,13 +1,11 @@
-import middy, { MiddlewareObj } from "@middy/core";
+import { isHttpProblem } from "@curveball/http-errors";
+import middy, { MiddlewareObj, MiddyHandlerObject } from "@middy/core";
 import errorLogger from "@middy/error-logger";
 import httpContentEncoding from "@middy/http-content-encoding";
 import httpContentNegotiation from "@middy/http-content-negotiation";
 import httpErrorHandler from "@middy/http-error-handler";
 import httpHeaderNormalizer from "@middy/http-header-normalizer";
-import type {
-  Callback as LambdaCallback,
-  Context as LambdaContext,
-} from "aws-lambda/handler";
+import type { Context as LambdaContext } from "aws-lambda/handler";
 import { constants } from "node:zlib";
 
 import { cacheControlMiddleware } from "@/lib/cachecontrol";
@@ -19,12 +17,13 @@ import {
 import { GeoLocateContext, geoLocateMiddleware } from "@/lib/geolocate";
 import { Logger, LoggerContext, loggerMiddleware } from "@/lib/logger";
 import { renderableMiddleware } from "@/lib/render";
-import { isHttpProblem } from "@curveball/http-errors";
 
 export type { Event as HttpContentNegotiationEvent } from "@middy/http-content-negotiation";
 export type { Event as HttpHeaderNormalizerEvent } from "@middy/http-header-normalizer";
 
 // copied from @middy/core as it's not exported
+// The AWS provided Handler type uses void | Promise<TResult> so we have no choice but to follow and suppress the linter warning
+// eslint-disable-next-line @typescript-eslint/no-invalid-void-type
 type MiddyInputHandler<
   TEvent,
   TResult,
@@ -32,10 +31,9 @@ type MiddyInputHandler<
 > = (
   event: TEvent,
   context: TContext,
-  callback: LambdaCallback<TResult>,
-  // this is a copy of the original signature, so the linting error is not ours
-  // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-) => void | Promise<TResult>;
+  opts: MiddyHandlerObject,
+) => // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+void | Promise<TResult> | TResult;
 
 type Contexts = GeoCodeContext & GeoLocateContext & LoggerContext;
 
