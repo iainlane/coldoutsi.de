@@ -22,13 +22,13 @@
     "baseUrl": ".",
     "paths": {
       "@/testdata/*": ["app/testdata/*"],
-      "@/lib/*": ["app/src/lib/*"],
+      "@/lib/*": ["app/src/lib/*"]
     },
-    "esModuleInterop": true,
+    "esModuleInterop": true
   },
   "ts-node": {
     "esm": true,
-    "experimentalSpecifierResolution": "node",
+    "experimentalSpecifierResolution": "node"
   },
-  "include": ["app/**/*.ts"],
+  "include": ["app/**/*.ts"]
 }
