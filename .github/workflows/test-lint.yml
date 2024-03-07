@@ -22,7 +22,12 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Build generated libraries
-        run: yarn gen
+        uses: nick-fields/retry@7152eba30c6575329ac0576536151aca5a72780e # v3.0.0
+        with:
+          max_attempts: 5
+          timeout_minutes: 5
+          command: yarn gen
+          retry_on: error
 
       - name: Run tests
         run: yarn test
