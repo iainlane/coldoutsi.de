@@ -1029,12 +1029,20 @@
     "@smithy/util-utf8" "^2.1.1"
     tslib "^2.5.0"
 
-"@aws-sdk/types@3.496.0", "@aws-sdk/types@^3.222.0", "@aws-sdk/types@^3.485.0":
+"@aws-sdk/types@3.496.0":
   version "3.496.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/types/-/types-3.496.0.tgz#cdde44a94a57cf8f97cf05e4d0bdce2f56ce4eeb"
   integrity sha512-umkGadK4QuNQaMoDICMm7NKRI/mYSXiyPjcn3d53BhsuArYU/52CebGQKdt4At7SwwsiVJZw9RNBHyN5Mm0HVw==
   dependencies:
     "@smithy/types" "^2.9.1"
+    tslib "^2.5.0"
+
+"@aws-sdk/types@^3.222.0", "@aws-sdk/types@^3.523.0":
+  version "3.523.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/types/-/types-3.523.0.tgz#2bb11390023949f31d9211212f41e245a7f03489"
+  integrity sha512-AqGIu4u+SxPiUuNBp2acCVcq80KDUFjxe6e3cMTvKWTzCbrVk1AXv0dAaJnCmdkWIha6zJDWxpIk/aL4EGhZ9A==
+  dependencies:
+    "@smithy/types" "^2.10.1"
     tslib "^2.5.0"
 
 "@aws-sdk/util-arn-parser@3.495.0":
@@ -2257,10 +2265,10 @@
     consola "^2.15.0"
     node-fetch "^2.6.1"
 
-"@openapitools/openapi-generator-cli@^2.7.0":
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/@openapitools/openapi-generator-cli/-/openapi-generator-cli-2.9.0.tgz#9e8255bbadc3746386cb4cb99ae86e8f34dcb130"
-  integrity sha512-KQpftKeiMoH5aEI/amOVLFGkGeT3DyA7Atj7v7l8xT3O9xnIUpoDmMg0WBTEh+NHxEwEAITQNDzr+JLjkXVaKw==
+"@openapitools/openapi-generator-cli@^2.11.0":
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/@openapitools/openapi-generator-cli/-/openapi-generator-cli-2.11.0.tgz#13af6f67a89bd685aa12032c56ecd8bdfe47a5e2"
+  integrity sha512-oqTNvFARvhztEgMHoOvdwx148MM89/Ersa8KZTZxMVtLXCynIDyTqWnZqvCsBUZDc2Bl+N8pT6XWbLkz3JVh0w==
   dependencies:
     "@nestjs/axios" "3.0.1"
     "@nestjs/common" "10.3.0"
@@ -2750,10 +2758,10 @@
     "@smithy/util-stream" "^2.1.1"
     tslib "^2.5.0"
 
-"@smithy/types@^2.6.0", "@smithy/types@^2.8.0", "@smithy/types@^2.9.1":
-  version "2.9.1"
-  resolved "https://registry.yarnpkg.com/@smithy/types/-/types-2.9.1.tgz#ed04d4144eed3b8bd26d20fc85aae8d6e357ebb9"
-  integrity sha512-vjXlKNXyprDYDuJ7UW5iobdmyDm6g8dDG+BFUncAg/3XJaN45Gy5RWWWUVgrzIK7S4R1KWgIX5LeJcfvSI24bw==
+"@smithy/types@^2.10.1", "@smithy/types@^2.6.0", "@smithy/types@^2.8.0", "@smithy/types@^2.9.1":
+  version "2.10.1"
+  resolved "https://registry.yarnpkg.com/@smithy/types/-/types-2.10.1.tgz#f2a923fd080447ad2ca19bfd8a77abf15be0b8e8"
+  integrity sha512-hjQO+4ru4cQ58FluQvKKiyMsFg0A6iRpGm2kqdH8fniyNd2WyanoOsYJfMX/IFLuLxEoW6gnRkNZy1y6fUUhtA==
   dependencies:
     tslib "^2.5.0"
 
@@ -2988,10 +2996,10 @@
     "@types/node" "*"
     "@types/responselike" "^1.0.0"
 
-"@types/chai@^4.2.11":
-  version "4.3.11"
-  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.3.11.tgz#e95050bf79a932cb7305dd130254ccdf9bde671c"
-  integrity sha512-qQR1dr2rGIHYlJulmr8Ioq3De0Le9E4MJ5AiaeAETJJpndT1uUNHsGFK3L/UIu+rbkQSdj8J/w2bCsBZc/Y5fQ==
+"@types/chai@^4.3.12":
+  version "4.3.12"
+  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.3.12.tgz#b192fe1c553b54f45d20543adc2ab88455a07d5e"
+  integrity sha512-zNKDHG/1yxm8Il6uCCVsm+dRdEsJlFoDu73X17y09bId6UwoYww+vFBsAcRzl8knM1sab3Dp1VRikFQwDOtDDw==
 
 "@types/glob@^7.1.1":
   version "7.2.0"
@@ -8481,10 +8489,10 @@ serverless-certificate-creator@^1.6.0:
     semver "^7.3.4"
     yamljs "^0.3.0"
 
-serverless-domain-manager@^7.3.3:
-  version "7.3.3"
-  resolved "https://registry.yarnpkg.com/serverless-domain-manager/-/serverless-domain-manager-7.3.3.tgz#501fbed534e9a5ca20bfd1947a874be7d51cc254"
-  integrity sha512-AGPS+LXUo/lHtI8HdxtUjl866BPcf4G+DGbFkV5DrWtcnp+DKK1j0fLoMyd7aZQ7ctZ2WdVrlmRUPY9wHZvzbw==
+serverless-domain-manager@^7.3.6:
+  version "7.3.6"
+  resolved "https://registry.yarnpkg.com/serverless-domain-manager/-/serverless-domain-manager-7.3.6.tgz#ae51cbdaf1aa12d51865c2c6f41ce4214caa7d39"
+  integrity sha512-QIMIakpTaKhwO66FLV5KKzRZ4GF0O33AyqhmABuZq8VJ/SRTbxTTItK0G7EnGQWo4CA5ofXSMyK/qr4+8M25KQ==
   dependencies:
     "@aws-sdk/client-acm" "^3.460.0"
     "@aws-sdk/client-api-gateway" "^3.460.0"
