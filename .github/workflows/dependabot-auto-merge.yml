@@ -1,0 +1,33 @@
+name: Dependabot auto-approve
+on: pull_request
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@c9c4182bf1b97f5224aee3906fd373f6b61b4526 # v1.6.0
+      - name: Generate token
+        id: generate_token
+        uses: actions/create-github-app-token@f2acddfb5195534d487896a656232b016a682f3c # v1.9.0
+        with:
+          app-id: ${{ secrets.LANEYBOT_APP_ID }}
+          private-key: ${{ secrets.LANEYBOT_PRIVATE_KEY }}
+      - name: Approve a PR
+        run:
+          gh pr review --approve "$PR_URL" --body "Dependabot PR automatically
+          approved"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+      - name: Enable auto-merge for Dependabot PRs
+        run: gh pr merge --auto --rebase "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
