@@ -1,4 +1,4 @@
-FROM public.ecr.aws/aws-cli/aws-cli:2.15.2 AS aws-cli
+FROM public.ecr.aws/aws-cli/aws-cli:2.15.26 AS aws-cli
 
 FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-20
 
