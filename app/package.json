@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@aws-sdk/types": "^3.523.0",
-    "@smithy/types": "^2.8.0",
+    "@smithy/types": "^2.11.0",
     "@tsconfig/node20": "^20.1.2",
     "@types/aws-lambda": "^8.10.136",
     "@types/chai": "^4.3.12",

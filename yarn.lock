@@ -3170,10 +3170,10 @@
     "@smithy/util-stream" "^2.1.3"
     tslib "^2.5.0"
 
-"@smithy/types@^2.10.1", "@smithy/types@^2.8.0", "@smithy/types@^2.9.1":
-  version "2.10.1"
-  resolved "https://registry.yarnpkg.com/@smithy/types/-/types-2.10.1.tgz#f2a923fd080447ad2ca19bfd8a77abf15be0b8e8"
-  integrity sha512-hjQO+4ru4cQ58FluQvKKiyMsFg0A6iRpGm2kqdH8fniyNd2WyanoOsYJfMX/IFLuLxEoW6gnRkNZy1y6fUUhtA==
+"@smithy/types@^2.10.1", "@smithy/types@^2.11.0", "@smithy/types@^2.9.1":
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/@smithy/types/-/types-2.11.0.tgz#d40c27302151be243d3a7319a154b7d7d5775021"
+  integrity sha512-AR0SXO7FuAskfNhyGfSTThpLRntDI5bOrU0xrpVYU0rZyjl3LBXInZFMTP/NNSd7IS6Ksdtar0QvnrPRIhVrLQ==
   dependencies:
     tslib "^2.5.0"
 
@@ -4125,10 +4125,10 @@ aws-sdk-client-mock@^3.0.1:
     sinon "^16.1.3"
     tslib "^2.1.0"
 
-aws-sdk@^2.1404.0, aws-sdk@^2.1572.0, aws-sdk@^2.320.0:
-  version "2.1572.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1572.0.tgz#141bba33f79eb7dd8a475c3db2b38d91ede5651e"
-  integrity sha512-VLYvEv49GLX/HuHqSkbgMt/nYQNAUfmJrPIkwyukoYMdRdKa4s70lV6ct0huliDauR5ur2HqJX91mp0iXaEpbg==
+aws-sdk@^2.1404.0, aws-sdk@^2.1573.0, aws-sdk@^2.320.0:
+  version "2.1573.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1573.0.tgz#fa2441ada26acd79e89b990b25dc597ba75bbc57"
+  integrity sha512-Bl+rTEnjKdJrd0NfrLRVQq4AbSgK1+7yoWQTnreZTHCbYhzndP/3HLxA/8x0a8NZSb9oPC+7paFaWW00Xz/Gtw==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -9174,10 +9174,10 @@ serverless-certificate-creator@^1.6.0:
     semver "^7.3.4"
     yamljs "^0.3.0"
 
-serverless-domain-manager@^7.3.7:
-  version "7.3.7"
-  resolved "https://registry.yarnpkg.com/serverless-domain-manager/-/serverless-domain-manager-7.3.7.tgz#822b56f22e116e4f52353bfedd6f21bd44979283"
-  integrity sha512-wuEkSlT7cMeiWJIQtb+KdFlM+wf6jzuRH4IM3Cf+6EfrjAH38vSY4kT1MgIoiuy4jXdnIvdV86NG6HUfkwPhLA==
+serverless-domain-manager@^7.3.8:
+  version "7.3.8"
+  resolved "https://registry.yarnpkg.com/serverless-domain-manager/-/serverless-domain-manager-7.3.8.tgz#18bcb9c38fbfbc02bd765b3fc5307e1f55f89aae"
+  integrity sha512-8fHny0G83c5uZBwvIaSiLb0qijiRiGZ4NKtH5j0MTCaePhsHSGDJ6iq3G6uuhC1PTKGXEEATEF/HSGVcdD1qmA==
   dependencies:
     "@aws-sdk/client-acm" "^3.525.0"
     "@aws-sdk/client-api-gateway" "^3.525.0"
@@ -9203,10 +9203,10 @@ serverless-dynamodb@^0.2.50:
     "@aws-sdk/lib-dynamodb" "^3.428.0"
     aws-dynamodb-local "^0.0.11"
 
-serverless-esbuild@^1.51.0:
-  version "1.51.0"
-  resolved "https://registry.yarnpkg.com/serverless-esbuild/-/serverless-esbuild-1.51.0.tgz#5679d6d99ac81cc4f1e5e7d4c8dcfe01d8104910"
-  integrity sha512-/Jh+RARciyoSJulU96XasT4X+wT8qQjFmbSY0rtOtkyhKCP46KUKEKEFDFjLZKxLmnGF03QK+T51XbblZKgNJA==
+serverless-esbuild@^1.52.1:
+  version "1.52.1"
+  resolved "https://registry.yarnpkg.com/serverless-esbuild/-/serverless-esbuild-1.52.1.tgz#ef893be178c4b0bece6d0493a3644f65d3df5e0e"
+  integrity sha512-sTEVoJMFO213SJyEEvW4yf3FbxRkn3jZgp/bA2zOguVXv2veNptVzo3Cmn7pZVIrjv8HKH6uEq/E65bJhOO5yA==
   dependencies:
     acorn "^8.8.1"
     acorn-walk "^8.2.0"
