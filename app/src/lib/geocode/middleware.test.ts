@@ -11,10 +11,11 @@ import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 import {
   BadRequest,
-  InternalServerError,
   NotFound,
+  UnprocessableContent,
 } from "@curveball/http-errors";
 import { mock, mockReset } from "jest-mock-extended";
+import { StatusCodes } from "http-status-codes";
 
 import {
   GeoCodeContext,
@@ -24,6 +25,8 @@ import {
 } from ".";
 import { GeoLocateContext } from "@/lib/geolocate";
 import { Logger, LoggerContext } from "@/lib/logger";
+
+const { BAD_REQUEST, OK } = StatusCodes;
 
 const ddbMock = mockClient(DynamoDBDocumentClient);
 ddbMock.on(GetCommand).resolves({});
@@ -75,7 +78,7 @@ describe("Reverse GeoCode Middleware", () => {
       .onGet(
         "https://nominatim.openstreetmap.org/reverse?lat=1&lon=1&format=geocodejson&addressdetails=1&accept-language=en&zoom=15&layer=address",
       )
-      .reply(200, {
+      .reply(OK, {
         features: [
           {
             properties: {
@@ -101,20 +104,7 @@ describe("Reverse GeoCode Middleware", () => {
   it("returns the lat/lon if the address can't be found", async () => {
     const mockEvent = mock<APIGatewayProxyEventV2>();
 
-    const geoLocateContext = mock<
-      LoggerContext & GeoCodeContext & GeoLocateContext
-    >({
-      logger: mockLogger,
-      geoLocate: {
-        ip: "1.1.1.1",
-        location: {
-          latitude: 1,
-          longitude: 1,
-        },
-      },
-    });
-
-    mockAxios.onGet().reply(200, {
+    mockAxios.onGet().reply(OK, {
       features: [],
     });
 
@@ -126,14 +116,17 @@ describe("Reverse GeoCode Middleware", () => {
     });
   });
 
-  it("throws an error if the request fails", async () => {
+  it("returns the lat/lon if the request fails", async () => {
     const mockEvent = mock<APIGatewayProxyEventV2>();
 
-    mockAxios.onGet().reply(500);
+    mockAxios.onGet().reply(BAD_REQUEST);
 
-    await expect(middyHandler(mockEvent, geoLocateContext)).rejects.toThrow(
-      InternalServerError,
-    );
+    const result = await middyHandler(mockEvent, geoLocateContext);
+
+    expect(result).toEqual({
+      latitude: 1,
+      longitude: 1,
+    });
   });
 });
 
@@ -168,7 +161,7 @@ describe("Geocode Middleware", () => {
       .onGet(
         "https://nominatim.openstreetmap.org/search?q=Sample+Location&format=geocodejson&limit=1&addressdetails=1&accept-language=en&layer=address",
       )
-      .reply(200, {
+      .reply(OK, {
         features: [
           {
             properties: {
@@ -210,17 +203,17 @@ describe("Geocode Middleware", () => {
     );
   });
 
-  it("throws an error if the request fails", async () => {
+  it("throws an Unproccessable Content error if the request fails", async () => {
     const mockEvent = mock<APIGatewayProxyEventV2>({
       pathParameters: {
         location: "Sample Location",
       },
     });
 
-    mockAxios.onGet().reply(500);
+    mockAxios.onGet().reply(BAD_REQUEST);
 
     await expect(middyHandler(mockEvent, geoLocateContext)).rejects.toThrow(
-      InternalServerError,
+      UnprocessableContent,
     );
   });
 
@@ -231,12 +224,34 @@ describe("Geocode Middleware", () => {
       },
     });
 
-    mockAxios.onGet().reply(200, {
+    mockAxios.onGet().reply(OK, {
       features: [],
     });
 
     await expect(middyHandler(mockEvent, geoLocateContext)).rejects.toThrow(
       NotFound,
+    );
+  });
+
+  it("throws an error if Nominatim returns bad data", async () => {
+    const mockEvent = mock<APIGatewayProxyEventV2>({
+      pathParameters: {
+        location: "Sample Location",
+      },
+    });
+
+    mockAxios.onGet().reply(OK, {
+      features: [
+        {
+          properties: {
+            geocoding: {},
+          },
+        },
+      ],
+    });
+
+    await expect(middyHandler(mockEvent, geoLocateContext)).rejects.toThrow(
+      UnprocessableContent,
     );
   });
 });

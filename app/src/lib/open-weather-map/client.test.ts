@@ -9,10 +9,17 @@ import { beforeEach, describe, expect, it } from "@jest/globals";
 import { mockClient } from "aws-sdk-client-mock";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
+import { StatusCodes } from "http-status-codes";
 
 import { Logger } from "@/lib/logger";
 import { InvalidWindDirectionError } from "../weather";
-import { OpenWeatherMapClient, rawWeatherResponse } from ".";
+import {
+  OpenWeatherMapClient,
+  OpenWeatherMapError,
+  rawWeatherResponse,
+} from ".";
+
+const { BAD_REQUEST, OK } = StatusCodes;
 
 const mockLogger = new Logger();
 
@@ -101,7 +108,7 @@ describe("OpenWeatherMapClient", () => {
       expect(url.searchParams.get("units")).toEqual("metric");
       expect(url.searchParams.get("appid")).toEqual("testapikey");
 
-      return [200, mockResponseBase];
+      return [OK, mockResponseBase];
     });
 
     const client = new OpenWeatherMapClient("testapikey", mockLogger);
@@ -167,7 +174,7 @@ describe("OpenWeatherMapClient", () => {
   it("converts units correctly in getWeather", async () => {
     const mockResponse = mockResponseBase;
 
-    mockAxios.onGet().reply(200, mockResponse);
+    mockAxios.onGet().reply(OK, mockResponse);
 
     const weatherMetric = await client.getWeather("metric", {
       latitude: 0,
@@ -196,7 +203,7 @@ describe("OpenWeatherMapClient", () => {
       },
     };
 
-    mockAxios.onGet().reply(200, mockResponse);
+    mockAxios.onGet().reply(OK, mockResponse);
 
     const weatherMetric = await client.getWeather("metric", {
       latitude: 0,
@@ -215,10 +222,18 @@ describe("OpenWeatherMapClient", () => {
       },
     };
 
-    mockAxios.onGet().reply(200, mockResponse);
+    mockAxios.onGet().reply(OK, mockResponse);
 
     await expect(
       client.getWeather("metric", { latitude: 0, longitude: 0 }),
     ).rejects.toThrow(InvalidWindDirectionError);
+  });
+
+  it("throws an error when the API returns an error", async () => {
+    mockAxios.onGet().reply(BAD_REQUEST);
+
+    await expect(
+      client.getWeather("metric", { latitude: 0, longitude: 0 }),
+    ).rejects.toThrow(OpenWeatherMapError);
   });
 });

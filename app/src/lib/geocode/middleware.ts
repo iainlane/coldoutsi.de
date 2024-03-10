@@ -4,9 +4,17 @@ import {
   BadRequest,
   InternalServerError,
   NotFound,
+  UnprocessableContent,
 } from "@curveball/http-errors";
 
-import { GeoCodeData, NoDataError, geoCode, reverseGeocode } from ".";
+import {
+  GeoCodeData,
+  InvalidDataError,
+  NoDataError,
+  NominatimError,
+  geoCode,
+  reverseGeocode,
+} from ".";
 import { GeoLocateContext } from "@/lib/geolocate";
 import type { LoggerContext } from "@/lib/logger";
 
@@ -52,6 +60,18 @@ export function reverseGeoCodeMiddleware<TResult>(): MiddlewareObj<
             longitude,
           });
           context.geoCode = { latitude, longitude };
+          return;
+        }
+
+        if (error instanceof NominatimError) {
+          logger.warn(
+            "Error calling Nominatim when reverse geocoding, location will not be known",
+            {
+              latitude,
+              longitude,
+              error: error.message,
+            },
+          );
           return;
         }
 
@@ -110,6 +130,22 @@ export function geoCodeMiddleware<TResult>(): MiddlewareObj<
           throw new NotFound(
             `Could not geolocate: the location "${location}" was not found`,
           );
+        }
+
+        if (error instanceof NominatimError) {
+          logger.warn("Error calling Nominatim when geocoding", {
+            location,
+            error: error.message,
+          });
+          throw new UnprocessableContent("Failed to geocode");
+        }
+
+        if (error instanceof InvalidDataError) {
+          logger.warn("Received invalid data when geocoding", {
+            location,
+            error: error.message,
+          });
+          throw new UnprocessableContent("Failed to geocode");
         }
 
         const errorMessage =

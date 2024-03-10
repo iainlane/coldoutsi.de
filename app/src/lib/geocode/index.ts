@@ -8,6 +8,7 @@ import {
   OSMGeocodeJsonAllOfFeaturesInner,
   OSMGeocodeJsonAllOfFeaturesInnerProperties,
 } from "@internal/nominatim";
+import axios, { AxiosResponse } from "axios";
 
 import { dynamoDbDocClient } from "@/lib/dynamodb";
 import { retryableAxios } from "@/lib/axios";
@@ -72,6 +73,12 @@ export class NoDataError extends Error {
 }
 
 export class InvalidDataError extends Error {
+  constructor(public override readonly message: string) {
+    super(message);
+  }
+}
+
+export class NominatimError extends Error {
   constructor(public override readonly message: string) {
     super(message);
   }
@@ -176,6 +183,40 @@ function getFirstFeature(
   return data.features[0];
 }
 
+async function reverse(
+  latitude: number,
+  longitude: number,
+  acceptLanguage: string,
+  logger: Logger,
+): Promise<AxiosResponse<OSMGeocodeJson>> {
+  const nominatim = ReverseApiFactory(
+    undefined,
+    undefined,
+    retryableAxios(logger),
+  );
+
+  try {
+    return await nominatim.reverse(
+      latitude,
+      longitude,
+      ReverseFormatEnum.Geocodejson,
+      undefined, // jsonCallback
+      1, // addressDetails
+      undefined, // extraTags
+      undefined, // nameDetails
+      acceptLanguage,
+      15, // zoom (15 is settlement level)
+      "address", // layer
+    );
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw new NominatimError(error.message);
+    }
+
+    throw error;
+  }
+}
+
 export async function reverseGeocode(
   {
     latitude,
@@ -200,23 +241,7 @@ export async function reverseGeocode(
     return cached;
   }
 
-  const nominatim = ReverseApiFactory(
-    undefined,
-    undefined,
-    retryableAxios(logger),
-  );
-  const resp = await nominatim.reverse(
-    latitude,
-    longitude,
-    ReverseFormatEnum.Geocodejson,
-    undefined, // jsonCallback
-    1, // addressDetails
-    undefined, // extraTags
-    undefined, // nameDetails
-    acceptLanguage,
-    15, // zoom (15 is settlement level)
-    "address", // layer
-  );
+  const resp = await reverse(latitude, longitude, acceptLanguage, logger);
 
   const feature = getFirstFeature(resp.data, { latitude, longitude }, logger);
 
@@ -235,6 +260,46 @@ export async function reverseGeocode(
   return new GeoCodeData(data);
 }
 
+async function search(
+  location: string,
+  acceptLanguage: string,
+  logger: Logger,
+): Promise<AxiosResponse<OSMGeocodeJson>> {
+  const nominatim = SearchApiFactory(
+    undefined,
+    undefined,
+    retryableAxios(logger),
+  );
+
+  try {
+    return await nominatim.search(
+      location,
+      undefined, // amenity
+      undefined, // street
+      undefined, // city
+      undefined, // county
+      undefined, // state
+      undefined, // country
+      undefined, // postalcode
+      SearchFormatEnum.Geocodejson,
+      undefined, // jsonCallback
+      1, // limit
+      1, // addressDetails
+      undefined, // extratags
+      undefined, // namedetails
+      acceptLanguage,
+      undefined, // countrycodes
+      "address", // layer
+    );
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw new NominatimError(error.message);
+    }
+
+    throw error;
+  }
+}
+
 export async function geoCode(
   {
     location,
@@ -245,12 +310,6 @@ export async function geoCode(
   },
   logger: Logger,
 ): Promise<GeoCodeData> {
-  const nominatim = SearchApiFactory(
-    undefined,
-    undefined,
-    retryableAxios(logger),
-  );
-
   logger.debug("Geocoding", { location, acceptLanguage });
 
   const key = geoCodeCacheKey(location);
@@ -265,25 +324,7 @@ export async function geoCode(
     return cached;
   }
 
-  const result = await nominatim.search(
-    location,
-    undefined, // amenity
-    undefined, // street
-    undefined, // city
-    undefined, // county
-    undefined, // state
-    undefined, // country
-    undefined, // postalcode
-    SearchFormatEnum.Geocodejson,
-    undefined, // jsonCallback
-    1, // limit
-    1, // addressDetails
-    undefined, // extratags
-    undefined, // namedetails
-    acceptLanguage,
-    undefined, // countrycodes
-    "address", // layer
-  );
+  const result = await search(location, acceptLanguage, logger);
 
   const feature = getFirstFeature(result.data, { location }, logger);
 

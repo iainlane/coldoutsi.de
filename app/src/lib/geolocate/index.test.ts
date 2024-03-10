@@ -16,9 +16,12 @@ import "aws-sdk-client-mock-jest";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 import { mock } from "jest-mock-extended";
+import { StatusCodes } from "http-status-codes";
 
 import { GeoLocateError, geoLocator } from ".";
 import type { Logger } from "@/lib/logger";
+
+const { BAD_REQUEST, OK } = StatusCodes;
 
 const ddbMock = mockClient(DynamoDBDocumentClient);
 
@@ -39,7 +42,7 @@ describe("geoLocator", () => {
   it("should return geo data and save in cache", async () => {
     ddbMock.on(GetCommand).resolvesOnce({});
 
-    mockAxios.onGet().reply(200, [
+    mockAxios.onGet().reply(OK, [
       {
         ip: "1.1.1.1",
         latitude: "51.1",
@@ -92,7 +95,7 @@ describe("geoLocator", () => {
   it("should throw GeoLocateError if no geo data", async () => {
     ddbMock.on(GetCommand).resolvesOnce({});
 
-    mockAxios.onGet().reply(200, []);
+    mockAxios.onGet().reply(OK, []);
 
     await expect(geoLocator({ ip: "1.1.1.1" }, mockLogger)).rejects.toThrow(
       GeoLocateError,
@@ -105,7 +108,7 @@ describe("geoLocator", () => {
   it("should throw GeoLocateError if no lat/lon", async () => {
     ddbMock.on(GetCommand).resolvesOnce({});
 
-    mockAxios.onGet().reply(200, [
+    mockAxios.onGet().reply(OK, [
       {
         ip: "1.1.1.1",
         city: "Sample City",
@@ -123,7 +126,7 @@ describe("geoLocator", () => {
   it("should throw GeoLocateError if invalid lat", async () => {
     ddbMock.on(GetCommand).resolvesOnce({});
 
-    mockAxios.onGet().reply(200, [
+    mockAxios.onGet().reply(OK, [
       {
         ip: "1.1.1.1",
         latitude: "invalid",
@@ -143,7 +146,7 @@ describe("geoLocator", () => {
   it("should throw GeoLocateError if invalid lon", async () => {
     ddbMock.on(GetCommand).resolvesOnce({});
 
-    mockAxios.onGet().reply(200, [
+    mockAxios.onGet().reply(OK, [
       {
         ip: "1.1.1.1",
         latitude: "51.1",
@@ -158,6 +161,16 @@ describe("geoLocator", () => {
 
     // ... and the cache wasn't updated, because there was no geo data
     expect(ddbMock.commandCalls(PutCommand)).toHaveLength(0);
+  });
+
+  it("should throw GeoLocateError if axios error", async () => {
+    ddbMock.on(GetCommand).resolvesOnce({});
+
+    mockAxios.onGet().reply(BAD_REQUEST);
+
+    await expect(geoLocator({ ip: "1.2.3.4" }, mockLogger)).rejects.toThrow(
+      GeoLocateError,
+    );
   });
 
   it("should return default location if localhost", async () => {

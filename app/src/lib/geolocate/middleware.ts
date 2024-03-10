@@ -1,9 +1,13 @@
 import { MiddlewareObj } from "@middy/core";
 import type { APIGatewayProxyEventV2, Context } from "aws-lambda";
-import { BadRequest, InternalServerError } from "@curveball/http-errors";
+import {
+  BadRequest,
+  InternalServerError,
+  UnprocessableContent,
+} from "@curveball/http-errors";
 
 import type { LoggerContext } from "@/lib/logger";
-import { GeoLocate, geoLocator } from ".";
+import { GeoLocate, GeoLocateError, geoLocator } from ".";
 
 export interface GeoLocateContext extends Context {
   geoLocate: GeoLocate;
@@ -85,6 +89,10 @@ export function geoLocateMiddleware<TResult>(): MiddlewareObj<
         log.debug("Geolocated", { ip, geoData });
         context.geoLocate = geoData;
       } catch (error) {
+        if (error instanceof GeoLocateError) {
+          throw new UnprocessableContent(error.message);
+        }
+
         throw new InternalServerError(`Failed to geolocate ${ip}: ${error}`);
       }
     },

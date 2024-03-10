@@ -3,9 +3,12 @@ import { mock } from "jest-mock-extended";
 import middy, { MiddyfiedHandler } from "@middy/core";
 import type { APIGatewayProxyEventV2 } from "aws-lambda";
 import { Logger } from "@aws-lambda-powertools/logger";
+import { StatusCodes } from "http-status-codes";
 
 import { cacheControlMiddleware, Response } from ".";
 import { LoggerContext } from "@/lib/logger";
+
+const { INTERNAL_SERVER_ERROR, NOT_FOUND, OK } = StatusCodes;
 
 function baseHandler(code: number): () => Promise<Response> {
   return async () => {
@@ -34,9 +37,9 @@ function middyHandler(code: number) {
 
 describe("Cache Control Middleware", () => {
   it.each<{ code: number; time: number | undefined }>([
-    { code: 200, time: 3600 },
-    { code: 404, time: 3600 },
-    { code: 500, time: undefined },
+    { code: OK, time: 3600 },
+    { code: NOT_FOUND, time: 3600 },
+    { code: INTERNAL_SERVER_ERROR, time: undefined },
   ])("caches ${code} based on status code", async ({ code, time }) => {
     const response = await middyHandler(code)(mockEvent, mockContext);
 
@@ -52,7 +55,7 @@ describe("Cache Control Middleware", () => {
   it("appends to existing headers", async () => {
     const headerHandler = () =>
       Promise.resolve({
-        statusCode: 200,
+        statusCode: OK,
         headers: {
           foo: "bar",
         },
@@ -69,7 +72,7 @@ describe("Cache Control Middleware", () => {
       >
     )(mockEvent, mockContext);
 
-    expect(response.statusCode).toBe(200);
+    expect(response.statusCode).toBe(OK);
     expect(response.headers).toEqual({
       foo: "bar",
       "cache-control": "public, max-age=3600",
@@ -96,7 +99,7 @@ describe("Cache Control Middleware", () => {
   it("doesn't overwrite an existing cache-control header", async () => {
     const cacheControlHandler = () =>
       Promise.resolve({
-        statusCode: 200,
+        statusCode: OK,
         headers: {
           "cache-control": "foo",
         },

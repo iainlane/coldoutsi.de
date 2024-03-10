@@ -3,18 +3,21 @@ import {
   GetCommand,
   PutCommand,
 } from "@aws-sdk/lib-dynamodb";
-import { BadRequest, InternalServerError } from "@curveball/http-errors";
+import { BadRequest, UnprocessableContent } from "@curveball/http-errors";
 import { beforeEach, describe, expect, it } from "@jest/globals";
 import middy, { MiddyfiedHandler } from "@middy/core";
 import type { APIGatewayProxyEventV2 } from "aws-lambda";
 import { mockClient } from "aws-sdk-client-mock";
 import axios from "axios";
 import { mock } from "jest-mock-extended";
+import { StatusCodes } from "http-status-codes";
 
 import type { LoggerContext } from "@/lib/logger";
 import { Logger } from "@/lib/logger";
 import AxiosMockAdapter from "axios-mock-adapter";
 import { GeoLocateContext, geoLocateMiddleware } from "./middleware";
+
+const { OK } = StatusCodes;
 
 const ddbMock = mockClient(DynamoDBDocumentClient);
 ddbMock.on(GetCommand).resolves({});
@@ -63,7 +66,7 @@ describe("GeoLocate Middleware", () => {
   it("can handle lat/lon in query parameters", async () => {
     mockAxios
       .onGet("https://get.geojs.io/v1/ip/geo.json?ip=1.2.3.4")
-      .reply(200, [
+      .reply(OK, [
         {
           ip: "1.2.3.4",
           latitude: "47.6062",
@@ -85,7 +88,7 @@ describe("GeoLocate Middleware", () => {
   it("geolocates if lat/lon are not in query parameters", async () => {
     mockAxios
       .onGet("https://get.geojs.io/v1/ip/geo.json?ip=1.1.1.1")
-      .reply(200, [
+      .reply(OK, [
         {
           ip: "1.1.1.1",
           latitude: "13.37",
@@ -116,7 +119,7 @@ describe("GeoLocate Middleware", () => {
   it("throws InternalServerError if geolocate fails", async () => {
     mockAxios
       .onGet("https://get.geojs.io/v1/ip/geo.json?ip=1.1.1.1")
-      .reply(200, [
+      .reply(OK, [
         {
           ip: "1.1.1.1",
           latitude: "xxx",
@@ -134,7 +137,7 @@ describe("GeoLocate Middleware", () => {
     mockEvent.pathParameters = {};
 
     await expect(middyHandler(mockEvent, geoLocateContext)).rejects.toThrow(
-      InternalServerError,
+      UnprocessableContent,
     );
   });
 
@@ -211,7 +214,7 @@ describe("GeoLocate Middleware", () => {
   it("uses the cloudfront latitude and longitude if they are present, and doesn't call the geolocator", async () => {
     mockAxios
       .onGet("https://get.geojs.io/v1/ip/geo.json?ip=1.1.1.1")
-      .reply(200, [
+      .reply(OK, [
         {
           ip: "1.1.1.1",
           latitude: "113.37",
@@ -247,7 +250,7 @@ describe("GeoLocate Middleware", () => {
   it("ignores the cloudfront headers if they are invalid", async () => {
     mockAxios
       .onGet("https://get.geojs.io/v1/ip/geo.json?ip=1.2.3.4")
-      .reply(200, [
+      .reply(OK, [
         {
           ip: "1.2.3.4",
           latitude: "13.37",
@@ -281,7 +284,7 @@ describe("GeoLocate Middleware", () => {
   it("prefers the query parameters over the cloudfront headers", async () => {
     mockAxios
       .onGet("https://get.geojs.io/v1/ip/geo.json?ip=1.2.3.4")
-      .reply(200, [
+      .reply(OK, [
         {
           ip: "1.2.3.4",
           latitude: "13.37",
