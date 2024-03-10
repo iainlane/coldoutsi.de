@@ -2,9 +2,12 @@ import { describe, expect, it } from "@jest/globals";
 import middy, { MiddyfiedHandler } from "@middy/core";
 import type { APIGatewayProxyEventV2, APIGatewayProxyResult } from "aws-lambda";
 import { mock } from "jest-mock-extended";
+import { StatusCodes } from "http-status-codes";
 
 import { LoggerContext, loggerMiddleware } from "@/lib/logger";
 import { JSONRendererOptions, Renderable, renderableMiddleware } from ".";
+
+const { NOT_ACCEPTABLE, OK } = StatusCodes;
 
 async function baseHandler(): Promise<Renderable> {
   return Promise.resolve({
@@ -43,7 +46,7 @@ describe("Renderable Middleware", () => {
     });
     const response = await middyHandler(mockEvent, loggerContext);
 
-    expect(response.statusCode).toBe(200);
+    expect(response.statusCode).toBe(OK);
     // pretty printed because that's the default
     expect(response.body).toBe(`{
   "message": "Hello, JSON!"
@@ -64,7 +67,7 @@ describe("Renderable Middleware", () => {
     });
     const response = await middyHandler(mockEvent, loggerContext);
 
-    expect(response.statusCode).toBe(200);
+    expect(response.statusCode).toBe(OK);
     expect(response.body).toBe('{"message":"Hello, JSON!"}');
     expect(response.headers?.["Content-Type"]).toBe(
       "application/json; charset=utf-8",
@@ -97,7 +100,7 @@ describe("Renderable Middleware", () => {
     const mockEvent = mock<APIGatewayProxyEventV2>();
     const response = await middyHandler(mockEvent, loggerContext);
 
-    expect(response.statusCode).toBe(406);
+    expect(response.statusCode).toBe(NOT_ACCEPTABLE);
     expect(response.headers?.["Content-Type"]).toBe(
       "text/plain; charset=utf-8",
     );
@@ -111,6 +114,6 @@ describe("Renderable Middleware", () => {
     });
     const response = await middyHandler(mockEvent, loggerContext);
 
-    expect(response.statusCode).toBe(406);
+    expect(response.statusCode).toBe(NOT_ACCEPTABLE);
   });
 });

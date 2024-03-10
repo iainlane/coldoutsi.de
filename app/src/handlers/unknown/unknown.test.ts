@@ -10,10 +10,13 @@ import {
 } from "@aws-sdk/lib-dynamodb";
 import { APIGatewayProxyEventV2 } from "aws-lambda";
 import { Event } from "@middy/http-header-normalizer";
+import { StatusCodes } from "http-status-codes";
 
-import { unknownHandler } from "./unknown";
 import { LoggerContext } from "@/lib/logger";
 import { GeoLocateContext } from "@/lib/geolocate";
+import { unknownHandler } from ".";
+
+const { OK, TEMPORARY_REDIRECT } = StatusCodes;
 
 const mockAxios = new AxiosMockAdapter(axios);
 
@@ -27,7 +30,7 @@ describe("unknown handler", () => {
   });
 
   it("redirects to the correct location", async () => {
-    mockAxios.onGet().reply(200, [
+    mockAxios.onGet().reply(OK, [
       {
         ip: "1.1.1.1",
         latitude: "51.1",
@@ -47,7 +50,7 @@ describe("unknown handler", () => {
     const mockContext = mock<LoggerContext & GeoLocateContext>();
 
     await expect(unknownHandler(mockEvent, mockContext)).resolves.toEqual({
-      statusCode: 307,
+      statusCode: TEMPORARY_REDIRECT,
       headers: expect.objectContaining({
         location: `/51.1/-96.1`,
       }),

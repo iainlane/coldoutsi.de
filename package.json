@@ -21,7 +21,6 @@
     "preset": "ts-jest/presets/default-esm",
     "collectCoverage": true,
     "moduleNameMapper": {
-      "^@/testdata/(.*)$": "<rootDir>/app/testdata/$1",
       "^@/lib/(.*)$": "<rootDir>/app/src/lib/$1"
     },
     "modulePathIgnorePatterns": [

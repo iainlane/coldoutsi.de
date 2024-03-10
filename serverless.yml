@@ -151,21 +151,21 @@ functions:
           method: GET
 
   unknown:
-    handler: ./app/src/handlers/unknown/unknown.unknownHandler
+    handler: ./app/src/handlers/unknown/index.unknownHandler
     events:
       - httpApi:
           path: "/:unknown"
           method: GET
 
   reverseWeather:
-    handler: ./app/src/handlers/weather/weather.reverseWeatherHandler
+    handler: ./app/src/handlers/weather/index.reverseWeatherHandler
     events:
       - httpApi:
           path: /{lat}/{lon}
           method: GET
 
   weather:
-    handler: ./app/src/handlers/weather/weather.weatherHandler
+    handler: ./app/src/handlers/weather/index.weatherHandler
     events:
       - httpApi:
           path: /{location}

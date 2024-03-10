@@ -21,7 +21,6 @@
     "strictPropertyInitialization": true,
     "baseUrl": ".",
     "paths": {
-      "@/testdata/*": ["app/testdata/*"],
       "@/lib/*": ["app/src/lib/*"]
     },
     "esModuleInterop": true

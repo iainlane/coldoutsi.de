@@ -8,6 +8,7 @@ import { mockClient } from "aws-sdk-client-mock";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 import { any, mock, mockClear, mockFn } from "jest-mock-extended";
+import { StatusCodes } from "http-status-codes";
 
 import { GeoCodeData, GeoCodeContext } from "@/lib/geocode";
 import { GeoLocateContext } from "@/lib/geolocate/middleware";
@@ -22,6 +23,8 @@ import {
 import { HttpError, NotFound } from "@curveball/http-errors";
 import { APIGatewayProxyEventV2, APIGatewayProxyResultV2 } from "aws-lambda";
 
+const { NOT_FOUND, INTERNAL_SERVER_ERROR, OK } = StatusCodes;
+
 const ddbMock = mockClient(DynamoDBDocumentClient);
 ddbMock.on(GetCommand).resolves({});
 ddbMock.on(PutCommand).resolves({});
@@ -30,7 +33,7 @@ const mockAxios = new AxiosMockAdapter(axios);
 
 mockAxios
   .onGet(new RegExp(`https://get.geojs.io/v1/ip/geo.json?.*`))
-  .reply(200, [
+  .reply(OK, [
     {
       ip: "1.1.1.1",
       latitude: "51.1",
@@ -40,7 +43,7 @@ mockAxios
 
 mockAxios
   .onGet(new RegExp(`https://nominatim.openstreetmap.org/reverse?.*`))
-  .reply(200, {
+  .reply(OK, {
     features: [
       {
         properties: {
@@ -54,7 +57,7 @@ mockAxios
 
 mockAxios
   .onGet(new RegExp(`https://nominatim.openstreetmap.org/search?.*`))
-  .reply(200, {
+  .reply(OK, {
     features: [
       {
         properties: {
@@ -96,7 +99,7 @@ describe("handler factory", () => {
       >
     >();
   baseHandler.calledWith(any(), any(), any()).mockResolvedValue({
-    statusCode: 200,
+    statusCode: OK,
     body: "Success",
   });
 
@@ -111,7 +114,7 @@ describe("handler factory", () => {
     const handler = reverseGeocodeHandlerFactory(baseHandler);
     const response = await handler(httpEvent, ctx);
 
-    expect(response).toMatchObject({ statusCode: 200, body: "Success" });
+    expect(response).toMatchObject({ statusCode: OK, body: "Success" });
   });
 
   it("can return other status codes in the statusCode field", async () => {
@@ -123,13 +126,16 @@ describe("handler factory", () => {
         >
       >();
     notFoundHandler.calledWith(any(), any(), any()).mockResolvedValue({
-      statusCode: 404,
+      statusCode: NOT_FOUND,
       body: "Not found",
     });
     const handler = reverseGeocodeHandlerFactory(notFoundHandler);
     const response = await handler(httpEvent, ctx);
 
-    expect(response).toMatchObject({ statusCode: 404, body: "Not found" });
+    expect(response).toMatchObject({
+      statusCode: NOT_FOUND,
+      body: "Not found",
+    });
   });
 
   it("can return status codes thrown by @curveball/http-errors", async () => {
@@ -147,12 +153,15 @@ describe("handler factory", () => {
     const handler = reverseGeocodeHandlerFactory(notFoundHandler);
     const response = await handler(httpEvent, ctx);
 
-    expect(response).toMatchObject({ statusCode: 404, body: "Not found" });
+    expect(response).toMatchObject({
+      statusCode: NOT_FOUND,
+      body: "Not found",
+    });
   });
 
   it("returns error response", async () => {
     const error = {
-      statusCode: 500,
+      statusCode: INTERNAL_SERVER_ERROR,
       expose: true,
       message: "Hello from the test",
     };
@@ -169,7 +178,7 @@ describe("handler factory", () => {
 
     const result = await handler(httpEvent, ctx).catch((err: HttpError) => err);
     expect(result).toMatchObject({
-      statusCode: 500,
+      statusCode: INTERNAL_SERVER_ERROR,
       body: "Hello from the test",
     });
   });

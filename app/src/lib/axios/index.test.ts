@@ -1,11 +1,15 @@
 import { beforeEach, describe, expect, it } from "@jest/globals";
 import { mock } from "jest-mock-extended";
+import { StatusCodes } from "http-status-codes";
 
 import { AxiosInterceptorManager, AxiosResponse } from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 
 import { retryableAxios } from ".";
 import type { Logger } from "@/lib/logger";
+
+const { BAD_REQUEST, OK, INTERNAL_SERVER_ERROR, TOO_MANY_REQUESTS } =
+  StatusCodes;
 
 function expect_toBeDefined<T>(arg: T): asserts arg is NonNullable<T> {
   expect(arg).toBeDefined();
@@ -44,13 +48,13 @@ describe("retryableAxios", () => {
     );
 
     // check the header is sent in the actual request
-    mockAxios.onAny().replyOnce(200, {});
+    mockAxios.onAny().replyOnce(OK, {});
 
     const resp = await axiosInstance.get("/");
 
     expect_toBeDefined(mockAxios.history["get"]);
 
-    expect(resp.status).toBe(200);
+    expect(resp.status).toBe(OK);
     expect(mockAxios.history["get"].length).toBe(1);
 
     const headers = mockAxios.history["get"][0]?.headers;
@@ -61,11 +65,11 @@ describe("retryableAxios", () => {
   it("should retry on idempotent request error", async () => {
     mockAxios
       .onGet()
-      .replyOnce(500)
+      .replyOnce(INTERNAL_SERVER_ERROR)
       .onGet()
-      .replyOnce(500)
+      .replyOnce(INTERNAL_SERVER_ERROR)
       .onGet()
-      .replyOnce(200, {});
+      .replyOnce(OK, {});
 
     const resp = await axiosInstance.get("https://foo.com/");
     expect(resp.data).toEqual({});
@@ -73,7 +77,7 @@ describe("retryableAxios", () => {
     expect_toBeDefined(mockAxios.history["get"]);
 
     expect(mockAxios.history["get"].length).toBe(3);
-    expect(resp.status).toBe(200);
+    expect(resp.status).toBe(OK);
   });
 
   it("should retry on network request error", async () => {
@@ -83,7 +87,7 @@ describe("retryableAxios", () => {
       .onGet()
       .networkErrorOnce()
       .onGet()
-      .replyOnce(200, {});
+      .replyOnce(OK, {});
 
     const resp = await axiosInstance.get("https://foo.com/");
     expect(resp.data).toEqual({});
@@ -91,11 +95,11 @@ describe("retryableAxios", () => {
     expect_toBeDefined(mockAxios.history["get"]);
 
     expect(mockAxios.history["get"].length).toBe(3);
-    expect(resp.status).toBe(200);
+    expect(resp.status).toBe(OK);
   });
 
   it("does not retry on 429 error", async () => {
-    mockAxios.onGet().replyOnce(429);
+    mockAxios.onGet().replyOnce(TOO_MANY_REQUESTS);
 
     await expect(axiosInstance.get("https://foo.com/")).rejects.toHaveProperty(
       "isAxiosError",
@@ -103,7 +107,7 @@ describe("retryableAxios", () => {
   });
 
   it("should not retry on non-network and non-idempotent request error", async () => {
-    mockAxios.onGet().replyOnce(400);
+    mockAxios.onGet().replyOnce(BAD_REQUEST);
 
     await expect(axiosInstance.get("https://foo.com/")).rejects.toHaveProperty(
       "isAxiosError",

@@ -5,6 +5,7 @@ import { GeoJSApiFactory, Geolocate200ResponseInner } from "@internal/geojs";
 import { retryableAxios } from "@/lib/axios";
 import { dynamoDbDocClient } from "@/lib/dynamodb";
 import type { Logger } from "@/lib/logger";
+import axios from "axios";
 
 type PartialGeoLocateResponse = Partial<Geolocate200ResponseInner>;
 
@@ -20,9 +21,6 @@ export interface GeoLocate {
 }
 
 export class GeoLocateError extends Error {
-  public readonly expose = true;
-  public readonly statusCode = 422; // Unprocessable Entity
-
   constructor(message: string) {
     super(message);
     this.name = "GeoLocateError";
@@ -93,13 +91,22 @@ async function geoLocate(
     return defaultLatLon;
   }
 
-  const res = await geoJsApi.geolocate(ip);
+  try {
+    const res = await geoJsApi.geolocate(ip);
 
-  if (res.data.length === 0 || res.data[0] === undefined) {
-    throw new GeoLocateError(`No geodata for ${ip}`);
+    if (res.data.length === 0 || res.data[0] === undefined) {
+      throw new GeoLocateError(`No geodata for ${ip}`);
+    }
+
+    return res.data[0];
+  } catch (err) {
+    if (axios.isAxiosError(err)) {
+      logger.error("Failed to geolocate", { ip, err });
+      throw new GeoLocateError(`Failed to geolocate ${ip}: ${err.message}`);
+    }
+
+    throw err;
   }
-
-  return res.data[0];
 }
 
 export async function geoLocator(

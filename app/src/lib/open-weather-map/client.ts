@@ -1,4 +1,4 @@
-import { AxiosInstance } from "axios";
+import axios, { AxiosInstance } from "axios";
 
 import { retryableAxios } from "@/lib/axios";
 import { dynamoDbDocClient } from "@/lib/dynamodb";
@@ -292,6 +292,13 @@ function convertMetricDailyToImperialMeasurement(
   };
 }
 
+export class OpenWeatherMapError extends Error {
+  constructor(message: string) {
+    super(`Failed to fetch weather data: ${message}`);
+    this.name = "OpenWeatherMapError";
+  }
+}
+
 export class OpenWeatherMapClient {
   private static TableName = process.env["WEATHER_TABLE_NAME"];
 
@@ -407,12 +414,21 @@ export class OpenWeatherMapClient {
     url.searchParams.append("appid", this.apiKey);
     url.searchParams.append("units", "metric");
 
-    const data = await this.fetchWeatherData(url.toString());
+    try {
+      const data = await this.fetchWeatherData(url.toString());
 
-    logger.debug("Fetched from API, saving to cache");
+      logger.debug("Fetched from API, saving to cache");
 
-    await this.setCache(cacheKey, data);
+      await this.setCache(cacheKey, data);
 
-    return data;
+      return data;
+    } catch (err) {
+      if (axios.isAxiosError(err)) {
+        logger.error("Failed to fetch weather data", { err });
+        throw new OpenWeatherMapError(err.message);
+      }
+
+      throw err;
+    }
   }
 }

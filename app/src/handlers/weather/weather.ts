@@ -1,19 +1,18 @@
 import type { APIGatewayProxyEventV2 } from "aws-lambda";
-import { BadRequest } from "@curveball/http-errors";
+import { BadRequest, UnprocessableContent } from "@curveball/http-errors";
 
 import { GeoCodeContext } from "@/lib/geocode";
 import {
-  Handler,
   geoCodeHandlerFactory,
   reverseGeocodeHandlerFactory,
 } from "@/lib/handler-factory";
 import { Logger, LoggerContext } from "@/lib/logger";
 import { Units, isUnits } from "@/lib/weather";
-import { OpenWeatherMapClient, Weather } from "@/lib/open-weather-map";
-
-type HandlerReturn = ReturnType<
-  Handler<APIGatewayProxyEventV2, Weather<Units>>
->;
+import {
+  OpenWeatherMapClient,
+  OpenWeatherMapError,
+  Weather,
+} from "@/lib/open-weather-map";
 
 function createClient(logger: Logger): OpenWeatherMapClient {
   const apiKey = process.env["OPENWEATHERMAP_API_KEY"];
@@ -42,18 +41,32 @@ function getUnits(event: APIGatewayProxyEventV2): Units {
   return units;
 }
 
-function handler(
-  event: APIGatewayProxyEventV2,
-  context: LoggerContext & GeoCodeContext,
-): HandlerReturn {
-  const weatherClient = createClient(context.logger);
+export function createHandler(
+  createClientFn: (logger: Logger) => OpenWeatherMapClient,
+) {
+  return async function handler(
+    event: APIGatewayProxyEventV2,
+    context: LoggerContext & GeoCodeContext,
+  ): Promise<Weather<Units>> {
+    const weatherClient = createClientFn(context.logger);
 
-  const units = getUnits(event);
+    const units = getUnits(event);
 
-  const weather = weatherClient.getWeather(units, context.geoCode);
+    try {
+      const weather = await weatherClient.getWeather(units, context.geoCode);
 
-  return weather;
+      return weather;
+    } catch (err) {
+      if (err instanceof OpenWeatherMapError) {
+        throw new UnprocessableContent(err.message);
+      }
+
+      throw err;
+    }
+  };
 }
+
+const handler = createHandler(createClient);
 
 // For URL paths like /:latitude/:longitude
 export const weatherHandler = geoCodeHandlerFactory(handler);

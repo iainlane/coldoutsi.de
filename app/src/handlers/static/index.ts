@@ -12,6 +12,8 @@ import { fileURLToPath } from "url";
 import { handlerFactory } from "@/lib/handler-factory";
 import { LoggerContext } from "@/lib/logger";
 
+const { NOT_FOUND, NOT_MODIFIED, OK } = StatusCodes;
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const staticFilesDir = path.resolve(__dirname, "../../../static");
 
@@ -74,7 +76,7 @@ function staticFileHandler(
 
   if (!fd) {
     return Promise.resolve({
-      statusCode: StatusCodes.NOT_FOUND,
+      statusCode: NOT_FOUND,
       body: `File ${p} was not found.\n`,
       ...(notFoundFiles.has(p)
         ? {
@@ -104,7 +106,7 @@ function staticFileHandler(
     log.debug("Not modified, sending 304");
 
     return Promise.resolve({
-      statusCode: StatusCodes.NOT_MODIFIED,
+      statusCode: NOT_MODIFIED,
       headers: cacheHeaders,
     });
   }
@@ -112,7 +114,7 @@ function staticFileHandler(
   log.debug("Sending file");
 
   return Promise.resolve({
-    statusCode: 200,
+    statusCode: OK,
     headers: {
       "content-length": size,
       "content-type": contentType,
