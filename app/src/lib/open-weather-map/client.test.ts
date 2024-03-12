@@ -18,6 +18,7 @@ import {
   OpenWeatherMapError,
   rawWeatherResponse,
 } from ".";
+import { GeoCodeData } from "../geocode";
 
 const { BAD_REQUEST, OK } = StatusCodes;
 
@@ -112,23 +113,33 @@ describe("OpenWeatherMapClient", () => {
     });
 
     const client = new OpenWeatherMapClient("testapikey", mockLogger);
-    const weather = await client.getWeather("metric", {
-      latitude: 0,
-      longitude: 0,
-    });
+    const weather = await client.getWeather(
+      "metric",
+      new GeoCodeData({
+        latitude: 0,
+        longitude: 0,
+      }),
+    );
 
     expect(weather.current.temp.temperature).toEqual(20);
     expect(weather.current.wind.speed).toEqual(2.57);
-    expect(weather.location).toEqual({ latitude: 0, longitude: 0 });
+    expect(weather.location).toEqual(
+      new GeoCodeData({ latitude: 0, longitude: 0 }),
+    );
 
-    const imperialWeather = await client.getWeather("imperial", {
-      latitude: 0,
-      longitude: 0,
-    });
+    const imperialWeather = await client.getWeather(
+      "imperial",
+      new GeoCodeData({
+        latitude: 0,
+        longitude: 0,
+      }),
+    );
 
     expect(imperialWeather.current.temp.temperature).toEqual(68);
     expect(weather.current.wind.speed).toEqual(2.57);
-    expect(weather.location).toEqual({ latitude: 0, longitude: 0 });
+    expect(weather.location).toEqual(
+      new GeoCodeData({ latitude: 0, longitude: 0 }),
+    );
 
     expect(mockAxios.history["get"]).toHaveLength(1);
     expect(ddbMock.commandCalls(PutCommand)).toHaveLength(1);
@@ -160,10 +171,13 @@ describe("OpenWeatherMapClient", () => {
     kvStore.set("openWeatherMap#1337#1337#metric", { rawWeather: mockResp });
 
     const client = new OpenWeatherMapClient("testapikey", mockLogger);
-    const weather = await client.getWeather("metric", {
-      latitude: 1337,
-      longitude: 1337,
-    });
+    const weather = await client.getWeather(
+      "metric",
+      new GeoCodeData({
+        latitude: 1337,
+        longitude: 1337,
+      }),
+    );
 
     expect(weather.current.temp.temperature).toEqual(1337);
 
@@ -176,17 +190,23 @@ describe("OpenWeatherMapClient", () => {
 
     mockAxios.onGet().reply(OK, mockResponse);
 
-    const weatherMetric = await client.getWeather("metric", {
-      latitude: 0,
-      longitude: 0,
-    });
+    const weatherMetric = await client.getWeather(
+      "metric",
+      new GeoCodeData({
+        latitude: 0,
+        longitude: 0,
+      }),
+    );
     expect(weatherMetric.current.temp.temperature).toEqual(20);
     expect(weatherMetric.current.wind.speed).toEqual(2.57);
 
-    const weatherImperial = await client.getWeather("imperial", {
-      latitude: 0,
-      longitude: 0,
-    });
+    const weatherImperial = await client.getWeather(
+      "imperial",
+      new GeoCodeData({
+        latitude: 0,
+        longitude: 0,
+      }),
+    );
     expect(weatherImperial.current.temp.temperature).toEqual(68); // 20C = 68F
     expect(weatherImperial.current.wind.speed).toBeCloseTo(5.75, 2); // 2.57 m/s = 5.75 mph
   });
@@ -205,10 +225,13 @@ describe("OpenWeatherMapClient", () => {
 
     mockAxios.onGet().reply(OK, mockResponse);
 
-    const weatherMetric = await client.getWeather("metric", {
-      latitude: 0,
-      longitude: 0,
-    });
+    const weatherMetric = await client.getWeather(
+      "metric",
+      new GeoCodeData({
+        latitude: 0,
+        longitude: 0,
+      }),
+    );
 
     expect(weatherMetric.current.time).toEqual(date);
   });
@@ -225,7 +248,10 @@ describe("OpenWeatherMapClient", () => {
     mockAxios.onGet().reply(OK, mockResponse);
 
     await expect(
-      client.getWeather("metric", { latitude: 0, longitude: 0 }),
+      client.getWeather(
+        "metric",
+        new GeoCodeData({ latitude: 0, longitude: 0 }),
+      ),
     ).rejects.toThrow(InvalidWindDirectionError);
   });
 
@@ -233,7 +259,10 @@ describe("OpenWeatherMapClient", () => {
     mockAxios.onGet().reply(BAD_REQUEST);
 
     await expect(
-      client.getWeather("metric", { latitude: 0, longitude: 0 }),
+      client.getWeather(
+        "metric",
+        new GeoCodeData({ latitude: 0, longitude: 0 }),
+      ),
     ).rejects.toThrow(OpenWeatherMapError);
   });
 });

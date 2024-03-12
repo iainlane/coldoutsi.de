@@ -61,8 +61,8 @@ describe("Reverse GeoCode Middleware", () => {
     geoLocate: {
       ip: "1.1.1.1",
       location: {
-        latitude: 1,
-        longitude: 1,
+        latitude: 1.23456,
+        longitude: 9.87654,
       },
     },
   });
@@ -76,7 +76,7 @@ describe("Reverse GeoCode Middleware", () => {
 
     mockAxios
       .onGet(
-        "https://nominatim.openstreetmap.org/reverse?lat=1&lon=1&format=geocodejson&addressdetails=1&accept-language=en&zoom=15&layer=address",
+        "https://nominatim.openstreetmap.org/reverse?lat=1.23&lon=9.88&format=geocodejson&addressdetails=1&accept-language=en&zoom=15&layer=address",
       )
       .reply(OK, {
         features: [
@@ -92,13 +92,9 @@ describe("Reverse GeoCode Middleware", () => {
 
     const result = await middyHandler(mockEvent, geoLocateContext);
 
-    expect(result).toEqual(
-      expect.objectContaining({
-        city: "Sample City",
-        latitude: 1,
-        longitude: 1,
-      }),
-    );
+    expect(result.city).toEqual("Sample City");
+    expect(result.latitude).toEqual(1.23);
+    expect(result.longitude).toEqual(9.88);
   });
 
   it("returns the lat/lon if the address can't be found", async () => {
@@ -110,10 +106,13 @@ describe("Reverse GeoCode Middleware", () => {
 
     const result = await middyHandler(mockEvent, geoLocateContext);
 
-    expect(result).toEqual({
-      latitude: 1,
-      longitude: 1,
-    });
+    expect(result).toEqual(
+      // These get rounded inside `GeoCodeData`
+      new GeoCodeData({
+        latitude: 1.23456,
+        longitude: 9.87654,
+      }),
+    );
   });
 
   it("returns the lat/lon if the request fails", async () => {
@@ -123,10 +122,8 @@ describe("Reverse GeoCode Middleware", () => {
 
     const result = await middyHandler(mockEvent, geoLocateContext);
 
-    expect(result).toEqual({
-      latitude: 1,
-      longitude: 1,
-    });
+    expect(result.latitude).toEqual(1.23);
+    expect(result.longitude).toEqual(9.88);
   });
 });
 

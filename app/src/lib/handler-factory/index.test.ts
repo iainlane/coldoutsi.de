@@ -36,8 +36,8 @@ mockAxios
   .reply(OK, [
     {
       ip: "1.1.1.1",
-      latitude: "51.1",
-      longitude: "-96.1",
+      latitude: "51.12345",
+      longitude: "-96.98765",
     },
   ]);
 
@@ -67,7 +67,7 @@ mockAxios
         },
         geometry: {
           type: "Point",
-          coordinates: [37, 13],
+          coordinates: [313.368, 13.369],
         },
       },
     ],
@@ -246,8 +246,8 @@ describe("handler factory", () => {
     expect(result).toMatchObject({
       body: {
         name: "My Cool City",
-        latitude: 13,
-        longitude: 37,
+        latitude: 13.37,
+        longitude: 313.37,
       },
     });
   });

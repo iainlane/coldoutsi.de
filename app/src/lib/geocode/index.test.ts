@@ -42,14 +42,12 @@ describe("toString", () => {
     expect(sampleData.toString()).toEqual("Sample City");
   });
 
-  it("should return lat/lon if no other data", () => {
+  it("should return lat/lon to 2dp if no other data", () => {
     const sampleData = new GeoCodeData({
       latitude: 51.839175049999994,
       longitude: -96.87365529211462,
     });
-    expect(sampleData.toString()).toEqual(
-      "51.839175049999994, -96.87365529211462",
-    );
+    expect(sampleData.toString()).toEqual("51.84, -96.87");
   });
 });
 

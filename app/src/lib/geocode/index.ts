@@ -19,7 +19,7 @@ interface Coordinate {
   longitude: number;
 }
 
-interface GeoCodeProps extends Coordinate {
+export interface GeoCodeProps extends Coordinate {
   city?: string;
   country?: string;
   country_code?: string;
@@ -33,8 +33,8 @@ interface GeoCodeProps extends Coordinate {
 
 export class GeoCodeData implements GeoCodeProps {
   // TODO: Can we avoid repeating these properties of the above interface?
-  public readonly latitude!: number;
-  public readonly longitude!: number;
+  private readonly _latitude!: number;
+  private readonly _longitude!: number;
   public readonly city?: string;
   public readonly country?: string;
   public readonly country_code?: string;
@@ -46,7 +46,14 @@ export class GeoCodeData implements GeoCodeProps {
   public readonly type?: string;
 
   constructor(props: GeoCodeProps) {
-    Object.assign(this, props);
+    // Rename latitude and longitude to _latitude and _longitude to avoid
+    // conflict with the getters.
+    const { latitude, longitude, ...rest } = props;
+    Object.assign(this, {
+      _latitude: latitude,
+      _longitude: longitude,
+      ...rest,
+    });
   }
 
   public toString(): string {
@@ -63,6 +70,14 @@ export class GeoCodeData implements GeoCodeProps {
     }
 
     return parts.join(", ");
+  }
+
+  public get latitude(): number {
+    return parseFloat(this._latitude.toFixed(2));
+  }
+
+  public get longitude(): number {
+    return parseFloat(this._longitude.toFixed(2));
   }
 }
 
@@ -115,7 +130,7 @@ async function getCache({
 
 async function setCache(
   { key, acceptLanguage }: cacheKey,
-  geoCodeData: GeoCodeData,
+  geoCodeData: GeoCodeProps,
 ): Promise<PutCommandOutput> {
   const ttl = Math.floor(Date.now() / 1000) + 24 * 60 * 60; // 24 hours TTL
 
