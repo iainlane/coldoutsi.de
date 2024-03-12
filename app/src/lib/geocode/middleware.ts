@@ -40,11 +40,15 @@ export function reverseGeoCodeMiddleware<TResult>(): MiddlewareObj<
       const acceptLanguage = event.headers["accept-language"] ?? "en";
       const { latitude, longitude } = context.geoLocate.location;
 
+      // Round lat/lon to 2 decimal places
+      const lat = parseFloat(latitude.toFixed(2));
+      const lon = parseFloat(longitude.toFixed(2));
+
       try {
         const loc = await reverseGeocode(
           {
-            latitude,
-            longitude,
+            latitude: lat,
+            longitude: lon,
             acceptLanguage,
           },
           logger,
@@ -59,7 +63,7 @@ export function reverseGeoCodeMiddleware<TResult>(): MiddlewareObj<
             latitude,
             longitude,
           });
-          context.geoCode = { latitude, longitude };
+          context.geoCode = new GeoCodeData({ latitude, longitude });
           return;
         }
 

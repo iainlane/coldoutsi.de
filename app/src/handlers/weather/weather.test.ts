@@ -51,8 +51,8 @@ function mockGeoJsResponse() {
   mockAxios.onGet("https://get.geojs.io/v1/ip/geo.json?ip=1.1.1.1").reply(OK, [
     {
       ip: "1.1.1.1",
-      latitude: "0",
-      longitude: "0",
+      latitude: "0.12345",
+      longitude: "0.98765",
       city: "Sample City",
     },
   ]);
@@ -66,7 +66,7 @@ describe("reverseWeatherHandler", () => {
     requestContext: {
       http: {
         sourceIp: "1.1.1.1",
-        path: "/0/0",
+        path: "/0.12/0.98",
       },
     },
   });
@@ -78,7 +78,7 @@ describe("reverseWeatherHandler", () => {
 
     mockAxios
       .onGet(
-        "https://nominatim.openstreetmap.org/reverse?lat=0&lon=0&format=geocodejson&addressdetails=1&accept-language=en&zoom=15&layer=address",
+        "https://nominatim.openstreetmap.org/reverse?lat=0.12&lon=0.99&format=geocodejson&addressdetails=1&accept-language=en&zoom=15&layer=address",
       )
       .reply(OK, {
         features: [
@@ -96,7 +96,7 @@ describe("reverseWeatherHandler", () => {
   it("returns weather", async () => {
     mockAxios
       .onGet(
-        "https://api.openweathermap.org/data/3.0/onecall?lat=0&lon=0&appid=test-api-key&units=metric",
+        "https://api.openweathermap.org/data/3.0/onecall?lat=0.12&lon=0.99&appid=test-api-key&units=metric",
       )
       .reply(OK, oneCall);
 
@@ -175,7 +175,7 @@ describe("weatherHandler", () => {
             },
             geometry: {
               type: "Point",
-              coordinates: [1, 1],
+              coordinates: [1.123456, 1.987654],
             },
           },
         ],
@@ -185,7 +185,7 @@ describe("weatherHandler", () => {
   it("returns weather", async () => {
     mockAxios
       .onGet(
-        "https://api.openweathermap.org/data/3.0/onecall?lat=1&lon=1&appid=test-api-key&units=metric",
+        "https://api.openweathermap.org/data/3.0/onecall?lat=1.99&lon=1.12&appid=test-api-key&units=metric",
       )
       .reply(OK, oneCall);
 
