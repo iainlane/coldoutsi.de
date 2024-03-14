@@ -39,7 +39,7 @@
     "parser-ts": "^0.7.0"
   },
   "devDependencies": {
-    "@aws-sdk/types": "^3.523.0",
+    "@aws-sdk/types": "^3.533.0",
     "@smithy/types": "^2.11.0",
     "@tsconfig/node20": "^20.1.2",
     "@types/aws-lambda": "^8.10.136",
