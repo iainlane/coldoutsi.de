@@ -31,7 +31,7 @@
     "chalk": "^5.3.0",
     "dedent-js": "^1.0.1",
     "dotenv": "^16.4.5",
-    "fp-ts": "^2.16.3",
+    "fp-ts": "^2.16.4",
     "http-status-codes": "^2.3.0",
     "liquidjs": "^10.10.0",
     "mime-types": "^2.1.35",
