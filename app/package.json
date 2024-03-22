@@ -33,7 +33,7 @@
     "dotenv": "^16.4.5",
     "fp-ts": "^2.16.4",
     "http-status-codes": "^2.3.0",
-    "liquidjs": "^10.10.0",
+    "liquidjs": "^10.10.2",
     "mime-types": "^2.1.35",
     "negotiator": "^0.6.3",
     "parser-ts": "^0.7.0"
