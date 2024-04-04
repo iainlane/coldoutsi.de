@@ -1,6 +1,7 @@
 import { describe, it, expect } from "@jest/globals";
-import { formatMany, formatString, RenderColours } from "./colours";
 import chalk from "chalk";
+
+import { formatMany, formatString, RenderColours } from "./colours";
 
 describe("Colour Formatter", () => {
   describe("formatString function", () => {

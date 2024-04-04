@@ -7,21 +7,21 @@ import { beforeEach, describe, expect, it } from "@jest/globals";
 import { mockClient } from "aws-sdk-client-mock";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
-import { any, mock, mockClear, mockFn } from "jest-mock-extended";
 import { StatusCodes } from "http-status-codes";
+import { any, mock, mockClear, mockFn } from "jest-mock-extended";
 
-import { GeoCodeData, GeoCodeContext } from "@/lib/geocode";
+import { GeoCodeContext, GeoCodeData } from "@/lib/geocode";
 import { GeoLocateContext } from "@/lib/geolocate/middleware";
 import { Logger, LoggerContext } from "@/lib/logger";
+import { HttpError, NotFound } from "@curveball/http-errors";
+import { APIGatewayProxyEventV2, APIGatewayProxyResultV2 } from "aws-lambda";
 import {
+  Handler,
   HttpContentNegotiationEvent,
   HttpHeaderNormalizerEvent,
-  Handler,
   geoCodeHandlerFactory,
   reverseGeocodeHandlerFactory,
 } from ".";
-import { HttpError, NotFound } from "@curveball/http-errors";
-import { APIGatewayProxyEventV2, APIGatewayProxyResultV2 } from "aws-lambda";
 
 const { NOT_FOUND, INTERNAL_SERVER_ERROR, OK } = StatusCodes;
 
