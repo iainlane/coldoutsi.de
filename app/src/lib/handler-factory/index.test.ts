@@ -193,9 +193,14 @@ describe("handler factory", () => {
       >();
     geocodeHandler
       .calledWith(any(), any(), any())
-      .mockImplementation(async (_event, context) => {
-        return Promise.resolve(context.geoCode);
-      });
+      .mockImplementation(
+        async (
+          _event: APIGatewayProxyEventV2 & HttpContentNegotiationEvent,
+          context: GeoCodeContext,
+        ) => {
+          return Promise.resolve(context.geoCode);
+        },
+      );
 
     const handler = reverseGeocodeHandlerFactory(geocodeHandler);
 
@@ -235,9 +240,14 @@ describe("handler factory", () => {
       >();
     geocodeHandler
       .calledWith(any(), any(), any())
-      .mockImplementation(async (_event, context) => {
-        return Promise.resolve(context.geoCode);
-      });
+      .mockImplementation(
+        async (
+          _event: APIGatewayProxyEventV2 & HttpContentNegotiationEvent,
+          context: GeoCodeContext,
+        ) => {
+          return Promise.resolve(context.geoCode);
+        },
+      );
 
     const handler = geoCodeHandlerFactory(geocodeHandler);
 
