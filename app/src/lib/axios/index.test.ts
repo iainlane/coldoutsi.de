@@ -55,7 +55,7 @@ describe("retryableAxios", () => {
     expect_toBeDefined(mockAxios.history["get"]);
 
     expect(resp.status).toBe(OK);
-    expect(mockAxios.history["get"].length).toBe(1);
+    expect(mockAxios.history["get"]).toHaveLength(1);
 
     const headers = mockAxios.history["get"][0]?.headers;
     expect(headers).toBeDefined();
@@ -76,7 +76,7 @@ describe("retryableAxios", () => {
 
     expect_toBeDefined(mockAxios.history["get"]);
 
-    expect(mockAxios.history["get"].length).toBe(3);
+    expect(mockAxios.history["get"]).toHaveLength(3);
     expect(resp.status).toBe(OK);
   });
 
@@ -94,7 +94,7 @@ describe("retryableAxios", () => {
 
     expect_toBeDefined(mockAxios.history["get"]);
 
-    expect(mockAxios.history["get"].length).toBe(3);
+    expect(mockAxios.history["get"]).toHaveLength(3);
     expect(resp.status).toBe(OK);
   });
 

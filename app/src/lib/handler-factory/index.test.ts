@@ -13,7 +13,7 @@ import { any, mock, mockClear, mockFn } from "jest-mock-extended";
 import { GeoCodeContext, GeoCodeData } from "@/lib/geocode";
 import { GeoLocateContext } from "@/lib/geolocate/middleware";
 import { Logger, LoggerContext } from "@/lib/logger";
-import { HttpError, NotFound } from "@curveball/http-errors";
+import { NotFound } from "@curveball/http-errors";
 import { APIGatewayProxyEventV2, APIGatewayProxyResultV2 } from "aws-lambda";
 import {
   Handler,
@@ -98,10 +98,12 @@ describe("handler factory", () => {
         APIGatewayProxyResultV2
       >
     >();
-  baseHandler.calledWith(any(), any(), any()).mockResolvedValue({
-    statusCode: OK,
-    body: "Success",
-  });
+  baseHandler
+    .calledWith(any(), any(), any())
+    .mockResolvedValue<APIGatewayProxyResultV2>({
+      statusCode: OK,
+      body: "Success",
+    });
 
   beforeEach(() => {
     mockClear(baseHandler);
@@ -176,7 +178,7 @@ describe("handler factory", () => {
 
     const handler = reverseGeocodeHandlerFactory(errorHandler);
 
-    const result = await handler(httpEvent, ctx).catch((err: HttpError) => err);
+    const result = await handler(httpEvent, ctx).catch((err: unknown) => err);
     expect(result).toMatchObject({
       statusCode: INTERNAL_SERVER_ERROR,
       body: "Hello from the test",
