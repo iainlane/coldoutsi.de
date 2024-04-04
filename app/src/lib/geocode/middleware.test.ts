@@ -3,28 +3,28 @@ import {
   GetCommand,
   PutCommand,
 } from "@aws-sdk/lib-dynamodb";
+import {
+  BadRequest,
+  NotFound,
+  UnprocessableContent,
+} from "@curveball/http-errors";
 import { beforeEach, describe, expect, it } from "@jest/globals";
 import middy from "@middy/core";
 import type { APIGatewayProxyEventV2 } from "aws-lambda";
 import { mockClient } from "aws-sdk-client-mock";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
-import {
-  BadRequest,
-  NotFound,
-  UnprocessableContent,
-} from "@curveball/http-errors";
-import { mock, mockReset } from "jest-mock-extended";
 import { StatusCodes } from "http-status-codes";
+import { mock, mockReset } from "jest-mock-extended";
 
+import { GeoLocateContext } from "@/lib/geolocate";
+import { Logger, LoggerContext } from "@/lib/logger";
 import {
   GeoCodeContext,
   GeoCodeData,
   geoCodeMiddleware,
   reverseGeoCodeMiddleware,
 } from ".";
-import { GeoLocateContext } from "@/lib/geolocate";
-import { Logger, LoggerContext } from "@/lib/logger";
 
 const { BAD_REQUEST, OK } = StatusCodes;
 
