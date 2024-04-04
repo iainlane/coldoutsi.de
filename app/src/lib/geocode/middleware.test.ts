@@ -92,9 +92,9 @@ describe("Reverse GeoCode Middleware", () => {
 
     const result = await middyHandler(mockEvent, geoLocateContext);
 
-    expect(result.city).toEqual("Sample City");
-    expect(result.latitude).toEqual(1.23);
-    expect(result.longitude).toEqual(9.88);
+    expect(result.city).toBe("Sample City");
+    expect(result.latitude).toBe(1.23);
+    expect(result.longitude).toBe(9.88);
   });
 
   it("returns the lat/lon if the address can't be found", async () => {
@@ -122,8 +122,8 @@ describe("Reverse GeoCode Middleware", () => {
 
     const result = await middyHandler(mockEvent, geoLocateContext);
 
-    expect(result.latitude).toEqual(1.23);
-    expect(result.longitude).toEqual(9.88);
+    expect(result.latitude).toBe(1.23);
+    expect(result.longitude).toBe(9.88);
   });
 });
 
@@ -176,11 +176,9 @@ describe("Geocode Middleware", () => {
 
     const result = await middyHandler(mockEvent, geoLocateContext);
 
-    expect(result).toEqual(
-      expect.objectContaining({
-        city: "Sample City",
-      }),
-    );
+    expect(result).toMatchObject({
+      city: "Sample City",
+    });
   });
 
   it("throws an error if called with no location path parameter", async () => {

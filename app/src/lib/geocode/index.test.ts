@@ -39,7 +39,7 @@ describe("toString", () => {
       city: "Sample City",
     });
 
-    expect(sampleData.toString()).toEqual("Sample City");
+    expect(sampleData.toString()).toBe("Sample City");
   });
 
   it("should return lat/lon to 2dp if no other data", () => {
@@ -47,7 +47,7 @@ describe("toString", () => {
       latitude: 51.839175049999994,
       longitude: -96.87365529211462,
     });
-    expect(sampleData.toString()).toEqual("51.84, -96.87");
+    expect(sampleData.toString()).toBe("51.84, -96.87");
   });
 });
 
@@ -97,7 +97,7 @@ describe("reverseGeocoder", () => {
     ddbMock.on(PutCommand).resolvesOnce({});
 
     const result = await reverseGeocode(sampleInput, mockLogger);
-    expect(result.city).toEqual("New Sample City");
+    expect(result.city).toBe("New Sample City");
 
     expect(ddbMock.commandCalls(PutCommand)).toHaveLength(1);
   });
@@ -274,7 +274,7 @@ describe("geoCoder", () => {
       },
       mockLogger,
     );
-    expect(result.city).toEqual("New Sample City");
+    expect(result.city).toBe("New Sample City");
 
     expect(ddbMock.commandCalls(PutCommand)).toHaveLength(1);
   });

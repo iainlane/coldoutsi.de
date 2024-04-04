@@ -104,10 +104,10 @@ describe("OpenWeatherMapClient", () => {
       expect_toBeDefined(req.url);
       const url = new URL(req.url);
 
-      expect(url.searchParams.get("lat")).toEqual("0");
-      expect(url.searchParams.get("lon")).toEqual("0");
-      expect(url.searchParams.get("units")).toEqual("metric");
-      expect(url.searchParams.get("appid")).toEqual("testapikey");
+      expect(url.searchParams.get("lat")).toBe("0");
+      expect(url.searchParams.get("lon")).toBe("0");
+      expect(url.searchParams.get("units")).toBe("metric");
+      expect(url.searchParams.get("appid")).toBe("testapikey");
 
       return [OK, mockResponseBase];
     });
@@ -121,8 +121,8 @@ describe("OpenWeatherMapClient", () => {
       }),
     );
 
-    expect(weather.current.temp.temperature).toEqual(20);
-    expect(weather.current.wind.speed).toEqual(2.57);
+    expect(weather.current.temp.temperature).toBe(20);
+    expect(weather.current.wind.speed).toBe(2.57);
     expect(weather.location).toEqual(
       new GeoCodeData({ latitude: 0, longitude: 0 }),
     );
@@ -135,8 +135,8 @@ describe("OpenWeatherMapClient", () => {
       }),
     );
 
-    expect(imperialWeather.current.temp.temperature).toEqual(68);
-    expect(weather.current.wind.speed).toEqual(2.57);
+    expect(imperialWeather.current.temp.temperature).toBe(68);
+    expect(weather.current.wind.speed).toBe(2.57);
     expect(weather.location).toEqual(
       new GeoCodeData({ latitude: 0, longitude: 0 }),
     );
@@ -179,7 +179,7 @@ describe("OpenWeatherMapClient", () => {
       }),
     );
 
-    expect(weather.current.temp.temperature).toEqual(1337);
+    expect(weather.current.temp.temperature).toBe(1337);
 
     expect(mockAxios.history["get"]).toHaveLength(0);
     expect(ddbMock.commandCalls(PutCommand)).toHaveLength(0);
@@ -197,8 +197,8 @@ describe("OpenWeatherMapClient", () => {
         longitude: 0,
       }),
     );
-    expect(weatherMetric.current.temp.temperature).toEqual(20);
-    expect(weatherMetric.current.wind.speed).toEqual(2.57);
+    expect(weatherMetric.current.temp.temperature).toBe(20);
+    expect(weatherMetric.current.wind.speed).toBe(2.57);
 
     const weatherImperial = await client.getWeather(
       "imperial",
@@ -207,7 +207,7 @@ describe("OpenWeatherMapClient", () => {
         longitude: 0,
       }),
     );
-    expect(weatherImperial.current.temp.temperature).toEqual(68); // 20C = 68F
+    expect(weatherImperial.current.temp.temperature).toBe(68); // 20C = 68F
     expect(weatherImperial.current.wind.speed).toBeCloseTo(5.75, 2); // 2.57 m/s = 5.75 mph
   });
 
