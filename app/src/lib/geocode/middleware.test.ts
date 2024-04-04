@@ -3,7 +3,7 @@ import {
   GetCommand,
   PutCommand,
 } from "@aws-sdk/lib-dynamodb";
-import { describe, expect, it } from "@jest/globals";
+import { beforeEach, describe, expect, it } from "@jest/globals";
 import middy from "@middy/core";
 import type { APIGatewayProxyEventV2 } from "aws-lambda";
 import { mockClient } from "aws-sdk-client-mock";
