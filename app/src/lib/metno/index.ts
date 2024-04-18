@@ -1,1 +1,1 @@
-export * from "./client";
+export { MetnoClient, MetnoError } from "./client";

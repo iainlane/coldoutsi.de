@@ -199,12 +199,16 @@ abstract class SingleWindSpeed {
     }
   }
 
+  private get toTwoDP(): number {
+    return Math.round(this.speed * 100) / 100;
+  }
+
   get ANSIString(): string {
-    return ansi[this.beaufort.colour](this.speed.toString());
+    return ansi[this.beaufort.colour](this.toTwoDP.toString());
   }
 
   get HTMLString(): string {
-    return html[this.beaufort.colour](this.speed.toString());
+    return html[this.beaufort.colour](this.toTwoDP.toString());
   }
 }
 

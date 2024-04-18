@@ -171,6 +171,20 @@ functions:
           path: /{location}
           method: GET
 
+  reverseWeatherMetno:
+    handler: ./app/src/handlers/weather/index.reverseMetnoWeatherHandler
+    events:
+      - httpApi:
+          path: /metno/{lat}/{lon}
+          method: GET
+
+  weatherMetno:
+    handler: ./app/src/handlers/weather/index.metnoWeatherHandler
+    events:
+      - httpApi:
+          path: /metno/{location}
+          method: GET
+
 resources:
   Resources:
     GeolocationCacheTable:

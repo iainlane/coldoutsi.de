@@ -45,17 +45,17 @@ describe("Wind Speed Conversion", () => {
     expect(message).toBe("Wind speed is 22.3694–22.3695 mph ↑");
   });
 
-  it("WindSpeedMilesPerHour ANSIString", () => {
+  it("WindSpeedMilesPerHour ANSIString (rounded)", () => {
     const speedMPH = new WindSpeedMilesPerHour(22.3694, 22.3695, direction);
     expect(speedMPH.ANSIString).toBe(
-      "\x1b[93m22.3694\x1b[39m–\x1b[93m22.3695\x1b[39m mph ↑",
+      "\x1b[93m22.37\x1b[39m–\x1b[93m22.37\x1b[39m mph ↑",
     );
   });
 
-  it("WindSpeedMilesPerHour HTMLString", () => {
+  it("WindSpeedMilesPerHour HTMLString (rounded)", () => {
     const speedMPH = new WindSpeedMilesPerHour(22.3694, 22.3695, direction);
     expect(speedMPH.HTMLString).toBe(
-      '<span class="yellowBright">22.3694</span>–<span class="yellowBright">22.3695</span> mph ↑',
+      '<span class="yellowBright">22.37</span>–<span class="yellowBright">22.37</span> mph ↑',
     );
   });
 

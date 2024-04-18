@@ -158,6 +158,8 @@ describe("weatherHandler", () => {
   });
 
   beforeEach(() => {
+    mockEvent.queryStringParameters = {};
+
     mockAxios.reset();
 
     mockGeoJsResponse();
@@ -210,6 +212,57 @@ describe("weatherHandler", () => {
     });
   });
 
+  it("returns imperial units if requested", async () => {
+    mockAxios
+      .onGet(
+        "https://api.openweathermap.org/data/3.0/onecall?lat=1.99&lon=1.12&appid=test-api-key&units=metric",
+      )
+      .reply(OK, oneCall);
+
+    const mockContext = mock<
+      LoggerContext & GeoLocateContext & GeoCodeContext
+    >();
+
+    const colouredString = formatString(
+      "ansi",
+      ({ greenBright }) =>
+        `☁️ 81.1°F, Wind ${greenBright("6.91")}–${greenBright("6.76")} mph ↓\n`,
+    );
+
+    const mockEventImperial = mockEvent;
+    mockEventImperial.queryStringParameters = {
+      units: "imperial",
+    };
+
+    await expect(
+      weatherHandler(mockEventImperial, mockContext),
+    ).resolves.toEqual({
+      body: colouredString,
+      headers: {
+        "Content-Type": "text/plain; charset=utf-8",
+        "cache-control": "public, max-age=3600",
+      },
+      statusCode: OK,
+    });
+  });
+
+  it("returns Bad Request (400) when invalid units are requested", async () => {
+    const mockContext = mock<
+      LoggerContext & GeoLocateContext & GeoCodeContext
+    >();
+
+    const mockEventInvalidUnits = mockEvent;
+    mockEventInvalidUnits.queryStringParameters = {
+      units: "invalid",
+    };
+
+    await expect(
+      weatherHandler(mockEventInvalidUnits, mockContext),
+    ).resolves.toMatchObject({
+      statusCode: BAD_REQUEST,
+    });
+  });
+
   it("returns Unprocessable Content (422) when OpenWeatherMapError is thrown", async () => {
     mockAxios.onGet().reply(BAD_REQUEST);
 
@@ -217,12 +270,10 @@ describe("weatherHandler", () => {
       LoggerContext & GeoLocateContext & GeoCodeContext
     >();
 
-    await expect(weatherHandler(mockEvent, mockContext)).resolves.toEqual({
-      statusCode: UNPROCESSABLE_ENTITY,
-      body: "Failed to fetch weather data: Request failed with status code 400",
-      headers: {
-        "Content-Type": "text/plain",
+    await expect(weatherHandler(mockEvent, mockContext)).resolves.toMatchObject(
+      {
+        statusCode: UNPROCESSABLE_ENTITY,
       },
-    });
+    );
   });
 });

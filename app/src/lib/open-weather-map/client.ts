@@ -4,19 +4,26 @@ import { retryableAxios } from "@/lib/axios";
 import { dynamoDbDocClient } from "@/lib/dynamodb";
 import { GeoCodeData } from "@/lib/geocode";
 import type { Logger } from "@/lib/logger";
-import { PutCommandOutput } from "@aws-sdk/lib-dynamodb";
 import {
+  DailyMeasurement as DM,
   DegreesCelsius,
-  DegreesFahrenheit,
-  TemperatureType,
-  Units,
-  WindSpeedMetresPerSecond,
-  WindSpeedType,
+  HourlyMeasurement as HM,
   InvalidWindDirectionError,
+  Measurement,
+  SingleTemp,
+  Units,
+  Weather,
+  WeatherServiceError,
+  WindSpeedMetresPerSecond,
+  convertMetricCurrentToImperialMeasurement,
+  convertMetricDailyToImperialMeasurement,
+  convertMetricHourlyToImperialMeasurement,
   getWindDirection,
   isDegree,
 } from "@/lib/weather";
-import { Weather, WeatherCondition, WeatherConditions } from ".";
+import { PutCommandOutput } from "@aws-sdk/lib-dynamodb";
+
+import { WeatherConditions } from ".";
 
 interface RawDayTemp {
   temp: {
@@ -95,39 +102,6 @@ export interface rawWeatherResponse {
 // ... non-raw interfaces represent the data in a more usable format for the
 // rest of the application
 
-interface Measurement<U extends Units> {
-  time: Date;
-  pressure: number;
-  humidity: number;
-  clouds: number;
-  weather: (WeatherCondition | undefined)[];
-  wind: WindSpeedType<U>;
-}
-
-interface SingleTemp<U extends Units> {
-  // temperature
-  temp: TemperatureType<U>;
-  // temperature, adjusted for human perception
-  feels_like: TemperatureType<U>;
-}
-
-interface DailyFeelsLikeMeasurement<U extends Units> {
-  feels_like: {
-    day: TemperatureType<U>;
-    night: TemperatureType<U>;
-    eve: TemperatureType<U>;
-    morn: TemperatureType<U>;
-  };
-}
-
-interface DailyTemperatureMeasurement<U extends Units>
-  extends DailyFeelsLikeMeasurement<U> {
-  temp: {
-    min: TemperatureType<U>;
-    max: TemperatureType<U>;
-  };
-}
-
 export interface Sun {
   sunrise: Date;
   sunset: Date;
@@ -142,13 +116,9 @@ export type CurrentMeasurement<U extends Units> = Measurement<U> &
   Sun &
   Visibility;
 
-export type HourlyMeasurement<U extends Units> = Measurement<U> &
-  SingleTemp<U> &
-  Visibility;
+export type HourlyMeasurement<U extends Units> = HM<U> & Visibility;
 
-export type DailyMeasurement<U extends Units> = Measurement<U> &
-  DailyTemperatureMeasurement<U> &
-  Sun;
+export type DailyMeasurement<U extends Units> = DM<U> & Sun;
 
 function convertRawToMetricMeasurement(
   raw: BaseRawMeasurement,
@@ -179,7 +149,6 @@ function convertRawSingleToTemperature(
 ): SingleTemp<"metric"> {
   return {
     temp: new DegreesCelsius(raw.temp),
-    feels_like: new DegreesCelsius(raw.feels_like),
   };
 }
 
@@ -239,60 +208,7 @@ function convertCurrent(
   };
 }
 
-function convertMetricToImperialMeasurement(
-  m: Measurement<"metric">,
-): Measurement<"imperial"> {
-  return {
-    ...m,
-    wind: m.wind.toMilesPerHour(),
-  };
-}
-
-function mapDegreesCelsiusToDegreesFahrenheit<
-  T extends { [key: string]: DegreesCelsius },
->(obj: T): { [key in keyof T]: DegreesFahrenheit } {
-  return Object.fromEntries(
-    Object.entries(obj).map(([key, value]) => [
-      key,
-      value.toDegreesFahrenheit(),
-    ]),
-  ) as { [key in keyof T]: DegreesFahrenheit };
-}
-
-function convertMetricCurrentToImperialMeasurement(
-  m: CurrentMeasurement<"metric">,
-): CurrentMeasurement<"imperial"> {
-  return {
-    ...m,
-    ...convertMetricToImperialMeasurement(m),
-    temp: m.temp.toDegreesFahrenheit(),
-    feels_like: m.feels_like.toDegreesFahrenheit(),
-  };
-}
-
-function convertMetricHourlyToImperialMeasurement(
-  m: HourlyMeasurement<"metric">,
-): HourlyMeasurement<"imperial"> {
-  return {
-    ...m,
-    ...convertMetricToImperialMeasurement(m),
-    temp: m.temp.toDegreesFahrenheit(),
-    feels_like: m.feels_like.toDegreesFahrenheit(),
-  };
-}
-
-function convertMetricDailyToImperialMeasurement(
-  m: DailyMeasurement<"metric">,
-): DailyMeasurement<"imperial"> {
-  return {
-    ...m,
-    ...convertMetricToImperialMeasurement(m),
-    temp: mapDegreesCelsiusToDegreesFahrenheit(m.temp),
-    feels_like: mapDegreesCelsiusToDegreesFahrenheit(m.feels_like),
-  };
-}
-
-export class OpenWeatherMapError extends Error {
+export class OpenWeatherMapError extends WeatherServiceError {
   constructor(message: string) {
     super(`Failed to fetch weather data: ${message}`);
     this.name = "OpenWeatherMapError";
@@ -318,8 +234,8 @@ export class OpenWeatherMapClient {
     this.axios = retryableAxios(this.logger);
   }
 
-  private cacheKey(lat: string, lon: string, units: Units): string {
-    return `openWeatherMap#${lat}#${lon}#${units}`;
+  private cacheKey({ latitude, longitude }: GeoCodeData, units: Units): string {
+    return `openWeatherMap#${latitude}#${longitude}#${units}`;
   }
 
   private async setCache(
@@ -361,12 +277,7 @@ export class OpenWeatherMapClient {
     unit: Units,
     location: GeoCodeData,
   ): Promise<Weather<typeof unit>> {
-    const { latitude, longitude } = location;
-
-    const rawWeather = await this.getRawWeather(
-      latitude.toString(),
-      longitude.toString(),
-    );
+    const rawWeather = await this.getRawWeather(location);
 
     const now = convertCurrent(rawWeather.current);
     const hourly = rawWeather.hourly.map(convertHourly);
@@ -375,30 +286,41 @@ export class OpenWeatherMapClient {
     switch (unit) {
       case "metric":
         return new Weather(location, now, hourly, daily);
-      case "imperial":
+      case "imperial": {
         return new Weather(
           location,
           convertMetricCurrentToImperialMeasurement(now),
-          hourly.map(convertMetricHourlyToImperialMeasurement),
-          daily.map(convertMetricDailyToImperialMeasurement),
+          hourly.map((h) => {
+            return {
+              ...h,
+              ...convertMetricHourlyToImperialMeasurement(h),
+            };
+          }),
+          daily.map((d) => {
+            return {
+              ...d,
+              ...convertMetricDailyToImperialMeasurement(d),
+            };
+          }),
         );
+      }
     }
   }
 
   private async getRawWeather(
-    lat: string,
-    lon: string,
+    location: GeoCodeData,
   ): Promise<rawWeatherResponse> {
+    const { latitude, longitude } = location;
+
     const logger = this.logger.createChild({
       persistentLogAttributes: {
-        lat,
-        lon,
+        location: `${latitude},${longitude}`,
       },
     });
 
     logger.debug("Fetching weather data");
 
-    const cacheKey = this.cacheKey(lat, lon, "metric");
+    const cacheKey = this.cacheKey(location, "metric");
     const cached = await this.getCache(cacheKey);
 
     if (cached !== null) {
@@ -409,8 +331,8 @@ export class OpenWeatherMapClient {
     logger.debug("Not found in cache, will fetch from API");
 
     const url = new URL(this.baseUrl);
-    url.searchParams.append("lat", lat);
-    url.searchParams.append("lon", lon);
+    url.searchParams.append("lat", latitude.toString());
+    url.searchParams.append("lon", longitude.toString());
     url.searchParams.append("appid", this.apiKey);
     url.searchParams.append("units", "metric");
 
@@ -424,7 +346,6 @@ export class OpenWeatherMapClient {
       return data;
     } catch (err) {
       if (axios.isAxiosError(err)) {
-        logger.error("Failed to fetch weather data", { err });
         throw new OpenWeatherMapError(err.message);
       }
 

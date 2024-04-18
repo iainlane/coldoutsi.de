@@ -11,6 +11,8 @@ export function retryableAxios(logger: Logger): AxiosInstance {
 
   const axiosInstance = axios.create({
     headers: headers,
+    validateStatus: (status) =>
+      (status >= 200 && status < 300) || status === 304,
   });
 
   axiosInstance.interceptors.request.use((request) => {
