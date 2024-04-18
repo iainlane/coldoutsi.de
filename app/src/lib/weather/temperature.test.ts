@@ -9,10 +9,26 @@ describe("Temperature Conversion", () => {
     expect(tempF.temperature).toBeCloseTo(212);
   });
 
+  it("DegreesCelsius Feels Like", () => {
+    const tempC = new DegreesCelsius(32);
+
+    const feelsLike = tempC.feelsLike(85);
+
+    expect(feelsLike.temperature).toBeCloseTo(46.58);
+  });
+
   it("DegreesFahrenheit to DegreesCelsius", () => {
     const tempF = new DegreesFahrenheit(212);
     const tempC = tempF.toDegreesCelsius();
     expect(tempC.temperature).toBeCloseTo(100);
+  });
+
+  it("DegreesFahrenheit Feels Like", () => {
+    const tempF = new DegreesFahrenheit(89.6);
+
+    const feelsLike = tempF.feelsLike(85);
+
+    expect(feelsLike.temperature).toBeCloseTo(115.85);
   });
 
   it("DegreesCelsius toString", () => {

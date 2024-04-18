@@ -50,6 +50,9 @@ export default tseslint.config(
         "index-signature",
       ],
       "@typescript-eslint/dot-notation": "error",
+      // We'll often do things like `foo.status == NOT_FOUND` and we don't want to
+      // have to cast `NOT_FOUND` to a number to make this work.
+      "@typescript-eslint/no-unsafe-enum-comparison": "off",
       "@typescript-eslint/no-unused-vars": [
         "error",
         {

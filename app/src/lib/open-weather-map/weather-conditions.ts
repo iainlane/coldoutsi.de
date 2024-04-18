@@ -1,36 +1,6 @@
-import { artTemplates } from "@/lib/weather";
-
-enum WeatherEmoji {
-  Clear = "☀️",
-  Cloudy = "☁️",
-  Foggy = "🌫️",
-  HeavyRain = "🌧️",
-  HeavySnow = "🌨️️",
-  LightRain = "🌦",
-  LightSnow = "🌨️",
-  PartlyCloudy = "⛅️",
-  // eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
-  Rain = "🌧️",
-  Snow = "️❄️",
-  // eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
-  Sunny = "☀️",
-  Thunderstorm = "️🌩️️",
-  ThunderyShowers = "️⛈️",
-  Tornado = "🌪️",
-  Unknown = "✨",
-}
+import { artTemplates, WeatherCondition, WeatherEmoji } from "@/lib/weather";
 
 type WeatherCode = number;
-
-export interface WeatherCondition {
-  main: string;
-  description: string;
-  art: {
-    emoji: WeatherEmoji;
-    html: string;
-    ansi: string;
-  };
-}
 
 export const WeatherConditions: { [key: WeatherCode]: WeatherCondition } = {
   // Group 2xx: Thunderstorm

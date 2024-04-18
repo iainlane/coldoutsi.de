@@ -11,14 +11,14 @@ import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 import { StatusCodes } from "http-status-codes";
 
+import { GeoCodeData } from "@/lib/geocode";
 import { Logger } from "@/lib/logger";
-import { InvalidWindDirectionError } from "../weather";
+import { InvalidWindDirectionError } from "@/lib/weather";
 import {
   OpenWeatherMapClient,
   OpenWeatherMapError,
   rawWeatherResponse,
 } from ".";
-import { GeoCodeData } from "../geocode";
 
 const { BAD_REQUEST, OK } = StatusCodes;
 

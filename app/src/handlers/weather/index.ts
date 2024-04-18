@@ -1,1 +1,6 @@
-export { weatherHandler, reverseWeatherHandler } from "./weather";
+export {
+  weatherHandler,
+  reverseWeatherHandler,
+  metnoWeatherHandler,
+  reverseMetnoWeatherHandler,
+} from "./weather";

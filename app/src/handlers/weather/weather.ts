@@ -1,5 +1,5 @@
-import type { APIGatewayProxyEventV2 } from "aws-lambda";
 import { BadRequest, UnprocessableContent } from "@curveball/http-errors";
+import type { APIGatewayProxyEventV2 } from "aws-lambda";
 
 import { GeoCodeContext } from "@/lib/geocode";
 import {
@@ -7,14 +7,17 @@ import {
   reverseGeocodeHandlerFactory,
 } from "@/lib/handler-factory";
 import { Logger, LoggerContext } from "@/lib/logger";
-import { Units, isUnits } from "@/lib/weather";
+import { OpenWeatherMapClient } from "@/lib/open-weather-map";
+import { MetnoClient } from "@/lib/metno";
 import {
-  OpenWeatherMapClient,
-  OpenWeatherMapError,
+  Units,
   Weather,
-} from "@/lib/open-weather-map";
+  isUnits,
+  WeatherService,
+  WeatherServiceError,
+} from "@/lib/weather";
 
-function createClient(logger: Logger): OpenWeatherMapClient {
+function createOpenWeatherMapClient(logger: Logger): OpenWeatherMapClient {
   const apiKey = process.env["OPENWEATHERMAP_API_KEY"];
 
   if (apiKey === undefined) {
@@ -31,6 +34,12 @@ function createClient(logger: Logger): OpenWeatherMapClient {
   );
 }
 
+function createMetNoClient(logger: Logger): WeatherService {
+  return new MetnoClient(
+    logger.createChild({ persistentLogAttributes: { service: "metno" } }),
+  );
+}
+
 function getUnits(event: APIGatewayProxyEventV2): Units {
   const units = event.queryStringParameters?.["units"] ?? "metric";
 
@@ -42,7 +51,7 @@ function getUnits(event: APIGatewayProxyEventV2): Units {
 }
 
 export function createHandler(
-  createClientFn: (logger: Logger) => OpenWeatherMapClient,
+  createClientFn: (logger: Logger) => WeatherService,
 ) {
   return async function handler(
     event: APIGatewayProxyEventV2,
@@ -57,7 +66,7 @@ export function createHandler(
 
       return weather;
     } catch (err) {
-      if (err instanceof OpenWeatherMapError) {
+      if (err instanceof WeatherServiceError) {
         throw new UnprocessableContent(err.message);
       }
 
@@ -66,9 +75,17 @@ export function createHandler(
   };
 }
 
-const handler = createHandler(createClient);
+const openWeatherMapHandler = createHandler(createOpenWeatherMapClient);
 
 // For URL paths like /:latitude/:longitude
-export const weatherHandler = geoCodeHandlerFactory(handler);
+export const weatherHandler = geoCodeHandlerFactory(openWeatherMapHandler);
 // For URL paths like /:location
-export const reverseWeatherHandler = reverseGeocodeHandlerFactory(handler);
+export const reverseWeatherHandler = reverseGeocodeHandlerFactory(
+  openWeatherMapHandler,
+);
+
+const metNoHandler = createHandler(createMetNoClient);
+
+export const metnoWeatherHandler = geoCodeHandlerFactory(metNoHandler);
+export const reverseMetnoWeatherHandler =
+  reverseGeocodeHandlerFactory(metNoHandler);
