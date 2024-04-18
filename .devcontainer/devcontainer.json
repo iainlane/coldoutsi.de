@@ -26,8 +26,13 @@
       "extensions": [
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
-        "Orta.vscode-jest"
+        "Orta.vscode-jest",
+        "sissel.shopify-liquid"
       ]
     }
+  },
+
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1.0.11": {}
   }
 }

@@ -48,3 +48,8 @@ updates:
     directory: "/.devcontainer"
     schedule:
       interval: "daily"
+
+  - package-ecosystem: "devcontainers"
+    directory: "/.devcontainer"
+    schedule:
+      interval: "daily"
