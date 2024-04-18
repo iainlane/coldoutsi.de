@@ -101,7 +101,6 @@ async function geoLocate(
     return res.data[0];
   } catch (err) {
     if (axios.isAxiosError(err)) {
-      logger.error("Failed to geolocate", { ip, err });
       throw new GeoLocateError(`Failed to geolocate ${ip}: ${err.message}`);
     }
 
