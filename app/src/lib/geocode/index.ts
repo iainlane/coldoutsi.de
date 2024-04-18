@@ -177,7 +177,6 @@ type SearchInput = Coordinate | { location: string };
 function getFirstFeature(
   data: OSMGeocodeJson,
   input: SearchInput,
-  logger: Logger,
 ): GeoJsonFeature {
   if (data.features === undefined) {
     throw new InvalidDataError("Response from nominatim is missing features");
@@ -188,10 +187,6 @@ function getFirstFeature(
   }
 
   if (!isGeoJsonFeature(data.features[0])) {
-    logger.warn("Received invalid feature data from Nominatim", {
-      input,
-      feature: data.features[0],
-    });
     throw new InvalidDataError("Invalid feature data");
   }
 
@@ -258,7 +253,7 @@ export async function reverseGeocode(
 
   const resp = await reverse(latitude, longitude, acceptLanguage, logger);
 
-  const feature = getFirstFeature(resp.data, { latitude, longitude }, logger);
+  const feature = getFirstFeature(resp.data, { latitude, longitude });
 
   const geocoding = feature.properties.geocoding;
 
@@ -341,7 +336,7 @@ export async function geoCode(
 
   const result = await search(location, acceptLanguage, logger);
 
-  const feature = getFirstFeature(result.data, { location }, logger);
+  const feature = getFirstFeature(result.data, { location });
 
   const geocoding = feature.properties.geocoding;
 
