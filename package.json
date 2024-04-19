@@ -31,7 +31,7 @@
     "@eslint/js": "^9.0.0",
     "@serverless/utils": "^6.0.2",
     "@types/node": "^20.12.7",
-    "aws-sdk": "^2.1601.0",
+    "aws-sdk": "^2.1602.0",
     "esbuild": "^0.20.2",
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^9.1.0",
