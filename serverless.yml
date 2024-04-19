@@ -142,6 +142,9 @@ functions:
       - httpApi:
           path: /
           method: GET
+      - httpApi:
+          path: /metno
+          method: GET
 
   test:
     handler: ./app/src/handlers/test/index.testHandler
@@ -156,19 +159,8 @@ functions:
       - httpApi:
           path: "/:unknown"
           method: GET
-
-  reverseWeather:
-    handler: ./app/src/handlers/weather/index.reverseWeatherHandler
-    events:
       - httpApi:
-          path: /{lat}/{lon}
-          method: GET
-
-  weather:
-    handler: ./app/src/handlers/weather/index.weatherHandler
-    events:
-      - httpApi:
-          path: /{location}
+          path: "/metno/:unknown"
           method: GET
 
   reverseWeatherMetno:
@@ -183,6 +175,20 @@ functions:
     events:
       - httpApi:
           path: /metno/{location}
+          method: GET
+
+  reverseWeather:
+    handler: ./app/src/handlers/weather/index.reverseWeatherHandler
+    events:
+      - httpApi:
+          path: /{lat}/{lon}
+          method: GET
+
+  weather:
+    handler: ./app/src/handlers/weather/index.weatherHandler
+    events:
+      - httpApi:
+          path: /{location}
           method: GET
 
 resources:

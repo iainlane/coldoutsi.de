@@ -19,10 +19,11 @@ function handler(
 ): Promise<APIGatewayProxyResultV2> {
   const { latitude, longitude } = geoLocate.location;
 
+  // Redirect relative to the current page
   return Promise.resolve({
     statusCode: TEMPORARY_REDIRECT,
     headers: {
-      location: `/${latitude}/${longitude}`,
+      location: `./${latitude}/${longitude}`,
     },
   });
 }

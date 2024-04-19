@@ -52,7 +52,7 @@ describe("unknown handler", () => {
     await expect(unknownHandler(mockEvent, mockContext)).resolves.toEqual({
       statusCode: TEMPORARY_REDIRECT,
       headers: expect.objectContaining({
-        location: `/51.1/-96.1`,
+        location: "./51.1/-96.1",
       }),
     });
   });
