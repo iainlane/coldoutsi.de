@@ -117,8 +117,6 @@ export function geoCodeMiddleware<TResult>(): MiddlewareObj<
 
       const acceptLanguage = event.headers["accept-language"] ?? "en";
 
-      logger.debug("Geocoding", { location });
-
       try {
         const loc = await geoCode({ location, acceptLanguage }, logger);
 
