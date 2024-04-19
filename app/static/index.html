@@ -8,27 +8,28 @@
   <body>
     <noscript>
       <!-- If JavaScript is disabled, redirect immediately -->
-      <meta http-equiv="refresh" content="0;url=/:unknown" />
+      <meta http-equiv="refresh" content="0;url=./:unknown" />
     </noscript>
     <script>
       function redirectBasedOnLocation() {
         if (!navigator.geolocation) {
           // If Geolocation API is not supported, redirect
-          window.location.href = "/:unknown";
+          window.location.replace("./:unknown");
           return;
         }
 
         navigator.geolocation.getCurrentPosition(
           function (position) {
-            // On successful geolocation, redirect to /lat/lon
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
-            window.location.href = `/${latitude}/${longitude}`;
+            window.location.replace(`./${latitude}/${longitude}`);
           },
           function (error) {
-            // On error or if geolocation permission is denied, redirect
+            // On error or if geolocation permission is denied, redirect to
+            // unknown handler, which will perform a lookup based on IP address
+            // (less accurate).
             console.error("Geolocation error:", error);
-            window.location.href = "/:unknown";
+            window.location.replace("./:unknown");
           },
         );
       }

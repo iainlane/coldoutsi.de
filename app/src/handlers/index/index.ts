@@ -41,11 +41,12 @@ function handler(
     });
   }
 
-  // Redirect to /unknown if the client doesn't accept HTML
+  // Redirect to `:unknown` (relative to the current page) if the client doesn't
+  // accept HTML
   return Promise.resolve({
     statusCode: 302,
     headers: {
-      Location: "/:unknown",
+      Location: "./:unknown",
     },
     body: "",
   });
