@@ -15,7 +15,7 @@
     "lint": "eslint",
     "test": "NODE_OPTIONS=--experimental-vm-modules POWERTOOLS_DEV=true $(yarn bin jest) --silent",
     "gen": "concurrently 'yarn workspace @internal/nominatim gen-if-needed' 'yarn workspace @internal/geojs gen-if-needed' 'yarn workspace @internal/met.no gen-if-needed'",
-    "local": "yarn serverless offline start --stage dev"
+    "local": "yarn serverless offline start --stage local"
   },
   "jest": {
     "preset": "ts-jest/presets/default-esm",
