@@ -28,12 +28,12 @@
     ]
   },
   "devDependencies": {
-    "@eslint/js": "^9.0.0",
+    "@eslint/js": "^9.1.1",
     "@serverless/utils": "^6.0.2",
     "@types/node": "^20.12.7",
-    "aws-sdk": "^2.1602.0",
+    "aws-sdk": "^2.1603.0",
     "esbuild": "^0.20.2",
-    "eslint": "^9.0.0",
+    "eslint": "^9.1.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jest": "^28.2.0",
     "eslint-plugin-n": "^17.2.1",
@@ -45,9 +45,9 @@
     "serverless-better-credentials": "^2.0.0",
     "serverless-certificate-creator": "^1.6.0",
     "serverless-domain-manager": "^7.3.8",
-    "serverless-dynamodb": "^0.2.51",
+    "serverless-dynamodb": "^0.2.52",
     "serverless-esbuild": "^1.52.1",
-    "serverless-offline": "^13.3.2",
+    "serverless-offline": "^13.3.4",
     "serverless-plugin-typescript": "^2.1.5",
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.7.0"
