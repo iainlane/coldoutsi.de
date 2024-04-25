@@ -3576,11 +3576,6 @@
   dependencies:
     "@types/node" "*"
 
-"@types/retry@0.12.2":
-  version "0.12.2"
-  resolved "https://registry.yarnpkg.com/@types/retry/-/retry-0.12.2.tgz#ed279a64fa438bb69f2480eda44937912bb7480a"
-  integrity sha512-XISRgDJ2Tc5q4TRqvgJtzsRkFYNJzZrhTdtMoGVBttwzzQJkPnS3WWTFc7kuDRoPtPakl+T+OfdEUjYJj7Jbow==
-
 "@types/semver@^7.5.0":
   version "7.5.6"
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.5.6.tgz#c65b2bfce1bec346582c07724e3f8c1017a20339"
@@ -4026,10 +4021,10 @@ aws-sdk-client-mock@^4.0.0:
     sinon "^16.1.3"
     tslib "^2.1.0"
 
-aws-sdk@^2.1404.0, aws-sdk@^2.1605.0, aws-sdk@^2.320.0:
-  version "2.1605.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1605.0.tgz#8ba2c5bd4b43c9b95dd63d6916916a2dcd92abbd"
-  integrity sha512-/wtOuF7WgkbN6YL3xJ+FB54kvIAfnP/DQVDaE6rSYv6ft0xr01Si94NgQWhb5OcFkFfRAC4auZX8PiFNtOi9xQ==
+aws-sdk@^2.1404.0, aws-sdk@^2.1606.0, aws-sdk@^2.320.0:
+  version "2.1606.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1606.0.tgz#617b2afc5955aca4ac42c6ef6f5b649cbd36b3b1"
+  integrity sha512-Sg1y0p93XI0ce86D9mi402sKMiH7LDoq6k3YzMja9yA0i3i0Pg3py4jjZ7p3HlKNOsDUF0t+9DLdCjtbTbuM6w==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -5224,10 +5219,10 @@ eslint-plugin-jest@^28.2.0:
   dependencies:
     "@typescript-eslint/utils" "^6.0.0"
 
-eslint-plugin-n@^17.3.0:
-  version "17.3.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-n/-/eslint-plugin-n-17.3.0.tgz#de7d371da2385f5d809bf80d2371ad5dd626420d"
-  integrity sha512-BvjwT22+zLsmSTq6Ea4FNK7O2XFrkahDKZSfE6Qo3CEy7cLgVkM1iDsHK9BU69oRmY1aQ4IoyCmfWLN+P52J9A==
+eslint-plugin-n@^17.3.1:
+  version "17.3.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-n/-/eslint-plugin-n-17.3.1.tgz#f8a309a96a9e6bd6d6c7031cc2aec9d0024d3889"
+  integrity sha512-25+HTtKe1F8U/M4ERmdzbz/xkm/gaY0OYC8Fcv1z/WvpLJ8Xfh9LzJ13JV5uj4QyCUD8kOPJrNjn/3y+tc57Vw==
   dependencies:
     "@eslint-community/eslint-utils" "^4.4.0"
     enhanced-resolve "^5.15.0"
@@ -6323,11 +6318,6 @@ is-natural-number@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/is-natural-number/-/is-natural-number-4.0.1.tgz#ab9d76e1db4ced51e35de0c72ebecf09f734cde8"
   integrity sha512-Y4LTamMe0DDQIIAlaer9eKebAlDSV6huy+TWhJVPlzZh2o4tRP5SQWFlLn5N0To4mDD22/qdOq+veo1cSISLgQ==
-
-is-network-error@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/is-network-error/-/is-network-error-1.0.1.tgz#a68061a20387e9144e145571bea693056a370b92"
-  integrity sha512-OwQXkwBJeESyhFw+OumbJVD58BFBJJI5OM5S1+eyrDKlgDZPX2XNT5gXS56GSD3NPbbwUuMlR1Q71SRp5SobuQ==
 
 is-number@^7.0.0:
   version "7.0.0"
@@ -7725,15 +7715,6 @@ p-memoize@^7.1.1:
     mimic-fn "^4.0.0"
     type-fest "^3.0.0"
 
-p-retry@^6.2.0:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/p-retry/-/p-retry-6.2.0.tgz#8d6df01af298750009691ce2f9b3ad2d5968f3bd"
-  integrity sha512-JA6nkq6hKyWLLasXQXUrO4z8BUZGUt/LjlJxx8Gb2+2ntodU/SS63YZ8b0LUTbQ8ZB9iwOfhEPhg4ykKnn2KsA==
-  dependencies:
-    "@types/retry" "0.12.2"
-    is-network-error "^1.0.0"
-    retry "^0.13.1"
-
 p-timeout@^3.1.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/p-timeout/-/p-timeout-3.2.0.tgz#c7e17abc971d2a7962ef83626b35d635acf23dfe"
@@ -8233,11 +8214,6 @@ restore-cursor@^3.1.0:
     onetime "^5.1.0"
     signal-exit "^3.0.2"
 
-retry@^0.13.1:
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/retry/-/retry-0.13.1.tgz#185b1587acf67919d63b357349e03537b2484658"
-  integrity sha512-XQBQ3I8W1Cge0Seh+6gjj03LbmRFWuoszgK9ooCpwYIrhhoO80pfq4cUkU5DkknwfOfFteRwlZ56PYOGYyFWdg==
-
 reusify@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/reusify/-/reusify-1.0.4.tgz#90da382b1e126efc02146e90845a88db12925d76"
@@ -8392,10 +8368,10 @@ serverless-esbuild@^1.52.1:
     ramda "^0.28.0"
     semver "^7.3.8"
 
-serverless-offline@^13.3.4:
-  version "13.3.4"
-  resolved "https://registry.yarnpkg.com/serverless-offline/-/serverless-offline-13.3.4.tgz#c21e380a0bf41bb2306badc8d27dc0f7d2965fb5"
-  integrity sha512-/nsJboP0C5v3r8r8W8K5jTjETNYhy/RqUc4ufHWV5o+IpNrcukeFvfMdFBbigHPJuC9aUqHIYbmqEVhnDO2L6Q==
+serverless-offline@^13.4.0:
+  version "13.4.0"
+  resolved "https://registry.yarnpkg.com/serverless-offline/-/serverless-offline-13.4.0.tgz#e87b0bfa2a6c60b662b3d78ae8ac0858a3df6627"
+  integrity sha512-yZRHw5COBVAsfDmRO+CcCU5RS6VWE2M8MgYNa6yO9F/Ns/psjF77EMZIDLR1L0awS9ZLHhBd87kHcr4Y5xuXKQ==
   dependencies:
     "@aws-sdk/client-lambda" "^3.509.0"
     "@hapi/boom" "^10.0.1"
@@ -8418,7 +8394,6 @@ serverless-offline@^13.3.4:
     luxon "^3.4.4"
     node-schedule "^2.1.1"
     p-memoize "^7.1.1"
-    p-retry "^6.2.0"
     velocityjs "^2.0.6"
     ws "^8.16.0"
 
