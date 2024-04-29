@@ -29,31 +29,52 @@ describe("unknown handler", () => {
     mockAxios.reset();
   });
 
-  it("redirects to the correct location", async () => {
-    mockAxios.onGet().reply(OK, [
-      {
-        ip: "1.1.1.1",
-        latitude: "51.1",
-        longitude: "-96.1",
-        city: "Sample City",
-      },
-    ]);
-
-    const mockEvent = mock<APIGatewayProxyEventV2 & Event>({
-      requestContext: {
-        http: {
-          sourceIp: "1.1.1.1",
+  it.each<{ prefix: string; expected: string }>([
+    {
+      prefix: "",
+      expected: "/",
+    },
+    {
+      prefix: "/",
+      expected: "/",
+    },
+    {
+      prefix: "/:unknown",
+      expected: "/",
+    },
+    {
+      prefix: "/metno/:unknown",
+      expected: "/metno/",
+    },
+  ])(
+    "redirects to the correct location ($prefix)",
+    async ({ prefix, expected }) => {
+      mockAxios.onGet().reply(OK, [
+        {
+          ip: "1.1.1.1",
+          latitude: "51.1",
+          longitude: "-96.1",
+          city: "Sample City",
         },
-      },
-    });
+      ]);
 
-    const mockContext = mock<LoggerContext & GeoLocateContext>();
+      const mockEvent = mock<APIGatewayProxyEventV2 & Event>({
+        requestContext: {
+          http: {
+            sourceIp: "1.1.1.1",
+          },
+        },
+      });
+      mockEvent.rawPath = prefix;
 
-    await expect(unknownHandler(mockEvent, mockContext)).resolves.toEqual({
-      statusCode: TEMPORARY_REDIRECT,
-      headers: expect.objectContaining({
-        location: "./51.1/-96.1",
-      }),
-    });
-  });
+      const mockContext = mock<LoggerContext & GeoLocateContext>();
+
+      await expect(unknownHandler(mockEvent, mockContext)).resolves.toEqual({
+        statusCode: TEMPORARY_REDIRECT,
+        headers: expect.objectContaining({
+          location: `${expected}51.1/-96.1`,
+        }),
+      });
+    },
+  );
 });

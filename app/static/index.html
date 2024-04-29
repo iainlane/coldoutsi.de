@@ -8,13 +8,18 @@
   <body>
     <noscript>
       <!-- If JavaScript is disabled, redirect immediately -->
+      <!-- TOOD: This is wrong for `/metno` -->
       <meta http-equiv="refresh" content="0;url=./:unknown" />
     </noscript>
     <script>
       function redirectBasedOnLocation() {
+        const pathWithSlash =
+          window.location.pathname +
+          (window.location.pathname.endsWith("/") ? "" : "/");
+
         if (!navigator.geolocation) {
           // If Geolocation API is not supported, redirect
-          window.location.replace("./:unknown");
+          window.location.replace(`${pathWithSlash}:unknown`);
           return;
         }
 
@@ -22,14 +27,16 @@
           function (position) {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
-            window.location.replace(`./${latitude}/${longitude}`);
+
+            window.location.replace(`${pathWithSlash}${latitude}/${longitude}`);
           },
+
           function (error) {
             // On error or if geolocation permission is denied, redirect to
             // unknown handler, which will perform a lookup based on IP address
             // (less accurate).
             console.error("Geolocation error:", error);
-            window.location.replace("./:unknown");
+            window.location.replace(`${pathWithSlash}:unknown`);
           },
         );
       }
