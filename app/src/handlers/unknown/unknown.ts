@@ -14,16 +14,29 @@ import { GeoLocateContext, geoLocateMiddleware } from "@/lib/geolocate";
 const { TEMPORARY_REDIRECT } = StatusCodes;
 
 function handler(
-  _event: unknown,
+  event: APIGatewayProxyEventV2,
   { geoLocate }: GeoLocateContext,
 ): Promise<APIGatewayProxyResultV2> {
   const { latitude, longitude } = geoLocate.location;
 
   // Redirect relative to the current page
+
+  // Strip off any trailing slashes from the path and split it into parts
+  // (separated by slashes)
+  const rawPathParts = (
+    event.rawPath.endsWith("/") ? event.rawPath.slice(0, -1) : event.rawPath
+  ).split("/");
+
+  // Remove the last part of the path (":unknown")
+  rawPathParts.pop();
+
+  // And put it back together
+  const rawPath = rawPathParts.join("/");
+
   return Promise.resolve({
     statusCode: TEMPORARY_REDIRECT,
     headers: {
-      location: `./${latitude}/${longitude}`,
+      location: `${rawPath}/${latitude}/${longitude}`,
     },
   });
 }
