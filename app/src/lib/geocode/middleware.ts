@@ -111,8 +111,10 @@ export function geoCodeMiddleware<TResult>(): MiddlewareObj<
 
       const { location } = pathParameters;
 
-      if (location === undefined) {
-        throw new BadRequest("No city in path parameters");
+      if (location === undefined || location === "") {
+        throw new BadRequest(
+          "No location was given: try adding `/<some location>` to the URL",
+        );
       }
 
       const acceptLanguage = event.headers["accept-language"] ?? "en";

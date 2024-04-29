@@ -189,6 +189,18 @@ describe("Geocode Middleware", () => {
     );
   });
 
+  it("throws an error if called with empty location path parameter", async () => {
+    const mockEvent = mock<APIGatewayProxyEventV2>({
+      pathParameters: {
+        location: "",
+      },
+    });
+
+    await expect(middyHandler(mockEvent, geoLocateContext)).rejects.toThrow(
+      BadRequest,
+    );
+  });
+
   it("throws BadRequest if no path parameters", async () => {
     const mockEvent = mock<APIGatewayProxyEventV2>();
     delete mockEvent.pathParameters;
