@@ -7,15 +7,10 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-{% for cond in conditions %}
-{% assign code = cond[0] -%}
-{% assign condition = cond[1] -%}
-<h1>{{ code }}</h1>
+    <h1>OpenWeatherMap</h1>
+    {% render "condition" with owm as conds %}
 
-<p>{{ condition.main }} - {{ condition.description }} - {{ condition.art.emoji }}</p>
-<p style="font-family: monospace; white-space: pre;">
-{{ condition.art.html }}
-</p>
-{% endfor %}
+    <h1>met.no</h1>
+    {% render "condition" with metno as conds %}
 </body>
 </html>
