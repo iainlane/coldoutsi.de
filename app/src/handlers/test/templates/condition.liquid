@@ -1,0 +1,10 @@
+{% for cond in conds %}
+{% assign code = cond[0] -%}
+{% assign condition = cond[1] -%}
+<h2>{{ code }}</h2>
+
+<p>{{ condition.main }} - {{ condition.description }} - {{ condition.art.emoji }}</p>
+<p style="font-family: monospace; white-space: pre;">
+{{ condition.art.html }}
+</p>
+{% endfor %}

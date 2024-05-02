@@ -9,7 +9,8 @@ import * as path from "path";
 import { fileURLToPath } from "url";
 
 import { handlerFactory } from "@/lib/handler-factory";
-import { WeatherConditions } from "@/lib/open-weather-map";
+import { WeatherConditions as WeatherConditionsOWM } from "@/lib/open-weather-map";
+import { WeatherConditions as WeatherConditionsMetNo } from "@/lib/metno";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -27,7 +28,8 @@ const { OK } = StatusCodes;
 
 async function renderTemplate(template: Template[]): Promise<string> {
   const text = (await engine.render(template, {
-    conditions: WeatherConditions,
+    owm: WeatherConditionsOWM,
+    metno: WeatherConditionsMetNo,
   })) as Promise<string>;
 
   return text;
