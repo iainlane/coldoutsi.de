@@ -1,3 +1,7 @@
+// Credit:
+// - moon: https://github.com/chubin/pyphoon/blob/492ede17bb4a7a549f9da029a211e92e2499d46a/pyphoon/lib/moons.py#L3-L9 (modified to 5 lines)
+// - others: https://github.com/schachmat/wego/blob/62bbbfe727e06f3cadcd34ea69028507796c28c3/frontends/ascii-art-table.go#L149-L284
+
 import dedent from "dedent-js";
 
 import { formatMany, RenderColours } from "./colours";
@@ -21,15 +25,22 @@ export const artTemplates = formatMany(
     ${grey("      •      ")}`,
 
     iconSunny: dedent`
-    ${yellowBright("    \\   /    ")}
-    ${yellowBright("     .-.     ")}
+    ${yellowBright("    \\ . /    ")}
+    ${yellowBright("   - .-. -   ")}
     ${yellowBright("  ― (   ) ―  ")}
-    ${yellowBright("     `-’     ")}
-    ${yellowBright("    /   \\    ")}`,
+    ${yellowBright("   . `-’ .   ")}
+    ${yellowBright("    / ' \\    ")}`,
+
+    iconMoon: dedent`
+    ${lightGrey("   ..-..  ")}
+    ${lightGrey(" .` o  .`.")}
+    ${lightGrey(" o~.   O )")}
+    ${lightGrey(" `..o...'/")}
+    ${lightGrey("   `'-''  ")}`,
 
     iconPartlyCloudy: dedent`
-    ${yellowBright("  \\  /")}      ${lightGrey(" ")}
-    ${yellowBright('_ /""')} ${lightGrey(".-.    ")}
+    ${yellowBright("  \\__/")}      ${lightGrey(" ")}
+    ${yellowBright("_ /  ")} ${lightGrey(".-.    ")}
     ${yellowBright("  \\_")} ${lightGrey("(   ).  ")}
     ${yellowBright("  /")} ${lightGrey("(___(__) ")}
     ${lightGrey("             ")}`,
@@ -47,7 +58,6 @@ export const artTemplates = formatMany(
     ${darkGrey("  .-(    ).  ")}
     ${darkGrey(" (___.__)__) ")}
     ${darkGrey("             ")}`,
-    // Continuing from the previous examples...
 
     iconLightShowers: dedent`
   ${yellowBright(' _`/""')} ${lightGrey(".-.    ")}

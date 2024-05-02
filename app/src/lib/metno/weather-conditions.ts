@@ -15,16 +15,16 @@ export const WeatherConditions: { [key in WeatherSymbol]: WeatherCondition } = {
     main: "Clear",
     description: "Clear sky",
     art: {
-      emoji: WeatherEmoji.Clear,
-      ...artTemplates.iconSunny,
+      emoji: WeatherEmoji.ClearNight,
+      ...artTemplates.iconMoon,
     },
   },
   clearsky_polartwilight: {
     main: "Clear",
     description: "Clear sky",
     art: {
-      emoji: WeatherEmoji.Clear,
-      ...artTemplates.iconSunny,
+      emoji: WeatherEmoji.ClearNight,
+      ...artTemplates.iconMoon,
     },
   },
   cloudy: {
@@ -287,7 +287,7 @@ export const WeatherConditions: { [key in WeatherSymbol]: WeatherCondition } = {
     main: "Rain",
     description: "Light rain showers",
     art: {
-      emoji: WeatherEmoji.LightRain,
+      emoji: WeatherEmoji.LightRainNight,
       ...artTemplates.iconLightShowers,
     },
   },
@@ -295,7 +295,7 @@ export const WeatherConditions: { [key in WeatherSymbol]: WeatherCondition } = {
     main: "Rain",
     description: "Light rain showers",
     art: {
-      emoji: WeatherEmoji.LightRain,
+      emoji: WeatherEmoji.LightRainNight,
       ...artTemplates.iconLightShowers,
     },
   },
