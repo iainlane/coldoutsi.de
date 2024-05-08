@@ -30,9 +30,9 @@
   "devDependencies": {
     "@eslint/js": "^9.2.0",
     "@serverless/utils": "^6.0.2",
-    "@types/node": "^20.12.10",
-    "aws-sdk": "^2.1614.0",
-    "esbuild": "^0.21.0",
+    "@types/node": "^20.12.11",
+    "aws-sdk": "^2.1615.0",
+    "esbuild": "^0.21.1",
     "eslint": "^9.2.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jest": "^28.5.0",
