@@ -1,4 +1,3 @@
-import { TemperatureType, Units, WeatherCondition, WindSpeedType } from ".";
 import { Liquid, Template } from "liquidjs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -14,6 +13,15 @@ import {
   RendererOptionsMap,
 } from "@/lib/render";
 
+import {
+  Temperature,
+  TemperatureType,
+  TemperatureToDegrees,
+  Units,
+  WeatherCondition,
+  WindSpeedType,
+} from ".";
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const engine = new Liquid({
@@ -21,6 +29,31 @@ const engine = new Liquid({
   extname: ".liquid",
   ownPropertyOnly: false,
 });
+
+// Add a filter to take a convert a temperature to a feels-like temperature,
+// given a humidity.
+engine.registerFilter(
+  "feels_like",
+  (
+    temperature: Temperature | { min: Temperature; max: Temperature },
+    humidity: number,
+    windSpeed: WindSpeedType<Units>,
+  ) => {
+    if ("min" in temperature && "max" in temperature) {
+      const min = TemperatureToDegrees(temperature.min);
+      const max = TemperatureToDegrees(temperature.max);
+
+      return {
+        min: min.feelsLike(humidity, windSpeed).temperature,
+        max: max.feelsLike(humidity, windSpeed).temperature,
+      };
+    }
+
+    const temp = TemperatureToDegrees(temperature);
+
+    return temp.feelsLike(humidity, windSpeed).temperature;
+  },
+);
 
 export interface SingleTemp<U extends Units> {
   temp: TemperatureType<U>;

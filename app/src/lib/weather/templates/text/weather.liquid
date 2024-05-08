@@ -1,1 +1,2 @@
-{{ current.weather[0].art.emoji }} {{ current.temp }}, Wind {% if opts.colour %}{{ current.wind.ANSIString }}{% else %}{{ current.wind }}{% endif %}
+{%  assign feels_like = current.temp | feels_like: current.humidity, current.wind.speed -%}
+{{ current.weather[0].art.emoji }} {{ current.temp.temperature }}{% if current.temp.temperature != feels_like %}({{ feels_like }}){% endif %}{{ current.temp.unit }}, Wind {% if opts.colour %}{{ current.wind.ANSIString }}{% else %}{{ current.wind }}{% endif %}

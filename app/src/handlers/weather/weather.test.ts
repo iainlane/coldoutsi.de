@@ -108,7 +108,7 @@ describe("reverseWeatherHandler", () => {
     const colouredString = formatString(
       "ansi",
       ({ greenBright }) =>
-        `☁️ 27.3°C, Wind ${greenBright("3.09")}–${greenBright("3.02")} m/s ↓\n`,
+        `☁️ 27.3(30.5)°C, Wind ${greenBright("3.09")}–${greenBright("3.02")} m/s ↓\n`,
     );
 
     await expect(
@@ -199,7 +199,7 @@ describe("weatherHandler", () => {
     const colouredString = formatString(
       "ansi",
       ({ greenBright }) =>
-        `☁️ 27.3°C, Wind ${greenBright("3.09")}–${greenBright("3.02")} m/s ↓\n`,
+        `☁️ 27.3(30.5)°C, Wind ${greenBright("3.09")}–${greenBright("3.02")} m/s ↓\n`,
     );
 
     await expect(weatherHandler(mockEvent, mockContext)).resolves.toEqual({
@@ -226,7 +226,7 @@ describe("weatherHandler", () => {
     const colouredString = formatString(
       "ansi",
       ({ greenBright }) =>
-        `☁️ 81.1°F, Wind ${greenBright("6.91")}–${greenBright("6.76")} mph ↓\n`,
+        `☁️ 81.1(86.9)°F, Wind ${greenBright("6.91")}–${greenBright("6.76")} mph ↓\n`,
     );
 
     const mockEventImperial = mockEvent;
