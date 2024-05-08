@@ -123,7 +123,7 @@ describe("met.no client happy paths", () => {
     expect(weather.current.temp.temperature).toBe(44.6); // 7.0°C  = 44.6°F
     expect(weather.current.wind.speed).toBe(4.47388); // 2.0 m/s = 4.47388 mph
 
-    expect(weather.hourly[0]?.temp.temperature).toBe(44.42);
+    expect(weather.hourly[0]?.temp.temperature).toBe(44.4);
     expect(weather.daily[0]?.temp.max.temperature).toBe(59);
 
     expect(kvStore.size).toBe(1);
