@@ -18,7 +18,7 @@
 
     <h2>Daily Forecast</h2>
     {% for day in daily %}
-      {% render './measurement', measurement: day, date: day.time | date: "%Y-%m-%d" %}
+      {% render './measurement_daily', measurement: day, date: day.time | date: "%Y-%m-%d" %}
     {% endfor %}
   </body>
 </html>
