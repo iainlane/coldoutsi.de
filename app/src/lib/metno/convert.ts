@@ -9,6 +9,7 @@ import {
   isDegree,
   WindDirection,
 } from "@/lib/weather";
+import { toTwoDP } from "@/lib/util";
 
 import { MetNoMissingPropertyError } from "./client";
 import { WeatherConditions } from "./weather-conditions";
@@ -147,9 +148,9 @@ export function convertDaily(
 
   return {
     time: date,
-    pressure: pressure / steps.length,
-    humidity: humidity / steps.length,
-    clouds: cloudCover / steps.length,
+    pressure: toTwoDP(pressure / steps.length),
+    humidity: toTwoDP(humidity / steps.length),
+    clouds: toTwoDP(cloudCover / steps.length),
     temp: {
       min: new DegreesCelsius(minTemp),
       max: new DegreesCelsius(maxTemp),

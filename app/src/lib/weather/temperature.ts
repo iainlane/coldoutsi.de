@@ -1,3 +1,5 @@
+import { toOneDP } from "@/lib/util";
+
 import { WindSpeedMetresPerSecond, WindSpeedMilesPerHour } from "./wind";
 
 export type Units = "metric" | "imperial";
@@ -48,7 +50,7 @@ abstract class BaseDegrees {
   abstract unit: string;
 
   public get temperature(): number {
-    return Math.round(this.temp * 10) / 10;
+    return toOneDP(this.temp);
   }
 
   toString(): string {
