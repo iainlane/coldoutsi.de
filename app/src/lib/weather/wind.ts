@@ -1,3 +1,5 @@
+import { toTwoDP } from "@/lib/util";
+
 import { ansi, html, ThemeColours } from "./colours";
 import { Units } from ".";
 
@@ -200,7 +202,7 @@ abstract class SingleWindSpeed {
   }
 
   private get toTwoDP(): number {
-    return Math.round(this.speed * 100) / 100;
+    return toTwoDP(this.speed);
   }
 
   get ANSIString(): string {
