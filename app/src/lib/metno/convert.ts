@@ -94,9 +94,6 @@ export function convertDaily(
   date: Date,
   steps: ForecastTimeStep[],
 ): DailyMeasurement<"metric"> {
-  // Find the average pressure, humidity, cloud cover. Find the maximum and
-  // minimum temperature. Find the most common weather condition. Find the
-  // average wind speed and gusts. Find the most common wind direction.
   let pressure = 0;
   let humidity = 0;
   let cloudCover = 0;
