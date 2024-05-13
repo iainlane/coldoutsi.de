@@ -2822,62 +2822,62 @@
   integrity sha512-Z7C/xXCiGWsg0KuKsHTKJxbWhpI3Vs5GwLfOean7MGyVFGqdRgBbAjOCh6u4bbjPc/8MJ2pZmK/0DLdCbivLDA==
 
 "@middy/core@~5":
-  version "5.3.3"
-  resolved "https://registry.yarnpkg.com/@middy/core/-/core-5.3.3.tgz#c4ca4e02dbd1f6c6154e93fad69467817d7e86a6"
-  integrity sha512-/Gq0jS4q+W+4/P+m3GxSVX083GDeBesLebSrubyFlJ9RL75ucGn4gtIPr7OVeUNXyexNCM0r9u0tP8YkAvFvZw==
+  version "5.3.4"
+  resolved "https://registry.yarnpkg.com/@middy/core/-/core-5.3.4.tgz#2b561162c5d59aab8116630bd8d2cc55005f0328"
+  integrity sha512-kpuTQbS4mUgaYsd30WO2lhe/7gJPmCyayeqFDEtpcoy21xXvVZacHQa6Xnfr+Z48VKlGX/CcuQeE506XL7DAUw==
   dependencies:
     "@datastream/core" "0.0.35"
 
 "@middy/error-logger@~5":
-  version "5.3.3"
-  resolved "https://registry.yarnpkg.com/@middy/error-logger/-/error-logger-5.3.3.tgz#0ea83e6df1725c55dd2cc2137bd7cdcaf1eeb5be"
-  integrity sha512-tv7q0Iw9CkmgnqOlangHHqTrcIqJpHcwcxl2qwt72bAU7icEVpYB/txNKx6kP9pVP9jLkPQ3KKeVEy4lglNuhQ==
+  version "5.3.4"
+  resolved "https://registry.yarnpkg.com/@middy/error-logger/-/error-logger-5.3.4.tgz#ff93ae7cb30ca12432e039dfd5d47e7cfd2f7d22"
+  integrity sha512-j35/2jeF4k45w7dL0+M1nB1MStrB+X5W2EDCDF/Ndw4n8Y0V8JxJeqXZDLYkjolcKo1jPd6arPwXxH8aVDRk3A==
 
 "@middy/http-content-encoding@~5":
-  version "5.3.3"
-  resolved "https://registry.yarnpkg.com/@middy/http-content-encoding/-/http-content-encoding-5.3.3.tgz#710a3fd55e983242542588383e1da69ffe5ddc24"
-  integrity sha512-PWjrjHyJHhocrLLaBWqtM9t6y62g9zSPC/IfX/NzRZxTXMfrI/Quk8W5OrJh5Hk11axXVSmZM4ZpmrVx+PoNDQ==
+  version "5.3.4"
+  resolved "https://registry.yarnpkg.com/@middy/http-content-encoding/-/http-content-encoding-5.3.4.tgz#8d7b7bd05298fa81d3bb2365ddbbb02095122897"
+  integrity sha512-wcUU8FIpyL10AyrJhnDtX0hk4upT0sVlnfC9o9uCPO4Lt6t7QEsdfc/nx1Axdt0UMacjhHkKv9uudJ2t4zOKBQ==
   dependencies:
-    "@middy/util" "5.3.3"
+    "@middy/util" "5.3.4"
 
 "@middy/http-content-negotiation@~5":
-  version "5.3.3"
-  resolved "https://registry.yarnpkg.com/@middy/http-content-negotiation/-/http-content-negotiation-5.3.3.tgz#97b54fc43ddb3306327aec602e498979164ca074"
-  integrity sha512-7ROi5DIXa/hHUW3bdeW1a5P/RzA+QJkOARvLvubY7erNL4S4mWXB0k84COIp0lnKJYFiDPR9UzPcDafFp6lPaA==
+  version "5.3.4"
+  resolved "https://registry.yarnpkg.com/@middy/http-content-negotiation/-/http-content-negotiation-5.3.4.tgz#27466f0fe6508597ca5d3f445479383811f3aca0"
+  integrity sha512-ZBu4qcujtdiQchdh992xwfUYy1yFR/4nXrkEvP9n2zp/dmTP7OLBddW+Hhypg7YRj5UQNAWHlHDODaC/RTnNmw==
   dependencies:
-    "@middy/util" "5.3.3"
+    "@middy/util" "5.3.4"
     negotiator "0.6.3"
 
 "@middy/http-error-handler@~5":
-  version "5.3.3"
-  resolved "https://registry.yarnpkg.com/@middy/http-error-handler/-/http-error-handler-5.3.3.tgz#c9e8d51ea10f9d4ff75aa9195ca98f5aef3341e4"
-  integrity sha512-wndWAbCnfdyEWV7BWnXK+1kE3xY3HaR/UBEGpZaBlblueAdRfLPEWltYEqEwY8XWeIdr9V8GU1W6E+gKmpKcvA==
+  version "5.3.4"
+  resolved "https://registry.yarnpkg.com/@middy/http-error-handler/-/http-error-handler-5.3.4.tgz#eec3bde3f7df9520d86a85c6fd4c4114d1d80744"
+  integrity sha512-bs4Tjft84aORxzmQvkwN8SmX5L4ZYd1zho2ckaelTEJwtivgPteoiTzxQ/+8H/lh+TrzjHHNFEVsnTe+hZYL6Q==
   dependencies:
-    "@middy/util" "5.3.3"
+    "@middy/util" "5.3.4"
 
 "@middy/http-header-normalizer@~5":
-  version "5.3.3"
-  resolved "https://registry.yarnpkg.com/@middy/http-header-normalizer/-/http-header-normalizer-5.3.3.tgz#d59324e7535e55d735c9bde975fa11f8626e540a"
-  integrity sha512-SN4rqlr8b+BgwyxAZa3umUghwJbZXTqb79MXbufNQ4p8nqHvcdqjQ9rgjgT/cMW4EkQvZExBLh5S9+qzxMVhsg==
+  version "5.3.4"
+  resolved "https://registry.yarnpkg.com/@middy/http-header-normalizer/-/http-header-normalizer-5.3.4.tgz#8da56d222973702f0d1ef653dfaf2e04b2895957"
+  integrity sha512-2y0T8XRC80tIAgozeuc6PA4Zd7y3plIB+mt5g1wPZcP3C/fmGMUVHue4+5nFBor9HQmkmD8RBAMae8MX7Jb5Bw==
 
 "@middy/http-json-body-parser@~5":
-  version "5.3.3"
-  resolved "https://registry.yarnpkg.com/@middy/http-json-body-parser/-/http-json-body-parser-5.3.3.tgz#6d6ec287a4276e3ead44a05dcef12e935c0161aa"
-  integrity sha512-iuyayv8EPZvE8R1MsXbTVz1zhKe+CmDHIH6QgoUwppGtoQKvy0x4DA/ilUVofOvVHDfpnJOfRrU2nO9gxGvRpw==
+  version "5.3.4"
+  resolved "https://registry.yarnpkg.com/@middy/http-json-body-parser/-/http-json-body-parser-5.3.4.tgz#8b8337b1d66856406c2a6ef0c6da22844fe4bda0"
+  integrity sha512-quyy3lX24DEv2eHHNtTngLtRRIsjIXhW7zAUshowbgYBhLwkTYxGa0WzL2tP0KpQFP418Pn/h/KRG+fZuRiWuQ==
   dependencies:
-    "@middy/util" "5.3.3"
+    "@middy/util" "5.3.4"
 
 "@middy/http-response-serializer@~5":
-  version "5.3.3"
-  resolved "https://registry.yarnpkg.com/@middy/http-response-serializer/-/http-response-serializer-5.3.3.tgz#50230f76b8747cdee943c1c932a3365680b0acfa"
-  integrity sha512-afkrcoh9ox7rNbMbEa1qbCrkmDrPLjfWIxqwiAguWUxMD6PV+assjndZPMpcC7YSYGj9/ZSq/t/K7Hss0VmmFQ==
+  version "5.3.4"
+  resolved "https://registry.yarnpkg.com/@middy/http-response-serializer/-/http-response-serializer-5.3.4.tgz#3817c8b7e2b1fd2b9511abcd5afd8760c484fb7e"
+  integrity sha512-YGzDBiS2ImLdRQ4dEEUQAkGYKw79qKCxpE8deLtYgtcst38xEDNqtFYWKGqFjcp/oJRS96pT/A8nAwVgEGkH9w==
   dependencies:
-    "@middy/util" "5.3.3"
+    "@middy/util" "5.3.4"
 
-"@middy/util@5.3.3":
-  version "5.3.3"
-  resolved "https://registry.yarnpkg.com/@middy/util/-/util-5.3.3.tgz#7d24038593f513f8e54861f92b4158b2ff00ba21"
-  integrity sha512-gT3l1f/Ujbrcu4yojHYHTB2piM7XXXV0BpYxIRuUm1GeAMWQ9yCjSs1Z02Kis08dVz/xQHoH9+gc9ILSiJIakA==
+"@middy/util@5.3.4":
+  version "5.3.4"
+  resolved "https://registry.yarnpkg.com/@middy/util/-/util-5.3.4.tgz#87dedf8776d1bf04c2ebe4aa6192fee6375c9062"
+  integrity sha512-TY1wlMb2Vdo+PRI0m0NNQdfVsrF1oqhOg5fz0oiA1mnExp2/T5isd/uG55DPEK++GprC1+OOkkJNFgMpRhBRrA==
 
 "@nestjs/axios@3.0.2":
   version "3.0.2"
