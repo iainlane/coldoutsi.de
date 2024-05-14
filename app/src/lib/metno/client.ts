@@ -1,4 +1,6 @@
 import axios, { AxiosHeaders, AxiosResponse } from "axios";
+import * as d3 from "d3-array";
+import { InternMap } from "d3-array";
 import { StatusCodes } from "http-status-codes";
 
 import { retryableAxios } from "@/lib/axios";
@@ -144,7 +146,7 @@ export class MetnoClient {
 
   private buildMetricWeather(weather: DeepReadonly<METJSONForecast>): {
     now: CurrentMeasurement<"metric">;
-    hourly: HourlyMeasurement<"metric">[];
+    hourly: InternMap<Date, HourlyMeasurement<"metric">[]>;
     daily: DailyMeasurement<"metric">[];
   } {
     let ts = weather.properties.timeseries;
@@ -170,20 +172,17 @@ export class MetnoClient {
     }
     ts = ts.slice(0, -1);
 
-    const grouped = new Map<string, [Date, ForecastTimeStep[]]>();
+    // `group` produces an InternMap, which lets us have a map with Date keys.
+    // That doesn't work with plain JS.
+    const grouped: InternMap<Date, ForecastTimeStep[]> = d3.group(
+      ts,
+      (step) => {
+        const date = new Date(step.time);
+        date.setUTCHours(0, 0, 0, 0);
 
-    // Group steps by day
-    ts.forEach((step) => {
-      const day = new Date(step.time);
-      day.setUTCHours(0, 0, 0, 0);
-      const dayStr = day.toISOString();
-
-      if (!grouped.has(dayStr)) {
-        grouped.set(dayStr, [day, []]);
-      }
-
-      grouped.get(dayStr)?.[1].push(step);
-    });
+        return date;
+      },
+    );
 
     const iterator = grouped.entries();
 
@@ -191,20 +190,18 @@ export class MetnoClient {
 
     // Hourly always includes today, and after that every other day that has 24
     // hours of data.
-    const hourly: HourlyMeasurement<"metric">[] = [];
-    for (const [day, [_, steps]] of iterator) {
-      if (day !== nowDayStr && steps.length !== 24) {
+    const hourly = new InternMap<Date, HourlyMeasurement<"metric">[]>();
+    for (const [day, steps] of iterator) {
+      if (day.toISOString() !== nowDayStr && steps.length !== 24) {
         break;
       }
 
-      steps.forEach((step) => {
-        hourly.push(convertCurrent(step));
-      });
+      hourly.set(day, steps.map(convertCurrent));
     }
 
     // The rest is "daily", and we summarise the data for each day.
     const daily: DailyMeasurement<"metric">[] = [];
-    for (const [_, [day, steps]] of iterator) {
+    for (const [day, steps] of iterator) {
       daily.push(convertDaily(day, steps));
     }
 
@@ -226,12 +223,15 @@ export class MetnoClient {
         return new Weather(
           location,
           convertMetricCurrentToImperialMeasurement(now),
-          hourly.map((h) => {
-            return {
-              ...h,
-              ...convertMetricHourlyToImperialMeasurement(h),
-            };
-          }),
+          new InternMap(
+            Array.from(hourly, ([date, hours]) => [
+              date,
+              hours.map((h) => ({
+                ...h,
+                ...convertMetricHourlyToImperialMeasurement(h),
+              })),
+            ]),
+          ),
           daily.map((d) => {
             return {
               ...d,

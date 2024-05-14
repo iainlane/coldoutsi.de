@@ -9,11 +9,15 @@
   <body>
     <p>Weather report: {{ location.label }}</p>
     {% render './measurement', measurement: current, date: 'Now' %}
-    <p>{{ current.weather[0].art.emoji }} {{ current.temp }}, Wind {{ current.wind.HTMLString }}</p>
 
     <h2>Hourly Forecast</h2>
-    {% for hour in hourly %}
-      {% render './measurement', measurement: hour, date: hour.time %}
+    {% for day in hourly %}
+      {% assign date = day[0] -%}
+      {% assign hours = day[1] -%}
+      <h3>{{ date | date: "%Y-%m-%d" }}</h3>
+      {% for hour in hours %}
+        {% render './measurement', measurement: hour, date: hour.time %}
+      {% endfor %}
     {% endfor %}
 
     <h2>Daily Forecast</h2>
