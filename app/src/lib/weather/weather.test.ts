@@ -1,4 +1,5 @@
 import { describe, expect, it } from "@jest/globals";
+import { InternMap } from "d3-array";
 
 import { GeoCodeData } from "@/lib/geocode";
 import { WeatherConditions } from "@/lib/open-weather-map";
@@ -8,6 +9,7 @@ import {
   WindSpeedMetresPerSecond,
   Weather,
   CurrentMeasurement,
+  HourlyMeasurement,
 } from ".";
 
 const location = new GeoCodeData({
@@ -37,7 +39,12 @@ describe("render", () => {
       wind: new WindSpeedMetresPerSecond(5, 10, "S"),
     } as const satisfies CurrentMeasurement<"metric">;
 
-    const weather = new Weather(location, now, [], []);
+    const weather = new Weather(
+      location,
+      now,
+      new InternMap<Date, HourlyMeasurement<"metric">[]>(),
+      [],
+    );
 
     const rendered = await weather.render["text/plain"]({ colour: false });
 

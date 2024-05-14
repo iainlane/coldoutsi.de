@@ -1,3 +1,4 @@
+import { InternMap } from "d3-array";
 import { Liquid, Template } from "liquidjs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -15,8 +16,8 @@ import {
 
 import {
   Temperature,
-  TemperatureType,
   TemperatureToDegrees,
+  TemperatureType,
   Units,
   WeatherCondition,
   WindSpeedType,
@@ -90,7 +91,7 @@ export class Weather<T extends Units> implements Renderable {
   constructor(
     public readonly location: GeoCodeData,
     public readonly current: CurrentMeasurement<T>,
-    public readonly hourly: HourlyMeasurement<T>[],
+    public readonly hourly: InternMap<Date, HourlyMeasurement<T>[]>,
     public readonly daily: DailyMeasurement<T>[],
   ) {}
 

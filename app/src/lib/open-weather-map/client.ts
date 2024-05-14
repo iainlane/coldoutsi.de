@@ -1,4 +1,7 @@
+import { PutCommandOutput } from "@aws-sdk/lib-dynamodb";
 import axios, { AxiosInstance } from "axios";
+import * as d3 from "d3-array";
+import { InternMap } from "d3-array";
 
 import { retryableAxios } from "@/lib/axios";
 import { dynamoDbDocClient } from "@/lib/dynamodb";
@@ -21,7 +24,6 @@ import {
   getWindDirection,
   isDegree,
 } from "@/lib/weather";
-import { PutCommandOutput } from "@aws-sdk/lib-dynamodb";
 
 import { WeatherConditions } from ".";
 
@@ -280,7 +282,15 @@ export class OpenWeatherMapClient {
     const rawWeather = await this.getRawWeather(location);
 
     const now = convertCurrent(rawWeather.current);
-    const hourly = rawWeather.hourly.map(convertHourly);
+    const hourly = d3.group(
+      rawWeather.hourly.map(convertHourly),
+      (measurement) => {
+        const date = new Date(measurement.time);
+        date.setUTCHours(0, 0, 0, 0);
+
+        return date;
+      },
+    );
     const daily = rawWeather.daily.map(convertDaily);
 
     switch (unit) {
@@ -290,12 +300,15 @@ export class OpenWeatherMapClient {
         return new Weather(
           location,
           convertMetricCurrentToImperialMeasurement(now),
-          hourly.map((h) => {
-            return {
-              ...h,
-              ...convertMetricHourlyToImperialMeasurement(h),
-            };
-          }),
+          new InternMap(
+            Array.from(hourly, ([date, hours]) => [
+              date,
+              hours.map((h) => ({
+                ...h,
+                ...convertMetricHourlyToImperialMeasurement(h),
+              })),
+            ]),
+          ),
           daily.map((d) => {
             return {
               ...d,

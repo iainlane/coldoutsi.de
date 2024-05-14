@@ -123,7 +123,9 @@ describe("met.no client happy paths", () => {
     expect(weather.current.temp.temperature).toBe(44.6); // 7.0°C  = 44.6°F
     expect(weather.current.wind.speed).toBe(4.47388); // 2.0 m/s = 4.47388 mph
 
-    expect(weather.hourly[0]?.temp.temperature).toBe(44.4);
+    const day = new Date("2024-03-11T00:00:00Z");
+
+    expect(weather.hourly.get(day)?.[0]?.temp.temperature).toBe(44.4);
     expect(weather.daily[0]?.temp.max.temperature).toBe(59);
 
     expect(kvStore.size).toBe(1);
@@ -202,7 +204,16 @@ describe("met.no client happy paths", () => {
 
     const weather = await client.getWeather("metric", greenwich);
 
-    expect(weather.hourly).toHaveLength(48);
+    expect(Array.from(weather.hourly.entries())).toEqual([
+      [
+        new Date("2024-03-11T00:00:00Z"),
+        new Array(24).fill(expect.any(Object)),
+      ],
+      [
+        new Date("2024-03-12T00:00:00Z"),
+        new Array(24).fill(expect.any(Object)),
+      ],
+    ]);
     expect(weather.daily).toHaveLength(7);
   });
 });
