@@ -2,7 +2,7 @@ FROM ghcr.io/iainlane/dotfiles-rust-tools:git-24a7c0cfa3e9b909f954a85dd0b4163f60
 
 FROM public.ecr.aws/aws-cli/aws-cli:2.15.50 AS aws-cli
 
-FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:1-20-bookworm
+FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:1-22-bookworm
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends default-jdk \
