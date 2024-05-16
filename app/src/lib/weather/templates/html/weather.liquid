@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>coldoutsi.de - {{ location.name }}</title>
-    <link rel="Stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
     <p>Weather report: {{ location.label }}</p>
@@ -14,15 +14,20 @@
     {% for day in hourly %}
       {% assign date = day[0] -%}
       {% assign hours = day[1] -%}
-      <h3>{{ date | date: "%Y-%m-%d" }}</h3>
-      {% for hour in hours %}
-        {% render './measurement', measurement: hour, date: hour.time %}
-      {% endfor %}
+      <div class="grid hourly-grid">
+        <h3>{{ date | date: "%Y-%m-%d" }}</h3>
+        {% for hour in hours %}
+          {% render './measurement', measurement: hour, date: hour.time %}
+        {% endfor %}
+      </div>
     {% endfor %}
 
     <h2>Daily Forecast</h2>
     {% for day in daily %}
-      {% render './measurement_daily', measurement: day, date: day.time | date: "%Y-%m-%d" %}
+      <div class="grid daily-grid">
+        <h3>{{ day.time | date: "%Y-%m-%d" }}</h3>
+        {% render './measurement_daily', measurement: day %}
+      </div>
     {% endfor %}
   </body>
 </html>

@@ -1,13 +1,11 @@
 {% assign feels_like = measurement.temp | feels_like: measurement.humidity, measurement.wind.speed -%}
 
 <div>
-<p>{{ date | date: "%H:%M" }}</p>
-<div style="font-family: monospace; white-space: pre;">{{ measurement.weather[0].art.html }}</div>
-<pre>
-🌡️ {{ measurement.temp.temperature }}{% if measurement.temp.temperature != feels_like %}({{ feels_like }}){% endif %}{{ measurement.temp.unit }}
+    <p>{{ date | date: "%H:%M" }}</p>
+    <div style="font-family: monospace; white-space: pre;">{{ measurement.weather[0].art.html }}</div>
+    <pre>🌡️ {{ measurement.temp.temperature }}{% if measurement.temp.temperature != feels_like %}({{ feels_like }}){% endif %}{{ measurement.temp.unit }}
 🌬️ {{ measurement.wind }}
 🏋️ {{ measurement.pressure }} hPa
 🌫️ {{ measurement.humidity }}%
-☁️ {{ measurement.clouds }}%
-</pre>
+☁️ {{ measurement.clouds }}%</pre>
 </div>

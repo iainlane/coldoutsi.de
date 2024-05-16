@@ -94,13 +94,13 @@ const BeaufortScale: { [key in BeaufortScaleTypes]: BeaufortScale } = {
     name: "Light Breeze",
     description:
       "Wind felt on face; leaves rustle; ordinary vanes moved by wind",
-    colour: "greenBright",
+    colour: "greenbright",
   },
   [BeaufortScaleTypes.GentleBreeze]: {
     name: "Gentle Breeze",
     description:
       "Leaves and small twigs in constant motion; light flags extended",
-    colour: "greenBright",
+    colour: "greenbright",
   },
   [BeaufortScaleTypes.ModerateBreeze]: {
     name: "Moderate Breeze",
@@ -111,41 +111,41 @@ const BeaufortScale: { [key in BeaufortScaleTypes]: BeaufortScale } = {
     name: "Fresh Breeze",
     description:
       "Small trees in leaf begin to sway; crested wavelets form on inland waters",
-    colour: "yellowBright",
+    colour: "yellowbright",
   },
   [BeaufortScaleTypes.StrongBreeze]: {
     name: "Strong Breeze",
     description:
       "Large branches in motion; whistling heard in telegraph wires; umbrellas used with difficulty",
-    colour: "yellowBright",
+    colour: "yellowbright",
   },
   [BeaufortScaleTypes.HighWind]: {
     name: "High Wind",
     description:
       "Whole trees in motion; inconvenience felt when walking against the wind",
-    colour: "yellowBright",
+    colour: "yellowbright",
   },
   [BeaufortScaleTypes.Gale]: {
     name: "Gale",
     description: "Twigs broken from trees; generally impedes progress",
-    colour: "yellowBright",
+    colour: "yellowbright",
   },
   [BeaufortScaleTypes.StrongGale]: {
     name: "Strong Gale",
     description:
       "Slight structural damage occurs (chimney pots and slates removed)",
-    colour: "redBright",
+    colour: "redbright",
   },
   [BeaufortScaleTypes.Storm]: {
     name: "Storm",
     description:
       "Seldom experienced inland; trees uprooted; considerable structural damage occurs",
-    colour: "redBright",
+    colour: "redbright",
   },
   [BeaufortScaleTypes.ViolentStorm]: {
     name: "Violent Storm",
     description: "Very rarely experienced; accompanied by widespread damage",
-    colour: "redBright",
+    colour: "redbright",
   },
   [BeaufortScaleTypes.Hurricane]: {
     name: "Hurricane",
