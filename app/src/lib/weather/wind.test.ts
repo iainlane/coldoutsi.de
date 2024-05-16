@@ -55,7 +55,7 @@ describe("Wind Speed Conversion", () => {
   it("WindSpeedMilesPerHour HTMLString (rounded)", () => {
     const speedMPH = new WindSpeedMilesPerHour(22.3694, 22.3695, direction);
     expect(speedMPH.HTMLString).toBe(
-      '<span class="yellowBright">22.37</span>–<span class="yellowBright">22.37</span> mph ↑',
+      '<span class="yellowbright">22.37</span>–<span class="yellowbright">22.37</span> mph ↑',
     );
   });
 

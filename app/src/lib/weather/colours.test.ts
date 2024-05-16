@@ -22,9 +22,9 @@ describe("Colour Formatter", () => {
 
   it("formats using formatMany", () => {
     const artTemplates = formatMany(
-      ({ grey, yellowBright }: RenderColours) => ({
+      ({ grey, yellowbright }: RenderColours) => ({
         goodbye: grey("goodbye"),
-        hello: yellowBright("hello"),
+        hello: yellowbright("hello"),
       }),
     );
 
@@ -34,7 +34,7 @@ describe("Colour Formatter", () => {
     });
 
     expect(artTemplates.hello).toEqual({
-      html: '<span class="yellowBright">hello</span>',
+      html: '<span class="yellowbright">hello</span>',
       ansi: chalk.yellowBright("hello"),
     });
   });

@@ -14,18 +14,18 @@ interface ColourMappings {
 
 const colourMappings = {
   green: { ansi: chalk.green, html: cssString("green") },
-  greenBright: { ansi: chalk.greenBright, html: cssString("greenBright") },
+  greenbright: { ansi: chalk.greenBright, html: cssString("greenbright") },
   yellow: { ansi: chalk.yellow, html: cssString("yellow") },
-  yellowBright: { ansi: chalk.yellowBright, html: cssString("yellowBright") },
-  redBright: { ansi: chalk.redBright, html: cssString("redBright") },
+  yellowbright: { ansi: chalk.yellowBright, html: cssString("yellowbright") },
+  redbright: { ansi: chalk.redBright, html: cssString("redbright") },
   red: { ansi: chalk.red, html: cssString("red") },
   white: { ansi: chalk.white, html: cssString("white") },
   grey: { ansi: chalk.ansi256(251), html: cssString("grey") },
-  lightGrey: { ansi: chalk.hex("#C0C0C0"), html: cssString("lightgrey") },
-  darkGrey: { ansi: chalk.bold.hex("#808080"), html: cssString("darkgrey") },
+  lightgrey: { ansi: chalk.hex("#C0C0C0"), html: cssString("lightgrey") },
+  darkgrey: { ansi: chalk.bold.hex("#808080"), html: cssString("darkgrey") },
   blue: { ansi: chalk.blue, html: cssString("blue") },
   lightBlue: { ansi: chalk.bold.hex("#ADD8E6"), html: cssString("lightblue") },
-  whiteBright: { ansi: chalk.whiteBright, html: cssString("whiteBright") },
+  whitebright: { ansi: chalk.whiteBright, html: cssString("whitebright") },
   black: { ansi: chalk.black, html: cssString("black") },
 } satisfies ColourMappings;
 

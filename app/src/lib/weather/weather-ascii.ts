@@ -9,13 +9,13 @@ import { formatMany, RenderColours } from "./colours";
 export const artTemplates = formatMany(
   ({
     blue,
-    darkGrey,
+    darkgrey,
     grey,
     lightBlue,
-    lightGrey,
-    whiteBright,
+    lightgrey,
+    whitebright,
     yellow,
-    yellowBright,
+    yellowbright,
   }: RenderColours) => ({
     iconUnknown: dedent`
     ${grey("    .-.      ")}
@@ -25,130 +25,130 @@ export const artTemplates = formatMany(
     ${grey("      •      ")}`,
 
     iconSunny: dedent`
-    ${yellowBright("    \\ . /    ")}
-    ${yellowBright("   - .-. -   ")}
-    ${yellowBright("  ― (   ) ―  ")}
-    ${yellowBright("   . `-’ .   ")}
-    ${yellowBright("    / ' \\    ")}`,
+    ${yellowbright("    \\ . /    ")}
+    ${yellowbright("   - .-. -   ")}
+    ${yellowbright("  ― (   ) ―  ")}
+    ${yellowbright("   . `-’ .   ")}
+    ${yellowbright("    / ' \\    ")}`,
 
     iconMoon: dedent`
-    ${lightGrey("   ..-..  ")}
-    ${lightGrey(" .` o  .`.")}
-    ${lightGrey(" o~.   O )")}
-    ${lightGrey(" `..o...'/")}
-    ${lightGrey("   `'-''  ")}`,
+    ${lightgrey("   ..-..  ")}
+    ${lightgrey(" .` o  .`.")}
+    ${lightgrey(" o~.   O )")}
+    ${lightgrey(" `..o...'/")}
+    ${lightgrey("   `'-''  ")}`,
 
     iconPartlyCloudy: dedent`
-    ${yellowBright("  \\__/")}      ${lightGrey(" ")}
-    ${yellowBright("_ /  ")} ${lightGrey(".-.    ")}
-    ${yellowBright("  \\_")} ${lightGrey("(   ).  ")}
-    ${yellowBright("  /")} ${lightGrey("(___(__) ")}
-    ${lightGrey("             ")}`,
+    ${yellowbright("  \\__/")}      ${lightgrey(" ")}
+    ${yellowbright("_ /  ")} ${lightgrey(".-.    ")}
+    ${yellowbright("  \\_")} ${lightgrey("(   ).  ")}
+    ${yellowbright("  /")} ${lightgrey("(___(__) ")}
+    ${lightgrey("             ")}`,
 
     iconCloudy: dedent`
-    ${lightGrey("             ")}
-    ${lightGrey("     .--.    ")}
-    ${lightGrey("  .-(    ).  ")}
-    ${lightGrey(" (___.__)__) ")}
-    ${lightGrey("             ")}`,
+    ${lightgrey("             ")}
+    ${lightgrey("     .--.    ")}
+    ${lightgrey("  .-(    ).  ")}
+    ${lightgrey(" (___.__)__) ")}
+    ${lightgrey("             ")}`,
 
     iconVeryCloudy: dedent`
-    ${darkGrey("             ")}
-    ${darkGrey("     .--.    ")}
-    ${darkGrey("  .-(    ).  ")}
-    ${darkGrey(" (___.__)__) ")}
-    ${darkGrey("             ")}`,
+    ${darkgrey("             ")}
+    ${darkgrey("     .--.    ")}
+    ${darkgrey("  .-(    ).  ")}
+    ${darkgrey(" (___.__)__) ")}
+    ${darkgrey("             ")}`,
 
     iconLightShowers: dedent`
-  ${yellowBright(' _`/""')} ${lightGrey(".-.    ")}
-  ${yellowBright("  ,\\_")} ${lightGrey("(   ).  ")}
-  ${yellowBright("   /")} ${lightGrey("(___(__) ")}
+  ${yellowbright(' _`/""')} ${lightgrey(".-.    ")}
+  ${yellowbright("  ,\\_")} ${lightgrey("(   ).  ")}
+  ${yellowbright("   /")} ${lightgrey("(___(__) ")}
   ${lightBlue("      ‘ ‘ ‘ ‘ ")}
   ${lightBlue("     ‘ ‘ ‘ ‘  ")}`,
 
     iconHeavyShowers: dedent`
-  ${yellowBright(' _`/""')} ${darkGrey(".-.    ")}
-  ${yellowBright("  ,\\_")} ${darkGrey("(   ).  ")}
-  ${yellowBright("   /")} ${darkGrey("(___(__) ")}
+  ${yellowbright(' _`/""')} ${darkgrey(".-.    ")}
+  ${yellowbright("  ,\\_")} ${darkgrey("(   ).  ")}
+  ${yellowbright("   /")} ${darkgrey("(___(__) ")}
   ${blue("     ‚‘‚‘‚‘‚‘  ")}
   ${blue("     ‚’‚’‚’‚’  ")}`,
 
     iconLightSnowShowers: dedent`
-  ${yellowBright(' _`/""')} ${lightGrey(".-.    ")}
-  ${yellowBright("  ,\\_")} ${lightGrey("(   ).  ")}
-  ${yellowBright("   /")} ${lightGrey("(___(__) ")}
-  ${whiteBright("     *  *  * ")}
-  ${whiteBright("    *  *  *  ")}`,
+  ${yellowbright(' _`/""')} ${lightgrey(".-.    ")}
+  ${yellowbright("  ,\\_")} ${lightgrey("(   ).  ")}
+  ${yellowbright("   /")} ${lightgrey("(___(__) ")}
+  ${whitebright("     *  *  * ")}
+  ${whitebright("    *  *  *  ")}`,
 
     iconHeavySnowShowers: dedent`
-  ${yellowBright(' _`/""')} ${darkGrey(".-.    ")}
-  ${yellowBright("  ,\\_")} ${darkGrey("(   ).  ")}
-  ${yellowBright("   /")} ${darkGrey("(___(__) ")}
-  ${whiteBright("     * * * *  ")}
-  ${whiteBright("    * * * *   ")}`,
+  ${yellowbright(' _`/""')} ${darkgrey(".-.    ")}
+  ${yellowbright("  ,\\_")} ${darkgrey("(   ).  ")}
+  ${yellowbright("   /")} ${darkgrey("(___(__) ")}
+  ${whitebright("     * * * *  ")}
+  ${whitebright("    * * * *   ")}`,
 
     iconLightSleetShowers: dedent`
-  ${yellowBright(' _`/""')} ${lightGrey(".-.    ")}
-  ${yellowBright("  ,\\_")} ${lightGrey("(   ).  ")}
-  ${yellowBright("   /")} ${lightGrey("(___(__) ")}
-  ${lightBlue("     ‘ ")}${whiteBright("*")} ${lightBlue("‘ ")}${whiteBright("*")} ${lightBlue(" ")}
-  ${whiteBright("     *")} ${lightBlue("‘ ")}${whiteBright("*")} ${lightBlue("‘  ")}`,
+  ${yellowbright(' _`/""')} ${lightgrey(".-.    ")}
+  ${yellowbright("  ,\\_")} ${lightgrey("(   ).  ")}
+  ${yellowbright("   /")} ${lightgrey("(___(__) ")}
+  ${lightBlue("     ‘ ")}${whitebright("*")} ${lightBlue("‘ ")}${whitebright("*")} ${lightBlue(" ")}
+  ${whitebright("     *")} ${lightBlue("‘ ")}${whitebright("*")} ${lightBlue("‘  ")}`,
 
     iconThunderyShowers: dedent`
-  ${yellowBright(' _`/""')} ${lightGrey(".-.    ")}
-  ${yellowBright("  ,\\_")} ${lightGrey("(   ).  ")}
-  ${yellowBright("   /")} ${lightGrey("(___(__) ")}
-  ${yellowBright("     ⚡")}${lightBlue("‘‘")}${yellow("⚡")}${lightBlue("‘‘")}
+  ${yellowbright(' _`/""')} ${lightgrey(".-.    ")}
+  ${yellowbright("  ,\\_")} ${lightgrey("(   ).  ")}
+  ${yellowbright("   /")} ${lightgrey("(___(__) ")}
+  ${yellowbright("     ⚡")}${lightBlue("‘‘")}${yellow("⚡")}${lightBlue("‘‘")}
   ${lightBlue("     ‘ ‘ ‘ ‘  ")}`,
 
     iconThunderyHeavyRain: dedent`
-  ${darkGrey("     .-.     ")}
-  ${darkGrey("    (   ).   ")}
-  ${darkGrey("   (___(__)  ")}
+  ${darkgrey("     .-.     ")}
+  ${darkgrey("    (   ).   ")}
+  ${darkgrey("   (___(__)  ")}
   ${blue("  ‚‘")}${yellow("⚡")}${blue("‘‚")}${yellow("⚡")}${blue("‚‘")}
   ${blue("  ‚’‚’")}${yellow("⚡")}${blue("’‚’")}`,
 
     iconThunderySnowShowers: dedent`
-  ${yellowBright('  _`/""')} ${lightGrey(".-.")}
-  ${yellowBright("  ,\\_")} ${lightGrey("(   ).")}
-  ${yellowBright("   /")} ${lightGrey("(___(__)")}
-  ${whiteBright("     *")} ${yellow("⚡")} ${whiteBright("*")} ${yellow("⚡")} ${whiteBright("* ")}
-  ${whiteBright("    *  *  *")}`,
+  ${yellowbright('  _`/""')} ${lightgrey(".-.")}
+  ${yellowbright("  ,\\_")} ${lightgrey("(   ).")}
+  ${yellowbright("   /")} ${lightgrey("(___(__)")}
+  ${whitebright("     *")} ${yellow("⚡")} ${whitebright("*")} ${yellow("⚡")} ${whitebright("* ")}
+  ${whitebright("    *  *  *")}`,
 
     iconLightRain: dedent`
-  ${lightGrey("     .-.   ")}
-  ${lightGrey("    (   ). ")}
-  ${lightGrey("   (___(__)")}
+  ${lightgrey("     .-.   ")}
+  ${lightgrey("    (   ). ")}
+  ${lightgrey("   (___(__)")}
   ${lightBlue("    ‘ ‘ ‘ ‘")}
   ${lightBlue("   ‘ ‘ ‘ ‘ ")}`,
 
     iconHeavyRain: dedent`
-  ${darkGrey("     .-.     ")}
-  ${darkGrey("    (   ).   ")}
-  ${darkGrey("   (___(__)  ")}
+  ${darkgrey("     .-.     ")}
+  ${darkgrey("    (   ).   ")}
+  ${darkgrey("   (___(__)  ")}
   ${blue("   ‚‘‚‘‚‘‚‘   ")}
   ${blue("   ‚’‚’‚’‚’   ")}`,
 
     iconLightSnow: dedent`
-  ${lightGrey("     .-.     ")}
-  ${lightGrey("    (   ).   ")}
-  ${lightGrey("   (___(__)  ")}
-  ${whiteBright("    *  *  *  ")}
-  ${whiteBright("   *  *  *   ")}`,
+  ${lightgrey("     .-.     ")}
+  ${lightgrey("    (   ).   ")}
+  ${lightgrey("   (___(__)  ")}
+  ${whitebright("    *  *  *  ")}
+  ${whitebright("   *  *  *   ")}`,
 
     iconHeavySnow: dedent`
-  ${darkGrey("     .-.     ")}
-  ${darkGrey("    (   ).   ")}
-  ${darkGrey("   (___(__)  ")}
-  ${whiteBright("    * * * *   ")}
-  ${whiteBright("   * * * *    ")}`,
+  ${darkgrey("     .-.     ")}
+  ${darkgrey("    (   ).   ")}
+  ${darkgrey("   (___(__)  ")}
+  ${whitebright("    * * * *   ")}
+  ${whitebright("   * * * *    ")}`,
 
     iconLightSleet: dedent`
-  ${lightGrey("     .-.     ")}
-  ${lightGrey("    (   ).   ")}
-  ${lightGrey("   (___(__)  ")}
-  ${lightBlue("   ‘ ")}${whiteBright("*")} ${lightBlue("‘ ")}${whiteBright("*")} ${lightBlue("  ")}
-  ${whiteBright("   *")} ${lightBlue("‘ ")}${whiteBright("*")} ${lightBlue("‘   ")}`,
+  ${lightgrey("     .-.     ")}
+  ${lightgrey("    (   ).   ")}
+  ${lightgrey("   (___(__)  ")}
+  ${lightBlue("   ‘ ")}${whitebright("*")} ${lightBlue("‘ ")}${whitebright("*")} ${lightBlue("  ")}
+  ${whitebright("   *")} ${lightBlue("‘ ")}${whitebright("*")} ${lightBlue("‘   ")}`,
 
     iconFog: dedent`
   ${grey("             ")}
