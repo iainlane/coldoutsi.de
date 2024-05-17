@@ -25,12 +25,17 @@ describe("Wind Speed Conversion", () => {
 
   it("WindSpeedMilesPerHour toString with no gusts", () => {
     const speedMPH = new WindSpeedMilesPerHour(22.3694, undefined, direction);
-    expect(speedMPH.toString()).toBe("22.3694 mph ↑");
+    expect(speedMPH.toString()).toBe("22.37 mph ↑");
   });
 
-  it("WindSpeedMilesPerHour toString", () => {
+  it("WindSpeedMilesPerHour toString rounding to same number", () => {
     const speedMPH = new WindSpeedMilesPerHour(22.3694, 22.3695, direction);
-    expect(speedMPH.toString()).toBe("22.3694–22.3695 mph ↑");
+    expect(speedMPH.toString()).toBe("22.37 mph ↑");
+  });
+
+  it("WindSpeedMilesPerHour toString with gusts", () => {
+    const speedMPH = new WindSpeedMilesPerHour(22.3694, 22.3794, direction);
+    expect(speedMPH.toString()).toBe("22.37–22.38 mph ↑");
   });
 
   it("WindSpeedMetresPerSecond implicit toString", () => {
@@ -40,22 +45,22 @@ describe("Wind Speed Conversion", () => {
   });
 
   it("WindSpeedMilesPerHour implicit toString", () => {
-    const speedMPH = new WindSpeedMilesPerHour(22.3694, 22.3695, direction);
+    const speedMPH = new WindSpeedMilesPerHour(22.3694, 22.3795, direction);
     const message = `Wind speed is ${speedMPH}`; // Implicit toString call
-    expect(message).toBe("Wind speed is 22.3694–22.3695 mph ↑");
+    expect(message).toBe("Wind speed is 22.37–22.38 mph ↑");
   });
 
   it("WindSpeedMilesPerHour ANSIString (rounded)", () => {
-    const speedMPH = new WindSpeedMilesPerHour(22.3694, 22.3695, direction);
+    const speedMPH = new WindSpeedMilesPerHour(22.3694, 22.3795, direction);
     expect(speedMPH.ANSIString).toBe(
-      "\x1b[93m22.37\x1b[39m–\x1b[93m22.37\x1b[39m mph ↑",
+      "\x1b[93m22.37\x1b[39m–\x1b[93m22.38\x1b[39m mph ↑",
     );
   });
 
   it("WindSpeedMilesPerHour HTMLString (rounded)", () => {
-    const speedMPH = new WindSpeedMilesPerHour(22.3694, 22.3695, direction);
+    const speedMPH = new WindSpeedMilesPerHour(22.3694, 22.3795, direction);
     expect(speedMPH.HTMLString).toBe(
-      '<span class="yellowbright">22.37</span>–<span class="yellowbright">22.37</span> mph ↑',
+      '<span class="yellowbright">22.37</span>–<span class="yellowbright">22.38</span> mph ↑',
     );
   });
 
