@@ -75,7 +75,7 @@ async function geoLocate(
   ip: string,
   logger: Logger,
 ): Promise<PartialGeoLocateResponse> {
-  if (ip === "127.0.0.1") {
+  if (ip === "127.0.0.1" || ip == "::1") {
     // If we're coming from localhost, return a default location (Royal Observatory,
     // Greenwich, London, UK).
     const defaultLatLon = {
