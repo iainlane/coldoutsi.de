@@ -43,7 +43,7 @@
     "@aws-sdk/types": "^3.577.0",
     "@smithy/types": "^3.0.0",
     "@tsconfig/node20": "^20.1.4",
-    "@types/aws-lambda": "^8.10.137",
+    "@types/aws-lambda": "^8.10.138",
     "@types/chai": "^4.3.16",
     "@types/d3-array": "^3.2.1",
     "@types/lambda-tester": "^4.0.3",
