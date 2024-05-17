@@ -17,9 +17,12 @@
           window.location.pathname +
           (window.location.pathname.endsWith("/") ? "" : "/");
 
+        const search = window.location.search;
+        const hash = window.location.hash;
+
         if (!navigator.geolocation) {
           // If Geolocation API is not supported, redirect
-          window.location.replace(`${pathWithSlash}:unknown`);
+          window.location.replace(`${pathWithSlash}:unknown${search}${hash}`);
           return;
         }
 
@@ -28,7 +31,9 @@
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
 
-            window.location.replace(`${pathWithSlash}${latitude}/${longitude}`);
+            window.location.replace(
+              `${pathWithSlash}${latitude}/${longitude}${search}${hash}`,
+            );
           },
 
           function (error) {
@@ -36,7 +41,7 @@
             // unknown handler, which will perform a lookup based on IP address
             // (less accurate).
             console.error("Geolocation error:", error);
-            window.location.replace(`${pathWithSlash}:unknown`);
+            window.location.replace(`${pathWithSlash}:unknown${search}${hash}`);
           },
         );
       }

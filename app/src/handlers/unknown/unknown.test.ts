@@ -64,8 +64,9 @@ describe("unknown handler", () => {
             sourceIp: "1.1.1.1",
           },
         },
+        rawPath: prefix,
+        rawQueryString: "",
       });
-      mockEvent.rawPath = prefix;
 
       const mockContext = mock<LoggerContext & GeoLocateContext>();
 
@@ -77,4 +78,34 @@ describe("unknown handler", () => {
       });
     },
   );
+
+  it("preserves query parameters", async () => {
+    mockAxios.onGet().reply(OK, [
+      {
+        ip: "1.1.1.1",
+        latitude: "51.1",
+        longitude: "-96.1",
+        city: "Sample City",
+      },
+    ]);
+
+    const mockEvent = mock<APIGatewayProxyEventV2 & Event>({
+      requestContext: {
+        http: {
+          sourceIp: "1.1.1.1",
+        },
+      },
+      rawPath: "/metno/:unknown",
+      rawQueryString: "foo=bar",
+    });
+
+    const mockContext = mock<LoggerContext & GeoLocateContext>();
+
+    await expect(unknownHandler(mockEvent, mockContext)).resolves.toEqual({
+      statusCode: TEMPORARY_REDIRECT,
+      headers: expect.objectContaining({
+        location: "/metno/51.1/-96.1?foo=bar",
+      }),
+    });
+  });
 });

@@ -33,10 +33,12 @@ function handler(
   // And put it back together
   const rawPath = rawPathParts.join("/");
 
+  const queryString = event.rawQueryString ? `?${event.rawQueryString}` : "";
+
   return Promise.resolve({
     statusCode: TEMPORARY_REDIRECT,
     headers: {
-      location: `${rawPath}/${latitude}/${longitude}`,
+      location: `${rawPath}/${latitude}/${longitude}${queryString}`,
     },
   });
 }
