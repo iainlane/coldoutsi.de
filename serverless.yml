@@ -114,6 +114,9 @@ custom:
         import { createRequire as topLevelCreateRequire } from 'module';
         const require = topLevelCreateRequire(import.meta.url);
 
+  serverless-offline:
+    host: "127.0.0.1"
+
 functions:
   # Always make sure the matched paths are distinct. Put more specific paths
   # first.

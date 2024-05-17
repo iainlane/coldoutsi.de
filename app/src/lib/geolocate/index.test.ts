@@ -173,20 +173,23 @@ describe("geoLocator", () => {
     );
   });
 
-  it("should return default location if localhost", async () => {
-    ddbMock.on(GetCommand).resolvesOnce({});
+  it.each<{ ip: string }>([{ ip: "127.0.0.1" }, { ip: "::1" }])(
+    "should return default location if localhost ($ip)",
+    async (ip) => {
+      ddbMock.on(GetCommand).resolvesOnce({});
 
-    const geoData = await geoLocator({ ip: "127.0.0.1" }, mockLogger);
+      const geoData = await geoLocator(ip, mockLogger);
 
-    expect(geoData).toEqual({
-      ip: "127.0.0.1",
-      location: {
-        latitude: 51.4779,
-        longitude: 0,
-      },
-    });
+      expect(geoData).toEqual({
+        ...ip,
+        location: {
+          latitude: 51.4779,
+          longitude: 0,
+        },
+      });
 
-    // ... and this one was cached
-    expect(ddbMock.commandCalls(PutCommand)).toHaveLength(1);
-  });
+      // ... and this one was cached
+      expect(ddbMock.commandCalls(PutCommand)).toHaveLength(1);
+    },
+  );
 });
