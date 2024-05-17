@@ -201,8 +201,12 @@ abstract class SingleWindSpeed {
     }
   }
 
-  private get toTwoDP(): number {
+  public get toTwoDP(): number {
     return toTwoDP(this.speed);
+  }
+
+  toString(): string {
+    return this.toTwoDP.toString();
   }
 
   get ANSIString(): string {
@@ -245,15 +249,17 @@ abstract class BaseWindSpeed {
 
   toString(): string {
     const gusts =
-      this.gusts === undefined || this.gusts === this.speed
+      this.gusts === undefined ||
+      this.swsGusts?.toTwoDP === this.swsSpeed.toTwoDP
         ? ""
-        : `–${this.gusts}`;
-    return `${this.speed}${gusts} ${this.unit} ${WindDirection[this.direction]}`;
+        : `–${this.swsGusts}`;
+    return `${this.swsSpeed}${gusts} ${this.unit} ${WindDirection[this.direction]}`;
   }
 
   get ANSIString(): string {
     const gusts =
-      this.swsGusts === undefined || this.gusts === this.speed
+      this.swsGusts === undefined ||
+      this.swsGusts.toTwoDP === this.swsSpeed.toTwoDP
         ? ""
         : `–${this.swsGusts.ANSIString}`;
     return `${this.swsSpeed.ANSIString}${gusts} ${this.unit} ${WindDirection[this.direction]}`;
@@ -261,7 +267,8 @@ abstract class BaseWindSpeed {
 
   get HTMLString(): string {
     const gusts =
-      this.swsGusts === undefined || this.gusts === this.speed
+      this.swsGusts === undefined ||
+      this.swsGusts.toTwoDP === this.swsSpeed.toTwoDP
         ? ""
         : `–${this.swsGusts.HTMLString}`;
     return `${this.swsSpeed.HTMLString}${gusts} ${this.unit} ${WindDirection[this.direction]}`;

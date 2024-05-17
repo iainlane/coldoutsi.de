@@ -1,11 +1,11 @@
 {%  assign feels_like_min = measurement.temp.min | feels_like: measurement.humidity, measurement.wind.speed -%}
 {%  assign feels_like_max = measurement.temp.max | feels_like: measurement.humidity, measurement.wind.speed -%}
 <table>
-    <div style="font-family: monospace; white-space: pre;">{{ measurement.weather[0].art.html }}</div>
-    <pre>🌡️{{ measurement.temp.min }}-{{ measurement.temp.max }}
+    <div class="pre">{{ measurement.weather[0].art.html }}</div>
+    <div class="pre">🌡️ {{ measurement.temp.min }}-{{ measurement.temp.max }}
 😅 {{ feels_like_min }}{{ measurement.temp.min.unit }}-{{ feels_like_max }}{{ measurement.temp.max.unit }}
-🌬️ {{ measurement.wind }}
+🌬️ {{ measurement.wind.HTMLString }}
 🏋️ {{ measurement.pressure }} hPa
 🌫️ {{ measurement.humidity }}%
-☁️ {{ measurement.clouds }}%</pre>
-</div>
+☁️ {{ measurement.clouds }}%</div>
+</pre>

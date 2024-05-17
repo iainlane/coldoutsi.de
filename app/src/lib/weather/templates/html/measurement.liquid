@@ -2,10 +2,10 @@
 
 <div>
     <p>{{ date | date: "%H:%M" }}</p>
-    <div style="font-family: monospace; white-space: pre;">{{ measurement.weather[0].art.html }}</div>
-    <pre>🌡️ {{ measurement.temp.temperature }}{% if measurement.temp.temperature != feels_like %}({{ feels_like }}){% endif %}{{ measurement.temp.unit }}
-🌬️ {{ measurement.wind }}
+    <div class="pre">{{ measurement.weather[0].art.html }}</div>
+    <div class="pre">🌡️ {{ measurement.temp.temperature }}{% if measurement.temp.temperature != feels_like %}({{ feels_like }}){% endif %}{{ measurement.temp.unit }}
+🌬️ {{ measurement.wind.HTMLString }}
 🏋️ {{ measurement.pressure }} hPa
 🌫️ {{ measurement.humidity }}%
-☁️ {{ measurement.clouds }}%</pre>
+☁️ {{ measurement.clouds }}%</div>
 </div>
