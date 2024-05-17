@@ -44,10 +44,11 @@ function handler(
   // Redirect to `:unknown` (relative to the current page) if the client doesn't
   // accept HTML
   const rawPath = event.rawPath + (event.rawPath.endsWith("/") ? "" : "/");
+  const queryString = event.rawQueryString ? `?${event.rawQueryString}` : "";
   return Promise.resolve({
     statusCode: 302,
     headers: {
-      Location: `${rawPath}:unknown`,
+      Location: `${rawPath}:unknown${queryString}`,
     },
     body: "",
   });
