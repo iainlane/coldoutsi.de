@@ -9,7 +9,8 @@
     "source=${localWorkspaceFolderBasename}-node_modules-nominatim,target=${containerWorkspaceFolder}/gen/nominatim/node_modules,type=volume",
     "source=${localWorkspaceFolderBasename}-node_modules-met.no,target=${containerWorkspaceFolder}/gen/met.no/node_modules,type=volume",
     "source=${localWorkspaceFolderBasename}-node_modules-geojs,target=${containerWorkspaceFolder}/gen/geojs/node_modules,type=volume",
-    "source=${localWorkspaceFolderBasename}-yarn_cache,target=/home/node/.cache/yarn,type=volume"
+    "source=${localWorkspaceFolderBasename}-yarn_cache,target=/home/node/.cache/yarn,type=volume",
+    "source=${localWorkspaceFolderBasename}-node_cache,target=/home/node/.cache/node,type=volume"
   ],
 
   "containerUser": "node",
