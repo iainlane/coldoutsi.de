@@ -11,6 +11,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
 
+      - name: Enable corepack
+        run: |
+          corepack enable
+
       - name: Set up Node.js
         uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
         with:
@@ -19,7 +23,7 @@ jobs:
           cache-dependency-path: "./yarn.lock"
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
 
       - name: Build generated libraries
         uses: nick-fields/retry@7152eba30c6575329ac0576536151aca5a72780e # v3.0.0

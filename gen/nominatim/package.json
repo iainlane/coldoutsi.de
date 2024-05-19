@@ -22,7 +22,7 @@
   "scripts": {
     "build": "tsc && tsc -p tsconfig.esm.json",
     "prepare": "npm run build",
-    "gen-if-needed": "if ! test -d ./dist; then yarn generate-openapi; else echo 'Not regenerating client: already exists.'; fi",
+    "gen-if-needed": "/bin/sh -c 'if ! test -d ./dist; then yarn generate-openapi; else echo \"Not regenerating client: already exists.\"; fi'",
     "generate-openapi": "openapi-generator-cli generate && yarn install && yarn build"
   },
   "dependencies": {

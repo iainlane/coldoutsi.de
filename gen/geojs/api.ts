@@ -124,7 +124,7 @@ export const GeoJSApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * Retrieves geolocation data for the provided comma-separated list of IP addresses or the requester\'s IP if no IP is provided.
          * @summary Get geo information for the requester\'s IP or the specified IP(s)
-         * @param {string} [ip] A comma-separated list of IP addresses to get geolocation data for. If omitted, the requester\&#39;s IP is used.
+         * @param {string} [ip] A separated list of IP addresses to get geolocation data for. If omitted, the requester\&#39;s IP is used.
          * @param {string} [callback] The name of the JSONP callback function.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -174,7 +174,7 @@ export const GeoJSApiFp = function(configuration?: Configuration) {
         /**
          * Retrieves geolocation data for the provided comma-separated list of IP addresses or the requester\'s IP if no IP is provided.
          * @summary Get geo information for the requester\'s IP or the specified IP(s)
-         * @param {string} [ip] A comma-separated list of IP addresses to get geolocation data for. If omitted, the requester\&#39;s IP is used.
+         * @param {string} [ip] A separated list of IP addresses to get geolocation data for. If omitted, the requester\&#39;s IP is used.
          * @param {string} [callback] The name of the JSONP callback function.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -198,7 +198,7 @@ export const GeoJSApiFactory = function (configuration?: Configuration, basePath
         /**
          * Retrieves geolocation data for the provided comma-separated list of IP addresses or the requester\'s IP if no IP is provided.
          * @summary Get geo information for the requester\'s IP or the specified IP(s)
-         * @param {string} [ip] A comma-separated list of IP addresses to get geolocation data for. If omitted, the requester\&#39;s IP is used.
+         * @param {string} [ip] A separated list of IP addresses to get geolocation data for. If omitted, the requester\&#39;s IP is used.
          * @param {string} [callback] The name of the JSONP callback function.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -218,7 +218,7 @@ export interface GeoJSApiInterface {
     /**
      * Retrieves geolocation data for the provided comma-separated list of IP addresses or the requester\'s IP if no IP is provided.
      * @summary Get geo information for the requester\'s IP or the specified IP(s)
-     * @param {string} [ip] A comma-separated list of IP addresses to get geolocation data for. If omitted, the requester\&#39;s IP is used.
+     * @param {string} [ip] A separated list of IP addresses to get geolocation data for. If omitted, the requester\&#39;s IP is used.
      * @param {string} [callback] The name of the JSONP callback function.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -238,7 +238,7 @@ export class GeoJSApi extends BaseAPI implements GeoJSApiInterface {
     /**
      * Retrieves geolocation data for the provided comma-separated list of IP addresses or the requester\'s IP if no IP is provided.
      * @summary Get geo information for the requester\'s IP or the specified IP(s)
-     * @param {string} [ip] A comma-separated list of IP addresses to get geolocation data for. If omitted, the requester\&#39;s IP is used.
+     * @param {string} [ip] A separated list of IP addresses to get geolocation data for. If omitted, the requester\&#39;s IP is used.
      * @param {string} [callback] The name of the JSONP callback function.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
