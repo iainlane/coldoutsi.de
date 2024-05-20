@@ -2681,10 +2681,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/js@npm:9.2.0, @eslint/js@npm:^9.2.0":
-  version: 9.2.0
-  resolution: "@eslint/js@npm:9.2.0"
-  checksum: 10c0/89632466d329d9dd68c6ec24290e407f0950ca8c4b7f3750b82457daa7f6233799ccbc956cd84231f9544efbefddd69833ee82658883ca673cfca9e4b8e0713a
+"@eslint/eslintrc@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@eslint/eslintrc@npm:3.1.0"
+  dependencies:
+    ajv: "npm:^6.12.4"
+    debug: "npm:^4.3.2"
+    espree: "npm:^10.0.1"
+    globals: "npm:^14.0.0"
+    ignore: "npm:^5.2.0"
+    import-fresh: "npm:^3.2.1"
+    js-yaml: "npm:^4.1.0"
+    minimatch: "npm:^3.1.2"
+    strip-json-comments: "npm:^3.1.1"
+  checksum: 10c0/5b7332ed781edcfc98caa8dedbbb843abfb9bda2e86538529c843473f580e40c69eb894410eddc6702f487e9ee8f8cfa8df83213d43a8fdb549f23ce06699167
+  languageName: node
+  linkType: hard
+
+"@eslint/js@npm:9.3.0, @eslint/js@npm:^9.3.0":
+  version: 9.3.0
+  resolution: "@eslint/js@npm:9.3.0"
+  checksum: 10c0/1550c68922eb17c3ce541d9ffbb687e656bc0d4e2fff2d9cb0a75101a9cdb6184b7af7378ccf46c6ca750b280d25d45cc5e7374a83a4ee89d404d3717502fd9d
   languageName: node
   linkType: hard
 
@@ -3040,10 +3057,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@humanwhocodes/retry@npm:^0.2.3":
-  version: 0.2.3
-  resolution: "@humanwhocodes/retry@npm:0.2.3"
-  checksum: 10c0/0913d89bb5cb1f0a049a6c068dee312d30920d5cce5a07588cd91fcb5453af52f2a9826d07d465066b92ad7bc0545e9f59384c414abe27745c79141c78a25099
+"@humanwhocodes/retry@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "@humanwhocodes/retry@npm:0.3.0"
+  checksum: 10c0/7111ec4e098b1a428459b4e3be5a5d2a13b02905f805a2468f4fa628d072f0de2da26a27d04f65ea2846f73ba51f4204661709f05bfccff645e3cedef8781bb6
   languageName: node
   linkType: hard
 
@@ -3723,7 +3740,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@serverless/utils@npm:^6.0.2, @serverless/utils@npm:^6.13.1, @serverless/utils@npm:^6.14.0, @serverless/utils@npm:^6.15.0":
+"@serverless/utils@npm:^6.0.2, @serverless/utils@npm:^6.13.1, @serverless/utils@npm:^6.14.0":
   version: 6.15.0
   resolution: "@serverless/utils@npm:6.15.0"
   dependencies:
@@ -7500,17 +7517,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^9.2.0":
-  version: 9.2.0
-  resolution: "eslint@npm:9.2.0"
+"eslint@npm:^9.3.0":
+  version: 9.3.0
+  resolution: "eslint@npm:9.3.0"
   dependencies:
     "@eslint-community/eslint-utils": "npm:^4.2.0"
     "@eslint-community/regexpp": "npm:^4.6.1"
-    "@eslint/eslintrc": "npm:^3.0.2"
-    "@eslint/js": "npm:9.2.0"
+    "@eslint/eslintrc": "npm:^3.1.0"
+    "@eslint/js": "npm:9.3.0"
     "@humanwhocodes/config-array": "npm:^0.13.0"
     "@humanwhocodes/module-importer": "npm:^1.0.1"
-    "@humanwhocodes/retry": "npm:^0.2.3"
+    "@humanwhocodes/retry": "npm:^0.3.0"
     "@nodelib/fs.walk": "npm:^1.2.8"
     ajv: "npm:^6.12.4"
     chalk: "npm:^4.0.0"
@@ -7540,7 +7557,7 @@ __metadata:
     text-table: "npm:^0.2.0"
   bin:
     eslint: bin/eslint.js
-  checksum: 10c0/eab3265100a359a486e40e1d9d4d3ecff936d2f4d952f4ab107d404e0684fffbe186ecd0fb41791af5bcb13570a27032ddf9a2e628927ed33473f64255b0037b
+  checksum: 10c0/d0cf1923408ce720f2fa0dde39094dbee6b03a71d5e6466402bbeb29c08a618713f7a1e8cfc4b4d50dbe3750ce68adf614a0e973dea6fa36ddc428dfb89d4cac
   languageName: node
   linkType: hard
 
@@ -11496,14 +11513,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
-    "@eslint/js": "npm:^9.2.0"
+    "@eslint/js": "npm:^9.3.0"
     "@jest/globals": "npm:^29.7.0"
     "@serverless/utils": "npm:^6.0.2"
     "@types/node": "npm:^20.12.12"
     aws-sdk: "npm:^2.1622.0"
     concurrently: "npm:^8.2.2"
     esbuild: "npm:^0.21.3"
-    eslint: "npm:^9.2.0"
+    eslint: "npm:^9.3.0"
     eslint-config-prettier: "npm:^9.1.0"
     eslint-plugin-jest: "npm:^28.5.0"
     eslint-plugin-n: "npm:^17.7.0"
@@ -11519,7 +11536,7 @@ __metadata:
     serverless-domain-manager: "npm:^7.3.8"
     serverless-dynamodb: "npm:^0.2.53"
     serverless-esbuild: "npm:^1.52.1"
-    serverless-offline: "npm:^13.5.0"
+    serverless-offline: "npm:^13.5.1"
     serverless-plugin-typescript: "npm:^2.1.5"
     typescript: "npm:^5.4.5"
     typescript-eslint: "npm:^7.9.0"
@@ -11732,15 +11749,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"serverless-offline@npm:^13.5.0":
-  version: 13.5.0
-  resolution: "serverless-offline@npm:13.5.0"
+"serverless-offline@npm:^13.5.1":
+  version: 13.5.1
+  resolution: "serverless-offline@npm:13.5.1"
   dependencies:
     "@aws-sdk/client-lambda": "npm:^3.509.0"
     "@hapi/boom": "npm:^10.0.1"
     "@hapi/h2o2": "npm:^10.0.4"
     "@hapi/hapi": "npm:^21.3.3"
-    "@serverless/utils": "npm:^6.15.0"
     array-unflat-js: "npm:^0.1.3"
     boxen: "npm:^7.1.1"
     chalk: "npm:^5.3.0"
@@ -11761,7 +11777,7 @@ __metadata:
     ws: "npm:^8.16.0"
   peerDependencies:
     serverless: ^3.2.0
-  checksum: 10c0/2662deac1190ae7341580c0022ad0610d950ea150a777b1e6b86bb1be63d8095a2a015939b134609663be096127c918c3c19f3328d2a283656050085ee6c47b0
+  checksum: 10c0/30666207e95d6180e69f1974ed18cb8bef2a84d63f78154a81d9232bb4a21aa3a04270ba8f70af160192ea2d8df4f1bae53df41954c1ccfe03c7bc595f9cbfc1
   languageName: node
   linkType: hard
 
