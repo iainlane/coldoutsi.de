@@ -191,8 +191,14 @@ export class MetnoClient {
     // Hourly always includes today, and after that every other day that has 24
     // hours of data.
     const hourly = new InternMap<Date, HourlyMeasurement<"metric">[]>();
+    let dailyIterator = iterator;
     for (const [day, steps] of iterator) {
       if (day.toISOString() !== nowDayStr && steps.length !== 24) {
+        dailyIterator = (function* () {
+          yield [day, steps];
+          yield* iterator;
+        })();
+
         break;
       }
 
@@ -201,7 +207,7 @@ export class MetnoClient {
 
     // The rest is "daily", and we summarise the data for each day.
     const daily: DailyMeasurement<"metric">[] = [];
-    for (const [day, steps] of iterator) {
+    for (const [day, steps] of dailyIterator) {
       daily.push(convertDaily(day, steps));
     }
 
