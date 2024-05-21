@@ -291,7 +291,30 @@ export class OpenWeatherMapClient {
         return date;
       },
     );
-    const daily = rawWeather.daily.map(convertDaily);
+
+    const nowDay = new Date(now.time);
+    nowDay.setUTCHours(0, 0, 0, 0);
+    for (const [date, hours] of hourly) {
+      if (date.valueOf() !== nowDay.valueOf() && hours.length !== 24) {
+        hourly.delete(date);
+      }
+    }
+
+    // Filter out daily measurements that have an hourly measurement (which is
+    // higher resolution)
+    const daily = rawWeather.daily.reduce<DailyMeasurement<"metric">[]>(
+      (result, d) => {
+        const date = new Date(d.dt * 1000);
+        date.setUTCHours(0, 0, 0, 0);
+
+        if (hourly.has(date)) {
+          return result;
+        }
+
+        return result.concat(convertDaily(d));
+      },
+      [],
+    );
 
     switch (unit) {
       case "metric":

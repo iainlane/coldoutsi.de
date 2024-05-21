@@ -126,7 +126,9 @@ describe("met.no client happy paths", () => {
     const day = new Date("2024-03-11T00:00:00Z");
 
     expect(weather.hourly.get(day)?.[0]?.temp.temperature).toBe(44.4);
-    expect(weather.daily[0]?.temp.max.temperature).toBe(59);
+
+    expect(weather.daily[0]?.time).toEqual(new Date("2024-03-13T00:00:00Z"));
+    expect(weather.daily[1]?.temp.max.temperature).toBe(59);
 
     expect(kvStore.size).toBe(1);
     expect(mockAxios.history["get"]).toHaveLength(1);
@@ -214,7 +216,14 @@ describe("met.no client happy paths", () => {
         new Array(24).fill(expect.any(Object)),
       ],
     ]);
-    expect(weather.daily).toHaveLength(7);
+    // An array of all dates between 2024-03-13 and 2024-03-20
+    const dates = Array.from(
+      { length: 8 },
+      // The month is 0-indexed
+      (_, i) => new Date(2024, 2, i + 13, 0, 0, 0, 0),
+    );
+    const dailyDates = weather.daily.map((d) => d.time);
+    expect(dailyDates).toEqual(dates);
   });
 });
 
