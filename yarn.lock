@@ -5692,14 +5692,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios-retry@npm:^4.2.0":
-  version: 4.2.0
-  resolution: "axios-retry@npm:4.2.0"
+"axios-retry@npm:^4.3.0":
+  version: 4.3.0
+  resolution: "axios-retry@npm:4.3.0"
   dependencies:
     is-retry-allowed: "npm:^2.2.0"
   peerDependencies:
     axios: 0.x || 1.x
-  checksum: 10c0/41651f223d92a938bcfe7dc2954dfa9649f53f12a4636d20f3109350c13a809d6518a66384f41ea7bb66e2cd38201f36ba0aa8ad89d77a5ee1fc4fe40ab2020d
+  checksum: 10c0/486fdda6d716caf840657f4772ddaf41805c24c841fa5fac68f56ebc7baa8afa45940a6f8dd30b8aa3ecd87b1ad88b33f56e0834ebe098e26bac7d287406f801
   languageName: node
   linkType: hard
 
@@ -6434,7 +6434,7 @@ __metadata:
     aws-sdk-client-mock-jest: "npm:^4.0.0"
     axios: "npm:^1.7.0"
     axios-mock-adapter: "npm:^1.22.0"
-    axios-retry: "npm:^4.2.0"
+    axios-retry: "npm:^4.3.0"
     chalk: "npm:^5.3.0"
     d3-array: "npm:^3.2.4"
     dedent-js: "npm:^1.0.1"
