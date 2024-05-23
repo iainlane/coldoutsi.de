@@ -5569,9 +5569,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aws-sdk@npm:^2.1625.0":
-  version: 2.1625.0
-  resolution: "aws-sdk@npm:2.1625.0"
+"aws-sdk@npm:^2.1626.0":
+  version: 2.1626.0
+  resolution: "aws-sdk@npm:2.1626.0"
   dependencies:
     buffer: "npm:4.9.2"
     events: "npm:1.1.1"
@@ -5583,7 +5583,7 @@ __metadata:
     util: "npm:^0.12.4"
     uuid: "npm:8.0.0"
     xml2js: "npm:0.6.2"
-  checksum: 10c0/405c10444d75aac557c091e148cb1eb005eff30e44192cb2e367c34fc689e50711548d1ab42dfd8ff6f0cfdcbd712c899bc057a109a3b25d5055ee329de9a93f
+  checksum: 10c0/5f5976d676774f1e7e272bf3260ace9b685f7a93e31506909954202535b19aad00700219ccfdbed160e8980521f217cc646226f29a6af4d0398b64cc4ee866b7
   languageName: node
   linkType: hard
 
@@ -11124,7 +11124,7 @@ __metadata:
     "@jest/globals": "npm:^29.7.0"
     "@serverless/utils": "npm:^6.0.2"
     "@types/node": "npm:^20.12.12"
-    aws-sdk: "npm:^2.1625.0"
+    aws-sdk: "npm:^2.1626.0"
     concurrently: "npm:^8.2.2"
     esbuild: "npm:^0.21.3"
     eslint: "npm:^9.3.0"
@@ -11137,7 +11137,7 @@ __metadata:
     jest: "npm:^29.7.0"
     jest-mock-extended: "npm:^3.0.7"
     prettier: "npm:^3.2.5"
-    serverless: "npm:^4.0.23"
+    serverless: "npm:^4.0.24"
     serverless-better-credentials: "npm:^2.0.0"
     serverless-certificate-creator: "npm:^1.6.0"
     serverless-domain-manager: "npm:^7.3.8"
@@ -11393,9 +11393,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"serverless@npm:^4.0.23":
-  version: 4.0.23
-  resolution: "serverless@npm:4.0.23"
+"serverless@npm:^4.0.24":
+  version: 4.0.24
+  resolution: "serverless@npm:4.0.24"
   dependencies:
     axios: "npm:^1.6.0"
     axios-proxy-builder: "npm:^0.1.2"
@@ -11403,7 +11403,7 @@ __metadata:
   bin:
     serverless: run.js
     sls: run.js
-  checksum: 10c0/56fc685898eb1417500625d513cfcd9131696f100d1b5fd6fb326829ed680d8e5e83686c5f526c17e8da3620771c9908406688f83145b581610816f8fe4f1831
+  checksum: 10c0/304171b181fde401f1b22afd1bc98056b348b772e6f5fdaa2caf64ba0822b8733999df238299999a557c86233379fe7e8c848bba8eb893f86b0d34a13893dd26
   languageName: node
   linkType: hard
 
