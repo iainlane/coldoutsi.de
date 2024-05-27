@@ -5,53 +5,55 @@ import type {
   APIGatewayProxyEventV2,
   APIGatewayProxyResultV2,
 } from "aws-lambda";
-import * as fs from "fs";
 import { StatusCodes } from "http-status-codes";
 import Negotiator from "negotiator";
-import * as path from "path";
-import { fileURLToPath } from "url";
 
 import { cacheControlMiddleware } from "@/lib/cachecontrol";
-import { loggerMiddleware } from "@/lib/logger";
+import { LoggerContext, loggerMiddleware } from "@/lib/logger";
 
-// Read HTML content from file during the cold start of the Lambda function
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const htmlFilePath = path.resolve(__dirname, "../../../static/index.html");
-const htmlContent = fs.readFileSync(htmlFilePath, "utf8");
+import { staticFileData } from "./fileinfo";
+import { sendFileInfo } from "./static";
 
-const { OK } = StatusCodes;
+const { TEMPORARY_REDIRECT } = StatusCodes;
+
+const indexHtml =
+  staticFileData["index.html"] ??
+  (() => {
+    throw new Error("index.html not found");
+  })();
 
 function handler(
   event: APIGatewayProxyEventV2,
-): Promise<APIGatewayProxyResultV2> {
+  { logger }: LoggerContext,
+): APIGatewayProxyResultV2 {
   const negotiator = new Negotiator(event);
-  const type = negotiator.mediaType(["text/html"]);
+  const type = negotiator.mediaType(["text/html", "text/plain"]);
   const mostPreferredType = negotiator.mediaType();
 
   // Check if the client accepts HTML. But not */*, as this would mean we return
   // HTML all of the time. So we only return HTML if the client explicitly wants
   // it.
   if (type === "text/html" && mostPreferredType !== "*/*") {
-    return Promise.resolve({
-      statusCode: OK,
-      headers: {
-        "Content-Type": "text/html; charset=utf-8",
+    const log = logger.createChild({
+      persistentLogAttributes: {
+        handler: "index",
       },
-      body: htmlContent,
     });
+
+    return sendFileInfo(log, indexHtml, event);
   }
 
   // Redirect to `:unknown` (relative to the current page) if the client doesn't
   // accept HTML
   const rawPath = event.rawPath + (event.rawPath.endsWith("/") ? "" : "/");
   const queryString = event.rawQueryString ? `?${event.rawQueryString}` : "";
-  return Promise.resolve({
-    statusCode: 302,
+
+  return {
+    statusCode: TEMPORARY_REDIRECT,
     headers: {
-      Location: `${rawPath}:unknown${queryString}`,
+      location: `${rawPath}:unknown${queryString}`,
     },
-    body: "",
-  });
+  };
 }
 
 export const indexHandler = middy<
