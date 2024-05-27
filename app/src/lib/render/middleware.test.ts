@@ -9,8 +9,8 @@ import { JSONRendererOptions, Renderable, renderableMiddleware } from ".";
 
 const { NOT_ACCEPTABLE, OK } = StatusCodes;
 
-async function baseHandler(): Promise<Renderable> {
-  return Promise.resolve({
+function baseHandler(): Renderable {
+  return {
     render: {
       "application/json": (options: JSONRendererOptions) => {
         return options.pretty
@@ -22,7 +22,7 @@ async function baseHandler(): Promise<Renderable> {
         return "Hello, Plain Text!";
       },
     },
-  });
+  };
 }
 
 const middyHandler = middy()
@@ -78,7 +78,7 @@ describe("Renderable Middleware", () => {
     const nullHandler = middy()
       .use(loggerMiddleware())
       .use(renderableMiddleware())
-      .handler(async () => Promise.resolve(null)) as MiddyfiedHandler<
+      .handler(() => null) as MiddyfiedHandler<
       APIGatewayProxyEventV2,
       null,
       Error,

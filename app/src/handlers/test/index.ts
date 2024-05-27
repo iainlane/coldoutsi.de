@@ -46,24 +46,24 @@ async function handler(
   // HTML all of the time. So we only return HTML if the client explicitly wants
   // it.
   if (type === "text/html" && mostPreferredType !== "*/*") {
-    return Promise.resolve({
+    return {
       statusCode: OK,
       headers: {
         "cache-control": "no-store, no-cache, must-revalidate",
         "content-type": "text/html; charset=utf-8",
       },
       body: await renderTemplate(textHtmlTemplate),
-    });
+    };
   }
 
-  return Promise.resolve({
+  return {
     statusCode: OK,
     headers: {
       "cache-control": "no-store, no-cache, must-revalidate",
       "content-type": "text/plain; charset=utf-8",
     },
     body: await renderTemplate(textPlainTemplate),
-  });
+  };
 }
 
 export const testHandler = handlerFactory(handler);

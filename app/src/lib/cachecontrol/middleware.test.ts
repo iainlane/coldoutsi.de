@@ -10,12 +10,10 @@ import { LoggerContext } from "@/lib/logger";
 
 const { INTERNAL_SERVER_ERROR, NOT_FOUND, OK } = StatusCodes;
 
-function baseHandler(code: number): () => Promise<Response> {
-  return async () => {
-    return Promise.resolve({
-      statusCode: code,
-    });
-  };
+function baseHandler(code: number): () => Response {
+  return () => ({
+    statusCode: code,
+  });
 }
 
 const mockEvent = mock<APIGatewayProxyEventV2>();
@@ -53,13 +51,12 @@ describe("Cache Control Middleware", () => {
   });
 
   it("appends to existing headers", async () => {
-    const headerHandler = () =>
-      Promise.resolve({
-        statusCode: OK,
-        headers: {
-          foo: "bar",
-        },
-      });
+    const headerHandler = () => ({
+      statusCode: OK,
+      headers: {
+        foo: "bar",
+      },
+    });
 
     const response = await (
       middy()
@@ -80,7 +77,7 @@ describe("Cache Control Middleware", () => {
   });
 
   it("ignores a null response", async () => {
-    const nullHandler = () => Promise.resolve(null);
+    const nullHandler = () => null;
 
     const response = await (
       middy()
@@ -97,13 +94,12 @@ describe("Cache Control Middleware", () => {
   });
 
   it("doesn't overwrite an existing cache-control header", async () => {
-    const cacheControlHandler = () =>
-      Promise.resolve({
-        statusCode: OK,
-        headers: {
-          "cache-control": "foo",
-        },
-      });
+    const cacheControlHandler = () => ({
+      statusCode: OK,
+      headers: {
+        "cache-control": "foo",
+      },
+    });
 
     const response = await (
       middy()
