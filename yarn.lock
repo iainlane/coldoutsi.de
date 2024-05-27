@@ -1518,7 +1518,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@aws-sdk/lib-dynamodb@npm:^3.428.0, @aws-sdk/lib-dynamodb@npm:^3.583.0":
+"@aws-sdk/lib-dynamodb@npm:^3.428.0":
   version: 3.583.0
   resolution: "@aws-sdk/lib-dynamodb@npm:3.583.0"
   dependencies:
@@ -1529,6 +1529,20 @@ __metadata:
   peerDependencies:
     "@aws-sdk/client-dynamodb": ^3.583.0
   checksum: 10c0/d83096a722d547219795aaa819e8c7366dfaf81e2d4e7e531d5a98ec3ccf02a24a592f3b1b4b24bebc58d3088a004f63b42ec2931f51389a9f9ee65e81b3fd65
+  languageName: node
+  linkType: hard
+
+"@aws-sdk/lib-dynamodb@npm:^3.584.0":
+  version: 3.584.0
+  resolution: "@aws-sdk/lib-dynamodb@npm:3.584.0"
+  dependencies:
+    "@aws-sdk/util-dynamodb": "npm:3.584.0"
+    "@smithy/smithy-client": "npm:^3.0.1"
+    "@smithy/types": "npm:^3.0.0"
+    tslib: "npm:^2.6.2"
+  peerDependencies:
+    "@aws-sdk/client-dynamodb": ^3.584.0
+  checksum: 10c0/e317e1a7865a58862310cf205fca8a2d4866925b2a0ff8501e3c0d3c4db99c5545e9b370cf7723188f43eef84802b9af032d5180e1ddb633d678e5897227d06c
   languageName: node
   linkType: hard
 
@@ -1956,6 +1970,17 @@ __metadata:
   peerDependencies:
     "@aws-sdk/client-dynamodb": ^3.583.0
   checksum: 10c0/6e1ffc27c0924c314db502085b1c6eda762958fc398f33026d64a15f0f24804e9580d9cbd0197f9c8fb2bd6868df567a861236b8a045013bf1fea08fcc7d8645
+  languageName: node
+  linkType: hard
+
+"@aws-sdk/util-dynamodb@npm:3.584.0":
+  version: 3.584.0
+  resolution: "@aws-sdk/util-dynamodb@npm:3.584.0"
+  dependencies:
+    tslib: "npm:^2.6.2"
+  peerDependencies:
+    "@aws-sdk/client-dynamodb": ^3.584.0
+  checksum: 10c0/e3b7673786a4eeb21d526168a9ec2e33a2648b78075539acb7c38bdfcdde14a0e8fa4c63725b8de69bc0b8eb610d85d2d84073f65caa86debb9219154af60520
   languageName: node
   linkType: hard
 
@@ -6470,7 +6495,7 @@ __metadata:
   dependencies:
     "@aws-lambda-powertools/logger": "npm:^2.1.1"
     "@aws-sdk/client-dynamodb": "npm:^3.584.0"
-    "@aws-sdk/lib-dynamodb": "npm:^3.583.0"
+    "@aws-sdk/lib-dynamodb": "npm:^3.584.0"
     "@aws-sdk/types": "npm:^3.577.0"
     "@curveball/http-errors": "npm:^1.0.1"
     "@internal/geojs": "npm:0.0.1"
