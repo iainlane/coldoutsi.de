@@ -9,6 +9,8 @@
   "type": "module",
   "scripts": {
     "debug": "NODE_OPTIONS=--experimental-vm-modules POWERTOOLS_DEV=true node --inspect node_modules/serverless/bin/serverless offline -s dev",
+    "deploy": "serverless deploy",
+    "deploy-dev": "serverless deploy --stage dev",
     "lint": "eslint",
     "test": "NODE_OPTIONS=--experimental-vm-modules POWERTOOLS_DEV=true $(yarn bin jest) --silent",
     "gen": "concurrently 'yarn workspace @internal/nominatim gen-if-needed' 'yarn workspace @internal/geojs gen-if-needed' 'yarn workspace @internal/met.no gen-if-needed'",
@@ -42,7 +44,7 @@
     "jest": "^29.7.0",
     "jest-mock-extended": "^3.0.7",
     "prettier": "^3.2.5",
-    "serverless": "^4.0.24",
+    "serverless": "^3.38.0",
     "serverless-better-credentials": "^2.0.0",
     "serverless-certificate-creator": "^1.6.0",
     "serverless-domain-manager": "^7.3.8",
