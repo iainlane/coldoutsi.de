@@ -11577,7 +11577,7 @@ __metadata:
     serverless-certificate-creator: "npm:^1.6.0"
     serverless-domain-manager: "npm:^7.3.8"
     serverless-dynamodb: "npm:^0.2.53"
-    serverless-esbuild: "npm:^1.52.1"
+    serverless-esbuild: "https://github.com/iainlane/serverless-esbuild#iainlane/zip-use-mtime-from-filesystem-built"
     serverless-offline: "npm:^13.6.0"
     serverless-plugin-typescript: "npm:^2.1.5"
     typescript: "npm:^5.4.5"
@@ -11755,9 +11755,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"serverless-esbuild@npm:^1.52.1":
-  version: 1.52.1
-  resolution: "serverless-esbuild@npm:1.52.1"
+"serverless-esbuild@https://github.com/iainlane/serverless-esbuild#iainlane/zip-use-mtime-from-filesystem-built":
+  version: 0.0.0-development
+  resolution: "serverless-esbuild@https://github.com/iainlane/serverless-esbuild.git#commit=67b60b348d954cb4755d30288d7ca43976322430"
   dependencies:
     acorn: "npm:^8.8.1"
     acorn-walk: "npm:^8.2.0"
@@ -11778,7 +11778,7 @@ __metadata:
   peerDependenciesMeta:
     esbuild-node-externals:
       optional: true
-  checksum: 10c0/503906901804dc2eccfd77c033908347e1dada82d08199427570faa4a3f55832bd9b5907dd05143dca845f1ec56dd430e78006facd270b6853e322496f842cd6
+  checksum: 10c0/5559741ab1e3ff342b41ce2dc336b7f123e7df26a3aa10761c6ad52c482e317d021ec9baaaaa5aa0019efd0101a30a30b6e32c2728a94be7b6d2ecb782ba56c1
   languageName: node
   linkType: hard
 

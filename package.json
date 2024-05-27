@@ -47,7 +47,7 @@
     "serverless-certificate-creator": "^1.6.0",
     "serverless-domain-manager": "^7.3.8",
     "serverless-dynamodb": "^0.2.53",
-    "serverless-esbuild": "^1.52.1",
+    "serverless-esbuild": "https://github.com/iainlane/serverless-esbuild#iainlane/zip-use-mtime-from-filesystem-built",
     "serverless-offline": "^13.6.0",
     "serverless-plugin-typescript": "^2.1.5",
     "typescript": "^5.4.5",

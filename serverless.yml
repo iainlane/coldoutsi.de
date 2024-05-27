@@ -140,7 +140,7 @@ functions:
           method: GET
 
   index:
-    handler: ./app/src/handlers/index/index.indexHandler
+    handler: ./app/src/handlers/static/index.indexHandler
     events:
       - httpApi:
           path: /
