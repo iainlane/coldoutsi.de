@@ -20,6 +20,12 @@ updates:
         applies-to: "version-updates"
         dependency-type: "development"
 
+    ignore:
+      # Stay off serverless v4; there's a license change and the CLI requires
+      # you to be signed in - we don't want that.
+      - dependency-name: "serverless"
+        update-types: ["version-update:semver-major"]
+
   - package-ecosystem: "npm"
     directory: "/app"
 
