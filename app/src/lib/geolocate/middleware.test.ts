@@ -38,11 +38,11 @@ const mockEvent = mock<APIGatewayProxyEventV2>({
   },
 });
 
-async function baseHandler(
+function baseHandler(
   _event: APIGatewayProxyEventV2,
   context: GeoLocateContext,
-): Promise<GeoLocateContext> {
-  return Promise.resolve(context);
+): GeoLocateContext {
+  return context;
 }
 
 const middyHandler = middy()

@@ -35,13 +35,11 @@ ddbMock.on(PutCommand).resolves({});
 let mockAxios: AxiosMockAdapter;
 const mockLogger = new Logger();
 
-async function baseHandler(
+function baseHandler(
   _event: APIGatewayProxyEventV2,
   context: GeoCodeContext,
-): Promise<GeoCodeData> {
-  const gc = context.geoCode;
-
-  return Promise.resolve(gc);
+): GeoCodeData {
+  return context.geoCode;
 }
 
 describe("Reverse GeoCode Middleware", () => {

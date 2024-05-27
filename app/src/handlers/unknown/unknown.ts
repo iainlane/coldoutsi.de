@@ -16,7 +16,7 @@ const { TEMPORARY_REDIRECT } = StatusCodes;
 function handler(
   event: APIGatewayProxyEventV2,
   { geoLocate }: GeoLocateContext,
-): Promise<APIGatewayProxyResultV2> {
+): APIGatewayProxyResultV2 {
   const { latitude, longitude } = geoLocate.location;
 
   // Redirect relative to the current page
@@ -35,12 +35,12 @@ function handler(
 
   const queryString = event.rawQueryString ? `?${event.rawQueryString}` : "";
 
-  return Promise.resolve({
+  return {
     statusCode: TEMPORARY_REDIRECT,
     headers: {
       location: `${rawPath}/${latitude}/${longitude}${queryString}`,
     },
-  });
+  };
 }
 
 export const unknownHandler = middy<
