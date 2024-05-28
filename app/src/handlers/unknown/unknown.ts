@@ -8,8 +8,9 @@ import type {
 import { StatusCodes } from "http-status-codes";
 
 import { cacheControlMiddleware } from "@/lib/cachecontrol";
-import { loggerMiddleware } from "@/lib/logger";
 import { GeoLocateContext, geoLocateMiddleware } from "@/lib/geolocate";
+import { loggerMiddleware } from "@/lib/logger";
+import { addSuffix } from "@/lib/util";
 
 const { TEMPORARY_REDIRECT } = StatusCodes;
 
@@ -21,17 +22,13 @@ function handler(
 
   // Redirect relative to the current page
 
-  // Strip off any trailing slashes from the path and split it into parts
-  // (separated by slashes)
-  const rawPathParts = (
-    event.rawPath.endsWith("/") ? event.rawPath.slice(0, -1) : event.rawPath
-  ).split("/");
-
-  // Remove the last part of the path (":unknown")
-  rawPathParts.pop();
-
-  // And put it back together
-  const rawPath = rawPathParts.join("/");
+  // Strip off any trailing slashes from the path, split it into parts
+  // (separated by slashes), remove the last two parts ("/:unknown" and
+  // "/"), and then put it back together.
+  const rawPath = addSuffix("/", event.rawPath)
+    .split("/")
+    .slice(0, -2)
+    .join("/");
 
   const queryString = event.rawQueryString ? `?${event.rawQueryString}` : "";
 
