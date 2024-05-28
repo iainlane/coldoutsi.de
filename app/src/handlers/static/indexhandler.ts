@@ -10,6 +10,7 @@ import Negotiator from "negotiator";
 
 import { cacheControlMiddleware } from "@/lib/cachecontrol";
 import { LoggerContext, loggerMiddleware } from "@/lib/logger";
+import { addPrefix, addSuffix } from "@/lib/util";
 
 import { staticFileData } from "./fileinfo";
 import { sendFileInfo } from "./static";
@@ -45,8 +46,8 @@ function handler(
 
   // Redirect to `:unknown` (relative to the current page) if the client doesn't
   // accept HTML
-  const rawPath = event.rawPath + (event.rawPath.endsWith("/") ? "" : "/");
-  const queryString = event.rawQueryString ? `?${event.rawQueryString}` : "";
+  const rawPath = addSuffix("/", event.rawPath);
+  const queryString = addPrefix("?", event.rawQueryString);
 
   return {
     statusCode: TEMPORARY_REDIRECT,
