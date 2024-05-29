@@ -446,9 +446,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@aws-sdk/client-dynamodb@npm:^3.584.0":
-  version: 3.584.0
-  resolution: "@aws-sdk/client-dynamodb@npm:3.584.0"
+"@aws-sdk/client-dynamodb@npm:^3.585.0":
+  version: 3.585.0
+  resolution: "@aws-sdk/client-dynamodb@npm:3.585.0"
   dependencies:
     "@aws-crypto/sha256-browser": "npm:3.0.0"
     "@aws-crypto/sha256-js": "npm:3.0.0"
@@ -494,7 +494,7 @@ __metadata:
     "@smithy/util-waiter": "npm:^3.0.0"
     tslib: "npm:^2.6.2"
     uuid: "npm:^9.0.1"
-  checksum: 10c0/05a371b78919863019eeba05bd4fba766aa322c32d71250ecf6aa582b50eeb1f944dd7db8ef9d367fc68862c2ef3311c694b87bb92624e66152c8df76e27950c
+  checksum: 10c0/e610e368e06dc0a0d6b6a367573bba830fc366ad9484c15f839218dfc05c243589363c7944c1781db01bdc603f19eec344608644691fed1075e110d6a04537ae
   languageName: node
   linkType: hard
 
@@ -6572,7 +6572,7 @@ __metadata:
   resolution: "coldoutsi.de@workspace:app"
   dependencies:
     "@aws-lambda-powertools/logger": "npm:^2.1.1"
-    "@aws-sdk/client-dynamodb": "npm:^3.584.0"
+    "@aws-sdk/client-dynamodb": "npm:^3.585.0"
     "@aws-sdk/lib-dynamodb": "npm:^3.585.0"
     "@aws-sdk/types": "npm:^3.577.0"
     "@curveball/http-errors": "npm:^1.0.1"
