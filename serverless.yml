@@ -124,7 +124,7 @@ functions:
     handler: ./app/src/handlers/static/index.staticHandler
     events:
       - httpApi:
-          path: /static/{path+}
+          path: /static/{path}
           method: GET
 
       - httpApi:
