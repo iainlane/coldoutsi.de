@@ -1,5 +1,6 @@
 import eslint from "@eslint/js";
 import jestPlugin from "eslint-plugin-jest";
+import eslingPluginNoRelativeImportPaths from "eslint-plugin-no-relative-import-paths";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 import unicornPlugin from "eslint-plugin-unicorn";
 import globals from "globals";
@@ -9,6 +10,7 @@ export default tseslint.config(
   {
     plugins: {
       ["@typescript-eslint"]: tseslint.plugin,
+      ["no-relative-import-paths"]: eslingPluginNoRelativeImportPaths,
       ["jest"]: jestPlugin,
       ["unicorn"]: unicornPlugin,
     },
@@ -67,6 +69,11 @@ export default tseslint.config(
       ],
       "@typescript-eslint/restrict-template-expressions": "off",
       "dot-notation": "off",
+
+      "no-relative-import-paths/no-relative-import-paths": [
+        "error",
+        { allowSameFolder: true },
+      ],
 
       "unicorn/no-typeof-undefined": "error",
     },
