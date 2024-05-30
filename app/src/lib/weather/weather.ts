@@ -13,6 +13,7 @@ import {
   RenderableType,
   RendererOptionsMap,
 } from "@/lib/render";
+import { staticFileData } from "@/lib/static";
 
 import {
   Temperature,
@@ -28,6 +29,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const engine = new Liquid({
   root: path.resolve(__dirname, "../../lib/weather/templates"),
   extname: ".liquid",
+  globals: {
+    staticFileData,
+  },
   ownPropertyOnly: false,
 });
 

@@ -6,6 +6,7 @@ import { fileURLToPath } from "url";
 
 export interface staticFileInfo {
   buffer: Buffer;
+  hash: string;
   etag: string;
   lastModified: Date;
   contentType: string;
@@ -29,10 +30,10 @@ export async function precomputeFileData(dir: string) {
       const dir = dirent.parentPath;
       const filePath = path.join(dir, dirent.name);
       const fileBuffer = await readFile(filePath);
-      const hashSum = createHash("sha256").update(fileBuffer).digest("hex");
+      const hash = createHash("sha256").update(fileBuffer).digest("hex");
 
-      const stats = await stat(filePath);
-      const lastModified = stats.mtime;
+      const { mtime, size } = await stat(filePath);
+      const lastModified = mtime;
       // HTTP timestamps can't have milliseconds
       lastModified.setMilliseconds(0);
 
@@ -40,11 +41,12 @@ export async function precomputeFileData(dir: string) {
         contentType(path.extname(dirent.name)) || "application/octet-stream";
 
       fileInfo[dirent.name] = {
+        hash,
+        lastModified,
+        size,
         buffer: fileBuffer,
         contentType: fileContentType,
-        etag: `"${hashSum}"`,
-        lastModified: lastModified,
-        size: stats.size,
+        etag: `"${hash}"`,
       };
     }),
   );

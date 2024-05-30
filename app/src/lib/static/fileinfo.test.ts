@@ -19,6 +19,7 @@ describe("precomputeFileData", () => {
         buffer: Buffer.from(text),
         contentType: "text/plain; charset=utf-8",
         etag: `"${sha256}"`,
+        hash: sha256,
         lastModified: expect.anything(),
         size: 5,
       },

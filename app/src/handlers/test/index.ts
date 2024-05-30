@@ -11,12 +11,16 @@ import { fileURLToPath } from "url";
 import { handlerFactory } from "@/lib/handler-factory";
 import { WeatherConditions as WeatherConditionsOWM } from "@/lib/open-weather-map";
 import { WeatherConditions as WeatherConditionsMetNo } from "@/lib/metno";
+import { staticFileData } from "@/lib/static";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const engine = new Liquid({
   root: path.resolve(__dirname, "templates"),
   extname: ".liquid",
+  globals: {
+    staticFileData,
+  },
   ownPropertyOnly: false,
   trimTagRight: true,
 });
