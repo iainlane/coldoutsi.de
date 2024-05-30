@@ -10,9 +10,9 @@ import Negotiator from "negotiator";
 
 import { cacheControlMiddleware } from "@/lib/cachecontrol";
 import { LoggerContext, loggerMiddleware } from "@/lib/logger";
+import { staticFileData } from "@/lib/static";
 import { addPrefix, addSuffix } from "@/lib/util";
 
-import { staticFileData } from "./fileinfo";
 import { sendFileInfo } from "./static";
 
 const { TEMPORARY_REDIRECT } = StatusCodes;
@@ -41,7 +41,7 @@ function handler(
       },
     });
 
-    return sendFileInfo(log, indexHtml, event);
+    return sendFileInfo(log, indexHtml, false, event);
   }
 
   // Redirect to `:unknown` (relative to the current page) if the client doesn't

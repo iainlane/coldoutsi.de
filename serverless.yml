@@ -131,14 +131,6 @@ functions:
           path: /favicon.ico
           method: GET
 
-      - httpApi:
-          path: /style.css
-          method: GET
-
-      - httpApi:
-          path: /test.txt
-          method: GET
-
   index:
     handler: ./app/src/handlers/static/index.indexHandler
     events:
