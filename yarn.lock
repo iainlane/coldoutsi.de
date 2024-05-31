@@ -5158,16 +5158,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:20":
-  version: 20.12.12
-  resolution: "@types/node@npm:20.12.12"
-  dependencies:
-    undici-types: "npm:~5.26.4"
-  checksum: 10c0/f374b763c744e8f16e4f38cf6e2c0eef31781ec9228c9e43a6f267880fea420fab0a238b59f10a7cb3444e49547c5e3785787e371fc242307310995b21988812
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:^20.12.13":
+"@types/node@npm:*, @types/node@npm:20, @types/node@npm:^20.12.13":
   version: 20.12.13
   resolution: "@types/node@npm:20.12.13"
   dependencies:
@@ -5837,9 +5828,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aws-sdk@npm:^2.1630.0":
-  version: 2.1630.0
-  resolution: "aws-sdk@npm:2.1630.0"
+"aws-sdk@npm:^2.1631.0":
+  version: 2.1631.0
+  resolution: "aws-sdk@npm:2.1631.0"
   dependencies:
     buffer: "npm:4.9.2"
     events: "npm:1.1.1"
@@ -5851,7 +5842,7 @@ __metadata:
     util: "npm:^0.12.4"
     uuid: "npm:8.0.0"
     xml2js: "npm:0.6.2"
-  checksum: 10c0/1d2a2b75ca2399f64ecdf38fcff6b4b200502bce427511cdd2b65792160998475c38302a1fe3592e9f5493fac611b24af95f9a1d39942b01660e3aff68be33f8
+  checksum: 10c0/c328e36fa48f7215b79d613f3763d30ed5bda6f6e8687b4af8db0a43c43af98b7a1e7ec1117c9428dc38cfba701f4613b1baeb6bebb28e90c52ea75c0c7c88b4
   languageName: node
   linkType: hard
 
@@ -12070,7 +12061,7 @@ __metadata:
     "@jest/globals": "npm:^29.7.0"
     "@serverless/utils": "npm:^6.0.2"
     "@types/node": "npm:^20.12.13"
-    aws-sdk: "npm:^2.1630.0"
+    aws-sdk: "npm:^2.1631.0"
     concurrently: "npm:^8.2.2"
     esbuild: "npm:^0.21.4"
     eslint: "npm:^9.3.0"
