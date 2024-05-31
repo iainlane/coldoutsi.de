@@ -236,18 +236,3 @@ resources:
         TimeToLiveSpecification:
           AttributeName: ttl
           Enabled: true
-
-    StaticWebsiteBucket:
-      Type: AWS::S3::Bucket
-      Properties:
-        BucketName: coldoutsi.de-static-content-${sls:stage}
-        # Only accessible by CloudFront
-        AccessControl: Private
-        WebsiteConfiguration:
-          IndexDocument: index.html
-          ErrorDocument: error.html
-        Tags:
-          - Key: Name
-            Value: "coldoutsi.de"
-          - Key: Environment
-            Value: ${sls:stage}
