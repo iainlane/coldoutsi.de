@@ -65,11 +65,11 @@ export function geoLocateMiddleware<TResult>(): MiddlewareObj<
       }
 
       // Do we have lat & lon in headers from CloudFront?
-      const cfLatitute = event.headers["cloudfront-viewer-latitude"];
+      const cfLatitude = event.headers["cloudfront-viewer-latitude"];
       const cfLongitude = event.headers["cloudfront-viewer-longitude"];
 
-      if (cfLatitute && cfLongitude) {
-        const latitude = Number(cfLatitute);
+      if (cfLatitude && cfLongitude) {
+        const latitude = Number(cfLatitude);
         const longitude = Number(cfLongitude);
 
         if (!(Number.isNaN(latitude) || Number.isNaN(longitude))) {
