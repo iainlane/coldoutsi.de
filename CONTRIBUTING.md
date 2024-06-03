@@ -74,7 +74,7 @@ To run the application locally, we use
 [`serverless-offline`][serverless-offline]. Use the following command:
 
 ```sh
-serverless offline --stage local
+yarn local
 ```
 
 And then access the handlers at `http://localhost:3000/<handler>`.
@@ -99,11 +99,18 @@ Code][vscode-jest] to run tests automatically.
 
 ## Deploying
 
-The application supports being deployed to a custom domain. This is expected to
-already be available in Route 53 in your AWS account.
+The application supports being deployed to a custom domain. The hosted zone is
+expected to already be available in Route 53 in your AWS account.
 
-Unless you're deploying to `coldoutsi.de` itself, edit the domain names in
+Unless you're deploying to `api.coldoutsi.de` itself, edit the domain names in
 `custom.domains` in `serverless.yml` to match your domain.
+
+The first time you deploy the application, you'll need to create the
+certificate:
+
+```sh
+yarn serverless create-cert --stage dev # or production
+```
 
 To deploy the application, use the following command:
 

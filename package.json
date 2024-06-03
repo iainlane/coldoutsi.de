@@ -20,18 +20,9 @@
     "local": "yarn serverless offline start --stage local"
   },
   "jest": {
-    "preset": "ts-jest/presets/default-esm",
     "collectCoverage": true,
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "<rootDir>/.esbuild/",
-      "<rootDir>/gen/"
-    ],
-    "moduleNameMapper": {
-      "^@/lib/(.*)$": "<rootDir>/app/src/lib/$1"
-    },
-    "modulePathIgnorePatterns": [
-      "<rootDir>/.esbuild"
+    "projects": [
+      "<rootDir>/app"
     ]
   },
   "devDependencies": {

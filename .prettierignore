@@ -1,2 +1,2 @@
-gen/**
 .devcontainer/devcontainer-lock.json
+gen/

@@ -7122,6 +7122,7 @@ __metadata:
     dotenv: "npm:^16.4.5"
     fp-ts: "npm:^2.16.6"
     http-status-codes: "npm:^2.3.0"
+    jest: "npm:^29.7.0"
     jest-mock-extended: "npm:^3.0.7"
     lambda-tester: "npm:^4.0.1"
     liquidjs: "npm:^10.13.1"
