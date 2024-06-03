@@ -35,6 +35,7 @@ function handler(
   return {
     statusCode: TEMPORARY_REDIRECT,
     headers: {
+      "cache-control": "private, max-age=60",
       location: `${rawPath}/${latitude}/${longitude}${queryString}`,
     },
   };
