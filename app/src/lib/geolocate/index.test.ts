@@ -15,11 +15,11 @@ import { mockClient } from "aws-sdk-client-mock";
 import "aws-sdk-client-mock-jest";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
-import { mock } from "jest-mock-extended";
 import { StatusCodes } from "http-status-codes";
+import { mock } from "jest-mock-extended";
 
-import { GeoLocateError, geoLocator } from ".";
 import type { Logger } from "@/lib/logger";
+import { GeoLocateError, geoLocator } from ".";
 
 const { BAD_REQUEST, OK } = StatusCodes;
 
@@ -183,7 +183,7 @@ describe("geoLocator", () => {
       expect(geoData).toEqual({
         ...ip,
         location: {
-          latitude: 51.4779,
+          latitude: 51.48,
           longitude: 0,
         },
       });

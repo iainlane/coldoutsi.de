@@ -79,8 +79,8 @@ describe("GeoLocate Middleware", () => {
     expect(response.geoLocate).toEqual({
       ip: "1.2.3.4",
       location: {
-        latitude: 47.6062,
-        longitude: 122.3321,
+        latitude: 47.61,
+        longitude: 122.33,
       },
     });
   });
@@ -313,8 +313,8 @@ describe("GeoLocate Middleware", () => {
     expect(response.geoLocate).toEqual({
       ip: "1.2.3.4",
       location: {
-        latitude: 47.6062,
-        longitude: 122.3321,
+        latitude: 47.61,
+        longitude: 122.33,
       },
     });
   });

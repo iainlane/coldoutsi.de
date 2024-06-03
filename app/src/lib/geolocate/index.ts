@@ -1,11 +1,12 @@
 import { PutCommandOutput } from "@aws-sdk/lib-dynamodb";
+import axios from "axios";
 
 import { GeoJSApiFactory, Geolocate200ResponseInner } from "@internal/geojs";
 
 import { retryableAxios } from "@/lib/axios";
 import { dynamoDbDocClient } from "@/lib/dynamodb";
 import type { Logger } from "@/lib/logger";
-import axios from "axios";
+import { toTwoDP } from "@/lib/util";
 
 type PartialGeoLocateResponse = Partial<Geolocate200ResponseInner>;
 
@@ -133,12 +134,12 @@ export async function geoLocator(
 
   const { latitude, longitude } = geoData;
 
-  const lat = Number(latitude);
+  const lat = toTwoDP(Number(latitude));
   if (Number.isNaN(lat)) {
     throw new GeoLocateError(`Invalid latitude for ${ip}: ${latitude}`);
   }
 
-  const lon = Number(longitude);
+  const lon = toTwoDP(Number(longitude));
   if (Number.isNaN(lon)) {
     throw new GeoLocateError(`Invalid longitude for ${ip}: ${longitude}`);
   }

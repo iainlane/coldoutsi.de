@@ -1,12 +1,13 @@
-import { MiddlewareObj } from "@middy/core";
-import type { APIGatewayProxyEventV2, Context } from "aws-lambda";
 import {
   BadRequest,
   InternalServerError,
   UnprocessableContent,
 } from "@curveball/http-errors";
+import { MiddlewareObj } from "@middy/core";
+import type { APIGatewayProxyEventV2, Context } from "aws-lambda";
 
 import type { LoggerContext } from "@/lib/logger";
+import { toTwoDP } from "@/lib/util";
 import { GeoLocate, GeoLocateError, geoLocator } from ".";
 
 export interface GeoLocateContext extends Context {
@@ -38,8 +39,8 @@ export function geoLocateMiddleware<TResult>(): MiddlewareObj<
       const ip = event.requestContext.http.sourceIp;
 
       if (latParam && lonParam) {
-        const latitude = Number(latParam);
-        const longitude = Number(lonParam);
+        const latitude = toTwoDP(Number(latParam));
+        const longitude = toTwoDP(Number(lonParam));
 
         if (Number.isNaN(latitude)) {
           throw new BadRequest(`Invalid lat: ${latParam}`);
@@ -69,8 +70,8 @@ export function geoLocateMiddleware<TResult>(): MiddlewareObj<
       const cfLongitude = event.headers["cloudfront-viewer-longitude"];
 
       if (cfLatitude && cfLongitude) {
-        const latitude = Number(cfLatitude);
-        const longitude = Number(cfLongitude);
+        const latitude = toTwoDP(Number(cfLatitude));
+        const longitude = toTwoDP(Number(cfLongitude));
 
         if (!(Number.isNaN(latitude) || Number.isNaN(longitude))) {
           log.debug("Using lat/lon from CloudFront headers", {
