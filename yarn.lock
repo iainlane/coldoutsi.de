@@ -5779,7 +5779,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aws-sdk@npm:^2.1404.0, aws-sdk@npm:^2.1634.0, aws-sdk@npm:^2.320.0, aws-sdk@npm:^2.814.0":
+"aws-sdk@npm:^2.1404.0, aws-sdk@npm:^2.320.0, aws-sdk@npm:^2.814.0":
   version: 2.1634.0
   resolution: "aws-sdk@npm:2.1634.0"
   dependencies:
@@ -5794,6 +5794,24 @@ __metadata:
     uuid: "npm:8.0.0"
     xml2js: "npm:0.6.2"
   checksum: 10c0/656c3eaf7a90f3a5d97b5f40ae380d84bcbc076c087fa5b3d3af66e829f8221eeb2d6748cc70f711bbcfdeb7eed7bfc34df82068c11d7004be40fe718dad040a
+  languageName: node
+  linkType: hard
+
+"aws-sdk@npm:^2.1635.0":
+  version: 2.1635.0
+  resolution: "aws-sdk@npm:2.1635.0"
+  dependencies:
+    buffer: "npm:4.9.2"
+    events: "npm:1.1.1"
+    ieee754: "npm:1.1.13"
+    jmespath: "npm:0.16.0"
+    querystring: "npm:0.2.0"
+    sax: "npm:1.2.1"
+    url: "npm:0.10.3"
+    util: "npm:^0.12.4"
+    uuid: "npm:8.0.0"
+    xml2js: "npm:0.6.2"
+  checksum: 10c0/14b389c61a1ee562e5b5f05fc207e4dd9b01f384ad8ed23ca977ca6596884f1e905212349d4d26d493c5ca8a446f14be296afc47ab07102277c980af150344b9
   languageName: node
   linkType: hard
 
@@ -7673,9 +7691,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-n@npm:^17.8.0":
-  version: 17.8.0
-  resolution: "eslint-plugin-n@npm:17.8.0"
+"eslint-plugin-n@npm:^17.8.1":
+  version: 17.8.1
+  resolution: "eslint-plugin-n@npm:17.8.1"
   dependencies:
     "@eslint-community/eslint-utils": "npm:^4.4.0"
     enhanced-resolve: "npm:^5.17.0"
@@ -7687,7 +7705,7 @@ __metadata:
     semver: "npm:^7.5.3"
   peerDependencies:
     eslint: ">=8.23.0"
-  checksum: 10c0/893c9bfa398ddf06c62e91adeb8d4e870fe0cf5f2aff82d6a7813a083a4f2504102387923ec92c3d84ddf8707302486ea69cb9b833588f88de9533fcb558c767
+  checksum: 10c0/e4e6992d066fa6e21d1a8ea4392d7362c95383a59c16f63d62076ae7c6d5ff085a2ece5e6fb353f4667158a0336c00fdf707b9be38f8cbaa6f5685da39e68b8f
   languageName: node
   linkType: hard
 
@@ -12013,13 +12031,13 @@ __metadata:
     "@jest/globals": "npm:^29.7.0"
     "@serverless/utils": "npm:^6.0.2"
     "@types/node": "npm:^20.14.2"
-    aws-sdk: "npm:^2.1634.0"
+    aws-sdk: "npm:^2.1635.0"
     concurrently: "npm:^8.2.2"
     esbuild: "npm:^0.21.4"
     eslint: "npm:^9.4.0"
     eslint-config-prettier: "npm:^9.1.0"
     eslint-plugin-jest: "npm:^28.5.0"
-    eslint-plugin-n: "npm:^17.8.0"
+    eslint-plugin-n: "npm:^17.8.1"
     eslint-plugin-no-relative-import-paths: "npm:^1.5.4"
     eslint-plugin-node: "npm:^11.1.0"
     eslint-plugin-prettier: "npm:^5.1.3"
