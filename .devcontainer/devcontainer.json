@@ -10,7 +10,8 @@
     "source=${localWorkspaceFolderBasename}-node_modules-met.no,target=${containerWorkspaceFolder}/gen/met.no/node_modules,type=volume",
     "source=${localWorkspaceFolderBasename}-node_modules-geojs,target=${containerWorkspaceFolder}/gen/geojs/node_modules,type=volume",
     "source=${localWorkspaceFolderBasename}-yarn_cache,target=/home/node/.cache/yarn,type=volume",
-    "source=${localWorkspaceFolderBasename}-node_cache,target=/home/node/.cache/node,type=volume"
+    "source=${localWorkspaceFolderBasename}-node_cache,target=/home/node/.cache/node,type=volume",
+    "source=${localWorkspaceFolderBasename}-pulumi-config,target=/home/node/.pulumi,type=volume"
   ],
 
   "containerUser": "node",
@@ -19,6 +20,8 @@
   "containerEnv": {
     "AWS_SDK_LOAD_CONFIG": "true"
   },
+
+  "runArgs": ["--env-file", ".devcontainer/.env"],
 
   "onCreateCommand": "${containerWorkspaceFolder}/.devcontainer/onCreateCommand.sh",
 

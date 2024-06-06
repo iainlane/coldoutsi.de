@@ -39,9 +39,12 @@ environment which supports [dev containers][devcontainers].
 git clone https://github.com/iainlane/coldoutsi.de.git
 ```
 
-2. Open the project in the IDE
+2. If using AWS SSO and a non-default profile and/or region, create a file
+   `.devcontainer/.env` and set `AWS_PROFILE` and/or `AWS_REGION` accordingly.
 
-3. If using VS Code, click "Reopen in Container" when prompted. This will build
+3. Open the project in the IDE
+
+4. If using VS Code, click "Reopen in Container" when prompted. This will build
    and start the container with all the necessary dependencies installed.
 
 [devcontainers]: https://containers.dev/
