@@ -5797,9 +5797,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aws-sdk@npm:^2.1635.0":
-  version: 2.1635.0
-  resolution: "aws-sdk@npm:2.1635.0"
+"aws-sdk@npm:^2.1636.0":
+  version: 2.1636.0
+  resolution: "aws-sdk@npm:2.1636.0"
   dependencies:
     buffer: "npm:4.9.2"
     events: "npm:1.1.1"
@@ -5811,7 +5811,7 @@ __metadata:
     util: "npm:^0.12.4"
     uuid: "npm:8.0.0"
     xml2js: "npm:0.6.2"
-  checksum: 10c0/14b389c61a1ee562e5b5f05fc207e4dd9b01f384ad8ed23ca977ca6596884f1e905212349d4d26d493c5ca8a446f14be296afc47ab07102277c980af150344b9
+  checksum: 10c0/6bd057ff1db26398ac4880b82754180ec78c757ee9442dfc2a2399dcbf18e1b07656729659abc4403fb334bb48240a5f34872b501ffc6945f0f28d0ba6949e41
   languageName: node
   linkType: hard
 
@@ -7673,9 +7673,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jest@npm:^28.5.0":
-  version: 28.5.0
-  resolution: "eslint-plugin-jest@npm:28.5.0"
+"eslint-plugin-jest@npm:^28.6.0":
+  version: 28.6.0
+  resolution: "eslint-plugin-jest@npm:28.6.0"
   dependencies:
     "@typescript-eslint/utils": "npm:^6.0.0 || ^7.0.0"
   peerDependencies:
@@ -7687,7 +7687,7 @@ __metadata:
       optional: true
     jest:
       optional: true
-  checksum: 10c0/c42944b894748226568ff7c3e4876760f1fd6d275eedac8bae89f514a5e52fea002c40004efdfdd819d94059a6306223ed1eafa87ee70b941857ec7a09c6bd30
+  checksum: 10c0/301008d8dd3578a74c92011b3fcbbe4b60d2dbe342f525a31f05b3fcd0e17d514459cf4df65c510062e65b4f19c06b3a27504500a07fe339fd6eb20362620e50
   languageName: node
   linkType: hard
 
@@ -12031,12 +12031,12 @@ __metadata:
     "@jest/globals": "npm:^29.7.0"
     "@serverless/utils": "npm:^6.0.2"
     "@types/node": "npm:^20.14.2"
-    aws-sdk: "npm:^2.1635.0"
+    aws-sdk: "npm:^2.1636.0"
     concurrently: "npm:^8.2.2"
     esbuild: "npm:^0.21.4"
     eslint: "npm:^9.4.0"
     eslint-config-prettier: "npm:^9.1.0"
-    eslint-plugin-jest: "npm:^28.5.0"
+    eslint-plugin-jest: "npm:^28.6.0"
     eslint-plugin-n: "npm:^17.8.1"
     eslint-plugin-no-relative-import-paths: "npm:^1.5.4"
     eslint-plugin-node: "npm:^11.1.0"
