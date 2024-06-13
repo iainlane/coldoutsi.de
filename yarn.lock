@@ -125,25 +125,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@aws-lambda-powertools/commons@npm:^2.1.1":
-  version: 2.1.1
-  resolution: "@aws-lambda-powertools/commons@npm:2.1.1"
-  checksum: 10c0/97c64cbd158aee6228f1a775d32c45ebd006913ecd5ce9c1744aa1237bf2121746e53b8ea10f4412973090c71051a68c8cdd252871b78d61a92cb6e6f1042576
+"@aws-lambda-powertools/commons@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "@aws-lambda-powertools/commons@npm:2.2.0"
+  checksum: 10c0/e6f05230f47355b3635f763219489b703623a3a31c889935787b0241a2ebd416c79043e19750d5dff0ec8ac4abd923ee98ec5796a79781a947c917f9141bfe38
   languageName: node
   linkType: hard
 
-"@aws-lambda-powertools/logger@npm:^2.1.1":
-  version: 2.1.1
-  resolution: "@aws-lambda-powertools/logger@npm:2.1.1"
+"@aws-lambda-powertools/logger@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "@aws-lambda-powertools/logger@npm:2.2.0"
   dependencies:
-    "@aws-lambda-powertools/commons": "npm:^2.1.1"
+    "@aws-lambda-powertools/commons": "npm:^2.2.0"
     lodash.merge: "npm:^4.6.2"
   peerDependencies:
     "@middy/core": ">=3.x"
   peerDependenciesMeta:
     "@middy/core":
       optional: true
-  checksum: 10c0/b4b44f77d6aeecc92cd9fcd79ef2d48aae768a43f7257d32a30237c08bb713a44815bc1bad3aa2c0b2415da5c49842b6d8037844f49eaca2a65d51c29f199110
+  checksum: 10c0/604e71b67ec5155941e94ad4ef501ca44094404a802358da35f14af9994e8b0bec0e7a8263968bcad8650e4e3aae5dfa4ec0758b1d42a500cac7e1c5a97dc862
   languageName: node
   linkType: hard
 
@@ -6906,7 +6906,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "coldoutsi.de@workspace:app"
   dependencies:
-    "@aws-lambda-powertools/logger": "npm:^2.1.1"
+    "@aws-lambda-powertools/logger": "npm:^2.2.0"
     "@aws-sdk/client-dynamodb": "npm:^3.592.0"
     "@aws-sdk/lib-dynamodb": "npm:^3.592.0"
     "@aws-sdk/types": "npm:^3.577.0"
