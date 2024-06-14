@@ -4933,6 +4933,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@smithy/types@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@smithy/types@npm:3.1.0"
+  dependencies:
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/035de2c74a51d6a5fb59e7db6b9f38346a682d79860cbc9ab807a18eaeccfaf20ee8f794558a248eeda55e64a7d61e6c88fff614b7f68005639869ec8368899e
+  languageName: node
+  linkType: hard
+
 "@smithy/url-parser@npm:^2.1.3, @smithy/url-parser@npm:^2.2.0":
   version: 2.2.0
   resolution: "@smithy/url-parser@npm:2.2.0"
@@ -6180,9 +6189,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aws-sdk@npm:^2.1639.0":
-  version: 2.1639.0
-  resolution: "aws-sdk@npm:2.1639.0"
+"aws-sdk@npm:^2.1641.0":
+  version: 2.1641.0
+  resolution: "aws-sdk@npm:2.1641.0"
   dependencies:
     buffer: "npm:4.9.2"
     events: "npm:1.1.1"
@@ -6194,7 +6203,7 @@ __metadata:
     util: "npm:^0.12.4"
     uuid: "npm:8.0.0"
     xml2js: "npm:0.6.2"
-  checksum: 10c0/c3bbddc1d37a4a81bc0e6ef37841b284623552ce1b45605bd9b24c7923ff5c0fb753a05827b01e86f75f7b91b598406c2b5a1fb01b25392319d4d550a9fa6cd9
+  checksum: 10c0/9a2465894dfbc5ba19680381f72a0a436cd312950e4037a20bda4357143d1cafb276829eb01baafec92e63cf18bd9fb06b056d4ccd85c43c5d26002d0531384e
   languageName: node
   linkType: hard
 
@@ -6940,7 +6949,7 @@ __metadata:
     "@middy/http-header-normalizer": "npm:~5"
     "@middy/http-json-body-parser": "npm:~5"
     "@middy/http-response-serializer": "npm:~5"
-    "@smithy/types": "npm:^3.0.0"
+    "@smithy/types": "npm:^3.1.0"
     "@tsconfig/node20": "npm:^20.1.4"
     "@types/aws-lambda": "npm:^8.10.138"
     "@types/chai": "npm:^4.3.16"
@@ -8074,9 +8083,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-n@npm:^17.8.1":
-  version: 17.8.1
-  resolution: "eslint-plugin-n@npm:17.8.1"
+"eslint-plugin-n@npm:^17.9.0":
+  version: 17.9.0
+  resolution: "eslint-plugin-n@npm:17.9.0"
   dependencies:
     "@eslint-community/eslint-utils": "npm:^4.4.0"
     enhanced-resolve: "npm:^5.17.0"
@@ -8088,7 +8097,7 @@ __metadata:
     semver: "npm:^7.5.3"
   peerDependencies:
     eslint: ">=8.23.0"
-  checksum: 10c0/e4e6992d066fa6e21d1a8ea4392d7362c95383a59c16f63d62076ae7c6d5ff085a2ece5e6fb353f4667158a0336c00fdf707b9be38f8cbaa6f5685da39e68b8f
+  checksum: 10c0/8c9dc278eaf7ce7e0621127f82e56a7a117cecbd4dfa880145d930a62fc93ef47057f18805bf1bba944cbafa0ae9115c9bd52628193e1206810bb7bc3e1d2f25
   languageName: node
   linkType: hard
 
@@ -12414,13 +12423,13 @@ __metadata:
     "@jest/globals": "npm:^29.7.0"
     "@serverless/utils": "npm:^6.0.2"
     "@types/node": "npm:^20.14.2"
-    aws-sdk: "npm:^2.1639.0"
+    aws-sdk: "npm:^2.1641.0"
     concurrently: "npm:^8.2.2"
     esbuild: "npm:^0.21.5"
     eslint: "npm:^9.4.0"
     eslint-config-prettier: "npm:^9.1.0"
     eslint-plugin-jest: "npm:^28.6.0"
-    eslint-plugin-n: "npm:^17.8.1"
+    eslint-plugin-n: "npm:^17.9.0"
     eslint-plugin-no-relative-import-paths: "npm:^1.5.4"
     eslint-plugin-node: "npm:^11.1.0"
     eslint-plugin-prettier: "npm:^5.1.3"
