@@ -1999,17 +1999,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@aws-sdk/lib-dynamodb@npm:^3.596.0":
-  version: 3.596.0
-  resolution: "@aws-sdk/lib-dynamodb@npm:3.596.0"
+"@aws-sdk/lib-dynamodb@npm:^3.600.0":
+  version: 3.600.0
+  resolution: "@aws-sdk/lib-dynamodb@npm:3.600.0"
   dependencies:
-    "@aws-sdk/util-dynamodb": "npm:3.596.0"
-    "@smithy/smithy-client": "npm:^3.1.1"
-    "@smithy/types": "npm:^3.0.0"
+    "@aws-sdk/util-dynamodb": "npm:3.600.0"
+    "@smithy/smithy-client": "npm:^3.1.2"
+    "@smithy/types": "npm:^3.1.0"
     tslib: "npm:^2.6.2"
   peerDependencies:
-    "@aws-sdk/client-dynamodb": ^3.596.0
-  checksum: 10c0/2b2455bf93a8adbeb365816d5ee0822f92a68541c26f6a679f1631735567be355fd240f1323e550046471f7cc22b286350fbc7329e152ec47546ac5958758fcf
+    "@aws-sdk/client-dynamodb": ^3.600.0
+  checksum: 10c0/388dbedfee29c89d8fb78efa3d203d0c23fe7a8c748818f7d73ec745e059308c051af3d9b32e280c901e5a8724781b4a05cca087a3399447a120c5d5f11fe9f8
   languageName: node
   linkType: hard
 
@@ -2497,14 +2497,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@aws-sdk/util-dynamodb@npm:3.596.0":
-  version: 3.596.0
-  resolution: "@aws-sdk/util-dynamodb@npm:3.596.0"
+"@aws-sdk/util-dynamodb@npm:3.600.0":
+  version: 3.600.0
+  resolution: "@aws-sdk/util-dynamodb@npm:3.600.0"
   dependencies:
     tslib: "npm:^2.6.2"
   peerDependencies:
-    "@aws-sdk/client-dynamodb": ^3.596.0
-  checksum: 10c0/f6b9996dda2c0874a3d2b74041dc64cca6002432252f21ea6cee0683da9f69fd7fac2bd108ff7779d8a6195716ce16faef510f0d4ed979144a14864363664bad
+    "@aws-sdk/client-dynamodb": ^3.600.0
+  checksum: 10c0/50f1245031b445d6be4a9dadb6769e03a83c2b0c72ba4ca0d85711392298b80758d50e0799457334654bf371674664cb2fe60a5c30a84b596c86eed94cee9d83
   languageName: node
   linkType: hard
 
@@ -7507,7 +7507,7 @@ __metadata:
   dependencies:
     "@aws-lambda-powertools/logger": "npm:^2.2.0"
     "@aws-sdk/client-dynamodb": "npm:^3.600.0"
-    "@aws-sdk/lib-dynamodb": "npm:^3.596.0"
+    "@aws-sdk/lib-dynamodb": "npm:^3.600.0"
     "@aws-sdk/types": "npm:^3.577.0"
     "@curveball/http-errors": "npm:^1.0.1"
     "@internal/geojs": "npm:0.0.1"
