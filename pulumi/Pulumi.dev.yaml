@@ -1,0 +1,6 @@
+secretsprovider: awskms://12e131e6-2150-4361-913b-803c04bd5ed5?region=eu-west-2&awssdk=v2
+encryptedkey: AQICAHhLE3kXzgyhKhfd8kMt7I2EBNdrJw7DPra9AQz3o1duvwFP5X23eeRpxqRKtjmP4VNoAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMDGX3lZXomIJHHVIMAgEQgDuk/UkIZt7A+8db7RGO9aWvexlDZxGmSK6m7Wda/LXX0gblOSKbjyYxW+cheqvz0Jvx8fkHNPep0dZgSA==
+config:
+  gitHubRepo: iainlane/coldoutsi.de
+  targetDomain: dev
+  targetZone: coldoutsi.de

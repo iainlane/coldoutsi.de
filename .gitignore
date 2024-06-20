@@ -8,6 +8,7 @@ coverage/
 
 # Personal settings
 .vscode/settings.json
+.devcontainer/.env
 
 # Secrets in here
 .env*

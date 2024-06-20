@@ -79,6 +79,12 @@ export default tseslint.config(
     },
   },
   {
+    files: ["pulumi/**/*.ts"],
+    rules: {
+      "@typescript-eslint/no-unused-vars": "off",
+    },
+  },
+  {
     files: ["**/*.test.ts"],
     ...jestPlugin.configs["flat/recommended"],
     ...jestPlugin.configs["flat/style"],
