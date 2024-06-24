@@ -3692,7 +3692,7 @@ __metadata:
   resolution: "@internal/geojs@workspace:gen/geojs"
   dependencies:
     "@openapitools/openapi-generator-cli": "npm:^2.13.4"
-    "@types/node": "npm:^20.14.7"
+    "@types/node": "npm:^20.14.8"
     axios: "npm:^1.7.2"
     typescript: "npm:^5.5.2"
   languageName: unknown
@@ -3703,7 +3703,7 @@ __metadata:
   resolution: "@internal/met.no@workspace:gen/met.no"
   dependencies:
     "@openapitools/openapi-generator-cli": "npm:^2.13.4"
-    "@types/node": "npm:^20.14.7"
+    "@types/node": "npm:^20.14.8"
     axios: "npm:^1.7.2"
     typescript: "npm:^5.5.2"
   languageName: unknown
@@ -3714,7 +3714,7 @@ __metadata:
   resolution: "@internal/nominatim@workspace:gen/nominatim"
   dependencies:
     "@openapitools/openapi-generator-cli": "npm:^2.13.4"
-    "@types/node": "npm:^20.14.7"
+    "@types/node": "npm:^20.14.8"
     axios: "npm:^1.7.2"
     typescript: "npm:^5.5.2"
   languageName: unknown
@@ -6117,12 +6117,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.14.7":
-  version: 20.14.7
-  resolution: "@types/node@npm:20.14.7"
+"@types/node@npm:^20.14.8":
+  version: 20.14.8
+  resolution: "@types/node@npm:20.14.8"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 10c0/6211ffe86f769a58617e3bdca58610256021ef54bd99d2c442ee6109196cd6ee8e0bcd1cfac0e39bf4bb353f8900fa5fae540485a03816bd91ad1f86a0e18512
+  checksum: 10c0/06d4643fa3b179b41fe19f9c75c240278ca1f7a313b3b837bc36ea119499c7ad77f06bbe72694ac04aa91ec77fe747baa09b889f4c435450c1724a26bd55f160
   languageName: node
   linkType: hard
 
@@ -7555,7 +7555,7 @@ __metadata:
     "@types/lambda-tester": "npm:^4.0.3"
     "@types/mime-types": "npm:^2.1.4"
     "@types/negotiator": "npm:^0.6.3"
-    "@types/node": "npm:^20.14.7"
+    "@types/node": "npm:^20.14.8"
     aws-lambda: "npm:^1.0.7"
     aws-sdk-client-mock: "npm:^4.0.1"
     aws-sdk-client-mock-jest: "npm:^4.0.1"
@@ -13020,7 +13020,7 @@ __metadata:
     "@eslint/js": "npm:^9.5.0"
     "@jest/globals": "npm:^29.7.0"
     "@serverless/utils": "npm:^6.0.2"
-    "@types/node": "npm:^20.14.7"
+    "@types/node": "npm:^20.14.8"
     aws-sdk: "npm:^2.1646.0"
     concurrently: "npm:^8.2.2"
     esbuild: "npm:^0.21.5"
