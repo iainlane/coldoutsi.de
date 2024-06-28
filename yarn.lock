@@ -5417,12 +5417,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@smithy/types@npm:^3.2.0":
-  version: 3.2.0
-  resolution: "@smithy/types@npm:3.2.0"
+"@smithy/types@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "@smithy/types@npm:3.3.0"
   dependencies:
     tslib: "npm:^2.6.2"
-  checksum: 10c0/6b82a9177ae85d9c08247675831ffeed87a671c51ab35ecf64641ea0afb6036a97b3a00a83e717529a74b416b19df0c0fc2b2930a9b55bb0d34bea2390f835ad
+  checksum: 10c0/ab2c2d621384a2bbdd31d5c90809395cb5c2a726afd69758895d5a630f932f6ae9a53ca7a9cd5d8c195df9278869b2420a2fb4fada47dee9e8c9d4e3c80a349e
   languageName: node
   linkType: hard
 
@@ -6787,9 +6787,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aws-sdk@npm:^2.1649.0":
-  version: 2.1649.0
-  resolution: "aws-sdk@npm:2.1649.0"
+"aws-sdk@npm:^2.1650.0":
+  version: 2.1650.0
+  resolution: "aws-sdk@npm:2.1650.0"
   dependencies:
     buffer: "npm:4.9.2"
     events: "npm:1.1.1"
@@ -6801,7 +6801,7 @@ __metadata:
     util: "npm:^0.12.4"
     uuid: "npm:8.0.0"
     xml2js: "npm:0.6.2"
-  checksum: 10c0/a02bb8bcf8d3084981725ad6864615d1ebf95ce2811d25fb84487e3f289cb1f30f862f6238a334974901e4e4b22af4388ea51d1354078218680002e4d1fb35ea
+  checksum: 10c0/eedc810568622757320e9976cda289c5bf02c5847cbe649bbe5e27496216bb1e59a82cec61bf97154d2d48a93d465e9d196df4e88e84fec0499241c4a00dbfb1
   languageName: node
   linkType: hard
 
@@ -7547,7 +7547,7 @@ __metadata:
     "@middy/http-header-normalizer": "npm:~5"
     "@middy/http-json-body-parser": "npm:~5"
     "@middy/http-response-serializer": "npm:~5"
-    "@smithy/types": "npm:^3.2.0"
+    "@smithy/types": "npm:^3.3.0"
     "@tsconfig/node20": "npm:^20.1.4"
     "@types/aws-lambda": "npm:^8.10.140"
     "@types/chai": "npm:^4.3.16"
@@ -13021,7 +13021,7 @@ __metadata:
     "@jest/globals": "npm:^29.7.0"
     "@serverless/utils": "npm:^6.0.2"
     "@types/node": "npm:^20.14.9"
-    aws-sdk: "npm:^2.1649.0"
+    aws-sdk: "npm:^2.1650.0"
     concurrently: "npm:^8.2.2"
     esbuild: "npm:^0.21.5"
     eslint: "npm:^9.5.0"
