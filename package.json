@@ -30,9 +30,9 @@
     "@jest/globals": "^29.7.0",
     "@serverless/utils": "^6.0.2",
     "@types/node": "^20.14.9",
-    "aws-sdk": "^2.1651.0",
+    "aws-sdk": "^2.1652.0",
     "concurrently": "^8.2.2",
-    "esbuild": "^0.22.0",
+    "esbuild": "^0.23.0",
     "eslint": "^9.6.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jest": "^28.6.0",
@@ -52,8 +52,8 @@
     "serverless-esbuild": "https://github.com/iainlane/serverless-esbuild#iainlane/zip-use-mtime-from-filesystem-built",
     "serverless-offline": "^13.6.0",
     "serverless-plugin-typescript": "^2.1.5",
-    "typescript": "^5.5.2",
-    "typescript-eslint": "^7.14.1"
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^7.15.0"
   },
   "packageManager": "yarn@4.2.2"
 }
