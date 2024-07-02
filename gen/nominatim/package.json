@@ -31,6 +31,6 @@
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.13.4",
     "@types/node": "^20.14.9",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.3"
   }
 }
