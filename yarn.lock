@@ -2388,13 +2388,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@aws-sdk/types@npm:3.598.0, @aws-sdk/types@npm:^3.222.0, @aws-sdk/types@npm:^3.598.0":
+"@aws-sdk/types@npm:3.598.0, @aws-sdk/types@npm:^3.222.0":
   version: 3.598.0
   resolution: "@aws-sdk/types@npm:3.598.0"
   dependencies:
     "@smithy/types": "npm:^3.1.0"
     tslib: "npm:^2.6.2"
   checksum: 10c0/83abd25e07ffc071e24f36b4fb4dae6e552d662ab55f832f9918ccff251ae80155e30a86d2bd0b98bb8b94adaa2a13f05e1bb071edf491e4f36755084ac63d4f
+  languageName: node
+  linkType: hard
+
+"@aws-sdk/types@npm:^3.609.0":
+  version: 3.609.0
+  resolution: "@aws-sdk/types@npm:3.609.0"
+  dependencies:
+    "@smithy/types": "npm:^3.3.0"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/293249118c2fc3cdc79ff9712e3a9f757a2f38e7d5d770507b3bb31d22b8c67ed6f9bdd83c1b6319236b8257d5cc7e2882c15e076200021e8bbf41e4780d430c
   languageName: node
   linkType: hard
 
@@ -6230,7 +6240,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aws-sdk@npm:^2.1404.0, aws-sdk@npm:^2.1652.0, aws-sdk@npm:^2.320.0, aws-sdk@npm:^2.814.0":
+"aws-sdk@npm:^2.1404.0, aws-sdk@npm:^2.320.0, aws-sdk@npm:^2.814.0":
   version: 2.1652.0
   resolution: "aws-sdk@npm:2.1652.0"
   dependencies:
@@ -6245,6 +6255,24 @@ __metadata:
     uuid: "npm:8.0.0"
     xml2js: "npm:0.6.2"
   checksum: 10c0/771387b9c40f4032b5063468d17be62753e40543da20575e72500a0222ea5c26ceec86bd66afe0f2e34a66e6a8e484f50783ef8defeb2efd7f4568f363591b2c
+  languageName: node
+  linkType: hard
+
+"aws-sdk@npm:^2.1653.0":
+  version: 2.1653.0
+  resolution: "aws-sdk@npm:2.1653.0"
+  dependencies:
+    buffer: "npm:4.9.2"
+    events: "npm:1.1.1"
+    ieee754: "npm:1.1.13"
+    jmespath: "npm:0.16.0"
+    querystring: "npm:0.2.0"
+    sax: "npm:1.2.1"
+    url: "npm:0.10.3"
+    util: "npm:^0.12.4"
+    uuid: "npm:8.0.0"
+    xml2js: "npm:0.6.2"
+  checksum: 10c0/49c0ff02fb89faac94b00eb0e88d006682986b608e10d8b241566520c7042c049398188af1505558b92ab23ddb785b12d6c0fd8ededb58efb4d1de96c6a9d3e0
   languageName: node
   linkType: hard
 
@@ -6976,7 +7004,7 @@ __metadata:
     "@aws-lambda-powertools/logger": "npm:^2.3.0"
     "@aws-sdk/client-dynamodb": "npm:^3.606.0"
     "@aws-sdk/lib-dynamodb": "npm:^3.606.0"
-    "@aws-sdk/types": "npm:^3.598.0"
+    "@aws-sdk/types": "npm:^3.609.0"
     "@curveball/http-errors": "npm:^1.0.1"
     "@internal/geojs": "npm:0.0.1"
     "@internal/met.no": "npm:0.0.1"
@@ -12467,7 +12495,7 @@ __metadata:
     "@jest/globals": "npm:^29.7.0"
     "@serverless/utils": "npm:^6.0.2"
     "@types/node": "npm:^20.14.9"
-    aws-sdk: "npm:^2.1652.0"
+    aws-sdk: "npm:^2.1653.0"
     concurrently: "npm:^8.2.2"
     esbuild: "npm:^0.23.0"
     eslint: "npm:^9.6.0"
