@@ -7099,9 +7099,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aws-sdk@npm:^2.1653.0":
-  version: 2.1653.0
-  resolution: "aws-sdk@npm:2.1653.0"
+"aws-sdk@npm:^2.1654.0":
+  version: 2.1654.0
+  resolution: "aws-sdk@npm:2.1654.0"
   dependencies:
     buffer: "npm:4.9.2"
     events: "npm:1.1.1"
@@ -7113,7 +7113,7 @@ __metadata:
     util: "npm:^0.12.4"
     uuid: "npm:8.0.0"
     xml2js: "npm:0.6.2"
-  checksum: 10c0/49c0ff02fb89faac94b00eb0e88d006682986b608e10d8b241566520c7042c049398188af1505558b92ab23ddb785b12d6c0fd8ededb58efb4d1de96c6a9d3e0
+  checksum: 10c0/c389b76bbd04582e7aeff4c0f9c8619be19c47761c52f3544250b29a9dc42f1fded4b4210d85a99ed426fe7ef725feb3b4cdf236b048018a72c0b8a718603dc0
   languageName: node
   linkType: hard
 
@@ -13336,7 +13336,7 @@ __metadata:
     "@jest/globals": "npm:^29.7.0"
     "@serverless/utils": "npm:^6.0.2"
     "@types/node": "npm:^20.14.9"
-    aws-sdk: "npm:^2.1653.0"
+    aws-sdk: "npm:^2.1654.0"
     concurrently: "npm:^8.2.2"
     esbuild: "npm:^0.23.0"
     eslint: "npm:^9.6.0"
