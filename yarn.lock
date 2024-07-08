@@ -4098,7 +4098,7 @@ __metadata:
   resolution: "@internal/geojs@workspace:gen/geojs"
   dependencies:
     "@openapitools/openapi-generator-cli": "npm:^2.13.4"
-    "@types/node": "npm:^20.14.9"
+    "@types/node": "npm:^20.14.10"
     axios: "npm:^1.7.2"
     typescript: "npm:^5.5.3"
   languageName: unknown
@@ -4109,7 +4109,7 @@ __metadata:
   resolution: "@internal/met.no@workspace:gen/met.no"
   dependencies:
     "@openapitools/openapi-generator-cli": "npm:^2.13.4"
-    "@types/node": "npm:^20.14.9"
+    "@types/node": "npm:^20.14.10"
     axios: "npm:^1.7.2"
     typescript: "npm:^5.5.3"
   languageName: unknown
@@ -4120,7 +4120,7 @@ __metadata:
   resolution: "@internal/nominatim@workspace:gen/nominatim"
   dependencies:
     "@openapitools/openapi-generator-cli": "npm:^2.13.4"
-    "@types/node": "npm:^20.14.9"
+    "@types/node": "npm:^20.14.10"
     axios: "npm:^1.7.2"
     typescript: "npm:^5.5.3"
   languageName: unknown
@@ -6489,12 +6489,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^20.14.9":
+"@types/node@npm:*":
   version: 20.14.9
   resolution: "@types/node@npm:20.14.9"
   dependencies:
     undici-types: "npm:~5.26.4"
   checksum: 10c0/911ffa444dc032897f4a23ed580c67903bd38ea1c5ec99b1d00fa10b83537a3adddef8e1f29710cbdd8e556a61407ed008e06537d834e48caf449ce59f87d387
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^20.14.10":
+  version: 20.14.10
+  resolution: "@types/node@npm:20.14.10"
+  dependencies:
+    undici-types: "npm:~5.26.4"
+  checksum: 10c0/0b06cff14365c2d0085dc16cc8cbea5c40ec09cfc1fea966be9eeecf35562760bfde8f88e86de6edfaf394501236e229d9c1084fad04fb4dec472ae245d8ae69
   languageName: node
   linkType: hard
 
@@ -7099,9 +7108,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aws-sdk@npm:^2.1654.0":
-  version: 2.1654.0
-  resolution: "aws-sdk@npm:2.1654.0"
+"aws-sdk@npm:^2.1655.0":
+  version: 2.1655.0
+  resolution: "aws-sdk@npm:2.1655.0"
   dependencies:
     buffer: "npm:4.9.2"
     events: "npm:1.1.1"
@@ -7113,7 +7122,7 @@ __metadata:
     util: "npm:^0.12.4"
     uuid: "npm:8.0.0"
     xml2js: "npm:0.6.2"
-  checksum: 10c0/c389b76bbd04582e7aeff4c0f9c8619be19c47761c52f3544250b29a9dc42f1fded4b4210d85a99ed426fe7ef725feb3b4cdf236b048018a72c0b8a718603dc0
+  checksum: 10c0/63a79d22040bb28e1b5d60381eb329287c8defa7cf3fdad8554cb8cdb2f2a5e1c492d88b4d628eb020f09b51f8e32344c1ac2ed0798cd07f269ef5085342aa5f
   languageName: node
   linkType: hard
 
@@ -7867,7 +7876,7 @@ __metadata:
     "@types/lambda-tester": "npm:^4.0.3"
     "@types/mime-types": "npm:^2.1.4"
     "@types/negotiator": "npm:^0.6.3"
-    "@types/node": "npm:^20.14.9"
+    "@types/node": "npm:^20.14.10"
     aws-lambda: "npm:^1.0.7"
     aws-sdk-client-mock: "npm:^4.0.1"
     aws-sdk-client-mock-jest: "npm:^4.0.1"
@@ -13335,8 +13344,8 @@ __metadata:
     "@eslint/js": "npm:^9.6.0"
     "@jest/globals": "npm:^29.7.0"
     "@serverless/utils": "npm:^6.0.2"
-    "@types/node": "npm:^20.14.9"
-    aws-sdk: "npm:^2.1654.0"
+    "@types/node": "npm:^20.14.10"
+    aws-sdk: "npm:^2.1655.0"
     concurrently: "npm:^8.2.2"
     esbuild: "npm:^0.23.0"
     eslint: "npm:^9.6.0"
