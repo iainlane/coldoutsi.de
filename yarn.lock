@@ -2270,17 +2270,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@aws-sdk/lib-dynamodb@npm:^3.610.0":
-  version: 3.610.0
-  resolution: "@aws-sdk/lib-dynamodb@npm:3.610.0"
+"@aws-sdk/lib-dynamodb@npm:^3.613.0":
+  version: 3.613.0
+  resolution: "@aws-sdk/lib-dynamodb@npm:3.613.0"
   dependencies:
-    "@aws-sdk/util-dynamodb": "npm:3.609.0"
+    "@aws-sdk/util-dynamodb": "npm:3.613.0"
     "@smithy/smithy-client": "npm:^3.1.5"
     "@smithy/types": "npm:^3.3.0"
     tslib: "npm:^2.6.2"
   peerDependencies:
-    "@aws-sdk/client-dynamodb": ^3.609.0
-  checksum: 10c0/79b80c50c0c774cc337ca12815fc50a3475a30112d9e26af0b340e64c322a68a7fedf5e45c49def89fca2704a62f325cca50d5ef8ebae3cdcfb5254a7ae0c775
+    "@aws-sdk/client-dynamodb": ^3.613.0
+  checksum: 10c0/db0a482d0ed3a5309f07bb5747d384beceabb78b9e8991547c64562d75016d209ef6ad7a8aaaa9f4ebd0d91531096d6b11091094634d464778320591326dc0f4
   languageName: node
   linkType: hard
 
@@ -2855,14 +2855,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@aws-sdk/util-dynamodb@npm:3.609.0":
-  version: 3.609.0
-  resolution: "@aws-sdk/util-dynamodb@npm:3.609.0"
+"@aws-sdk/util-dynamodb@npm:3.613.0":
+  version: 3.613.0
+  resolution: "@aws-sdk/util-dynamodb@npm:3.613.0"
   dependencies:
     tslib: "npm:^2.6.2"
   peerDependencies:
-    "@aws-sdk/client-dynamodb": ^3.609.0
-  checksum: 10c0/5e3e762ffabe126230fd4b493f05799184c89d890c21e472ff5e08c27a7a840095b84848b5a5ad2f9616bfd1822030794579bf2ff448aa4dca4c0aae30c90996
+    "@aws-sdk/client-dynamodb": ^3.613.0
+  checksum: 10c0/96711bc64c17516a77df09b33c95f0518fecad9b7928a947f248144f06b561c53df7b11081f06dd9c70c1400133eefdf81c70a81a2d1d22b77fe8b902eb201d9
   languageName: node
   linkType: hard
 
@@ -7920,7 +7920,7 @@ __metadata:
   dependencies:
     "@aws-lambda-powertools/logger": "npm:^2.3.0"
     "@aws-sdk/client-dynamodb": "npm:^3.613.0"
-    "@aws-sdk/lib-dynamodb": "npm:^3.610.0"
+    "@aws-sdk/lib-dynamodb": "npm:^3.613.0"
     "@aws-sdk/types": "npm:^3.609.0"
     "@curveball/http-errors": "npm:^1.0.1"
     "@internal/geojs": "npm:0.0.1"
