@@ -6318,10 +6318,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/aws-lambda@npm:*, @types/aws-lambda@npm:^8.10.140":
+"@types/aws-lambda@npm:*":
   version: 8.10.140
   resolution: "@types/aws-lambda@npm:8.10.140"
   checksum: 10c0/ce50a588b4ec6125014b45dfd663e2dff93088297b32bce93e2f04752c92bf56f774270a922a64d867b0d3ca52a96ce41285590af604e9f896fdd3c58711daca
+  languageName: node
+  linkType: hard
+
+"@types/aws-lambda@npm:^8.10.141":
+  version: 8.10.141
+  resolution: "@types/aws-lambda@npm:8.10.141"
+  checksum: 10c0/cb82807c0feee91702321ae492ae24023e05b461f91e155d1ade60a40af779067dd7631bd70f97f8ae4cf107aaa03286db0093694184c79f314edb38f1bfa250
   languageName: node
   linkType: hard
 
@@ -7074,7 +7081,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"async@npm:^3.2.0, async@npm:^3.2.4":
+"async@npm:^3.2.0, async@npm:^3.2.3, async@npm:^3.2.4":
   version: 3.2.5
   resolution: "async@npm:3.2.5"
   checksum: 10c0/1408287b26c6db67d45cb346e34892cee555b8b59e6c68e6f8c3e495cad5ca13b4f218180e871f3c2ca30df4ab52693b66f2f6ff43644760cab0b2198bda79c1
@@ -7168,9 +7175,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aws-sdk@npm:^2.1656.0":
-  version: 2.1656.0
-  resolution: "aws-sdk@npm:2.1656.0"
+"aws-sdk@npm:^2.1657.0":
+  version: 2.1657.0
+  resolution: "aws-sdk@npm:2.1657.0"
   dependencies:
     buffer: "npm:4.9.2"
     events: "npm:1.1.1"
@@ -7182,7 +7189,7 @@ __metadata:
     util: "npm:^0.12.4"
     uuid: "npm:8.0.0"
     xml2js: "npm:0.6.2"
-  checksum: 10c0/f3efbc625a2956131d2a475c19c24e87493de6011eacdfcf9ea647972e0df1f63dd9cf5f5190503309b81a71b7b0745e16e361ba0b86a8dd16ebb704c4a2d10a
+  checksum: 10c0/c9827aad62d2d892eb12b83263c43a3fc8208bff8f30a080337f64285f3b76173bbfd4dba4c151ce415c1475c5ae11881b4d515c5ffc29187d7b3f6315bcd71f
   languageName: node
   linkType: hard
 
@@ -7641,7 +7648,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:4.1.2, chalk@npm:^4.0.0, chalk@npm:^4.1.0, chalk@npm:^4.1.1, chalk@npm:^4.1.2":
+"chalk@npm:4.1.2, chalk@npm:^4.0.0, chalk@npm:^4.0.2, chalk@npm:^4.1.0, chalk@npm:^4.1.1, chalk@npm:^4.1.2":
   version: 4.1.2
   resolution: "chalk@npm:4.1.2"
   dependencies:
@@ -7930,7 +7937,7 @@ __metadata:
     "@middy/http-response-serializer": "npm:~5"
     "@smithy/types": "npm:^3.3.0"
     "@tsconfig/node20": "npm:^20.1.4"
-    "@types/aws-lambda": "npm:^8.10.140"
+    "@types/aws-lambda": "npm:^8.10.141"
     "@types/chai": "npm:^4.3.16"
     "@types/d3-array": "npm:^3.2.1"
     "@types/lambda-tester": "npm:^4.0.3"
@@ -7957,7 +7964,7 @@ __metadata:
     negotiator: "npm:^0.6.3"
     parser-ts: "npm:^0.7.0"
     ts-essentials: "npm:^10.0.1"
-    ts-jest: "npm:^29.2.0"
+    ts-jest: "npm:^29.2.1"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.5.3"
   languageName: unknown
@@ -8631,6 +8638,17 @@ __metadata:
     wcwidth:
       optional: true
   checksum: 10c0/0b7b03723e450c8286bd375bbe7d23247456dbb8f79df055adcfd745bfb91f7604c4e78204ff75d65d5229bec8867cbefca51c57938004f487ff800b587540bb
+  languageName: node
+  linkType: hard
+
+"ejs@npm:^3.0.0":
+  version: 3.1.10
+  resolution: "ejs@npm:3.1.10"
+  dependencies:
+    jake: "npm:^10.8.5"
+  bin:
+    ejs: bin/cli.js
+  checksum: 10c0/52eade9e68416ed04f7f92c492183340582a36482836b11eab97b159fcdcfdedc62233a1bf0bf5e5e1851c501f2dca0e2e9afd111db2599e4e7f53ee29429ae1
   languageName: node
   linkType: hard
 
@@ -9598,6 +9616,15 @@ __metadata:
   version: 6.2.0
   resolution: "file-type@npm:6.2.0"
   checksum: 10c0/3d7fe85a10bd97ca0c35fd9a20d21f5b20849bbb70985d37c34475051433f3c6109c76a3e5893bff6773037b769be9730a2db762789ecf25def9b62a4c2ee953
+  languageName: node
+  linkType: hard
+
+"filelist@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "filelist@npm:1.0.4"
+  dependencies:
+    minimatch: "npm:^5.0.1"
+  checksum: 10c0/426b1de3944a3d153b053f1c0ebfd02dccd0308a4f9e832ad220707a6d1f1b3c9784d6cadf6b2f68f09a57565f63ebc7bcdc913ccf8012d834f472c46e596f41
   languageName: node
   linkType: hard
 
@@ -10968,6 +10995,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jake@npm:^10.8.5":
+  version: 10.9.1
+  resolution: "jake@npm:10.9.1"
+  dependencies:
+    async: "npm:^3.2.3"
+    chalk: "npm:^4.0.2"
+    filelist: "npm:^1.0.4"
+    minimatch: "npm:^3.1.2"
+  bin:
+    jake: bin/cli.js
+  checksum: 10c0/dda972431a926462f08fcf583ea8997884216a43daa5cce81cb42e7e661dc244f836c0a802fde23439c6e1fc59743d1c0be340aa726d3b17d77557611a5cd541
+  languageName: node
+  linkType: hard
+
 "java-invoke-local@npm:0.0.6":
   version: 0.0.6
   resolution: "java-invoke-local@npm:0.0.6"
@@ -12116,7 +12157,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimatch@npm:^5.1.0":
+"minimatch@npm:^5.0.1, minimatch@npm:^5.1.0":
   version: 5.1.6
   resolution: "minimatch@npm:5.1.6"
   dependencies:
@@ -13412,7 +13453,7 @@ __metadata:
     "@jest/globals": "npm:^29.7.0"
     "@serverless/utils": "npm:^6.0.2"
     "@types/node": "npm:^20.14.10"
-    aws-sdk: "npm:^2.1656.0"
+    aws-sdk: "npm:^2.1657.0"
     concurrently: "npm:^8.2.2"
     esbuild: "npm:^0.23.0"
     eslint: "npm:^9.6.0"
@@ -14548,11 +14589,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-jest@npm:^29.2.0":
-  version: 29.2.0
-  resolution: "ts-jest@npm:29.2.0"
+"ts-jest@npm:^29.2.1":
+  version: 29.2.1
+  resolution: "ts-jest@npm:29.2.1"
   dependencies:
     bs-logger: "npm:0.x"
+    ejs: "npm:^3.0.0"
     fast-json-stable-stringify: "npm:2.x"
     jest-util: "npm:^29.0.0"
     json5: "npm:^2.2.3"
@@ -14580,7 +14622,7 @@ __metadata:
       optional: true
   bin:
     ts-jest: cli.js
-  checksum: 10c0/a20fb23f1b54cbdb3d793bf527df81fa212c4a9e0dbad00f73923f94c199eea7d3b6f88de208ecaf5ddd52c781119a958af045fc807e10f0d37f5a1c4fcee7fb
+  checksum: 10c0/9c833887b95adfe217f5d90b673ff412812cd38c7b1bdf160519592a39e6431bc649c74aa171a4e5edfedd48bff22a086a236cb12b4c7cac07e4db10cf5c9af4
   languageName: node
   linkType: hard
 
