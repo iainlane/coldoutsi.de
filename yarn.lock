@@ -7959,7 +7959,7 @@ __metadata:
     jest: "npm:^29.7.0"
     jest-mock-extended: "npm:^3.0.7"
     lambda-tester: "npm:^4.0.1"
-    liquidjs: "npm:^10.14.0"
+    liquidjs: "npm:^10.15.0"
     mime-types: "npm:^2.1.35"
     negotiator: "npm:^0.6.3"
     parser-ts: "npm:^0.7.0"
@@ -11798,15 +11798,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"liquidjs@npm:^10.14.0":
-  version: 10.14.0
-  resolution: "liquidjs@npm:10.14.0"
+"liquidjs@npm:^10.15.0":
+  version: 10.15.0
+  resolution: "liquidjs@npm:10.15.0"
   dependencies:
     commander: "npm:^10.0.0"
   bin:
     liquid: bin/liquid.js
     liquidjs: bin/liquid.js
-  checksum: 10c0/aa926156ef8056efb57d20bd7e7e4f0efcb3bc3cca36abe187cb9ea2f39d4fca083734095d664d0696e9711533fd442b922670f8b7c8ee0a11b9fc2c2ee7657e
+  checksum: 10c0/08ee3faa886b55aa5a907c635c22a90901709a0a189a2744245962d8040f30a1addd386af456d7757855ab65c5ac486992b4a629f41922d90fa1b72c4f38c016
   languageName: node
   linkType: hard
 
