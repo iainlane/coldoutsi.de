@@ -7175,9 +7175,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aws-sdk@npm:^2.1657.0":
-  version: 2.1657.0
-  resolution: "aws-sdk@npm:2.1657.0"
+"aws-sdk@npm:^2.1658.0":
+  version: 2.1658.0
+  resolution: "aws-sdk@npm:2.1658.0"
   dependencies:
     buffer: "npm:4.9.2"
     events: "npm:1.1.1"
@@ -7189,7 +7189,7 @@ __metadata:
     util: "npm:^0.12.4"
     uuid: "npm:8.0.0"
     xml2js: "npm:0.6.2"
-  checksum: 10c0/c9827aad62d2d892eb12b83263c43a3fc8208bff8f30a080337f64285f3b76173bbfd4dba4c151ce415c1475c5ae11881b4d515c5ffc29187d7b3f6315bcd71f
+  checksum: 10c0/e80072b09155e6f83bbd59e49345a603f00db557cbfed020363f7fe950f65315a063ff53009aab1d52b6add42a96ad3549fc0d277b80ac0b91b9af4fa6894dde
   languageName: node
   linkType: hard
 
@@ -7964,7 +7964,7 @@ __metadata:
     negotiator: "npm:^0.6.3"
     parser-ts: "npm:^0.7.0"
     ts-essentials: "npm:^10.0.1"
-    ts-jest: "npm:^29.2.1"
+    ts-jest: "npm:^29.2.2"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.5.3"
   languageName: unknown
@@ -13453,7 +13453,7 @@ __metadata:
     "@jest/globals": "npm:^29.7.0"
     "@serverless/utils": "npm:^6.0.2"
     "@types/node": "npm:^20.14.10"
-    aws-sdk: "npm:^2.1657.0"
+    aws-sdk: "npm:^2.1658.0"
     concurrently: "npm:^8.2.2"
     esbuild: "npm:^0.23.0"
     eslint: "npm:^9.6.0"
@@ -14589,9 +14589,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-jest@npm:^29.2.1":
-  version: 29.2.1
-  resolution: "ts-jest@npm:29.2.1"
+"ts-jest@npm:^29.2.2":
+  version: 29.2.2
+  resolution: "ts-jest@npm:29.2.2"
   dependencies:
     bs-logger: "npm:0.x"
     ejs: "npm:^3.0.0"
@@ -14622,7 +14622,7 @@ __metadata:
       optional: true
   bin:
     ts-jest: cli.js
-  checksum: 10c0/9c833887b95adfe217f5d90b673ff412812cd38c7b1bdf160519592a39e6431bc649c74aa171a4e5edfedd48bff22a086a236cb12b4c7cac07e4db10cf5c9af4
+  checksum: 10c0/833afe98f6aef7c46abbfb6bc84ce2431bcd82d614380e54ccd73cfc4c7c015ecdf058ad53edc48d575816b35c3db044de5fe1a579336a75f9a8c6651b6f7b50
   languageName: node
   linkType: hard
 
