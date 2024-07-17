@@ -3609,7 +3609,7 @@ __metadata:
   resolution: "@internal/geojs@workspace:gen/geojs"
   dependencies:
     "@openapitools/openapi-generator-cli": "npm:^2.13.4"
-    "@types/node": "npm:^20.14.10"
+    "@types/node": "npm:^20.14.11"
     axios: "npm:^1.7.2"
     typescript: "npm:^5.5.3"
   languageName: unknown
@@ -3620,7 +3620,7 @@ __metadata:
   resolution: "@internal/met.no@workspace:gen/met.no"
   dependencies:
     "@openapitools/openapi-generator-cli": "npm:^2.13.4"
-    "@types/node": "npm:^20.14.10"
+    "@types/node": "npm:^20.14.11"
     axios: "npm:^1.7.2"
     typescript: "npm:^5.5.3"
   languageName: unknown
@@ -3631,7 +3631,7 @@ __metadata:
   resolution: "@internal/nominatim@workspace:gen/nominatim"
   dependencies:
     "@openapitools/openapi-generator-cli": "npm:^2.13.4"
-    "@types/node": "npm:^20.14.10"
+    "@types/node": "npm:^20.14.11"
     axios: "npm:^1.7.2"
     typescript: "npm:^5.5.3"
   languageName: unknown
@@ -5638,12 +5638,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^20.14.10":
+"@types/node@npm:*":
   version: 20.14.10
   resolution: "@types/node@npm:20.14.10"
   dependencies:
     undici-types: "npm:~5.26.4"
   checksum: 10c0/0b06cff14365c2d0085dc16cc8cbea5c40ec09cfc1fea966be9eeecf35562760bfde8f88e86de6edfaf394501236e229d9c1084fad04fb4dec472ae245d8ae69
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^20.14.11":
+  version: 20.14.11
+  resolution: "@types/node@npm:20.14.11"
+  dependencies:
+    undici-types: "npm:~5.26.4"
+  checksum: 10c0/5306becc0ff41d81b1e31524bd376e958d0741d1ce892dffd586b9ae0cb6553c62b0d62abd16da8bea6b9a2c17572d360450535d7c073794b0cef9cb4e39691e
   languageName: node
   linkType: hard
 
@@ -6998,7 +7007,7 @@ __metadata:
     "@types/lambda-tester": "npm:^4.0.3"
     "@types/mime-types": "npm:^2.1.4"
     "@types/negotiator": "npm:^0.6.3"
-    "@types/node": "npm:^20.14.10"
+    "@types/node": "npm:^20.14.11"
     aws-lambda: "npm:^1.0.7"
     aws-sdk-client-mock: "npm:^4.0.1"
     aws-sdk-client-mock-jest: "npm:^4.0.1"
@@ -8179,12 +8188,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-prettier@npm:^5.1.3":
-  version: 5.1.3
-  resolution: "eslint-plugin-prettier@npm:5.1.3"
+"eslint-plugin-prettier@npm:^5.2.1":
+  version: 5.2.1
+  resolution: "eslint-plugin-prettier@npm:5.2.1"
   dependencies:
     prettier-linter-helpers: "npm:^1.0.0"
-    synckit: "npm:^0.8.6"
+    synckit: "npm:^0.9.1"
   peerDependencies:
     "@types/eslint": ">=8.0.0"
     eslint: ">=8.0.0"
@@ -8195,7 +8204,7 @@ __metadata:
       optional: true
     eslint-config-prettier:
       optional: true
-  checksum: 10c0/f45d5fc1fcfec6b0cf038a7a65ddd10a25df4fe3f9e1f6b7f0d5100e66f046a26a2492e69ee765dddf461b93c114cf2e1eb18d4970aafa6f385448985c136e09
+  checksum: 10c0/4bc8bbaf5bb556c9c501dcdff369137763c49ccaf544f9fa91400360ed5e3a3f1234ab59690e06beca5b1b7e6f6356978cdd3b02af6aba3edea2ffe69ca6e8b2
   languageName: node
   linkType: hard
 
@@ -12500,7 +12509,7 @@ __metadata:
     "@eslint/js": "npm:^9.7.0"
     "@jest/globals": "npm:^29.7.0"
     "@serverless/utils": "npm:^6.0.2"
-    "@types/node": "npm:^20.14.10"
+    "@types/node": "npm:^20.14.11"
     aws-sdk: "npm:^2.1659.0"
     concurrently: "npm:^8.2.2"
     esbuild: "npm:^0.23.0"
@@ -12510,7 +12519,7 @@ __metadata:
     eslint-plugin-n: "npm:^17.9.0"
     eslint-plugin-no-relative-import-paths: "npm:^1.5.5"
     eslint-plugin-node: "npm:^11.1.0"
-    eslint-plugin-prettier: "npm:^5.1.3"
+    eslint-plugin-prettier: "npm:^5.2.1"
     eslint-plugin-unicorn: "npm:^54.0.0"
     jest: "npm:^29.7.0"
     jest-mock-extended: "npm:^3.0.7"
@@ -13430,13 +13439,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"synckit@npm:^0.8.6":
-  version: 0.8.8
-  resolution: "synckit@npm:0.8.8"
+"synckit@npm:^0.9.1":
+  version: 0.9.1
+  resolution: "synckit@npm:0.9.1"
   dependencies:
     "@pkgr/core": "npm:^0.1.0"
     tslib: "npm:^2.6.2"
-  checksum: 10c0/c3d3aa8e284f3f84f2f868b960c9f49239b364e35f6d20825a448449a3e9c8f49fe36cdd5196b30615682f007830d46f2ea354003954c7336723cb821e4b6519
+  checksum: 10c0/d8b89e1bf30ba3ffb469d8418c836ad9c0c062bf47028406b4d06548bc66af97155ea2303b96c93bf5c7c0f0d66153a6fbd6924c76521b434e6a9898982abc2e
   languageName: node
   linkType: hard
 
