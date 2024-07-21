@@ -9,6 +9,7 @@
       "name": "vscode-jest-tests.v2",
       "request": "launch",
       "args": [
+        "jest",
         "--runInBand",
         "--watchAll=false",
         "--testNamePattern",
@@ -16,6 +17,7 @@
         "--runTestsByPath",
         "${jest.testFile}"
       ],
+      "runtimeExecutable": "pnpm",
       "env": {
         "NODE_OPTIONS": "--experimental-vm-modules"
       },

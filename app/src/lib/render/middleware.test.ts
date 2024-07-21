@@ -4,7 +4,7 @@ import type { APIGatewayProxyEventV2, APIGatewayProxyResult } from "aws-lambda";
 import { mock } from "jest-mock-extended";
 import { StatusCodes } from "http-status-codes";
 
-import { LoggerContext, loggerMiddleware } from "@/lib/logger";
+import { Logger, LoggerContext, loggerMiddleware } from "@/lib/logger";
 import { JSONRendererOptions, Renderable, renderableMiddleware } from ".";
 
 const { NOT_ACCEPTABLE, OK } = StatusCodes;
@@ -30,12 +30,13 @@ const middyHandler = middy()
   .use(renderableMiddleware())
   .handler(baseHandler) as MiddyfiedHandler<
   APIGatewayProxyEventV2,
-  APIGatewayProxyResult,
+  APIGatewayProxyResult & Renderable,
   Error,
   LoggerContext
 >;
 
 const loggerContext = mock<LoggerContext>();
+loggerContext.logger = new Logger();
 
 describe("Renderable Middleware", () => {
   it("renders response based on Accept header for JSON and uses the defaults for options", async () => {

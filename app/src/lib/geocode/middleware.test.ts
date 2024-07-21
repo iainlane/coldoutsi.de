@@ -55,7 +55,6 @@ describe("Reverse GeoCode Middleware", () => {
   const geoLocateContext = mock<
     LoggerContext & GeoCodeContext & GeoLocateContext
   >({
-    logger: mockLogger,
     geoLocate: {
       ip: "1.1.1.1",
       location: {
@@ -64,6 +63,7 @@ describe("Reverse GeoCode Middleware", () => {
       },
     },
   });
+  geoLocateContext.logger = mockLogger;
 
   beforeEach(() => {
     mockAxios = new AxiosMockAdapter(axios);
@@ -136,9 +136,9 @@ describe("Geocode Middleware", () => {
   >;
 
   const geoLocateContext = mock<LoggerContext & GeoCodeContext>({
-    logger: mockLogger,
     geoCode: {},
   });
+  geoLocateContext.logger = mockLogger;
 
   beforeEach(() => {
     mockAxios = new AxiosMockAdapter(axios);

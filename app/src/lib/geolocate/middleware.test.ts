@@ -54,9 +54,8 @@ const middyHandler = middy()
   LoggerContext & GeoLocateContext
 >;
 
-const geoLocateContext = mock<LoggerContext & GeoLocateContext>({
-  logger: mockLogger,
-});
+const geoLocateContext = mock<LoggerContext & GeoLocateContext>();
+geoLocateContext.logger = mockLogger;
 
 describe("GeoLocate Middleware", () => {
   beforeEach(() => {

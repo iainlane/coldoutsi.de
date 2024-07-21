@@ -16,11 +16,12 @@ function baseHandler(code: number): () => Response {
   });
 }
 
+const mockLogger = new Logger();
+
 const mockEvent = mock<APIGatewayProxyEventV2>();
 
-const mockContext = mock<LoggerContext>({
-  logger: new Logger(),
-});
+const mockContext = mock<LoggerContext>();
+mockContext.logger = mockLogger;
 
 function middyHandler(code: number) {
   return middy()
@@ -84,7 +85,7 @@ describe("Cache Control Middleware", () => {
         .use(cacheControlMiddleware())
         .handler(nullHandler) as MiddyfiedHandler<
         APIGatewayProxyEventV2,
-        Response,
+        Response | null,
         Error,
         LoggerContext
       >

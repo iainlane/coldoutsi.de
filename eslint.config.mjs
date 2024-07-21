@@ -21,6 +21,7 @@ export default tseslint.config(
       "**/node_modules/",
       "*.js",
       ".esbuild/",
+      ".pnpm-store/",
       "build/",
       "dist/",
       "eslint.config.mjs",

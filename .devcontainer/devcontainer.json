@@ -5,11 +5,6 @@
   "forwardPorts": [3000],
   "mounts": [
     "source=${localEnv:HOME}${localEnv:USERPROFILE}/.aws,target=/home/node/.aws,type=bind",
-    "source=${localWorkspaceFolderBasename}-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume",
-    "source=${localWorkspaceFolderBasename}-node_modules-nominatim,target=${containerWorkspaceFolder}/gen/nominatim/node_modules,type=volume",
-    "source=${localWorkspaceFolderBasename}-node_modules-met.no,target=${containerWorkspaceFolder}/gen/met.no/node_modules,type=volume",
-    "source=${localWorkspaceFolderBasename}-node_modules-geojs,target=${containerWorkspaceFolder}/gen/geojs/node_modules,type=volume",
-    "source=${localWorkspaceFolderBasename}-yarn_cache,target=/home/node/.cache/yarn,type=volume",
     "source=${localWorkspaceFolderBasename}-node_cache,target=/home/node/.cache/node,type=volume"
   ],
 
@@ -28,7 +23,8 @@
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
         "Orta.vscode-jest",
-        "sissel.shopify-liquid"
+        "sissel.shopify-liquid",
+        "github.vscode-github-actions"
       ]
     }
   },

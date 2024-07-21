@@ -9,7 +9,7 @@ The main rules are: be nice, and be patient. Always assume good faith.
 ## Tech Stack
 
 The project is a serverless application, written with TypeScript and managed
-with npm and yarn. It is designed to run on AWS Lambda and uses DynamoDB to
+with npm and pnpm. It is designed to run on AWS Lambda and uses DynamoDB to
 cache results from the remote APIs we query. [middy] is used to handle the
 middleware for the Lambda functions, and [serverless] is used to manage the
 deployment of the application.
@@ -74,7 +74,7 @@ To run the application locally, we use
 [`serverless-offline`][serverless-offline]. Use the following command:
 
 ```sh
-yarn local
+pnpm local
 ```
 
 And then access the handlers at `http://localhost:3000/<handler>`.
@@ -86,7 +86,7 @@ And then access the handlers at `http://localhost:3000/<handler>`.
 To run tests, use the following command:
 
 ```sh
-yarn test
+pnpm test
 ```
 
 This will run the tests and generate a coverage report.
@@ -109,13 +109,13 @@ The first time you deploy the application, you'll need to create the
 certificate:
 
 ```sh
-yarn serverless create-cert --stage dev # or production
+pnpm serverless create-cert --stage dev # or production
 ```
 
 To deploy the application, use the following command:
 
 ```sh
-yarn serverless deploy --stage dev # or production
+pnpm serverless deploy --stage dev # or production
 ```
 
 This should deploy the AWS resources and make the application available at your

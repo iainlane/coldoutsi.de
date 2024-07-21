@@ -1,10 +1,9 @@
 **/node_modules
-yarn-error.log
-.esbuild/
-coverage/
-.serverless/
 .dynamodb/
-.yarn/
+.esbuild/
+.serverless/
+.pnpm-store/
+coverage/
 
 # Personal settings
 .vscode/settings.json

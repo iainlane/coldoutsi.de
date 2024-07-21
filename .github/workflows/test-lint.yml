@@ -1,3 +1,5 @@
+name: Test and lint
+
 on:
   pull_request:
   push:
@@ -17,26 +19,29 @@ jobs:
 
       - name: Set up Node.js
         uses: actions/setup-node@1e60f620b9541d16bece96c5465dc8ee9832be0b # v4.0.3
+        env:
+          COREPACK_ENABLE_STRICT: false
         with:
+          cache-dependency-path: pnpm-lock.yaml
           node-version-file: "package.json"
-          cache: "yarn"
+          cache: "pnpm"
 
       - name: Install dependencies
-        run: yarn install --immutable
+        run: pnpm install
 
       - name: Build generated libraries
         uses: nick-fields/retry@7152eba30c6575329ac0576536151aca5a72780e # v3.0.0
         with:
           max_attempts: 5
           timeout_minutes: 5
-          command: yarn gen
+          command: pnpm gen
           retry_on: error
 
       - name: Run tests
-        run: yarn test
+        run: pnpm test
 
       - name: Run linter
-        run: yarn lint .
+        run: pnpm lint .
 
       - name: Run prettier
-        run: yarn prettier --check .
+        run: pnpm prettier --check .

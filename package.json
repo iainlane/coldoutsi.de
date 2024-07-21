@@ -3,21 +3,15 @@
   "engines": {
     "node": "22"
   },
-  "workspaces": {
-    "packages": [
-      "app",
-      "gen/*"
-    ]
-  },
   "type": "module",
   "scripts": {
     "debug": "NODE_OPTIONS=--experimental-vm-modules POWERTOOLS_DEV=true node --inspect node_modules/serverless/bin/serverless offline -s dev",
     "deploy": "serverless deploy",
     "deploy-dev": "serverless deploy --stage dev",
     "lint": "eslint",
-    "test": "NODE_OPTIONS=--experimental-vm-modules POWERTOOLS_DEV=true $(yarn bin jest) --silent",
-    "gen": "concurrently 'yarn workspace @internal/nominatim gen-if-needed' 'yarn workspace @internal/geojs gen-if-needed' 'yarn workspace @internal/met.no gen-if-needed'",
-    "local": "yarn serverless offline start --stage local"
+    "test": "NODE_OPTIONS=--experimental-vm-modules POWERTOOLS_DEV=true jest --silent",
+    "gen": "pnpm run --recursive gen-if-needed",
+    "local": "serverless offline start --stage local"
   },
   "jest": {
     "collectCoverage": true,
@@ -28,7 +22,8 @@
   "devDependencies": {
     "@eslint/js": "^9.7.0",
     "@jest/globals": "^29.7.0",
-    "@serverless/utils": "^6.0.2",
+    "@serverless/utils": "^6.15.0",
+    "@tsconfig/node22": "^22.0.0",
     "@types/node": "^20.14.11",
     "aws-sdk": "^2.1659.0",
     "concurrently": "^8.2.2",
@@ -41,6 +36,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-unicorn": "^54.0.0",
+    "globals": "^15.8.0",
     "jest": "^29.7.0",
     "jest-mock-extended": "^3.0.7",
     "prettier": "^3.3.3",
@@ -49,11 +45,11 @@
     "serverless-certificate-creator": "^1.6.0",
     "serverless-domain-manager": "^7.3.8",
     "serverless-dynamodb": "^0.2.54",
-    "serverless-esbuild": "https://github.com/iainlane/serverless-esbuild#iainlane/zip-use-mtime-from-filesystem-built",
+    "serverless-esbuild": "github:iainlane/serverless-esbuild#iainlane/zip-use-mtime-from-filesystem-built",
     "serverless-offline": "^13.6.0",
     "serverless-plugin-typescript": "^2.1.5",
     "typescript": "^5.5.3",
     "typescript-eslint": "^7.16.1"
   },
-  "packageManager": "yarn@4.2.2"
+  "packageManager": "pnpm@9.5.0+sha512.140036830124618d624a2187b50d04289d5a087f326c9edfc0ccd733d76c4f52c3a313d4fc148794a2a9d81553016004e6742e8cf850670268a7387fc220c903"
 }
