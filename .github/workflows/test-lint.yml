@@ -14,6 +14,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
+      - name: Reconfigure git to not use auth in URLs
+        run: >
+          git config --global url."https://github.com/".insteadOf
+          git@github.com:
+
       - name: Enable corepack
         run: |
           corepack enable
