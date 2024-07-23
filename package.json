@@ -25,7 +25,7 @@
     "@serverless/utils": "^6.15.0",
     "@tsconfig/node22": "^22.0.0",
     "@types/node": "^20.14.11",
-    "aws-sdk": "^2.1659.0",
+    "aws-sdk": "^2.1661.0",
     "concurrently": "^8.2.2",
     "esbuild": "^0.23.0",
     "eslint": "^9.7.0",
@@ -48,8 +48,8 @@
     "serverless-esbuild": "github:iainlane/serverless-esbuild#iainlane/zip-use-mtime-from-filesystem-built",
     "serverless-offline": "^13.6.0",
     "serverless-plugin-typescript": "^2.1.5",
-    "typescript": "^5.5.3",
-    "typescript-eslint": "^7.16.1"
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^7.17.0"
   },
   "packageManager": "pnpm@9.5.0+sha512.140036830124618d624a2187b50d04289d5a087f326c9edfc0ccd733d76c4f52c3a313d4fc148794a2a9d81553016004e6742e8cf850670268a7387fc220c903"
 }
