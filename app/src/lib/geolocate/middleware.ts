@@ -158,14 +158,14 @@ export function geoLocateMiddleware<TResult>(): MiddlewareObj<
 
       pathParameters = pathParameters ?? {};
 
-      const latParam = pathParameters["lat"];
-      const lonParam = pathParameters["lon"];
+      const latParam = pathParameters["lat"] ?? "";
+      const lonParam = pathParameters["lon"] ?? "";
 
-      if (latParam && lonParam) {
+      if (latParam !== "" && lonParam !== "") {
         return handleLatLon(log, event, context, latParam, lonParam);
       }
 
-      if ((latParam !== undefined) !== (lonParam !== undefined)) {
+      if ((latParam === "") !== (lonParam === "")) {
         throw new BadRequest("If either lat or lon is specified, both must be");
       }
 

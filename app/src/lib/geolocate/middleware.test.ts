@@ -23,6 +23,12 @@ import {
 
 const { OK, PERMANENT_REDIRECT } = StatusCodes;
 
+const DEFAULT_TEST_IP = "1.2.3.4";
+
+function expect_toBeDefined<T>(arg: T): asserts arg is NonNullable<T> {
+  expect(arg).toBeDefined();
+}
+
 const ddbMock = mockClient(DynamoDBDocumentClient);
 ddbMock.on(GetCommand).resolves({});
 ddbMock.on(PutCommand).resolves({});
@@ -49,188 +55,125 @@ const middyHandler = middy()
 const geoLocateContext = mock<LoggerContext & GeoLocateContext>();
 geoLocateContext.logger = mockLogger;
 
+interface mockEventParts {
+  sourceIp?: string;
+  coords?: { lat: string; lon: string } | null;
+  headers?: { [key: string]: string };
+  rawQueryString?: string;
+}
+
+function createMockEvent(options: mockEventParts = {}): APIGatewayProxyEventV2 {
+  const {
+    sourceIp = DEFAULT_TEST_IP,
+    coords = {
+      lat: "13.37",
+      lon: "313.37",
+    },
+    headers = {},
+    rawQueryString = "",
+  } = options;
+
+  return Object.assign(mock<APIGatewayProxyEventV2>(), {
+    requestContext: {
+      http: { sourceIp },
+    },
+    pathParameters: coords ?? {},
+    headers,
+    rawPath: coords ? `/${coords.lat}/${coords.lon}` : "/",
+    rawQueryString,
+  });
+}
+
+function mockGeoJsResponse(latitude: string, longitude: string) {
+  mockAxios
+    .onGet(`https://get.geojs.io/v1/ip/geo.json?ip=${DEFAULT_TEST_IP}`)
+    .reply(OK, [{ ip: DEFAULT_TEST_IP, latitude, longitude }]);
+}
+
+function expectGeoLocateResult(
+  response: GeoLocateContext,
+  expectedLatitude: number,
+  expectedLongitude: number,
+) {
+  expect(response.geoLocate).toEqual({
+    ip: DEFAULT_TEST_IP,
+    location: {
+      latitude: expectedLatitude,
+      longitude: expectedLongitude,
+    },
+  });
+}
+
 describe("GeoLocate Middleware", () => {
   beforeEach(() => {
     mockAxios.reset();
   });
 
-  it("can handle lat/lon in query parameters", async () => {
-    mockAxios
-      .onGet("https://get.geojs.io/v1/ip/geo.json?ip=1.2.3.4")
-      .reply(OK, [
-        {
-          ip: "1.2.3.4",
-          latitude: "47.6062",
-          longitude: "122.3321",
-        },
-      ]);
+  it("geolocates if lat/lon are not in query parameters", async () => {
+    mockGeoJsResponse("13.37", "313.37");
+    const mockEvent = createMockEvent();
+    const response = await middyHandler(mockEvent, geoLocateContext);
 
-    const mockEvent = mock<APIGatewayProxyEventV2>({
-      pathParameters: {
+    expectGeoLocateResult(response, 13.37, 313.37);
+  });
+
+  it("can handle lat/lon in path parameters", async () => {
+    mockGeoJsResponse("47.6062", "122.3321");
+    const mockEvent = createMockEvent({
+      coords: {
         lat: "47.61",
         lon: "122.33",
       },
-      requestContext: {
-        http: {
-          sourceIp: "1.2.3.4",
-        },
-      },
     });
 
     const response = await middyHandler(mockEvent, geoLocateContext);
 
-    expect(response.geoLocate).toEqual({
-      ip: "1.2.3.4",
-      location: {
-        latitude: 47.61,
-        longitude: 122.33,
-      },
-    });
+    expectGeoLocateResult(response, 47.61, 122.33);
   });
 
-  it("geolocates if lat/lon are not in query parameters", async () => {
+  it("throws UnprocessableContent if geolocate fails", async () => {
     mockAxios
       .onGet("https://get.geojs.io/v1/ip/geo.json?ip=1.1.1.1")
-      .reply(OK, [
-        {
-          ip: "1.1.1.1",
-          latitude: "13.37",
-          longitude: "313.37",
-        },
-      ]);
+      .reply(OK, [{ ip: "1.1.1.1", latitude: "xxx", longitude: "313.37" }]);
 
-    const mockEvent = mock<APIGatewayProxyEventV2>({
-      requestContext: {
-        http: {
-          sourceIp: "1.1.1.1",
-        },
-      },
+    const mockEvent = createMockEvent({
+      sourceIp: "1.1.1.1",
+      coords: null,
     });
-    mockEvent.pathParameters = {};
-
-    const response = await middyHandler(mockEvent, geoLocateContext);
-
-    expect(response.geoLocate).toEqual({
-      ip: "1.1.1.1",
-      location: expect.objectContaining({
-        latitude: 13.37,
-        longitude: 313.37,
-      }),
-    });
-  });
-
-  it("throws InternalServerError if geolocate fails", async () => {
-    mockAxios
-      .onGet("https://get.geojs.io/v1/ip/geo.json?ip=1.1.1.1")
-      .reply(OK, [
-        {
-          ip: "1.1.1.1",
-          latitude: "xxx",
-          longitude: 313.37,
-        },
-      ]);
-
-    const mockEvent = mock<APIGatewayProxyEventV2>({
-      requestContext: {
-        http: {
-          sourceIp: "1.1.1.1",
-        },
-      },
-    });
-    mockEvent.pathParameters = {};
 
     await expect(middyHandler(mockEvent, geoLocateContext)).rejects.toThrow(
       UnprocessableContent,
     );
   });
 
-  it("throws BadRequest if lat is invalid", async () => {
-    const mockEvent = mock<APIGatewayProxyEventV2>({
-      pathParameters: {
-        lat: "invalid",
-        lon: "122.3321",
-      },
-      requestContext: {
-        http: {
-          sourceIp: "1.2.3.4",
-        },
-      },
-    });
+  it.each<{ lat: string; lon: string }>([
+    { lat: "invalid", lon: "122.3321" },
+    { lat: "47.6062", lon: "invalid" },
+  ])("throws BadRequest if $lat,$lon is invalid", async ({ lat, lon }) => {
+    const mockEvent = createMockEvent({ coords: { lat, lon } });
 
     await expect(middyHandler(mockEvent, geoLocateContext)).rejects.toThrow(
       BadRequest,
     );
   });
 
-  it("throws BadRequest if lon is invalid", async () => {
-    const mockEvent = mock<APIGatewayProxyEventV2>({
-      pathParameters: {
-        lat: "47.6062",
-        lon: "invalid",
-      },
-      requestContext: {
-        http: {
-          sourceIp: "1.1.1.1",
-        },
-      },
-    });
+  it.each(["lat", "lon"])(
+    "throws BadRequest if $missingParam is missing but the other is present",
+    async (param) => {
+      const mockEvent = createMockEvent();
 
-    await expect(middyHandler(mockEvent, geoLocateContext)).rejects.toThrow(
-      BadRequest,
-    );
-  });
+      expect_toBeDefined(mockEvent.pathParameters);
+      mockEvent.pathParameters[param] = "";
 
-  it("throws BadRequest if lat is specified but lon is not", async () => {
-    const mockEvent = mock<APIGatewayProxyEventV2>({
-      requestContext: {
-        http: {
-          sourceIp: "1.2.3.4",
-        },
-      },
-    });
-    mockEvent.pathParameters = {
-      lat: "47.6062",
-    };
+      await expect(middyHandler(mockEvent, geoLocateContext)).rejects.toThrow(
+        BadRequest,
+      );
+    },
+  );
 
-    await expect(middyHandler(mockEvent, geoLocateContext)).rejects.toThrow(
-      BadRequest,
-    );
-  });
-
-  it("throws BadRequest if lon is specified but lat is not", async () => {
-    const mockEvent = mock<APIGatewayProxyEventV2>({
-      requestContext: {
-        http: {
-          sourceIp: "1.2.3.4",
-        },
-      },
-    });
-    mockEvent.pathParameters = {
-      lon: "122.3321",
-    };
-
-    await expect(middyHandler(mockEvent, geoLocateContext)).rejects.toThrow(
-      BadRequest,
-    );
-  });
-
-  it("uses the cloudfront latitude and longitude if they are present, and doesn't call the geolocator", async () => {
-    mockAxios
-      .onGet("https://get.geojs.io/v1/ip/geo.json?ip=1.1.1.1")
-      .reply(OK, [
-        {
-          ip: "1.1.1.1",
-          latitude: "113.37",
-          longitude: "313.37",
-        },
-      ]);
-
-    const mockEvent = mock<APIGatewayProxyEventV2>({
-      requestContext: {
-        http: {
-          sourceIp: "1.1.1.1",
-        },
-      },
+  it("uses the cloudfront latitude and longitude if they are present", async () => {
+    const mockEvent = createMockEvent({
+      coords: null,
       headers: {
         "cloudfront-viewer-latitude": "113.37",
         "cloudfront-viewer-longitude": "1313.37",
@@ -239,34 +182,13 @@ describe("GeoLocate Middleware", () => {
 
     const response = await middyHandler(mockEvent, geoLocateContext);
 
-    expect(response.geoLocate).toEqual({
-      ip: "1.1.1.1",
-      location: {
-        latitude: 113.37,
-        longitude: 1313.37,
-      },
-    });
-
+    expectGeoLocateResult(response, 113.37, 1313.37);
     expect(mockAxios.history["get"]?.length).toBe(0);
   });
 
   it("ignores the cloudfront headers if they are invalid", async () => {
-    mockAxios
-      .onGet("https://get.geojs.io/v1/ip/geo.json?ip=1.2.3.4")
-      .reply(OK, [
-        {
-          ip: "1.2.3.4",
-          latitude: "13.37",
-          longitude: "313.37",
-        },
-      ]);
-
-    const mockEvent = mock<APIGatewayProxyEventV2>({
-      requestContext: {
-        http: {
-          sourceIp: "1.2.3.4",
-        },
-      },
+    mockGeoJsResponse("13.37", "313.37");
+    const mockEvent = createMockEvent({
       headers: {
         "cloudfront-viewer-latitude": "invalid",
         "cloudfront-viewer-longitude": "1313.37",
@@ -275,76 +197,32 @@ describe("GeoLocate Middleware", () => {
 
     const response = await middyHandler(mockEvent, geoLocateContext);
 
-    expect(response.geoLocate).toEqual({
-      ip: "1.2.3.4",
-      location: expect.objectContaining({
-        latitude: 13.37,
-        longitude: 313.37,
-      }),
-    });
+    expectGeoLocateResult(response, 13.37, 313.37);
   });
 
   it("prefers the query parameters over the cloudfront headers", async () => {
-    mockAxios
-      .onGet("https://get.geojs.io/v1/ip/geo.json?ip=1.2.3.4")
-      .reply(OK, [
-        {
-          ip: "1.2.3.4",
-          latitude: "13.37",
-          longitude: "313.37",
-        },
-      ]);
-
-    const mockEvent = mock<APIGatewayProxyEventV2>({
-      requestContext: {
-        http: {
-          sourceIp: "1.2.3.4",
-        },
+    const mockEvent = createMockEvent({
+      coords: {
+        lat: "47.61",
+        lon: "122.33",
       },
       headers: {
         "cloudfront-viewer-latitude": "113.37",
         "cloudfront-viewer-longitude": "1313.37",
       },
-      pathParameters: {
-        lat: "47.61",
-        lon: "122.33",
-      },
     });
 
     const response = await middyHandler(mockEvent, geoLocateContext);
 
-    expect(response.geoLocate).toEqual({
-      ip: "1.2.3.4",
-      location: {
-        latitude: 47.61,
-        longitude: 122.33,
-      },
-    });
+    expectGeoLocateResult(response, 47.61, 122.33);
   });
 
   it("truncates lat/lon to 2 decimal places", async () => {
-    mockAxios
-      .onGet("https://get.geojs.io/v1/ip/geo.json?ip=1.2.3.4")
-      .reply(OK, [
-        {
-          ip: "1.2.3.4",
-          latitude: "13.379",
-          longitude: "313.379",
-        },
-      ]);
-
-    const mockEvent = mock<APIGatewayProxyEventV2>({
-      requestContext: {
-        http: {
-          sourceIp: "1.2.3.4",
-        },
-      },
-      pathParameters: {
+    const mockEvent = createMockEvent({
+      coords: {
         lat: "13.379",
         lon: "313.379",
       },
-      rawPath: "/13.379/313.379",
-      rawQueryString: "",
     });
 
     const result = await middyHandler(mockEvent, geoLocateContext);
@@ -358,70 +236,20 @@ describe("GeoLocate Middleware", () => {
     });
   });
 
-  it.each<{
-    lat: string;
-    lon: string;
-  }>([
-    {
-      lat: "13",
-      lon: "313",
-    },
-    {
-      lat: "13.0",
-      lon: "313.0",
-    },
-    {
-      lat: "13.00",
-      lon: "313.00",
-    },
-    {
-      lat: "13.3",
-      lon: "313.3",
-    },
-    {
-      lat: "13.33",
-      lon: "313.33",
-    },
-    {
-      lat: "13",
-      lon: "313.3",
-    },
-    {
-      lat: "13.3",
-      lon: "313",
-    },
+  it.each([
+    { lat: "13", lon: "313" },
+    { lat: "13.0", lon: "313.0" },
+    { lat: "13.00", lon: "313.00" },
+    { lat: "13.3", lon: "313.3" },
+    { lat: "13.33", lon: "313.33" },
+    { lat: "13", lon: "313.3" },
+    { lat: "13.3", lon: "313" },
   ])("passes through $lat,$lon (no truncation)", async ({ lat, lon }) => {
-    mockAxios
-      .onGet("https://get.geojs.io/v1/ip/geo.json?ip=1.2.3.4")
-      .reply(OK, [
-        {
-          ip: "1.2.3.4",
-          latitude: lat,
-          longitude: lon,
-        },
-      ]);
-    const mockEvent = mock<APIGatewayProxyEventV2>({
-      requestContext: {
-        http: {
-          sourceIp: "1.2.3.4",
-        },
-      },
-      pathParameters: {
-        lat: lat,
-        lon: lon,
-      },
-      rawPath: `/${lat}/${lon}`,
-      rawQueryString: "",
-    });
+    mockGeoJsResponse(lat, lon);
+    const mockEvent = createMockEvent({ coords: { lat, lon } });
 
     const response = await middyHandler(mockEvent, geoLocateContext);
 
-    expect(response.geoLocate).toEqual({
-      ip: "1.2.3.4",
-      location: {
-        latitude: Number(lat),
-        longitude: Number(lon),
-      },
-    });
+    expectGeoLocateResult(response, Number(lat), Number(lon));
   });
 });
