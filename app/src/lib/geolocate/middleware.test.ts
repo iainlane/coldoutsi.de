@@ -9,34 +9,26 @@ import middy, { MiddyfiedHandler } from "@middy/core";
 import type { APIGatewayProxyEventV2 } from "aws-lambda";
 import { mockClient } from "aws-sdk-client-mock";
 import axios from "axios";
-import { mock } from "jest-mock-extended";
 import { StatusCodes } from "http-status-codes";
+import { mock } from "jest-mock-extended";
 
 import type { LoggerContext } from "@/lib/logger";
 import { Logger } from "@/lib/logger";
 import AxiosMockAdapter from "axios-mock-adapter";
-import { GeoLocateContext, geoLocateMiddleware } from "./middleware";
+import {
+  thirtyDays,
+  GeoLocateContext,
+  geoLocateMiddleware,
+} from "./middleware";
 
-const { OK } = StatusCodes;
+const { OK, PERMANENT_REDIRECT } = StatusCodes;
 
 const ddbMock = mockClient(DynamoDBDocumentClient);
 ddbMock.on(GetCommand).resolves({});
 ddbMock.on(PutCommand).resolves({});
 
-let mockAxios: AxiosMockAdapter;
+const mockAxios = new AxiosMockAdapter(axios);
 const mockLogger = new Logger();
-
-const mockEvent = mock<APIGatewayProxyEventV2>({
-  pathParameters: {
-    lat: "47.6062",
-    lon: "122.3321",
-  },
-  requestContext: {
-    http: {
-      sourceIp: "1.2.3.4",
-    },
-  },
-});
 
 function baseHandler(
   _event: APIGatewayProxyEventV2,
@@ -59,7 +51,7 @@ geoLocateContext.logger = mockLogger;
 
 describe("GeoLocate Middleware", () => {
   beforeEach(() => {
-    mockAxios = new AxiosMockAdapter(axios);
+    mockAxios.reset();
   });
 
   it("can handle lat/lon in query parameters", async () => {
@@ -72,6 +64,18 @@ describe("GeoLocate Middleware", () => {
           longitude: "122.3321",
         },
       ]);
+
+    const mockEvent = mock<APIGatewayProxyEventV2>({
+      pathParameters: {
+        lat: "47.61",
+        lon: "122.33",
+      },
+      requestContext: {
+        http: {
+          sourceIp: "1.2.3.4",
+        },
+      },
+    });
 
     const response = await middyHandler(mockEvent, geoLocateContext);
 
@@ -302,8 +306,8 @@ describe("GeoLocate Middleware", () => {
         "cloudfront-viewer-longitude": "1313.37",
       },
       pathParameters: {
-        lat: "47.6062",
-        lon: "122.3321",
+        lat: "47.61",
+        lon: "122.33",
       },
     });
 
@@ -314,6 +318,109 @@ describe("GeoLocate Middleware", () => {
       location: {
         latitude: 47.61,
         longitude: 122.33,
+      },
+    });
+  });
+
+  it("truncates lat/lon to 2 decimal places", async () => {
+    mockAxios
+      .onGet("https://get.geojs.io/v1/ip/geo.json?ip=1.2.3.4")
+      .reply(OK, [
+        {
+          ip: "1.2.3.4",
+          latitude: "13.379",
+          longitude: "313.379",
+        },
+      ]);
+
+    const mockEvent = mock<APIGatewayProxyEventV2>({
+      requestContext: {
+        http: {
+          sourceIp: "1.2.3.4",
+        },
+      },
+      pathParameters: {
+        lat: "13.379",
+        lon: "313.379",
+      },
+      rawPath: "/13.379/313.379",
+      rawQueryString: "",
+    });
+
+    const result = await middyHandler(mockEvent, geoLocateContext);
+
+    expect(result).toMatchObject({
+      statusCode: PERMANENT_REDIRECT,
+      headers: {
+        "cache-control": `public, max-age=${thirtyDays}, immutable`,
+        location: "/13.38/313.38",
+      },
+    });
+  });
+
+  it.each<{
+    lat: string;
+    lon: string;
+  }>([
+    {
+      lat: "13",
+      lon: "313",
+    },
+    {
+      lat: "13.0",
+      lon: "313.0",
+    },
+    {
+      lat: "13.00",
+      lon: "313.00",
+    },
+    {
+      lat: "13.3",
+      lon: "313.3",
+    },
+    {
+      lat: "13.33",
+      lon: "313.33",
+    },
+    {
+      lat: "13",
+      lon: "313.3",
+    },
+    {
+      lat: "13.3",
+      lon: "313",
+    },
+  ])("passes through $lat,$lon (no truncation)", async ({ lat, lon }) => {
+    mockAxios
+      .onGet("https://get.geojs.io/v1/ip/geo.json?ip=1.2.3.4")
+      .reply(OK, [
+        {
+          ip: "1.2.3.4",
+          latitude: lat,
+          longitude: lon,
+        },
+      ]);
+    const mockEvent = mock<APIGatewayProxyEventV2>({
+      requestContext: {
+        http: {
+          sourceIp: "1.2.3.4",
+        },
+      },
+      pathParameters: {
+        lat: lat,
+        lon: lon,
+      },
+      rawPath: `/${lat}/${lon}`,
+      rawQueryString: "",
+    });
+
+    const response = await middyHandler(mockEvent, geoLocateContext);
+
+    expect(response.geoLocate).toEqual({
+      ip: "1.2.3.4",
+      location: {
+        latitude: Number(lat),
+        longitude: Number(lon),
       },
     });
   });

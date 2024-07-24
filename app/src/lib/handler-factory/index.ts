@@ -22,7 +22,8 @@ export type { Event as HttpContentNegotiationEvent } from "@middy/http-content-n
 export type { Event as HttpHeaderNormalizerEvent } from "@middy/http-header-normalizer";
 
 // copied from @middy/core as it's not exported
-// The AWS provided Handler type uses void | Promise<TResult> so we have no choice but to follow and suppress the linter warning
+// The AWS provided Handler type uses void | Promise<TResult> so we have no
+// choice but to follow and suppress the linter warning
 type MiddyInputHandler<
   TEvent,
   TResult,

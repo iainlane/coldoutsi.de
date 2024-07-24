@@ -43,7 +43,15 @@ describe("unknown handler", () => {
       expected: "/",
     },
     {
+      prefix: "/:unknown/",
+      expected: "/",
+    },
+    {
       prefix: "/metno/:unknown",
+      expected: "/metno/",
+    },
+    {
+      prefix: "/metno/:unknown/",
       expected: "/metno/",
     },
   ])(

@@ -10,7 +10,7 @@ import { StatusCodes } from "http-status-codes";
 import { cacheControlMiddleware } from "@/lib/cachecontrol";
 import { GeoLocateContext, geoLocateMiddleware } from "@/lib/geolocate";
 import { loggerMiddleware } from "@/lib/logger";
-import { addSuffix } from "@/lib/util";
+import { removePathParts } from "@/lib/util";
 
 const { TEMPORARY_REDIRECT } = StatusCodes;
 
@@ -22,13 +22,8 @@ function handler(
 
   // Redirect relative to the current page
 
-  // Strip off any trailing slashes from the path, split it into parts
-  // (separated by slashes), remove the last two parts ("/:unknown" and
-  // "/"), and then put it back together.
-  const rawPath = addSuffix("/", event.rawPath)
-    .split("/")
-    .slice(0, -2)
-    .join("/");
+  // Remove the last part ("/:unknown") from the path
+  const rawPath = removePathParts(1, event.rawPath);
 
   const queryString = event.rawQueryString ? `?${event.rawQueryString}` : "";
 

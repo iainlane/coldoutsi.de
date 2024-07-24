@@ -32,7 +32,7 @@ const ddbMock = mockClient(DynamoDBDocumentClient);
 ddbMock.on(GetCommand).resolves({});
 ddbMock.on(PutCommand).resolves({});
 
-let mockAxios: AxiosMockAdapter;
+const mockAxios = new AxiosMockAdapter(axios);
 const mockLogger = new Logger();
 
 function baseHandler(
@@ -66,7 +66,7 @@ describe("Reverse GeoCode Middleware", () => {
   geoLocateContext.logger = mockLogger;
 
   beforeEach(() => {
-    mockAxios = new AxiosMockAdapter(axios);
+    mockAxios.reset();
   });
 
   it("reverse geocodes", async () => {
@@ -141,7 +141,7 @@ describe("Geocode Middleware", () => {
   geoLocateContext.logger = mockLogger;
 
   beforeEach(() => {
-    mockAxios = new AxiosMockAdapter(axios);
+    mockAxios.reset();
     mockReset(geoLocateContext);
   });
 
