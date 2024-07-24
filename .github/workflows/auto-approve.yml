@@ -1,0 +1,38 @@
+name: Auto-merge automated PRs
+
+on: pull_request
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    if: |
+      github.actor == 'dependabot[bot]' || (
+        github.actor == 'github-actions[bot]' &&
+        startsWith(github.event.pull_request.head.ref, 'auto-merge/')
+      )
+
+    steps:
+      - name: Generate installation token
+        id: generate-installation-token
+        uses: actions/create-github-app-token@31c86eb3b33c9b601a1f60f98dcbfd1d70f379b4 # v1.10.3
+        with:
+          app-id: ${{ secrets.LANEYBOT_APP_ID }}
+          private-key: ${{ secrets.LANEYBOT_PRIVATE_KEY }}
+
+      - name: Approve a PR
+        run: >
+          gh pr review --approve "$PR_URL" --body "${{ github.actor }} PR
+          automatically approved"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{ steps.generate-installation-token.outputs.token }}
+
+      - name: Enable auto-merge for automated PRs
+        run: gh pr merge --auto --rebase "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{ steps.generate-installation-token.outputs.token }}
