@@ -1,0 +1,152 @@
+name: Update Package Manager
+
+on:
+  schedule:
+    # Run every Monday at 3:27 AM
+    - cron: "27 3 * * 1"
+
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/update-pnpm.yml
+
+  pull_request:
+    paths:
+      - .github/workflows/update-pnpm.yml
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check-for-new-version:
+    name: Check for new pnpm version
+
+    runs-on: ubuntu-latest
+
+    outputs:
+      new-version: ${{ steps.pnpm-info.outputs.version }}
+      branch-exists: ${{ steps.check-branch.outputs.branch-exists }}
+
+    steps:
+      - name: Generate token
+        id: generate-installation-token
+        uses: actions/create-github-app-token@31c86eb3b33c9b601a1f60f98dcbfd1d70f379b4 # v1.10.3
+        with:
+          app-id: ${{ secrets.LANEYBOT_APP_ID }}
+          private-key: ${{ secrets.LANEYBOT_PRIVATE_KEY }}
+
+      - name: Get user info
+        id: get-user-info
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        env:
+          LANEYBOT_APP_SLUG:
+            ${{ steps.generate-installation-token.outputs.app-slug }}
+        with:
+          github-token: ${{ steps.generate-installation-token.outputs.token }}
+          script: |
+            const appSlug = process.env.LANEYBOT_APP_SLUG;
+            const userSlug = `${appSlug}[bot]`;
+            const user = await github.rest.users.getByUsername({
+              username: userSlug
+            });
+
+            const internalID = user.data.id;
+
+            const app = await github.rest.apps.getBySlug({
+              app_slug: appSlug
+            });
+            const displayName = app.data.name;
+
+            const gitEmail =`${displayName} <${internalID}+${userSlug}@users.noreply.github.com>`;
+            console.log(`Calculated git email: '${gitEmail}'`);
+
+            core.setOutput('gitEmail', gitEmail);
+
+      - name: Checkout code
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        with:
+          token: ${{ steps.generate-installation-token.outputs.token }}
+
+      - name: Enable Corepack
+        run: |
+          corepack enable
+
+      - name: Setup Node.js
+        uses: actions/setup-node@1e60f620b9541d16bece96c5465dc8ee9832be0b # v4.0.3
+        env:
+          COREPACK_ENABLE_STRICT: false
+        with:
+          cache-dependency-path: pnpm-lock.yaml
+          node-version-file: "package.json"
+          cache: "pnpm"
+
+      - name: Update Package Manager
+        run: |
+          corepack up
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          git diff --exit-code package.json || echo "changes=true" >> "${GITHUB_OUTPUT}"
+
+      - name: Get new pnpm version and packageManager field
+        if: steps.git-check.outputs.changes == 'true'
+        id: pnpm-info
+        run: |
+          VERSION="$(pnpm --version)"
+          echo "version=${VERSION}" >> "${GITHUB_OUTPUT}"
+          echo "package-manager=$(jq -r .packageManager package.json)" >> "${GITHUB_OUTPUT}"
+          echo "update-branch=auto-merge/pnpm/${VERSION}" >> "${GITHUB_OUTPUT}"
+
+      - name: Check if update branch exists
+        if: steps.git-check.outputs.changes == 'true'
+        id: check-branch
+        env:
+          UPDATE_BRANCH: ${{ steps.pnpm-info.outputs.update-branch }}
+        run: |
+          if ! git ls-remote --quiet --exit-code --heads origin "${UPDATE_BRANCH}" >/dev/null; then
+            echo "branch-exists=false" >> "${GITHUB_OUTPUT}"
+            exit 0
+          fi
+
+          echo "The branch \`${UPDATE_BRANCH}\` exists, skipping PR creation."
+          echo "branch-exists=true" >> "${GITHUB_OUTPUT}"
+
+      - name: Create Pull Request
+        if: >
+          steps.git-check.outputs.changes == 'true' &&
+          steps.check-branch.outputs.branch-exists == 'false'
+        uses: peter-evans/create-pull-request@c5a7806660adbe173f04e3e038b0ccdcd758773c # v6.1.0
+        with:
+          author: ${{ steps.get-user-info.outputs.gitEmail }}
+          # If we change things in a PR for testing, we want the raised PR to
+          # include those changes.
+          base: ${{ github.head_ref == '' && github.ref || github.head_ref }}
+          body: |
+            Update pnpm to version `${{ steps.pnpm-info.outputs.version }}`.
+
+            Changes made:
+            - Updated the `packageManager` field to `pnpm@${{ steps.pnpm-info.outputs.package-manager }}`.
+
+            This update [was performed automatically][workflow-run] by [the "Update Package Manager" workflow][workflow].
+
+            [workflow]: ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}/.github/workflows/update-pnpm.yml
+            [workflow-run]: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          branch: ${{ steps.pnpm-info.outputs.update-branch }}
+          commit-message: >
+            chore: update packageManager field to pnpm@${{
+            steps.pnpm-info.outputs.version }}
+          committer: ${{ steps.get-user-info.outputs.gitEmail }}
+          draft: ${{ github.event_name == 'pull_request' }}
+          delete-branch: true
+          labels: |
+            dependencies
+            automated pr
+          title: >
+            chore: update packageManager field to pnpm@${{
+            steps.pnpm-info.outputs.version }}
+          token: ${{ steps.generate-installation-token.outputs.token }}
