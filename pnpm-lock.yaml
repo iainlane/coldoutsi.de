@@ -40,7 +40,7 @@ importers:
         version: 9.1.0(eslint@9.7.0)
       eslint-plugin-jest:
         specifier: ^28.6.0
-        version: 28.6.0(@typescript-eslint/eslint-plugin@7.17.0(@typescript-eslint/parser@7.17.0(eslint@9.7.0)(typescript@5.5.4))(eslint@9.7.0)(typescript@5.5.4))(eslint@9.7.0)(jest@29.7.0(@types/node@20.14.12)(ts-node@10.9.2(@types/node@20.14.12)(typescript@5.5.4)))(typescript@5.5.4)
+        version: 28.6.0(@typescript-eslint/eslint-plugin@7.17.0(@typescript-eslint/parser@7.17.0(eslint@9.7.0)(typescript@5.5.4))(eslint@9.7.0)(typescript@5.5.4))(eslint@9.7.0)(jest@29.7.0(@types/node@20.14.12))(typescript@5.5.4)
       eslint-plugin-n:
         specifier: ^17.9.0
         version: 17.9.0(eslint@9.7.0)
@@ -64,7 +64,7 @@ importers:
         version: 29.7.0(@types/node@20.14.12)(ts-node@10.9.2(@types/node@20.14.12)(typescript@5.5.4))
       jest-mock-extended:
         specifier: ^3.0.7
-        version: 3.0.7(jest@29.7.0(@types/node@20.14.12)(ts-node@10.9.2(@types/node@20.14.12)(typescript@5.5.4)))(typescript@5.5.4)
+        version: 3.0.7(jest@29.7.0(@types/node@20.14.12))(typescript@5.5.4)
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -174,8 +174,8 @@ importers:
         specifier: ^2.3.0
         version: 2.3.0
       liquidjs:
-        specifier: ^10.16.0
-        version: 10.16.0
+        specifier: ^10.16.1
+        version: 10.16.1
       mime-types:
         specifier: ^2.1.35
         version: 2.1.35
@@ -233,7 +233,7 @@ importers:
         version: 29.7.0(@types/node@20.14.12)(ts-node@10.9.2(@types/node@20.14.12)(typescript@5.5.4))
       jest-mock-extended:
         specifier: ^3.0.7
-        version: 3.0.7(jest@29.7.0(@types/node@20.14.12)(ts-node@10.9.2(@types/node@20.14.12)(typescript@5.5.4)))(typescript@5.5.4)
+        version: 3.0.7(jest@29.7.0(@types/node@20.14.12))(typescript@5.5.4)
       lambda-tester:
         specifier: ^4.0.1
         version: 4.0.1
@@ -3658,8 +3658,8 @@ packages:
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
-  liquidjs@10.16.0:
-    resolution: {integrity: sha512-XIgkYmiEXt1dS6Pi3IMIed43mMf9IuejnmmRiIo9g56GsKtYvPW5Y1AcM3cN1yyMsl0H5PfRoj4Y5DUpbNmg9g==}
+  liquidjs@10.16.1:
+    resolution: {integrity: sha512-1JFL/Y7ONoajrfwav37yuz5yQHU3+Pgz1XWsg9E/2T8Fp65KalNfMF8QZ3+tNETqGUIB66waOSLOi64niYZE9A==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -8851,7 +8851,7 @@ snapshots:
       eslint-utils: 2.1.0
       regexpp: 3.2.0
 
-  eslint-plugin-jest@28.6.0(@typescript-eslint/eslint-plugin@7.17.0(@typescript-eslint/parser@7.17.0(eslint@9.7.0)(typescript@5.5.4))(eslint@9.7.0)(typescript@5.5.4))(eslint@9.7.0)(jest@29.7.0(@types/node@20.14.12)(ts-node@10.9.2(@types/node@20.14.12)(typescript@5.5.4)))(typescript@5.5.4):
+  eslint-plugin-jest@28.6.0(@typescript-eslint/eslint-plugin@7.17.0(@typescript-eslint/parser@7.17.0(eslint@9.7.0)(typescript@5.5.4))(eslint@9.7.0)(typescript@5.5.4))(eslint@9.7.0)(jest@29.7.0(@types/node@20.14.12))(typescript@5.5.4):
     dependencies:
       '@typescript-eslint/utils': 7.16.1(eslint@9.7.0)(typescript@5.5.4)
       eslint: 9.7.0
@@ -9856,7 +9856,7 @@ snapshots:
       slash: 3.0.0
       stack-utils: 2.0.6
 
-  jest-mock-extended@3.0.7(jest@29.7.0(@types/node@20.14.12)(ts-node@10.9.2(@types/node@20.14.12)(typescript@5.5.4)))(typescript@5.5.4):
+  jest-mock-extended@3.0.7(jest@29.7.0(@types/node@20.14.12))(typescript@5.5.4):
     dependencies:
       jest: 29.7.0(@types/node@20.14.12)(ts-node@10.9.2(@types/node@20.14.12)(typescript@5.5.4))
       ts-essentials: 10.0.1(typescript@5.5.4)
@@ -10148,7 +10148,7 @@ snapshots:
 
   lines-and-columns@1.2.4: {}
 
-  liquidjs@10.16.0:
+  liquidjs@10.16.1:
     dependencies:
       commander: 10.0.1
 
