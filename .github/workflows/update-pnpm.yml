@@ -125,7 +125,8 @@ jobs:
           author: ${{ steps.get-user-info.outputs.gitEmail }}
           # If we change things in a PR for testing, we want the raised PR to
           # include those changes.
-          base: ${{ github.head_ref == '' && github.ref || github.head_ref }}
+          base:
+            ${{ github.head_ref == '' && github.ref_name || github.head_ref }}
           body: |
             Update pnpm to version `${{ steps.pnpm-info.outputs.version }}`.
 
