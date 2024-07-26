@@ -168,8 +168,8 @@ importers:
         specifier: ^16.4.5
         version: 16.4.5
       fp-ts:
-        specifier: ^2.16.8
-        version: 2.16.8
+        specifier: ^2.16.9
+        version: 2.16.9
       http-status-codes:
         specifier: ^2.3.0
         version: 2.3.0
@@ -184,7 +184,7 @@ importers:
         version: 0.6.3
       parser-ts:
         specifier: ^0.7.0
-        version: 0.7.0(fp-ts@2.16.8)
+        version: 0.7.0(fp-ts@2.16.9)
     devDependencies:
       '@aws-sdk/types':
         specifier: ^3.609.0
@@ -2951,8 +2951,8 @@ packages:
   formidable@2.1.2:
     resolution: {integrity: sha512-CM3GuJ57US06mlpQ47YcunuUZ9jpm8Vx+P2CGt2j7HpgkKZO/DJYQ0Bobim8G6PFQmK5lOqOOdUXboU+h73A4g==}
 
-  fp-ts@2.16.8:
-    resolution: {integrity: sha512-nmDtNqmMZkOxu0M5hkrS9YA15/KPkYkILb6Axg9XBAoUoYEtzg+LFmVWqZrl9FNttsW0qIUpx9RCA9INbv+Bxw==}
+  fp-ts@2.16.9:
+    resolution: {integrity: sha512-+I2+FnVB+tVaxcYyQkHUq7ZdKScaBlX53A41mxQtpIccsfyv8PzdzP7fzp2AY832T4aoK6UZ5WRX/ebGd8uZuQ==}
 
   fs-constants@1.0.0:
     resolution: {integrity: sha512-y6OAwoSIf7FyjMIv94u+b5rdheZEjzR63GTyZJm5qh4Bi+2YgwLCcI/fPFZkL5PSixOt6ZNKm+w+Hfp/Bciwow==}
@@ -9700,7 +9700,7 @@ snapshots:
       once: 1.4.0
       qs: 6.12.3
 
-  fp-ts@2.16.8: {}
+  fp-ts@2.16.9: {}
 
   fs-constants@1.0.0: {}
 
@@ -11033,10 +11033,10 @@ snapshots:
       json-parse-even-better-errors: 2.3.1
       lines-and-columns: 1.2.4
 
-  parser-ts@0.7.0(fp-ts@2.16.8):
+  parser-ts@0.7.0(fp-ts@2.16.9):
     dependencies:
       '@babel/code-frame': 7.24.7
-      fp-ts: 2.16.8
+      fp-ts: 2.16.9
 
   path-exists@4.0.0: {}
 
@@ -11375,7 +11375,7 @@ snapshots:
       chokidar: 3.6.0
       esbuild: 0.23.0
       execa: 5.1.1
-      fp-ts: 2.16.8
+      fp-ts: 2.16.9
       fs-extra: 11.2.0
       globby: 11.1.0
       p-map: 4.0.0
