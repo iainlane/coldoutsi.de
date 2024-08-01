@@ -24,7 +24,7 @@
     "@jest/globals": "^29.7.0",
     "@serverless/utils": "^6.15.0",
     "@tsconfig/node22": "^22.0.0",
-    "@types/node": "^22.0.0",
+    "@types/node": "^22.0.2",
     "aws-sdk": "^2.1665.0",
     "concurrently": "^8.2.2",
     "esbuild": "^0.23.0",
@@ -36,7 +36,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-unicorn": "^55.0.0",
-    "globals": "^15.8.0",
+    "globals": "^15.9.0",
     "jest": "^29.7.0",
     "jest-mock-extended": "^3.0.7",
     "prettier": "^3.3.3",
@@ -46,10 +46,10 @@
     "serverless-domain-manager": "^7.3.8",
     "serverless-dynamodb": "^0.2.54",
     "serverless-esbuild": "github:iainlane/serverless-esbuild#iainlane/zip-use-mtime-from-filesystem-built",
-    "serverless-offline": "^13.6.0",
+    "serverless-offline": "^14.0.0",
     "serverless-plugin-typescript": "^2.1.5",
     "typescript": "^5.5.4",
-    "typescript-eslint": "^7.18.0"
+    "typescript-eslint": "^8.0.0"
   },
   "packageManager": "pnpm@9.6.0+sha512.38dc6fba8dba35b39340b9700112c2fe1e12f10b17134715a4aa98ccf7bb035e76fd981cf0bb384dfa98f8d6af5481c2bef2f4266a24bfa20c34eb7147ce0b5e"
 }
