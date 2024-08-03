@@ -11,7 +11,7 @@ import {
   RenderMethods,
   Renderable,
   RenderableType,
-  RendererOptionsMap,
+  RendererOptions,
 } from "@/lib/render";
 import { staticFileData } from "@/lib/static";
 
@@ -115,9 +115,9 @@ export class Weather<T extends Units> implements Renderable {
     return `${JSON.stringify(this.toJSON())}\n`;
   }
 
-  private async renderTemplate<T extends RenderableType>(
+  private async renderTemplate(
     template: Template[],
-    opts: RendererOptionsMap[T],
+    opts: RendererOptions[RenderableType],
   ): Promise<string> {
     const text = (await engine.render(template, {
       ...this.toJSON(),
@@ -139,7 +139,7 @@ export class Weather<T extends Units> implements Renderable {
 
   public render: {
     [contentType in RenderableType]: (
-      options: RendererOptionsMap[contentType],
+      options: RendererOptions[contentType],
     ) => ReturnType<RenderMethods[contentType]>;
   } = {
     "text/plain": this.renderPlainText.bind(this),

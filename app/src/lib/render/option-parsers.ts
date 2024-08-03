@@ -1,7 +1,7 @@
 import {
   JSONRendererOptions,
   PlainTextRendererOptions,
-  RendererOptionsMap,
+  RendererOptions,
   RenderableType,
   HTMLRendererOptions,
 } from ".";
@@ -67,7 +67,7 @@ function parseHtmlOptions(/*{
 }
 
 export type OptionsParser = {
-  [P in RenderableType]: (queryParams: QueryParams) => RendererOptionsMap[P];
+  [P in RenderableType]: (queryParams: QueryParams) => RendererOptions[P];
 };
 
 export const optionsParser: OptionsParser = {

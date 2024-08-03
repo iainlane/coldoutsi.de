@@ -6,8 +6,9 @@ import type { Logger } from "@/lib/logger";
 export interface JSONRendererOptions {
   pretty: boolean;
 }
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface HTMLRendererOptions {}
+
+// No options for HTML yet
+export type HTMLRendererOptions = { [key in PropertyKey]: never };
 
 export interface PlainTextRendererOptions {
   colour: boolean;
@@ -30,7 +31,7 @@ const renderableTypes = new Set([
 
 export type RenderableType = keyof RenderMethods;
 
-export type RendererOptionsMap = {
+export type RendererOptions = {
   [P in RenderableType]: RenderMethods[P] extends (options: infer O) => Output
     ? O
     : never;
@@ -38,7 +39,7 @@ export type RendererOptionsMap = {
 
 export interface Renderable {
   render: {
-    [P in keyof RendererOptionsMap]: (options: RendererOptionsMap[P]) => Output;
+    [P in RenderableType]: (options: RendererOptions[P]) => Output;
   };
 }
 
@@ -58,8 +59,8 @@ export function isRenderable(r: unknown): r is Renderable {
   );
 }
 
-export function getPreferredContentType<T extends Renderable>(
-  r: T,
+export function getPreferredContentType(
+  r: Renderable,
   event: APIGatewayProxyEventV2,
   logger: Logger,
 ): RenderableType | undefined {

@@ -2,7 +2,7 @@ import { describe, expect, it } from "@jest/globals";
 
 import {
   Renderable,
-  RendererOptionsMap,
+  RendererOptions,
   RenderableType,
   JSONRendererOptions,
 } from "./index";
@@ -12,7 +12,7 @@ class SimplifiedRenderable implements Renderable {
 
   public render: {
     [contentType in RenderableType]: (
-      options: RendererOptionsMap[contentType],
+      options: RendererOptions[contentType],
     ) => string;
   } = {
     "application/json": (options: JSONRendererOptions) => {

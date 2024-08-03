@@ -1,15 +1,15 @@
-import { ForecastTimeStep, WeatherSymbol } from "@internal/met.no";
+import { toTwoDP } from "@/lib/util";
+import type { WindDirection } from "@/lib/weather";
 import {
   CurrentMeasurement,
-  DegreesCelsius,
   DailyMeasurement,
+  DegreesCelsius,
   InvalidWindDirectionError,
   WindSpeedMetresPerSecond,
   getWindDirection,
   isDegree,
-  WindDirection,
 } from "@/lib/weather";
-import { toTwoDP } from "@/lib/util";
+import { ForecastTimeStep, WeatherSymbol } from "@internal/met.no";
 
 import { MetNoMissingPropertyError } from "./client";
 import { WeatherConditions } from "./weather-conditions";
