@@ -11,6 +11,11 @@ import {
 } from ".";
 import { optionsParser } from "./option-parsers";
 
+// Without the generic, `renderer` gets inferred as the union of all the
+// renderer functions. With it, it gets inferred as the specific renderer for
+// `T`. This is necessary because the `options` parameter is different for each
+// renderer.
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters
 async function renderContent<T extends RenderableType>(
   renderable: Renderable,
   contentType: T,

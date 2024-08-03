@@ -104,7 +104,9 @@ const commonPreMiddlewares = [
   customHttpErrorHandler((logger) =>
     errorLogger({
       logger: (error: string) => {
-        error && logger.error(error, { error });
+        if (error) {
+          logger.error(error, { error });
+        }
       },
     }),
   ),
@@ -118,7 +120,9 @@ const commonPostMiddlewares = [
   customHttpErrorHandler((logger) =>
     httpErrorHandler({
       logger: (error: string) => {
-        error && logger.error(error, { error });
+        if (error) {
+          logger.error(error, { error });
+        }
       },
       fallbackMessage: "Internal server error",
     }),
