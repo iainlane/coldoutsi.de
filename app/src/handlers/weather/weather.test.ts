@@ -116,8 +116,10 @@ describe("reverseWeatherHandler", () => {
     ).resolves.toEqual({
       body: colouredString,
       headers: {
-        "Content-Type": "text/plain; charset=utf-8",
+        "content-type": "text/plain; charset=utf-8",
         "cache-control": "public, max-age=3600",
+        "x-coldoutside-latlon": "0.12,0.99",
+        "x-coldoutside-location": "Sample City",
       },
       statusCode: OK,
     });
@@ -205,8 +207,10 @@ describe("weatherHandler", () => {
     await expect(weatherHandler(mockEvent, mockContext)).resolves.toEqual({
       body: colouredString,
       headers: {
-        "Content-Type": "text/plain; charset=utf-8",
         "cache-control": "public, max-age=3600",
+        "content-type": "text/plain; charset=utf-8",
+        "x-coldoutside-latlon": "1.99,1.12",
+        "x-coldoutside-location": "Garden Of Eden",
       },
       statusCode: OK,
     });
@@ -239,8 +243,10 @@ describe("weatherHandler", () => {
     ).resolves.toEqual({
       body: colouredString,
       headers: {
-        "Content-Type": "text/plain; charset=utf-8",
         "cache-control": "public, max-age=3600",
+        "content-type": "text/plain; charset=utf-8",
+        "x-coldoutside-latlon": "1.99,1.12",
+        "x-coldoutside-location": "Garden Of Eden",
       },
       statusCode: OK,
     });

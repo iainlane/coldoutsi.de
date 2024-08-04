@@ -8,10 +8,11 @@ import {
   HTMLRendererOptions,
   JSONRendererOptions,
   PlainTextRendererOptions,
-  RenderMethods,
   Renderable,
   RenderableType,
   RendererOptions,
+  RenderMethods,
+  RenderResult,
 } from "@/lib/render";
 import { staticFileData } from "@/lib/static";
 
@@ -107,12 +108,19 @@ export class Weather<T extends Units> implements Renderable {
     return rest;
   }
 
-  private renderJSON(opts: JSONRendererOptions): string {
-    if (opts.pretty) {
-      return `${JSON.stringify(this.toJSON(), null, 2)}\n`;
-    }
+  private get headers() {
+    return {
+      "x-coldoutside-latlon": `${this.location.latitude},${this.location.longitude}`,
+      "x-coldoutside-location": this.location.toString(),
+    };
+  }
 
-    return `${JSON.stringify(this.toJSON())}\n`;
+  private renderJSON(opts: JSONRendererOptions): Promise<RenderResult> {
+    const body = opts.pretty
+      ? JSON.stringify(this.toJSON(), null, 2)
+      : JSON.stringify(this.toJSON());
+
+    return Promise.resolve({ body, headers: this.headers });
   }
 
   private async renderTemplate(
@@ -129,12 +137,18 @@ export class Weather<T extends Units> implements Renderable {
 
   private async renderPlainText(
     opts: PlainTextRendererOptions,
-  ): Promise<string> {
-    return this.renderTemplate(textWeatherTemplate, opts);
+  ): Promise<RenderResult> {
+    return {
+      body: await this.renderTemplate(textWeatherTemplate, opts),
+      headers: this.headers,
+    };
   }
 
-  private async renderHtml(opts: HTMLRendererOptions): Promise<string> {
-    return this.renderTemplate(htmlWeatherTemplate, opts);
+  private async renderHtml(opts: HTMLRendererOptions): Promise<RenderResult> {
+    return {
+      body: await this.renderTemplate(htmlWeatherTemplate, opts),
+      headers: this.headers,
+    };
   }
 
   public render: {

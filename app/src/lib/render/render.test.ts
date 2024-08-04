@@ -5,6 +5,7 @@ import {
   RendererOptions,
   RenderableType,
   JSONRendererOptions,
+  RenderResult,
 } from "./index";
 
 class SimplifiedRenderable implements Renderable {
@@ -13,36 +14,39 @@ class SimplifiedRenderable implements Renderable {
   public render: {
     [contentType in RenderableType]: (
       options: RendererOptions[contentType],
-    ) => string;
+    ) => Promise<RenderResult>;
   } = {
-    "application/json": (options: JSONRendererOptions) => {
-      return options.pretty
-        ? JSON.stringify(this.data, null, 2)
-        : JSON.stringify(this.data);
-    },
-    "text/html": () => `<p>${this.data.key}</p>`,
-    "text/plain": () => {
-      return this.data.key;
-    },
+    "application/json": (options: JSONRendererOptions) =>
+      Promise.resolve({
+        body: options.pretty
+          ? JSON.stringify(this.data, null, 2)
+          : JSON.stringify(this.data),
+      }),
+    "text/html": () => Promise.resolve({ body: `<p>${this.data.key}</p>` }),
+    "text/plain": () => Promise.resolve({ body: this.data.key }),
   };
 }
 
 describe("SimplifiedRenderable", () => {
-  it("renders to JSON", () => {
+  it("renders to JSON", async () => {
     const renderable = new SimplifiedRenderable({ key: "value" });
-    const result = renderable.render["application/json"]({ pretty: false });
-    expect(result).toBe('{"key":"value"}');
+    const result = await renderable.render["application/json"]({
+      pretty: false,
+    });
+    expect(result.body).toBe('{"key":"value"}');
   });
 
-  it("renders to pretty JSON", () => {
+  it("renders to pretty JSON", async () => {
     const renderable = new SimplifiedRenderable({ key: "value" });
-    const result = renderable.render["application/json"]({ pretty: true });
-    expect(result).toBe('{\n  "key": "value"\n}');
+    const result = await renderable.render["application/json"]({
+      pretty: true,
+    });
+    expect(result.body).toBe('{\n  "key": "value"\n}');
   });
 
-  it("renders to plain text", () => {
+  it("renders to plain text", async () => {
     const renderable = new SimplifiedRenderable({ key: "Hello, World!" });
-    const result = renderable.render["text/plain"]({ colour: false });
-    expect(result).toBe("Hello, World!");
+    const result = await renderable.render["text/plain"]({ colour: false });
+    expect(result.body).toBe("Hello, World!");
   });
 });

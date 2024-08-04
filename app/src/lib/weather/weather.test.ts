@@ -49,6 +49,6 @@ describe("render", () => {
     const rendered = await weather.render["text/plain"]({ colour: false });
 
     // TODO: I can't compare the emoji at the start for some reason, figure it out
-    expect(rendered).toContain(expected);
+    expect(rendered.body).toContain(expected);
   });
 });

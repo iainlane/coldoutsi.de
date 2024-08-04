@@ -15,12 +15,15 @@ export interface PlainTextRendererOptions {
   formatString?: string;
 }
 
-type Output = string | Promise<string>;
+export interface RenderResult {
+  body: string;
+  headers?: { [key: string]: string };
+}
 
 export interface RenderMethods {
-  "text/plain": (options: PlainTextRendererOptions) => Output;
-  "text/html": (options: HTMLRendererOptions) => Output;
-  "application/json": (options: JSONRendererOptions) => Output;
+  "text/plain": (options: PlainTextRendererOptions) => Promise<RenderResult>;
+  "text/html": (options: HTMLRendererOptions) => Promise<RenderResult>;
+  "application/json": (options: JSONRendererOptions) => Promise<RenderResult>;
 }
 
 const renderableTypes = new Set([
@@ -32,14 +35,18 @@ const renderableTypes = new Set([
 export type RenderableType = keyof RenderMethods;
 
 export type RendererOptions = {
-  [P in RenderableType]: RenderMethods[P] extends (options: infer O) => Output
+  [P in RenderableType]: RenderMethods[P] extends (
+    options: infer O,
+  ) => Promise<RenderResult>
     ? O
     : never;
 };
 
 export interface Renderable {
   render: {
-    [P in RenderableType]: (options: RendererOptions[P]) => Output;
+    [P in RenderableType]: (
+      options: RendererOptions[P],
+    ) => Promise<RenderResult>;
   };
 }
 

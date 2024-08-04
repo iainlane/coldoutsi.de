@@ -13,13 +13,15 @@ function baseHandler(): Renderable {
   return {
     render: {
       "application/json": (options: JSONRendererOptions) => {
-        return options.pretty
-          ? JSON.stringify({ message: "Hello, JSON!" }, null, 2)
-          : JSON.stringify({ message: "Hello, JSON!" });
+        return Promise.resolve({
+          body: options.pretty
+            ? JSON.stringify({ message: "Hello, JSON!" }, null, 2)
+            : JSON.stringify({ message: "Hello, JSON!" }),
+        });
       },
-      "text/html": () => `<p>Hello, HTML!</p>`,
+      "text/html": () => Promise.resolve({ body: `<p>Hello, HTML!</p>` }),
       "text/plain": () => {
-        return "Hello, Plain Text!";
+        return Promise.resolve({ body: "Hello, Plain Text!" });
       },
     },
   };
@@ -52,7 +54,7 @@ describe("Renderable Middleware", () => {
     expect(response.body).toBe(`{
   "message": "Hello, JSON!"
 }`);
-    expect(response.headers?.["Content-Type"]).toBe(
+    expect(response.headers?.["content-type"]).toBe(
       "application/json; charset=utf-8",
     );
   });
@@ -70,7 +72,7 @@ describe("Renderable Middleware", () => {
 
     expect(response.statusCode).toBe(OK);
     expect(response.body).toBe('{"message":"Hello, JSON!"}');
-    expect(response.headers?.["Content-Type"]).toBe(
+    expect(response.headers?.["content-type"]).toBe(
       "application/json; charset=utf-8",
     );
   });
@@ -102,7 +104,7 @@ describe("Renderable Middleware", () => {
     const response = await middyHandler(mockEvent, loggerContext);
 
     expect(response.statusCode).toBe(NOT_ACCEPTABLE);
-    expect(response.headers?.["Content-Type"]).toBe(
+    expect(response.headers?.["content-type"]).toBe(
       "text/plain; charset=utf-8",
     );
   });

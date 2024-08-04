@@ -6,6 +6,7 @@ import type { LoggerContext } from "@/lib/logger";
 import {
   Renderable,
   RenderableType,
+  RenderResult,
   getPreferredContentType,
   isRenderable,
 } from ".";
@@ -20,7 +21,7 @@ async function renderContent<T extends RenderableType>(
   renderable: Renderable,
   contentType: T,
   event: APIGatewayProxyEventV2,
-): Promise<string> {
+): Promise<RenderResult> {
   const renderer = renderable.render[contentType];
   const options = optionsParser[contentType](event);
 
@@ -62,7 +63,7 @@ export function renderableMiddleware<TErr>(): MiddlewareObj<
           statusCode: StatusCodes.NOT_ACCEPTABLE,
           body: "An Accept header is required",
           headers: {
-            "Content-Type": "text/plain; charset=utf-8",
+            "content-type": "text/plain; charset=utf-8",
           },
         };
         return;
@@ -82,10 +83,11 @@ export function renderableMiddleware<TErr>(): MiddlewareObj<
 
       request.response = {
         statusCode: StatusCodes.OK,
-        body: renderedContent,
+        body: renderedContent.body,
         headers: {
           ...response.headers,
-          "Content-Type": `${contentType}; charset=utf-8`,
+          ...renderedContent.headers,
+          "content-type": `${contentType}; charset=utf-8`,
         },
       };
 
