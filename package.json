@@ -20,15 +20,15 @@
     ]
   },
   "devDependencies": {
-    "@eslint/js": "^9.8.0",
+    "@eslint/js": "^9.9.0",
     "@jest/globals": "^29.7.0",
     "@serverless/utils": "^6.15.0",
     "@tsconfig/node22": "^22.0.0",
-    "@types/node": "^22.1.0",
-    "aws-sdk": "^2.1671.0",
+    "@types/node": "^22.2.0",
+    "aws-sdk": "^2.1673.0",
     "concurrently": "^8.2.2",
     "esbuild": "^0.23.0",
-    "eslint": "^9.8.0",
+    "eslint": "^9.9.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jest": "^28.8.0",
     "eslint-plugin-n": "^17.10.2",
@@ -49,7 +49,7 @@
     "serverless-offline": "^14.0.0",
     "serverless-plugin-typescript": "^2.1.5",
     "typescript": "^5.5.4",
-    "typescript-eslint": "^8.0.1"
+    "typescript-eslint": "^8.1.0"
   },
   "packageManager": "pnpm@9.7.0+sha512.dc09430156b427f5ecfc79888899e1c39d2d690f004be70e05230b72cb173d96839587545d09429b55ac3c429c801b4dc3c0e002f653830a420fa2dd4e3cf9cf"
 }
