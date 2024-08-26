@@ -48,7 +48,7 @@
     "@smithy/types": "^3.3.0",
     "@tsconfig/node20": "^20.1.4",
     "@types/aws-lambda": "^8.10.143",
-    "@types/chai": "^4.3.17",
+    "@types/chai": "^4.3.18",
     "@types/d3-array": "^3.2.1",
     "@types/lambda-tester": "^4.0.3",
     "@types/mime-types": "^2.1.4",
@@ -61,7 +61,7 @@
     "jest-mock-extended": "^3.0.7",
     "lambda-tester": "^4.0.1",
     "ts-essentials": "^10.0.2",
-    "ts-jest": "^29.2.4",
+    "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
   },
