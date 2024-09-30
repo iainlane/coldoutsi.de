@@ -20,18 +20,18 @@
     ]
   },
   "devDependencies": {
-    "@eslint/js": "^9.9.1",
+    "@eslint/js": "^9.11.1",
     "@jest/globals": "^29.7.0",
     "@serverless/utils": "^6.15.0",
     "@tsconfig/node22": "^22.0.0",
-    "@types/node": "^22.5.4",
-    "aws-sdk": "^2.1690.0",
-    "concurrently": "^8.2.2",
-    "esbuild": "^0.23.1",
-    "eslint": "^9.9.1",
+    "@types/node": "^22.7.4",
+    "aws-sdk": "^2.1691.0",
+    "concurrently": "^9.0.1",
+    "esbuild": "^0.24.0",
+    "eslint": "^9.11.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jest": "^28.8.3",
-    "eslint-plugin-n": "^17.10.2",
+    "eslint-plugin-n": "^17.10.3",
     "eslint-plugin-no-relative-import-paths": "^1.5.5",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^5.2.1",
@@ -46,10 +46,10 @@
     "serverless-domain-manager": "^7.4.0",
     "serverless-dynamodb": "^0.2.54",
     "serverless-esbuild": "github:iainlane/serverless-esbuild#iainlane/zip-use-mtime-from-filesystem-built",
-    "serverless-offline": "^14.3.1",
+    "serverless-offline": "^14.3.2",
     "serverless-plugin-typescript": "^2.1.5",
-    "typescript": "^5.5.4",
-    "typescript-eslint": "^8.4.0"
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.7.0"
   },
   "packageManager": "pnpm@9.9.0+sha512.60c18acd138bff695d339be6ad13f7e936eea6745660d4cc4a776d5247c540d0edee1a563695c183a66eb917ef88f2b4feb1fc25f32a7adcadc7aaf3438e99c1"
 }
