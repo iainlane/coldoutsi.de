@@ -43,19 +43,19 @@
     "parser-ts": "^0.7.0"
   },
   "devDependencies": {
-    "@aws-sdk/types": "^3.609.0",
+    "@aws-sdk/types": "^3.654.0",
     "@jest/globals": "^29.7.0",
-    "@smithy/types": "^3.3.0",
+    "@smithy/types": "^3.5.0",
     "@tsconfig/node20": "^20.1.4",
     "@types/aws-lambda": "^8.10.145",
-    "@types/chai": "^4.3.19",
+    "@types/chai": "^5.0.0",
     "@types/d3-array": "^3.2.1",
     "@types/lambda-tester": "^4.0.3",
     "@types/mime-types": "^2.1.4",
     "@types/negotiator": "^0.6.3",
-    "@types/node": "^22.5.4",
-    "aws-sdk-client-mock": "^4.0.1",
-    "aws-sdk-client-mock-jest": "^4.0.1",
+    "@types/node": "^22.7.4",
+    "aws-sdk-client-mock": "^4.0.2",
+    "aws-sdk-client-mock-jest": "^4.0.2",
     "axios-mock-adapter": "^2.0.0",
     "jest": "^29.7.0",
     "jest-mock-extended": "^3.0.7",
@@ -63,7 +63,7 @@
     "ts-essentials": "^10.0.2",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.4"
+    "typescript": "^5.6.2"
   },
   "keywords": [
     "Weather"
