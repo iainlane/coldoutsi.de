@@ -197,6 +197,8 @@ export class MetnoClient {
         dailyIterator = (function* () {
           yield [day, steps];
           yield* iterator;
+
+          return undefined;
         })();
 
         break;
