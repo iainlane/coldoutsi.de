@@ -226,8 +226,8 @@ importers:
         specifier: ^4.0.2
         version: 4.0.2(aws-sdk-client-mock@4.0.2)
       axios-mock-adapter:
-        specifier: ^2.0.0
-        version: 2.0.0(axios@1.7.7)
+        specifier: ^2.1.0
+        version: 2.1.0(axios@1.7.7)
       jest:
         specifier: ^29.7.0
         version: 29.7.0(@types/node@22.7.5)(ts-node@10.9.2(@types/node@22.7.5)(typescript@5.6.3))
@@ -2560,8 +2560,8 @@ packages:
     resolution: {integrity: sha512-/F2YC+DlsY3UBM2Bdnh5RLHOPNibS/+IcjUuhP8XuctyrN+MlL+fWDAiela32LTDk7hMy4rx8MTgvbJ+0blO5g==}
     engines: {node: '>= 10.0.0'}
 
-  axios-mock-adapter@2.0.0:
-    resolution: {integrity: sha512-D/K0J5Zm6KvaMTnsWrBQZWLzKN9GxUFZEa0mx2qeEHXDeTugCoplWehy8y36dj5vuSjhe1u/Dol8cZ8lzzmDew==}
+  axios-mock-adapter@2.1.0:
+    resolution: {integrity: sha512-AZUe4OjECGCNNssH8SOdtneiQELsqTsat3SQQCWLPjN436/H+L9AjWfV7bF+Zg/YL9cgbhrz5671hoh+Tbn98w==}
     peerDependencies:
       axios: '>= 0.17.0'
 
@@ -10196,7 +10196,7 @@ snapshots:
       uuid: 8.0.0
       xml2js: 0.6.2
 
-  axios-mock-adapter@2.0.0(axios@1.7.7):
+  axios-mock-adapter@2.1.0(axios@1.7.7):
     dependencies:
       axios: 1.7.7
       fast-deep-equal: 3.1.3
