@@ -39,7 +39,7 @@
     "http-status-codes": "^2.3.0",
     "liquidjs": "^10.18.0",
     "mime-types": "^2.1.35",
-    "negotiator": "^0.6.3",
+    "negotiator": "^1.0.0",
     "parser-ts": "^0.7.0"
   },
   "devDependencies": {
