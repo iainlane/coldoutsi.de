@@ -15,7 +15,7 @@
   "dependencies": {
     "@aws-lambda-powertools/logger": "^2.11.0",
     "@aws-sdk/client-dynamodb": "^3.709.0",
-    "@aws-sdk/lib-dynamodb": "^3.705.0",
+    "@aws-sdk/lib-dynamodb": "^3.709.0",
     "@curveball/http-errors": "^1.0.1",
     "@internal/geojs": "workspace:*",
     "@internal/met.no": "workspace:*",
