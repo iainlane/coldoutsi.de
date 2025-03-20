@@ -34,7 +34,7 @@ jobs:
     steps:
       - name: Generate token
         id: generate-installation-token
-        uses: actions/create-github-app-token@136412a57a7081aa63c935a2cc2918f76c34f514 # v1.11.2
+        uses: actions/create-github-app-token@af35edadc00be37caa72ed9f3e6d5f7801bfdf09 # v1.11.7
         with:
           app-id: ${{ secrets.LANEYBOT_APP_ID }}
           private-key: ${{ secrets.LANEYBOT_PRIVATE_KEY }}
