@@ -103,7 +103,7 @@ importers:
     dependencies:
       '@aws-lambda-powertools/logger':
         specifier: ^2.16.0
-        version: 2.16.0(@middy/core@6.0.0)
+        version: 2.16.0(@middy/core@6.1.6)
       '@aws-sdk/client-dynamodb':
         specifier: ^3.772.0
         version: 3.772.0
@@ -124,28 +124,28 @@ importers:
         version: link:../gen/nominatim
       '@middy/core':
         specifier: ~6
-        version: 6.0.0
+        version: 6.1.6
       '@middy/error-logger':
         specifier: ~6
-        version: 6.0.0
+        version: 6.1.6
       '@middy/http-content-encoding':
         specifier: ~6
-        version: 6.0.0
+        version: 6.1.6
       '@middy/http-content-negotiation':
         specifier: ~6
-        version: 6.0.0
+        version: 6.1.6
       '@middy/http-error-handler':
         specifier: ~6
-        version: 6.0.0
+        version: 6.1.6
       '@middy/http-header-normalizer':
         specifier: ~6
-        version: 6.0.0
+        version: 6.1.6
       '@middy/http-json-body-parser':
         specifier: ~6
-        version: 6.0.0
+        version: 6.1.6
       '@middy/http-response-serializer':
         specifier: ~6
-        version: 6.0.0
+        version: 6.1.6
       aws-lambda:
         specifier: ^1.0.7
         version: 1.0.7
@@ -1712,40 +1712,40 @@ packages:
     resolution: {integrity: sha512-Z7C/xXCiGWsg0KuKsHTKJxbWhpI3Vs5GwLfOean7MGyVFGqdRgBbAjOCh6u4bbjPc/8MJ2pZmK/0DLdCbivLDA==}
     engines: {node: '>=8'}
 
-  '@middy/core@6.0.0':
-    resolution: {integrity: sha512-EFsvMkyFfaIu3Uzye26w2NzycwMAbh/99XlhRH9p240y/YKA0nlQ7itE8y7lBJOJ/clj1qu9evQeLfaiWhJAFg==}
+  '@middy/core@6.1.6':
+    resolution: {integrity: sha512-YT7J0+9zgGIhKnC6lA5z1iE+EDHpmMda7H7gD59cu4inxRC2RTk+ensGFaJxXXMlAM08vGJn6Q5gH8KnV6YWoQ==}
     engines: {node: '>=20'}
 
-  '@middy/error-logger@6.0.0':
-    resolution: {integrity: sha512-70OK5e3D+G966yYqV0a6r3HMYm7FleCKCgxpo9SkbznMRK7/sFh+gBnniJ+Y5qHMgyhsf45jSNM/ewPGhGLSTw==}
+  '@middy/error-logger@6.1.6':
+    resolution: {integrity: sha512-QaaJI6501sZKWokH51vEp82pnG8Zbq7CiBG/Ug85Jx02lG1cfuoV1hcp2ZsPpWNHvLcGiI3/xeEjpsUFeI0RNw==}
     engines: {node: '>=20'}
 
-  '@middy/http-content-encoding@6.0.0':
-    resolution: {integrity: sha512-pvwI90bR+xUD0YPeL3ASeH9b9FDpGXuxJJTNrxc31xekRRpsBLbNKxDxH7b3F9imoJPFsAgqfonVuc8msr8a3g==}
+  '@middy/http-content-encoding@6.1.6':
+    resolution: {integrity: sha512-WIj6gmTK8HfJqcOFVNoD/9/vR15/Gk1+DhPzq6fjdIzqVuRddSz86k6lMvJwK+2iEInampTlyLHzBJbcJM1DSQ==}
     engines: {node: '>=20'}
 
-  '@middy/http-content-negotiation@6.0.0':
-    resolution: {integrity: sha512-KAZj6yWmdE7WVXgm5z+7xP0CYYo4cDdgIQznHaOvLzJOz6NPb+DQ8ggRXz+BwX7NRNuopd/G6cck99956nPtXA==}
+  '@middy/http-content-negotiation@6.1.6':
+    resolution: {integrity: sha512-ORvwXugKu9IFKujxDp1MgrGI0DlsU5FElLhsh1jsI6Gt1SRBTxfK62x0OoA7VmDi5GjP71lxkZJ5gKtHgkZo8Q==}
     engines: {node: '>=20'}
 
-  '@middy/http-error-handler@6.0.0':
-    resolution: {integrity: sha512-UYI0udZ8rH9nluLGS419RyUYKyBYg7kQVwCHqA+l0B8cklMU3DP6ArpOGviioi0n3X1KgI7YuYDEVvMl167D9g==}
+  '@middy/http-error-handler@6.1.6':
+    resolution: {integrity: sha512-E3RBoAryPZ0zBl0stptJLPsC0qSSniYpsCEE+ELqVBh/Ew93WnRQZUpa4wz/Og7bexY8brrLrPGp5a6r89S6rQ==}
     engines: {node: '>=20'}
 
-  '@middy/http-header-normalizer@6.0.0':
-    resolution: {integrity: sha512-DPNY/yn3mgdQVfsWUhu7PZhO1pjRi5EQWkKAwGJS/V8C0raapVrPIJ/3tsL1YtQfnc6ggYB2Xb/3u1MJgsjOQQ==}
+  '@middy/http-header-normalizer@6.1.6':
+    resolution: {integrity: sha512-ZE8exGGj3wv372hz3/nzFRneIvMZq/dfv1rGWr3mSa6M4RU7SJQc5oif7hJbF/E6kxK8tOj9HQbnasX/XAwcUg==}
     engines: {node: '>=20'}
 
-  '@middy/http-json-body-parser@6.0.0':
-    resolution: {integrity: sha512-/uhdznqnLStNpqMqMBrTF0TjuPktB0T6Uy2p5vsitdVa8XycWsNDSkK2vMCWKYGGTA+vLHZs4RKAHXihAed5pg==}
+  '@middy/http-json-body-parser@6.1.6':
+    resolution: {integrity: sha512-qE9Bm+rgnvrnoUrTiG3tE4cmHI/uYXw9E5b6kzZ9Ne8F54rOAh2lDQafRsjz2HF0jC35XcVBlTvbsVb6RJkpmA==}
     engines: {node: '>=20'}
 
-  '@middy/http-response-serializer@6.0.0':
-    resolution: {integrity: sha512-tPcP9A4KXT/LH+BvxG8bquHG73b63SFzeS8lpOTXnCg8YWecLFiFBPr98fSArVIYCH7ajOC27LMlOvoFr8t49w==}
+  '@middy/http-response-serializer@6.1.6':
+    resolution: {integrity: sha512-k1btKidhNu7FycqiDR2DXqnvhc0jKvrqoeXAGRH2MVdYBaegxxirAGou1H4JKLO1nrYjGd8UgzBdQPkF2+SeTA==}
     engines: {node: '>=20'}
 
-  '@middy/util@6.0.0':
-    resolution: {integrity: sha512-V2/gJ4wE6TtMJNAnUTm3VRdgNyLI6zdNLy3MzhrJOwxiUslG1OSShE1IUYR0cmzMOm5w/Y2p3+OIRXRqKUVHYQ==}
+  '@middy/util@6.1.6':
+    resolution: {integrity: sha512-NVsHayjEMNT4pd3kzQ0oG9RDuHlEeHVlF2pQsoyldSfFul5ldBtw5EVYeEMCyNLEbWMtbrX6JT4GqQ45AN1mNA==}
     engines: {node: '>=20'}
 
   '@nestjs/axios@3.0.3':
@@ -6081,12 +6081,12 @@ snapshots:
 
   '@aws-lambda-powertools/commons@2.16.0': {}
 
-  '@aws-lambda-powertools/logger@2.16.0(@middy/core@6.0.0)':
+  '@aws-lambda-powertools/logger@2.16.0(@middy/core@6.1.6)':
     dependencies:
       '@aws-lambda-powertools/commons': 2.16.0
       lodash.merge: 4.6.2
     optionalDependencies:
-      '@middy/core': 6.0.0
+      '@middy/core': 6.1.6
 
   '@aws-sdk/client-acm@3.637.0':
     dependencies:
@@ -9413,34 +9413,34 @@ snapshots:
 
   '@lukeed/csprng@1.1.0': {}
 
-  '@middy/core@6.0.0': {}
+  '@middy/core@6.1.6': {}
 
-  '@middy/error-logger@6.0.0': {}
+  '@middy/error-logger@6.1.6': {}
 
-  '@middy/http-content-encoding@6.0.0':
+  '@middy/http-content-encoding@6.1.6':
     dependencies:
-      '@middy/util': 6.0.0
+      '@middy/util': 6.1.6
 
-  '@middy/http-content-negotiation@6.0.0':
+  '@middy/http-content-negotiation@6.1.6':
     dependencies:
-      '@middy/util': 6.0.0
+      '@middy/util': 6.1.6
       negotiator: 1.0.0
 
-  '@middy/http-error-handler@6.0.0':
+  '@middy/http-error-handler@6.1.6':
     dependencies:
-      '@middy/util': 6.0.0
+      '@middy/util': 6.1.6
 
-  '@middy/http-header-normalizer@6.0.0': {}
+  '@middy/http-header-normalizer@6.1.6': {}
 
-  '@middy/http-json-body-parser@6.0.0':
+  '@middy/http-json-body-parser@6.1.6':
     dependencies:
-      '@middy/util': 6.0.0
+      '@middy/util': 6.1.6
 
-  '@middy/http-response-serializer@6.0.0':
+  '@middy/http-response-serializer@6.1.6':
     dependencies:
-      '@middy/util': 6.0.0
+      '@middy/util': 6.1.6
 
-  '@middy/util@6.0.0': {}
+  '@middy/util@6.1.6': {}
 
   '@nestjs/axios@3.0.3(@nestjs/common@10.4.3(reflect-metadata@0.1.13)(rxjs@7.8.1))(axios@1.7.7)(rxjs@7.8.1)':
     dependencies:
