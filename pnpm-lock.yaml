@@ -108,8 +108,8 @@ importers:
         specifier: ^3.788.0
         version: 3.788.0
       '@aws-sdk/lib-dynamodb':
-        specifier: ^3.788.0
-        version: 3.788.0(@aws-sdk/client-dynamodb@3.788.0)
+        specifier: ^3.789.0
+        version: 3.789.0(@aws-sdk/client-dynamodb@3.788.0)
       '@curveball/http-errors':
         specifier: ^1.0.1
         version: 1.0.1
@@ -652,8 +652,8 @@ packages:
     resolution: {integrity: sha512-2+a4WXRc+07uiPR+zJiPGKSOWaNJQNqitkks+6Hhm/haTLJqNVTgY2OWDh2PXvwMNpKB+AlGdhE65Oy6NzUgXg==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/lib-dynamodb@3.788.0':
-    resolution: {integrity: sha512-GYs8E4agxy/uElb8eoZ9RVcF+w43wkVxAowq6VQ+Jpw2oH7pxwrkqG1mIJpoJGYLvic+tJO0pL4xLUI4ULeVTg==}
+  '@aws-sdk/lib-dynamodb@3.789.0':
+    resolution: {integrity: sha512-ut3d1vaHLxZCh2rc6MwghTz4DxPPoCDP0GjRUsiysG3IHx97akUt2XwPrjNkot0/Hg4JJUZzl95QCjaIf/pUxg==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       '@aws-sdk/client-dynamodb': ^3.788.0
@@ -8029,7 +8029,7 @@ snapshots:
       mnemonist: 0.38.3
       tslib: 2.8.1
 
-  '@aws-sdk/lib-dynamodb@3.788.0(@aws-sdk/client-dynamodb@3.788.0)':
+  '@aws-sdk/lib-dynamodb@3.789.0(@aws-sdk/client-dynamodb@3.788.0)':
     dependencies:
       '@aws-sdk/client-dynamodb': 3.788.0
       '@aws-sdk/core': 3.775.0
@@ -13944,7 +13944,7 @@ snapshots:
   serverless-dynamodb@0.2.54:
     dependencies:
       '@aws-sdk/client-dynamodb': 3.788.0
-      '@aws-sdk/lib-dynamodb': 3.788.0(@aws-sdk/client-dynamodb@3.788.0)
+      '@aws-sdk/lib-dynamodb': 3.789.0(@aws-sdk/client-dynamodb@3.788.0)
       aws-dynamodb-local: 0.0.11
     transitivePeerDependencies:
       - aws-crt
