@@ -168,8 +168,8 @@ importers:
         specifier: ^16.5.0
         version: 16.5.0
       fp-ts:
-        specifier: ^2.16.9
-        version: 2.16.9
+        specifier: ^2.16.10
+        version: 2.16.10
       http-status-codes:
         specifier: ^2.3.0
         version: 2.3.0
@@ -184,7 +184,7 @@ importers:
         version: 1.0.0
       parser-ts:
         specifier: ^0.7.0
-        version: 0.7.0(fp-ts@2.16.9)
+        version: 0.7.0(fp-ts@2.16.10)
     devDependencies:
       '@aws-sdk/types':
         specifier: ^3.667.0
@@ -3816,8 +3816,8 @@ packages:
   formidable@2.1.2:
     resolution: {integrity: sha512-CM3GuJ57US06mlpQ47YcunuUZ9jpm8Vx+P2CGt2j7HpgkKZO/DJYQ0Bobim8G6PFQmK5lOqOOdUXboU+h73A4g==}
 
-  fp-ts@2.16.9:
-    resolution: {integrity: sha512-+I2+FnVB+tVaxcYyQkHUq7ZdKScaBlX53A41mxQtpIccsfyv8PzdzP7fzp2AY832T4aoK6UZ5WRX/ebGd8uZuQ==}
+  fp-ts@2.16.10:
+    resolution: {integrity: sha512-vuROzbNVfCmUkZSUbnWSltR1sbheyQbTzug7LB/46fEa1c0EucLeBaCEUE0gF3ZGUGBt9lVUiziGOhhj6K1ORA==}
 
   fs-constants@1.0.0:
     resolution: {integrity: sha512-y6OAwoSIf7FyjMIv94u+b5rdheZEjzR63GTyZJm5qh4Bi+2YgwLCcI/fPFZkL5PSixOt6ZNKm+w+Hfp/Bciwow==}
@@ -12243,7 +12243,7 @@ snapshots:
       once: 1.4.0
       qs: 6.12.3
 
-  fp-ts@2.16.9: {}
+  fp-ts@2.16.10: {}
 
   fs-constants@1.0.0: {}
 
@@ -13620,10 +13620,10 @@ snapshots:
       json-parse-even-better-errors: 2.3.1
       lines-and-columns: 1.2.4
 
-  parser-ts@0.7.0(fp-ts@2.16.9):
+  parser-ts@0.7.0(fp-ts@2.16.10):
     dependencies:
       '@babel/code-frame': 7.24.7
-      fp-ts: 2.16.9
+      fp-ts: 2.16.10
 
   path-exists@4.0.0: {}
 
