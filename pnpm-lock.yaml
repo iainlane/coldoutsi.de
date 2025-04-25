@@ -102,8 +102,8 @@ importers:
   app:
     dependencies:
       '@aws-lambda-powertools/logger':
-        specifier: ^2.18.0
-        version: 2.18.0(@middy/core@6.1.6)
+        specifier: ^2.19.0
+        version: 2.19.0(@middy/core@6.1.6)
       '@aws-sdk/client-dynamodb':
         specifier: ^3.788.0
         version: 3.788.0
@@ -330,11 +330,11 @@ packages:
   '@aws-crypto/util@5.2.0':
     resolution: {integrity: sha512-4RkU9EsI6ZpBve5fseQlGNUWKMa1RLPQ1dnjnQoe07ldfIzcsGb5hC5W0Dm7u423KWzawlrpbjXBrXCEv9zazQ==}
 
-  '@aws-lambda-powertools/commons@2.18.0':
-    resolution: {integrity: sha512-B0TkjRymVeYMD2EnX64mGdnrm0sJczggYonWJoyVt/j7IzlbJnbYQX3aG9Ok5yvTrIx+iZdYPjZuH0xoyDLVAQ==}
+  '@aws-lambda-powertools/commons@2.19.0':
+    resolution: {integrity: sha512-WVCkcacvGX7+o/oTFs4MbFveONBOcQBmyG6MXsauSwpf3+YM5sf9MnC9oFmvA8OdQmm3yJhAAkYVFRf4tHK+aA==}
 
-  '@aws-lambda-powertools/logger@2.18.0':
-    resolution: {integrity: sha512-pcCh3GuEBQp6NEdCG/Ey48S6+2WmWNZpU6d8Sk7hUTtlBWPfynV9ppuZaLvq15/7ZN+ZYAbFiSHTUg47cN2P4g==}
+  '@aws-lambda-powertools/logger@2.19.0':
+    resolution: {integrity: sha512-8Na6F6/SXUiNWH8jxoWC0VQp5TfUi/kID200yBwql6jCIm0928kHqswsWrXLv8O6W74HCdpDoXXWoyMWULR+xw==}
     peerDependencies:
       '@aws-lambda-powertools/jmespath': 2.x
       '@middy/core': 4.x || 5.x || 6.x
@@ -3815,6 +3815,7 @@ packages:
 
   formidable@2.1.2:
     resolution: {integrity: sha512-CM3GuJ57US06mlpQ47YcunuUZ9jpm8Vx+P2CGt2j7HpgkKZO/DJYQ0Bobim8G6PFQmK5lOqOOdUXboU+h73A4g==}
+    deprecated: 'ACTION REQUIRED: SWITCH TO v3 - v1 and v2 are VULNERABLE! v1 is DEPRECATED FOR OVER 2 YEARS! Use formidable@latest or try formidable-mini for fresh projects'
 
   fp-ts@2.16.10:
     resolution: {integrity: sha512-vuROzbNVfCmUkZSUbnWSltR1sbheyQbTzug7LB/46fEa1c0EucLeBaCEUE0gF3ZGUGBt9lVUiziGOhhj6K1ORA==}
@@ -4848,6 +4849,7 @@ packages:
   node-domexception@1.0.0:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
     engines: {node: '>=10.5.0'}
+    deprecated: Use your platform's native DOMException instead
 
   node-fetch@2.7.0:
     resolution: {integrity: sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==}
@@ -6110,11 +6112,11 @@ snapshots:
       '@smithy/util-utf8': 2.3.0
       tslib: 2.8.1
 
-  '@aws-lambda-powertools/commons@2.18.0': {}
+  '@aws-lambda-powertools/commons@2.19.0': {}
 
-  '@aws-lambda-powertools/logger@2.18.0(@middy/core@6.1.6)':
+  '@aws-lambda-powertools/logger@2.19.0(@middy/core@6.1.6)':
     dependencies:
-      '@aws-lambda-powertools/commons': 2.18.0
+      '@aws-lambda-powertools/commons': 2.19.0
       lodash.merge: 4.6.2
     optionalDependencies:
       '@middy/core': 6.1.6
