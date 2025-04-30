@@ -108,8 +108,8 @@ importers:
         specifier: ^3.796.0
         version: 3.796.0
       '@aws-sdk/lib-dynamodb':
-        specifier: ^3.798.0
-        version: 3.798.0(@aws-sdk/client-dynamodb@3.796.0)
+        specifier: ^3.799.0
+        version: 3.799.0(@aws-sdk/client-dynamodb@3.796.0)
       '@curveball/http-errors':
         specifier: ^1.0.1
         version: 1.0.1
@@ -484,8 +484,8 @@ packages:
     resolution: {integrity: sha512-tH8Sp7lCxISVoLnkyv4AouuXs2CDlMhTuesWa0lq2NX1f+DXsMwSBtN37ttZdpFMw3F8mWdsJt27X9h2Oq868A==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/core@3.798.0':
-    resolution: {integrity: sha512-hITxDE4pVkeJqz0LXjQRDgR+noxJ5oOxG38fgmQXjPXsdwVKnNIiMJ5S2WFMVSszU7ebGSyHdPHENQKu6TReVA==}
+  '@aws-sdk/core@3.799.0':
+    resolution: {integrity: sha512-hkKF3Zpc6+H8GI1rlttYVRh9uEE77cqAzLmLpY3iu7sql8cZgPERRBfaFct8p1SaDyrksLNiboD1vKW58mbsYg==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/credential-provider-cognito-identity@3.637.0':
@@ -656,11 +656,11 @@ packages:
     resolution: {integrity: sha512-2+a4WXRc+07uiPR+zJiPGKSOWaNJQNqitkks+6Hhm/haTLJqNVTgY2OWDh2PXvwMNpKB+AlGdhE65Oy6NzUgXg==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/lib-dynamodb@3.798.0':
-    resolution: {integrity: sha512-YHPE+uctercbk48XHnw5K1VULZs3IJYjaGDgYHgT7GsFBjq/pJUWzxZQ2YBSUOXyixsHrBVFAfOR6S6Pc+geDw==}
+  '@aws-sdk/lib-dynamodb@3.799.0':
+    resolution: {integrity: sha512-HcjWRyv9T0WuDTeLTwuh8YEJhyZm462Gzmki5+VEkwOxX7Sq3hoBrKqgko++y7qW8bjKou3DlynyuShhSw1mjw==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
-      '@aws-sdk/client-dynamodb': ^3.798.0
+      '@aws-sdk/client-dynamodb': ^3.799.0
 
   '@aws-sdk/middleware-bucket-endpoint@3.616.0':
     resolution: {integrity: sha512-KZv78s8UE7+s3qZCfG3pE9U9XV5WTP478aNWis5gDXmsb5LF7QWzEeR8kve5dnjNlK6qVQ33v+mUZa6lR5PwMw==}
@@ -872,11 +872,11 @@ packages:
     resolution: {integrity: sha512-XUKJWWo+KOB7fbnPP0+g/o5Ulku/X53t7i/h+sPHr5xxYTJJ9CYnbToo95mzxe7xWvkLrsNtJ8L+MnNn9INs2w==}
     engines: {node: '>=16.0.0'}
 
-  '@aws-sdk/util-dynamodb@3.798.0':
-    resolution: {integrity: sha512-U0ZN5kzj7ykQJam/9Mg+tXdHnP/xFcnwd7XzjNXqGXrQNR5NVBbE/G7kjF90SQlBrUacbX+HSMaTHRzCWT02zw==}
+  '@aws-sdk/util-dynamodb@3.799.0':
+    resolution: {integrity: sha512-QC48umXlDlm5dG6GghAb6Itc8x4uLc4+8R3tdBexa6TkIVs4m8kHhTAn5q/5ZyL8//cWSJZJxiAy2vcgHA8LDQ==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
-      '@aws-sdk/client-dynamodb': ^3.798.0
+      '@aws-sdk/client-dynamodb': ^3.799.0
 
   '@aws-sdk/util-endpoints@3.614.0':
     resolution: {integrity: sha512-wK2cdrXHH4oz4IomV/yrGkftU9A+ITB6nFL+rxxyO78is2ifHJpFdV4aqk4LSkXYPi6CXWNru/Dqc7yiKXgJPw==}
@@ -7525,7 +7525,7 @@ snapshots:
       fast-xml-parser: 4.4.1
       tslib: 2.8.1
 
-  '@aws-sdk/core@3.798.0':
+  '@aws-sdk/core@3.799.0':
     dependencies:
       '@aws-sdk/types': 3.775.0
       '@smithy/core': 3.3.0
@@ -8061,11 +8061,11 @@ snapshots:
       mnemonist: 0.38.3
       tslib: 2.8.1
 
-  '@aws-sdk/lib-dynamodb@3.798.0(@aws-sdk/client-dynamodb@3.796.0)':
+  '@aws-sdk/lib-dynamodb@3.799.0(@aws-sdk/client-dynamodb@3.796.0)':
     dependencies:
       '@aws-sdk/client-dynamodb': 3.796.0
-      '@aws-sdk/core': 3.798.0
-      '@aws-sdk/util-dynamodb': 3.798.0(@aws-sdk/client-dynamodb@3.796.0)
+      '@aws-sdk/core': 3.799.0
+      '@aws-sdk/util-dynamodb': 3.799.0(@aws-sdk/client-dynamodb@3.796.0)
       '@smithy/core': 3.3.0
       '@smithy/smithy-client': 4.2.1
       '@smithy/types': 4.2.0
@@ -8530,7 +8530,7 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@aws-sdk/util-dynamodb@3.798.0(@aws-sdk/client-dynamodb@3.796.0)':
+  '@aws-sdk/util-dynamodb@3.799.0(@aws-sdk/client-dynamodb@3.796.0)':
     dependencies:
       '@aws-sdk/client-dynamodb': 3.796.0
       tslib: 2.8.1
@@ -14008,7 +14008,7 @@ snapshots:
   serverless-dynamodb@0.2.54:
     dependencies:
       '@aws-sdk/client-dynamodb': 3.796.0
-      '@aws-sdk/lib-dynamodb': 3.798.0(@aws-sdk/client-dynamodb@3.796.0)
+      '@aws-sdk/lib-dynamodb': 3.799.0(@aws-sdk/client-dynamodb@3.796.0)
       aws-dynamodb-local: 0.0.11
     transitivePeerDependencies:
       - aws-crt
