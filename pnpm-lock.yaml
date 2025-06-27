@@ -165,8 +165,8 @@ importers:
         specifier: ^1.0.1
         version: 1.0.1
       dotenv:
-        specifier: ^16.5.0
-        version: 16.5.0
+        specifier: ^16.6.0
+        version: 16.6.0
       fp-ts:
         specifier: ^2.16.10
         version: 2.16.10
@@ -3364,8 +3364,8 @@ packages:
   dotenv-json@1.0.0:
     resolution: {integrity: sha512-jAssr+6r4nKhKRudQ0HOzMskOFFi9+ubXWwmrSGJFgTvpjyPXCXsCsYbjif6mXp7uxA7xY3/LGaiTQukZzSbOQ==}
 
-  dotenv@16.5.0:
-    resolution: {integrity: sha512-m/C+AwOAr9/W1UOIZUo232ejMNnJAJtYQjUbHoNTBNTJSvqzzDh7vnrei3o3r3m9blf6ZoDkvcw0VmozNRFJxg==}
+  dotenv@16.6.0:
+    resolution: {integrity: sha512-Omf1L8paOy2VJhILjyhrhqwLIdstqm1BvcDPKg4NGAlkwEu9ODyrFbvk8UymUOMCT+HXo31jg1lArIrVAAhuGA==}
     engines: {node: '>=12'}
 
   dotenv@8.6.0:
@@ -11655,7 +11655,7 @@ snapshots:
 
   dotenv-json@1.0.0: {}
 
-  dotenv@16.5.0: {}
+  dotenv@16.6.0: {}
 
   dotenv@8.6.0: {}
 
@@ -14058,7 +14058,7 @@ snapshots:
       d: 1.0.2
       dayjs: 1.11.12
       decompress: 4.2.1
-      dotenv: 16.5.0
+      dotenv: 16.6.0
       dotenv-expand: 10.0.0
       essentials: 1.2.0
       ext: 1.7.0
