@@ -168,8 +168,8 @@ importers:
         specifier: ^17.2.1
         version: 17.2.1
       fp-ts:
-        specifier: ^2.16.10
-        version: 2.16.10
+        specifier: ^2.16.11
+        version: 2.16.11
       http-status-codes:
         specifier: ^2.3.0
         version: 2.3.0
@@ -184,7 +184,7 @@ importers:
         version: 1.0.0
       parser-ts:
         specifier: ^0.7.0
-        version: 0.7.0(fp-ts@2.16.10)
+        version: 0.7.0(fp-ts@2.16.11)
     devDependencies:
       '@aws-sdk/types':
         specifier: ^3.667.0
@@ -3829,8 +3829,8 @@ packages:
     resolution: {integrity: sha512-CM3GuJ57US06mlpQ47YcunuUZ9jpm8Vx+P2CGt2j7HpgkKZO/DJYQ0Bobim8G6PFQmK5lOqOOdUXboU+h73A4g==}
     deprecated: 'ACTION REQUIRED: SWITCH TO v3 - v1 and v2 are VULNERABLE! v1 is DEPRECATED FOR OVER 2 YEARS! Use formidable@latest or try formidable-mini for fresh projects'
 
-  fp-ts@2.16.10:
-    resolution: {integrity: sha512-vuROzbNVfCmUkZSUbnWSltR1sbheyQbTzug7LB/46fEa1c0EucLeBaCEUE0gF3ZGUGBt9lVUiziGOhhj6K1ORA==}
+  fp-ts@2.16.11:
+    resolution: {integrity: sha512-LaI+KaX2NFkfn1ZGHoKCmcfv7yrZsC3b8NtWsTVQeHkq4F27vI5igUuO53sxqDEa2gNQMHFPmpojDw/1zmUK7w==}
 
   fs-constants@1.0.0:
     resolution: {integrity: sha512-y6OAwoSIf7FyjMIv94u+b5rdheZEjzR63GTyZJm5qh4Bi+2YgwLCcI/fPFZkL5PSixOt6ZNKm+w+Hfp/Bciwow==}
@@ -12283,7 +12283,7 @@ snapshots:
       once: 1.4.0
       qs: 6.12.3
 
-  fp-ts@2.16.10: {}
+  fp-ts@2.16.11: {}
 
   fs-constants@1.0.0: {}
 
@@ -13660,10 +13660,10 @@ snapshots:
       json-parse-even-better-errors: 2.3.1
       lines-and-columns: 1.2.4
 
-  parser-ts@0.7.0(fp-ts@2.16.10):
+  parser-ts@0.7.0(fp-ts@2.16.11):
     dependencies:
       '@babel/code-frame': 7.24.7
-      fp-ts: 2.16.10
+      fp-ts: 2.16.11
 
   path-exists@4.0.0: {}
 
