@@ -108,8 +108,8 @@ importers:
         specifier: ^3.886.0
         version: 3.886.0
       '@aws-sdk/lib-dynamodb':
-        specifier: ^3.887.0
-        version: 3.887.0(@aws-sdk/client-dynamodb@3.886.0)
+        specifier: ^3.888.0
+        version: 3.888.0(@aws-sdk/client-dynamodb@3.886.0)
       '@curveball/http-errors':
         specifier: ^1.0.1
         version: 1.0.1
@@ -484,8 +484,8 @@ packages:
     resolution: {integrity: sha512-FmkqnqBLkXi4YsBPbF6vzPa0m4XKUuvgKDbamfw4DZX2CzfBZH6UU4IwmjNV3ZM38m0xraHarK8KIbGSadN3wg==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/core@3.887.0':
-    resolution: {integrity: sha512-oiBsWhuuj1Lzh+FHY+gE0PyYuiDxqFf98F9Pd2WruY5Gu/+/xvDFEPEkIEOae8gWRaLZ5Eh8u+OY9LS4DXZhuQ==}
+  '@aws-sdk/core@3.888.0':
+    resolution: {integrity: sha512-L3S2FZywACo4lmWv37Y4TbefuPJ1fXWyWwIJ3J4wkPYFJ47mmtUPqThlVrSbdTHkEjnZgJe5cRfxk0qCLsFh1w==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/credential-provider-cognito-identity@3.637.0':
@@ -656,11 +656,11 @@ packages:
     resolution: {integrity: sha512-EHd+5bSp/hZc78SMq9cUCIsX0B4ekZtFUVSSLEXyYv8x/nHFTnTqN9TsxV8bjlztR3aSUeoKSk5qxu/dVGgiQw==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/lib-dynamodb@3.887.0':
-    resolution: {integrity: sha512-/t9rrvhR+AplmHk0yyQBzZuyarJ82sy1564KIKt59+ZM7GMCYGj5Z6D9OkZ5nSHco1K7E9adpFjHhxE1qxj4eA==}
+  '@aws-sdk/lib-dynamodb@3.888.0':
+    resolution: {integrity: sha512-Im2TsHOBKKtY6wCsrcg66bgIEZisJfJyI323ee8oIWlS9sPIgXo1tq2rVbYQfTu2srtYgmbvxts9uzNrrPVRyA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
-      '@aws-sdk/client-dynamodb': ^3.887.0
+      '@aws-sdk/client-dynamodb': ^3.888.0
 
   '@aws-sdk/middleware-bucket-endpoint@3.616.0':
     resolution: {integrity: sha512-KZv78s8UE7+s3qZCfG3pE9U9XV5WTP478aNWis5gDXmsb5LF7QWzEeR8kve5dnjNlK6qVQ33v+mUZa6lR5PwMw==}
@@ -876,11 +876,11 @@ packages:
     resolution: {integrity: sha512-XUKJWWo+KOB7fbnPP0+g/o5Ulku/X53t7i/h+sPHr5xxYTJJ9CYnbToo95mzxe7xWvkLrsNtJ8L+MnNn9INs2w==}
     engines: {node: '>=16.0.0'}
 
-  '@aws-sdk/util-dynamodb@3.887.0':
-    resolution: {integrity: sha512-ypjO5uDYkhpnehXlyLxAAUfyVHw0uWIt4bS8k8qucltdHYUFukWlyBycweUTPt8oDee5mBlnFk6AFuoviDQT2g==}
+  '@aws-sdk/util-dynamodb@3.888.0':
+    resolution: {integrity: sha512-CmgHcL+k259MsMoZb9Xy90/kv98XwVuFMdcX3ClcR2UwGyJSpfjMRu78x2tl4rIMzYElDqso2FTD367n91kssg==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
-      '@aws-sdk/client-dynamodb': ^3.887.0
+      '@aws-sdk/client-dynamodb': ^3.888.0
 
   '@aws-sdk/util-endpoints@3.614.0':
     resolution: {integrity: sha512-wK2cdrXHH4oz4IomV/yrGkftU9A+ITB6nFL+rxxyO78is2ifHJpFdV4aqk4LSkXYPi6CXWNru/Dqc7yiKXgJPw==}
@@ -7544,7 +7544,7 @@ snapshots:
       fast-xml-parser: 5.2.5
       tslib: 2.8.1
 
-  '@aws-sdk/core@3.887.0':
+  '@aws-sdk/core@3.888.0':
     dependencies:
       '@aws-sdk/types': 3.887.0
       '@aws-sdk/xml-builder': 3.887.0
@@ -8084,11 +8084,11 @@ snapshots:
       mnemonist: 0.38.3
       tslib: 2.8.1
 
-  '@aws-sdk/lib-dynamodb@3.887.0(@aws-sdk/client-dynamodb@3.886.0)':
+  '@aws-sdk/lib-dynamodb@3.888.0(@aws-sdk/client-dynamodb@3.886.0)':
     dependencies:
       '@aws-sdk/client-dynamodb': 3.886.0
-      '@aws-sdk/core': 3.887.0
-      '@aws-sdk/util-dynamodb': 3.887.0(@aws-sdk/client-dynamodb@3.886.0)
+      '@aws-sdk/core': 3.888.0
+      '@aws-sdk/util-dynamodb': 3.888.0(@aws-sdk/client-dynamodb@3.886.0)
       '@smithy/core': 3.11.0
       '@smithy/smithy-client': 4.6.1
       '@smithy/types': 4.5.0
@@ -8560,7 +8560,7 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@aws-sdk/util-dynamodb@3.887.0(@aws-sdk/client-dynamodb@3.886.0)':
+  '@aws-sdk/util-dynamodb@3.888.0(@aws-sdk/client-dynamodb@3.886.0)':
     dependencies:
       '@aws-sdk/client-dynamodb': 3.886.0
       tslib: 2.8.1
@@ -14031,7 +14031,7 @@ snapshots:
   serverless-dynamodb@0.2.54:
     dependencies:
       '@aws-sdk/client-dynamodb': 3.886.0
-      '@aws-sdk/lib-dynamodb': 3.887.0(@aws-sdk/client-dynamodb@3.886.0)
+      '@aws-sdk/lib-dynamodb': 3.888.0(@aws-sdk/client-dynamodb@3.886.0)
       aws-dynamodb-local: 0.0.11
     transitivePeerDependencies:
       - aws-crt
