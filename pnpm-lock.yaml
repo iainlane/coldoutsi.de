@@ -102,8 +102,8 @@ importers:
   app:
     dependencies:
       '@aws-lambda-powertools/logger':
-        specifier: ^2.27.0
-        version: 2.27.0(@middy/core@6.1.6)
+        specifier: ^2.28.0
+        version: 2.28.0(@middy/core@6.1.6)
       '@aws-sdk/client-dynamodb':
         specifier: ^3.913.0
         version: 3.913.0
@@ -330,13 +330,13 @@ packages:
   '@aws-crypto/util@5.2.0':
     resolution: {integrity: sha512-4RkU9EsI6ZpBve5fseQlGNUWKMa1RLPQ1dnjnQoe07ldfIzcsGb5hC5W0Dm7u423KWzawlrpbjXBrXCEv9zazQ==}
 
-  '@aws-lambda-powertools/commons@2.27.0':
-    resolution: {integrity: sha512-LjrMrSNcAOUw5g9frev4J0NEs3B7AU0uemB0BXbNLAHrYUdP2ls+ncohwNYVVN+DwjfpYj+FYjdRhUlmWzs8Cw==}
+  '@aws-lambda-powertools/commons@2.28.0':
+    resolution: {integrity: sha512-LlUSs3XShw9dM/q6BQPmWJXyxkwc8k4P6EunVjct7nQegELQuwbKggPuyLem05axkjK8wL+MIOxDqWBM6QcUMA==}
 
-  '@aws-lambda-powertools/logger@2.27.0':
-    resolution: {integrity: sha512-q3W5GAxMs5usQE65mLY3sE6HCebnZxQhZoj0JjvmQRfzUOTfBKhCeKUA+M+G7i+JzhsgWzD0jovVY2d3+DrZbQ==}
+  '@aws-lambda-powertools/logger@2.28.0':
+    resolution: {integrity: sha512-GBzMZanBGoGmNp60VAYX71wt6A8NSBkLvYr4SF91c8HW/fFywn9zUeNK0n94/+QPVpGKapk9R5e76M2B2vR4jg==}
     peerDependencies:
-      '@aws-lambda-powertools/jmespath': 2.27.0
+      '@aws-lambda-powertools/jmespath': 2.28.0
       '@middy/core': 4.x || 5.x || 6.x
     peerDependenciesMeta:
       '@aws-lambda-powertools/jmespath':
@@ -956,6 +956,10 @@ packages:
 
   '@aws/lambda-invoke-store@0.0.1':
     resolution: {integrity: sha512-ORHRQ2tmvnBXc8t/X9Z8IcSbBA4xTLKuN873FopzklHMeqBst7YG0d+AX97inkvDX+NChYtSr+qGfcqGFaI8Zw==}
+    engines: {node: '>=18.0.0'}
+
+  '@aws/lambda-invoke-store@0.1.0':
+    resolution: {integrity: sha512-I1y5yahbSFTfKldV4qoKv2IEZ20QOhn5rPvWwGnswZ8hssN7tsLANLg9tL8dp2klz2MZDGL5jZrvBwplIWtM8A==}
     engines: {node: '>=18.0.0'}
 
   '@babel/code-frame@7.24.7':
@@ -6132,11 +6136,13 @@ snapshots:
       '@smithy/util-utf8': 2.3.0
       tslib: 2.8.1
 
-  '@aws-lambda-powertools/commons@2.27.0': {}
-
-  '@aws-lambda-powertools/logger@2.27.0(@middy/core@6.1.6)':
+  '@aws-lambda-powertools/commons@2.28.0':
     dependencies:
-      '@aws-lambda-powertools/commons': 2.27.0
+      '@aws/lambda-invoke-store': 0.1.0
+
+  '@aws-lambda-powertools/logger@2.28.0(@middy/core@6.1.6)':
+    dependencies:
+      '@aws-lambda-powertools/commons': 2.28.0
       lodash.merge: 4.6.2
     optionalDependencies:
       '@middy/core': 6.1.6
@@ -8640,6 +8646,8 @@ snapshots:
       tslib: 2.8.1
 
   '@aws/lambda-invoke-store@0.0.1': {}
+
+  '@aws/lambda-invoke-store@0.1.0': {}
 
   '@babel/code-frame@7.24.7':
     dependencies:
