@@ -29,8 +29,8 @@
         "axios": "^1.12.2"
     },
     "devDependencies": {
-        "@openapitools/openapi-generator-cli": "^2.14.0",
-        "@types/node": "^22.7.5",
-        "typescript": "^5.6.3"
+        "@openapitools/openapi-generator-cli": "^2.25.0",
+        "@types/node": "^24.9.1",
+        "typescript": "^5.9.3"
     }
 }
