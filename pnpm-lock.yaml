@@ -103,7 +103,7 @@ importers:
     dependencies:
       '@aws-lambda-powertools/logger':
         specifier: ^2.30.1
-        version: 2.30.1(@middy/core@6.1.6)
+        version: 2.30.1(@middy/core@7.0.2)
       '@aws-sdk/client-dynamodb':
         specifier: ^3.965.0
         version: 3.965.0
@@ -123,29 +123,29 @@ importers:
         specifier: workspace:*
         version: link:../gen/nominatim
       '@middy/core':
-        specifier: ~6
-        version: 6.1.6
+        specifier: ~7
+        version: 7.0.2
       '@middy/error-logger':
-        specifier: ~6
-        version: 6.1.6
+        specifier: ~7
+        version: 7.0.2
       '@middy/http-content-encoding':
-        specifier: ~6
-        version: 6.1.6
+        specifier: ~7
+        version: 7.0.2
       '@middy/http-content-negotiation':
-        specifier: ~6
-        version: 6.1.6
+        specifier: ~7
+        version: 7.0.2
       '@middy/http-error-handler':
-        specifier: ~6
-        version: 6.1.6
+        specifier: ~7
+        version: 7.0.2
       '@middy/http-header-normalizer':
-        specifier: ~6
-        version: 6.1.6
+        specifier: ~7
+        version: 7.0.2
       '@middy/http-json-body-parser':
-        specifier: ~6
-        version: 6.1.6
+        specifier: ~7
+        version: 7.0.2
       '@middy/http-response-serializer':
-        specifier: ~6
-        version: 6.1.6
+        specifier: ~7
+        version: 7.0.2
       aws-lambda:
         specifier: ^1.0.7
         version: 1.0.7
@@ -1733,41 +1733,46 @@ packages:
     resolution: {integrity: sha512-Z7C/xXCiGWsg0KuKsHTKJxbWhpI3Vs5GwLfOean7MGyVFGqdRgBbAjOCh6u4bbjPc/8MJ2pZmK/0DLdCbivLDA==}
     engines: {node: '>=8'}
 
-  '@middy/core@6.1.6':
-    resolution: {integrity: sha512-YT7J0+9zgGIhKnC6lA5z1iE+EDHpmMda7H7gD59cu4inxRC2RTk+ensGFaJxXXMlAM08vGJn6Q5gH8KnV6YWoQ==}
-    engines: {node: '>=20'}
+  '@middy/core@7.0.2':
+    resolution: {integrity: sha512-C4PEJxMjWFneqfQzsbWQ9BZ7Bfds9oqw74/fTuEeunI/0PA1KtGfbHDuU1SQH6lZ3rOp+VUIYh4YDho8qmc2Rg==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      '@aws/durable-execution-sdk-js': ^1.0.0
+    peerDependenciesMeta:
+      '@aws/durable-execution-sdk-js':
+        optional: true
 
-  '@middy/error-logger@6.1.6':
-    resolution: {integrity: sha512-QaaJI6501sZKWokH51vEp82pnG8Zbq7CiBG/Ug85Jx02lG1cfuoV1hcp2ZsPpWNHvLcGiI3/xeEjpsUFeI0RNw==}
-    engines: {node: '>=20'}
+  '@middy/error-logger@7.0.2':
+    resolution: {integrity: sha512-QinalICrjzNUEwb+gzredYtFI9xYgf+BfbsRn+Jxxo2h2UtgcW8pLaP5QrDLrjJEF4AvBz4eAiQKQoZKJAcP3w==}
+    engines: {node: '>=22'}
 
-  '@middy/http-content-encoding@6.1.6':
-    resolution: {integrity: sha512-WIj6gmTK8HfJqcOFVNoD/9/vR15/Gk1+DhPzq6fjdIzqVuRddSz86k6lMvJwK+2iEInampTlyLHzBJbcJM1DSQ==}
-    engines: {node: '>=20'}
+  '@middy/http-content-encoding@7.0.2':
+    resolution: {integrity: sha512-6Sh8kicMowd278wHTQstHx4AaoAXGPd1USSxfJgQZPli6TR6zOMA7Pc9eyFOxGzoPBI4WANc6HP1ZtT7gI3YkA==}
+    engines: {node: '>=22'}
 
-  '@middy/http-content-negotiation@6.1.6':
-    resolution: {integrity: sha512-ORvwXugKu9IFKujxDp1MgrGI0DlsU5FElLhsh1jsI6Gt1SRBTxfK62x0OoA7VmDi5GjP71lxkZJ5gKtHgkZo8Q==}
-    engines: {node: '>=20'}
+  '@middy/http-content-negotiation@7.0.2':
+    resolution: {integrity: sha512-m0VSe+zBRfinpTAcB220ZDhyLvdU/rtF2qzQ4/y65RXQ/16M+djF8E9qDXxZVYNOjwFuA1RBv19/iYweGw0MhQ==}
+    engines: {node: '>=22'}
 
-  '@middy/http-error-handler@6.1.6':
-    resolution: {integrity: sha512-E3RBoAryPZ0zBl0stptJLPsC0qSSniYpsCEE+ELqVBh/Ew93WnRQZUpa4wz/Og7bexY8brrLrPGp5a6r89S6rQ==}
-    engines: {node: '>=20'}
+  '@middy/http-error-handler@7.0.2':
+    resolution: {integrity: sha512-uEd6ctFWjgOGUUSSYdEOYst6bfSg2P6Kb/fRr23f1ys1ssA6qR8/ttKH8PzZCe+hpuFhz+XGhOS/2sHzSSBEFQ==}
+    engines: {node: '>=22'}
 
-  '@middy/http-header-normalizer@6.1.6':
-    resolution: {integrity: sha512-ZE8exGGj3wv372hz3/nzFRneIvMZq/dfv1rGWr3mSa6M4RU7SJQc5oif7hJbF/E6kxK8tOj9HQbnasX/XAwcUg==}
-    engines: {node: '>=20'}
+  '@middy/http-header-normalizer@7.0.2':
+    resolution: {integrity: sha512-VYxaswkxENBy3YdHkMy6dQz1rX1pTPDuF299EPnywyXNVG740EnVkBcCwpLB0Xn5OKWPCNrwISTvntTvVXmQeg==}
+    engines: {node: '>=22'}
 
-  '@middy/http-json-body-parser@6.1.6':
-    resolution: {integrity: sha512-qE9Bm+rgnvrnoUrTiG3tE4cmHI/uYXw9E5b6kzZ9Ne8F54rOAh2lDQafRsjz2HF0jC35XcVBlTvbsVb6RJkpmA==}
-    engines: {node: '>=20'}
+  '@middy/http-json-body-parser@7.0.2':
+    resolution: {integrity: sha512-yQo7GHSv7+94n4f1rW0bhAJQ4X1wUArcsD1CAVi30ajUmrlkNksUGORbxA91ytR3X1yqFDceX1bhyFNX/8y6UA==}
+    engines: {node: '>=22'}
 
-  '@middy/http-response-serializer@6.1.6':
-    resolution: {integrity: sha512-k1btKidhNu7FycqiDR2DXqnvhc0jKvrqoeXAGRH2MVdYBaegxxirAGou1H4JKLO1nrYjGd8UgzBdQPkF2+SeTA==}
-    engines: {node: '>=20'}
+  '@middy/http-response-serializer@7.0.2':
+    resolution: {integrity: sha512-f/NPnJ8bKhkmLUJCiduCHYqpYvWmUiTVGLQv34KLEOYPyWPJhS8UB52IVnTVg5lWC6G4bLrAll0m0pVHz9r/UQ==}
+    engines: {node: '>=22'}
 
-  '@middy/util@6.1.6':
-    resolution: {integrity: sha512-NVsHayjEMNT4pd3kzQ0oG9RDuHlEeHVlF2pQsoyldSfFul5ldBtw5EVYeEMCyNLEbWMtbrX6JT4GqQ45AN1mNA==}
-    engines: {node: '>=20'}
+  '@middy/util@7.0.2':
+    resolution: {integrity: sha512-81pP1Am7QarL6e2+SHYnDu83jxqgxM3sztHJNLDZ2B+YwzT+smGjMaDX10bFH8PvTDr/nic3QaNOe2X8UoCaBw==}
+    engines: {node: '>=22'}
 
   '@nestjs/axios@3.0.3':
     resolution: {integrity: sha512-h6TCn3yJwD6OKqqqfmtRS5Zo4E46Ip2n+gK1sqwzNBC+qxQ9xpCu+ODVRFur6V3alHSCSBxb3nNtt73VEdluyA==}
@@ -6146,12 +6151,12 @@ snapshots:
     dependencies:
       '@aws/lambda-invoke-store': 0.2.2
 
-  '@aws-lambda-powertools/logger@2.30.1(@middy/core@6.1.6)':
+  '@aws-lambda-powertools/logger@2.30.1(@middy/core@7.0.2)':
     dependencies:
       '@aws-lambda-powertools/commons': 2.30.1
       '@aws/lambda-invoke-store': 0.2.2
     optionalDependencies:
-      '@middy/core': 6.1.6
+      '@middy/core': 7.0.2
 
   '@aws-sdk/client-acm@3.637.0':
     dependencies:
@@ -9514,34 +9519,34 @@ snapshots:
 
   '@lukeed/csprng@1.1.0': {}
 
-  '@middy/core@6.1.6': {}
+  '@middy/core@7.0.2': {}
 
-  '@middy/error-logger@6.1.6': {}
+  '@middy/error-logger@7.0.2': {}
 
-  '@middy/http-content-encoding@6.1.6':
+  '@middy/http-content-encoding@7.0.2':
     dependencies:
-      '@middy/util': 6.1.6
+      '@middy/util': 7.0.2
 
-  '@middy/http-content-negotiation@6.1.6':
+  '@middy/http-content-negotiation@7.0.2':
     dependencies:
-      '@middy/util': 6.1.6
+      '@middy/util': 7.0.2
       negotiator: 1.0.0
 
-  '@middy/http-error-handler@6.1.6':
+  '@middy/http-error-handler@7.0.2':
     dependencies:
-      '@middy/util': 6.1.6
+      '@middy/util': 7.0.2
 
-  '@middy/http-header-normalizer@6.1.6': {}
+  '@middy/http-header-normalizer@7.0.2': {}
 
-  '@middy/http-json-body-parser@6.1.6':
+  '@middy/http-json-body-parser@7.0.2':
     dependencies:
-      '@middy/util': 6.1.6
+      '@middy/util': 7.0.2
 
-  '@middy/http-response-serializer@6.1.6':
+  '@middy/http-response-serializer@7.0.2':
     dependencies:
-      '@middy/util': 6.1.6
+      '@middy/util': 7.0.2
 
-  '@middy/util@6.1.6': {}
+  '@middy/util@7.0.2': {}
 
   '@nestjs/axios@3.0.3(@nestjs/common@10.4.3(reflect-metadata@0.1.13)(rxjs@7.8.1))(axios@1.7.7)(rxjs@7.8.1)':
     dependencies:
