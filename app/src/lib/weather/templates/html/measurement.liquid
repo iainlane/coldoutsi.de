@@ -3,9 +3,9 @@
 <div>
     <p>{{ date | date: "%H:%M" }}</p>
     <div class="pre">{{ measurement.weather[0].art.html }}</div>
-    <div class="pre">🌡️ {{ measurement.temp.temperature }}{% if measurement.temp.temperature != feels_like %}({{ feels_like }}){% endif %}{{ measurement.temp.unit }}
-🌬️ {{ measurement.wind.HTMLString }}
-🏋️ {{ measurement.pressure }} hPa
-🌫️ {{ measurement.humidity }}%
-☁️ {{ measurement.clouds }}%</div>
+    <div class="pre"><span role="img" aria-label="Temperature">🌡️</span> {{ measurement.temp.temperature }}{% if measurement.temp.temperature != feels_like %}({{ feels_like }}){% endif %}{{ measurement.temp.unit }}
+<span role="img" aria-label="Wind">🌬️</span> {{ measurement.wind.HTMLString }}
+<span role="img" aria-label="Pressure">🏋️</span> {{ measurement.pressure }} hPa
+<span role="img" aria-label="Humidity">🌫️</span> {{ measurement.humidity }}%
+<span role="img" aria-label="Cloud Cover">☁️</span> {{ measurement.clouds }}%</div>
 </div>
