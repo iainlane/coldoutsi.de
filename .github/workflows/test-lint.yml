@@ -36,7 +36,7 @@ jobs:
         run: pnpm install
 
       - name: Build generated libraries
-        uses: nick-fields/retry@7152eba30c6575329ac0576536151aca5a72780e # v3.0.0
+        uses: nick-fields/retry@ad984534de44a9489a53aefd81eb77f87c70dc60 # v4.0.0
         with:
           max_attempts: 5
           timeout_minutes: 5
