@@ -102,8 +102,8 @@ importers:
   app:
     dependencies:
       '@aws-lambda-powertools/logger':
-        specifier: ^2.31.0
-        version: 2.31.0(@middy/core@6.1.6)
+        specifier: ^2.32.0
+        version: 2.32.0(@middy/core@6.1.6)
       '@aws-sdk/client-dynamodb':
         specifier: ^3.1011.0
         version: 3.1011.0
@@ -330,13 +330,13 @@ packages:
   '@aws-crypto/util@5.2.0':
     resolution: {integrity: sha512-4RkU9EsI6ZpBve5fseQlGNUWKMa1RLPQ1dnjnQoe07ldfIzcsGb5hC5W0Dm7u423KWzawlrpbjXBrXCEv9zazQ==}
 
-  '@aws-lambda-powertools/commons@2.31.0':
-    resolution: {integrity: sha512-K5Hy3WtU/n0M8/kgsgw6OVlF709PHOfnTfsWrJS2Cs1vVjEeBvW22a6u9n3VPNpDeqJ7GIodmSkbuzvQzq6vaA==}
+  '@aws-lambda-powertools/commons@2.32.0':
+    resolution: {integrity: sha512-vsdakJDZu/KkJ5+1WHkawQ5R06aCK0XYB3nc3tpcBfO1YmOHkn+QpuGiZtkmpzIykGPAO9lnBjK5joAeim2o4A==}
 
-  '@aws-lambda-powertools/logger@2.31.0':
-    resolution: {integrity: sha512-FCchy2g/cK5poDvDWnVCBSN9uSDGSWDldDiHGC/bn1/oU2cCxIZu06QnYEOOOAUbCWdzgcT1F9fRjzzHbu0GxQ==}
+  '@aws-lambda-powertools/logger@2.32.0':
+    resolution: {integrity: sha512-ZfomsMv4FnxYkgUvU9S6BPrTzd+ntPiIBZcrvSNz+/aPvVwu2BGHSKDuVlXa7nr6rB1wjzaA5bmLVTESIdnsdQ==}
     peerDependencies:
-      '@aws-lambda-powertools/jmespath': 2.31.0
+      '@aws-lambda-powertools/jmespath': 2.32.0
       '@middy/core': 4.x || 5.x || 6.x || 7.x
     peerDependenciesMeta:
       '@aws-lambda-powertools/jmespath':
@@ -965,10 +965,6 @@ packages:
   '@aws-sdk/xml-builder@3.972.14':
     resolution: {integrity: sha512-G/Yd8Bnnyh8QrqLf8jWJbixEnScUFW24e/wOBGYdw1Cl4r80KX/DvHyM2GVZ2vTp7J4gTEr8IXJlTadA8+UfuQ==}
     engines: {node: '>=20.0.0'}
-
-  '@aws/lambda-invoke-store@0.2.3':
-    resolution: {integrity: sha512-oLvsaPMTBejkkmHhjf09xTgk71mOqyr/409NKhRIL08If7AhVfUsJhVsx386uJaqNd42v9kWamQ9lFbkoC2dYw==}
-    engines: {node: '>=18.0.0'}
 
   '@aws/lambda-invoke-store@0.2.4':
     resolution: {integrity: sha512-iY8yvjE0y651BixKNPgmv1WrQc+GZ142sb0z4gYnChDDY2YqI4P/jsSopBWrKfAt7LOJAkOXt7rC/hms+WclQQ==}
@@ -6191,14 +6187,14 @@ snapshots:
       '@smithy/util-utf8': 2.3.0
       tslib: 2.8.1
 
-  '@aws-lambda-powertools/commons@2.31.0':
+  '@aws-lambda-powertools/commons@2.32.0':
     dependencies:
-      '@aws/lambda-invoke-store': 0.2.3
+      '@aws/lambda-invoke-store': 0.2.4
 
-  '@aws-lambda-powertools/logger@2.31.0(@middy/core@6.1.6)':
+  '@aws-lambda-powertools/logger@2.32.0(@middy/core@6.1.6)':
     dependencies:
-      '@aws-lambda-powertools/commons': 2.31.0
-      '@aws/lambda-invoke-store': 0.2.3
+      '@aws-lambda-powertools/commons': 2.32.0
+      '@aws/lambda-invoke-store': 0.2.4
     optionalDependencies:
       '@middy/core': 6.1.6
 
@@ -8702,8 +8698,6 @@ snapshots:
       '@smithy/types': 4.13.1
       fast-xml-parser: 5.5.6
       tslib: 2.8.1
-
-  '@aws/lambda-invoke-store@0.2.3': {}
 
   '@aws/lambda-invoke-store@0.2.4': {}
 
