@@ -5978,10 +5978,9 @@ packages:
     resolution: {integrity: sha512-XWbQ/0H03TpYDXk8sLScBEZpE7TbA0CHDL6/Xjt37IBYKLsHUQuBlL44ttAUs9zoBOLFxsW7HehXcuWCNyqOxQ==}
     engines: {node: '>=10.16'}
 
-  velocityjs@2.0.6:
-    resolution: {integrity: sha512-QMYLeYLBX6eqekCin3OPmDAHapaUx3foNFE264ml1/yxRZ8TUUlI1+u6rtN4E8tKNqwzpRPeNgJtjLbgRNK4fw==}
-    engines: {node: '>=0.8.0'}
-    hasBin: true
+  velocityjs@2.1.6:
+    resolution: {integrity: sha512-8bc+yDR2NjwPioMqOLsAs5VBMT16xr/jTfStHMmr7btRPvbCCiEoZ9k9k/7Uhxl3bUxIHY7uDNbvm5rTwPZlXg==}
+    engines: {node: '>=16.0.0'}
 
   walker@1.0.8:
     resolution: {integrity: sha512-ts/8E8l5b7kY0vlWLewOkDXMmPdLcVV4GmOQLyxuSswIJsweeFZtAsMF7k1Nszz+TYBQrlYRmzOnr398y1JemQ==}
@@ -14076,7 +14075,7 @@ snapshots:
       serverless: 3.39.0
       tree-kill: 1.2.2
       tsx: 4.19.1
-      velocityjs: 2.0.6
+      velocityjs: 2.1.6
       ws: 8.18.0
     transitivePeerDependencies:
       - aws-crt
@@ -14717,7 +14716,7 @@ snapshots:
 
   vandium-utils@2.0.0: {}
 
-  velocityjs@2.0.6:
+  velocityjs@2.1.6:
     dependencies:
       debug: 4.3.7(supports-color@8.1.1)
     transitivePeerDependencies:
