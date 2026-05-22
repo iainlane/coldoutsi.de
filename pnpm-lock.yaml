@@ -6082,8 +6082,8 @@ packages:
       utf-8-validate:
         optional: true
 
-  ws@8.18.0:
-    resolution: {integrity: sha512-8VbfWfHLbbwu3+N6OKsOMpBdT4kXPDDB9cJk2bJ6mh9ucxdlnNvH1e+roYkKmN9Nxw2yjz7VzeO9oOz2zJ04Pw==}
+  ws@8.20.1:
+    resolution: {integrity: sha512-It4dO0K5v//JtTXuPkfEOaI3uUN87iYPnqo/ZzqCoG3g8uhA66QUMs/SrM0YK7/NAu+r4LMh/9dq2A7k+rHs+w==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
@@ -8913,7 +8913,7 @@ snapshots:
       effect: 3.21.2
       mime: 3.0.0
       undici: 6.25.0
-      ws: 8.18.0
+      ws: 8.20.1
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -14124,7 +14124,7 @@ snapshots:
       tree-kill: 1.2.2
       tsx: 4.19.1
       velocityjs: 2.1.6
-      ws: 8.18.0
+      ws: 8.20.1
     transitivePeerDependencies:
       - aws-crt
       - bufferutil
@@ -14853,7 +14853,7 @@ snapshots:
 
   ws@7.5.10: {}
 
-  ws@8.18.0: {}
+  ws@8.20.1: {}
 
   xml-naming@0.1.0: {}
 
