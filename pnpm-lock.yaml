@@ -2007,8 +2007,8 @@ packages:
     resolution: {integrity: sha512-Gr/qwzyPaTL1tZcq8WQyHhTZREER5R1Wytmz4WnVGL4onA3dNk6Btll55c8Vr58pLdvWZmtG8oZxJTw3t3q7Jg==}
     engines: {node: '>=16.0.0'}
 
-  '@smithy/config-resolver@4.4.17':
-    resolution: {integrity: sha512-TzDZcAnhTyAHbXVxWZo7/tEcrIeFq20IBk8So3OLOetWpR8EwY/yEqBMBFaJMeyEiREDq4NfEl+qO3OAUD+vbQ==}
+  '@smithy/config-resolver@4.5.4':
+    resolution: {integrity: sha512-jqADOFCkuSqluoEPjxWTFQ/6Xfsmt4Xi3IelA+c+4WdavqCijGGfWi873VqfIZeSFvaBpYeH+PKHC3POE98KlQ==}
     engines: {node: '>=18.0.0'}
 
   '@smithy/core@2.5.7':
@@ -7127,7 +7127,7 @@ snapshots:
       '@aws-sdk/util-endpoints': 3.726.0
       '@aws-sdk/util-user-agent-browser': 3.723.0
       '@aws-sdk/util-user-agent-node': 3.726.0
-      '@smithy/config-resolver': 4.4.17
+      '@smithy/config-resolver': 4.5.4
       '@smithy/core': 3.24.4
       '@smithy/fetch-http-handler': 5.4.2
       '@smithy/hash-node': 4.2.14
@@ -7299,7 +7299,7 @@ snapshots:
       '@aws-sdk/util-endpoints': 3.726.0
       '@aws-sdk/util-user-agent-browser': 3.723.0
       '@aws-sdk/util-user-agent-node': 3.726.0
-      '@smithy/config-resolver': 4.4.17
+      '@smithy/config-resolver': 4.5.4
       '@smithy/core': 3.24.4
       '@smithy/fetch-http-handler': 5.4.2
       '@smithy/hash-node': 4.2.14
@@ -7479,7 +7479,7 @@ snapshots:
       '@aws-sdk/util-endpoints': 3.726.0
       '@aws-sdk/util-user-agent-browser': 3.723.0
       '@aws-sdk/util-user-agent-node': 3.726.0
-      '@smithy/config-resolver': 4.4.17
+      '@smithy/config-resolver': 4.5.4
       '@smithy/core': 3.24.4
       '@smithy/fetch-http-handler': 5.4.2
       '@smithy/hash-node': 4.2.14
@@ -9881,13 +9881,9 @@ snapshots:
       '@smithy/util-middleware': 3.0.11
       tslib: 2.8.1
 
-  '@smithy/config-resolver@4.4.17':
+  '@smithy/config-resolver@4.5.4':
     dependencies:
-      '@smithy/node-config-provider': 4.3.14
-      '@smithy/types': 4.14.2
-      '@smithy/util-config-provider': 4.2.2
-      '@smithy/util-endpoints': 3.4.2
-      '@smithy/util-middleware': 4.2.14
+      '@smithy/core': 3.24.4
       tslib: 2.8.1
 
   '@smithy/core@2.5.7':
@@ -10514,7 +10510,7 @@ snapshots:
 
   '@smithy/util-defaults-mode-node@4.2.54':
     dependencies:
-      '@smithy/config-resolver': 4.4.17
+      '@smithy/config-resolver': 4.5.4
       '@smithy/credential-provider-imds': 4.3.2
       '@smithy/node-config-provider': 4.3.14
       '@smithy/property-provider': 4.2.14
