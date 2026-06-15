@@ -150,11 +150,11 @@ importers:
         specifier: ^1.0.7
         version: 1.0.7
       axios:
-        specifier: ^1.17.0
-        version: 1.17.0(supports-color@8.1.1)
+        specifier: ^1.18.0
+        version: 1.18.0(supports-color@8.1.1)
       axios-retry:
         specifier: ^4.5.0
-        version: 4.5.0(axios@1.17.0)
+        version: 4.5.0(axios@1.18.0)
       chalk:
         specifier: ^5.6.2
         version: 5.6.2
@@ -227,7 +227,7 @@ importers:
         version: 4.0.2(aws-sdk-client-mock@4.0.2)
       axios-mock-adapter:
         specifier: ^2.0.0
-        version: 2.0.0(axios@1.17.0)
+        version: 2.0.0(axios@1.18.0)
       jest:
         specifier: ^29.7.0
         version: 29.7.0(@types/node@22.7.5)(ts-node@10.9.2(@types/node@22.7.5)(typescript@5.6.3))
@@ -253,8 +253,8 @@ importers:
   gen/geojs:
     dependencies:
       axios:
-        specifier: ^1.17.0
-        version: 1.17.0(supports-color@8.1.1)
+        specifier: ^1.18.0
+        version: 1.18.0(supports-color@8.1.1)
     devDependencies:
       '@openapitools/openapi-generator-cli':
         specifier: ^2.14.0
@@ -269,8 +269,8 @@ importers:
   gen/met.no:
     dependencies:
       axios:
-        specifier: ^1.17.0
-        version: 1.17.0(supports-color@8.1.1)
+        specifier: ^1.18.0
+        version: 1.18.0(supports-color@8.1.1)
     devDependencies:
       '@openapitools/openapi-generator-cli':
         specifier: ^2.14.0
@@ -285,8 +285,8 @@ importers:
   gen/nominatim:
     dependencies:
       axios:
-        specifier: ^1.17.0
-        version: 1.17.0(supports-color@8.1.1)
+        specifier: ^1.18.0
+        version: 1.18.0(supports-color@8.1.1)
     devDependencies:
       '@openapitools/openapi-generator-cli':
         specifier: ^2.14.0
@@ -2876,8 +2876,8 @@ packages:
     peerDependencies:
       axios: 0.x || 1.x
 
-  axios@1.17.0:
-    resolution: {integrity: sha512-J8SwNxprqqpbfenehxWYXE7CW+wM1BB4w3+N+g+/Wx40xM4rsLrfPmHHxSWIxJLYDgSY/HqlFPIYb2/S3rxafw==}
+  axios@1.18.0:
+    resolution: {integrity: sha512-E32NzpYKp++W7XRe52rHiXV2ehxmh3wbdgO7MHeFM+vqxLBYHzt0ElkiImtOBxtOmyp0yoC8C6uESVV84Y2/hw==}
 
   axios@1.7.7:
     resolution: {integrity: sha512-S4kL7XrjgBmvdGut0sN3yJxqYzrDOnivkBiN0OFs6hLiUam3UPvswUo0kqGyhqUZGEOytHyumEdXsAkgCOUf3Q==}
@@ -3879,8 +3879,8 @@ packages:
     resolution: {integrity: sha512-dKx12eRCVIzqCxFGplyFKJMPvLEWgmNtUrpTiJIR5u97zEhRG8ySrtboPHZXx7daLxQVrl643cTzbab2tkQjxg==}
     engines: {node: '>= 0.4'}
 
-  form-data@4.0.5:
-    resolution: {integrity: sha512-8RipRLol37bNs2bhoV67fiTEvdTrbMUYcFTiy3+wuuOnUog2QBHCZWXDRijWQfAkhBj2Uf5UnVaiWwA5vdd82w==}
+  form-data@4.0.6:
+    resolution: {integrity: sha512-vKatAh4SlVfgbv+YtmhiRjhEMJsYpsG1Y2rMQtR+SVSbytsSD1YGzDIcrAJmdFec88u/+VoGmxnl+80gL1tRCQ==}
     engines: {node: '>= 6'}
 
   formdata-polyfill@4.0.10:
@@ -9658,7 +9658,7 @@ snapshots:
     dependencies:
       adm-zip: 0.5.14
       archiver: 5.3.2
-      axios: 1.17.0(supports-color@8.1.1)
+      axios: 1.18.0(supports-color@8.1.1)
       fast-glob: 3.3.2
       https-proxy-agent: 5.0.1(supports-color@8.1.1)
       ignore: 5.3.2
@@ -11025,21 +11025,21 @@ snapshots:
       uuid: 8.0.0
       xml2js: 0.6.2
 
-  axios-mock-adapter@2.0.0(axios@1.17.0):
+  axios-mock-adapter@2.0.0(axios@1.18.0):
     dependencies:
-      axios: 1.17.0(supports-color@8.1.1)
+      axios: 1.18.0(supports-color@8.1.1)
       fast-deep-equal: 3.1.3
       is-buffer: 2.0.5
 
-  axios-retry@4.5.0(axios@1.17.0):
+  axios-retry@4.5.0(axios@1.18.0):
     dependencies:
-      axios: 1.17.0(supports-color@8.1.1)
+      axios: 1.18.0(supports-color@8.1.1)
       is-retry-allowed: 2.2.0
 
-  axios@1.17.0(supports-color@8.1.1):
+  axios@1.18.0(supports-color@8.1.1):
     dependencies:
       follow-redirects: 1.16.0
-      form-data: 4.0.5
+      form-data: 4.0.6
       https-proxy-agent: 5.0.1(supports-color@8.1.1)
       proxy-from-env: 2.1.0
     transitivePeerDependencies:
@@ -11049,7 +11049,7 @@ snapshots:
   axios@1.7.7:
     dependencies:
       follow-redirects: 1.16.0
-      form-data: 4.0.5
+      form-data: 4.0.6
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
@@ -12260,7 +12260,7 @@ snapshots:
     dependencies:
       is-callable: 1.2.7
 
-  form-data@4.0.5:
+  form-data@4.0.6:
     dependencies:
       asynckit: 0.4.0
       combined-stream: 1.0.8
@@ -14399,7 +14399,7 @@ snapshots:
       cookiejar: 2.1.4
       debug: 4.4.3(supports-color@8.1.1)
       fast-safe-stringify: 2.1.1
-      form-data: 4.0.5
+      form-data: 4.0.6
       formidable: 2.1.5
       methods: 1.1.2
       mime: 2.6.0
