@@ -108,8 +108,8 @@ importers:
         specifier: ^3.1068.0
         version: 3.1068.0
       '@aws-sdk/lib-dynamodb':
-        specifier: ^3.1069.0
-        version: 3.1069.0(@aws-sdk/client-dynamodb@3.1068.0)
+        specifier: ^3.1070.0
+        version: 3.1070.0(@aws-sdk/client-dynamodb@3.1068.0)
       '@curveball/http-errors':
         specifier: ^1.0.1
         version: 1.0.1
@@ -660,11 +660,11 @@ packages:
     resolution: {integrity: sha512-LkwS3ZOUNL5kHzmz3dDx8lE3HOhZmf2VGjbJ/tMUZJYWWl3J0RJTZM7RFz1MLt06WDVvlShcAjY/RzhYlqLL7g==}
     engines: {node: '>=20.0.0'}
 
-  '@aws-sdk/lib-dynamodb@3.1069.0':
-    resolution: {integrity: sha512-SXo6U607ptbO50AywP3WENwprHWeuMrcaptdhjkBgzv7UQC8n7njk5gdypwZPseQQb2+v3Hpo3YHyGTET6uS6w==}
+  '@aws-sdk/lib-dynamodb@3.1070.0':
+    resolution: {integrity: sha512-fSmg+8ppwNj+rxKmscQWRwsquY0N0wqx3/GLayjkIWptDlQRglW1aQx0wGf3eU8ZhtnMZFtkmLT1FOEHWuCHZg==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
-      '@aws-sdk/client-dynamodb': ^3.1069.0
+      '@aws-sdk/client-dynamodb': ^3.1070.0
 
   '@aws-sdk/middleware-bucket-endpoint@3.616.0':
     resolution: {integrity: sha512-KZv78s8UE7+s3qZCfG3pE9U9XV5WTP478aNWis5gDXmsb5LF7QWzEeR8kve5dnjNlK6qVQ33v+mUZa6lR5PwMw==}
@@ -8101,7 +8101,7 @@ snapshots:
       mnemonist: 0.38.3
       tslib: 2.8.1
 
-  '@aws-sdk/lib-dynamodb@3.1069.0(@aws-sdk/client-dynamodb@3.1068.0)':
+  '@aws-sdk/lib-dynamodb@3.1070.0(@aws-sdk/client-dynamodb@3.1068.0)':
     dependencies:
       '@aws-sdk/client-dynamodb': 3.1068.0
       '@aws-sdk/core': 3.974.21
@@ -14045,7 +14045,7 @@ snapshots:
   serverless-dynamodb@0.2.54:
     dependencies:
       '@aws-sdk/client-dynamodb': 3.1068.0
-      '@aws-sdk/lib-dynamodb': 3.1069.0(@aws-sdk/client-dynamodb@3.1068.0)
+      '@aws-sdk/lib-dynamodb': 3.1070.0(@aws-sdk/client-dynamodb@3.1068.0)
       aws-dynamodb-local: 0.0.11
 
   serverless-esbuild@1.54.3(esbuild@0.28.1):
